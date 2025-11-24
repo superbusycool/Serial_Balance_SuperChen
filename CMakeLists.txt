@@ -1,7 +1,7 @@
 #此文件从模板自动生成! 请勿更改!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.26)
 
 # 指定交叉编译工具链
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -93,37 +93,49 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         USB_DEVICE/App USB_DEVICE/Target
         Middlewares/ST/STM32_USB_Device_Library/Core/Inc
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-
+        Middlewares/Third_Party/SEGGER/Config
+        Middlewares/Third_Party/SEGGER/RTT
         Middlewares/ST/ARM/DSP/Inc # 矩阵运算库
 
-        USER/Algorithm/MahonyAHRS
-        USER/Algorithm/MyType
-        USER/Algorithm/PID
-        USER/Algorithm/Dwt
-        USER/Algorithm/User_Lib
-        USER/Algorithm/Ramp
-        USER/Algorithm/Filter
-        USER/Algorithm/Crc
-       # USER/Algorithm/Fifo
+        src
+        src/algorithm
+        src/algorithm/arm_math
+        src/algorithm/kalman_filter
+        src/algorithm/Filter
+        src/algorithm/MahonyAHRS
+        src/algorithm/PID
+        src/algorithm/Ramp
+        src/algorithm/QuaternionEKF
+        src/algorithm/User_lib
+        src/algorithm/crc
 
-       # USER/Module/Bmi088
-       # USER/Module/Vofa+
-        USER/Module/Fdcan
-        USER/Module/DM_Motor_Fdcan
-        USER/Module/DJ_Motor
-        USER/Module/Rc/Sbus
-        USER/Module/Referee
-        USER/Module/Keyboard
-        USER/Module/Pump
+        src/modules
+        src/modules/BMI088
+        src/modules/can
+        src/modules/dwt
+        src/modules/ipc
+        src/modules/log
+        src/modules/leg_vmc
+        src/modules/leg_wbr
+        src/modules/motor
+        src/modules/motor/DJI_motor
+        src/modules/motor/LK_motor
+        src/modules/motor/HT_motor
+        src/modules/motor/DM_motor
+        src/modules/pwm
+        src/modules/referee
+        src/modules/rc/dbus
+        src/modules/rc/keyboard
 
-       # USER/Task/Imu
-        USER/Task/Chassis
-        USER/Task/Robot_Config
-        USER/Task/Cmd
-        USER/Task/DMmotor
-       # USER/Task/Arm
-        USER/Task/Referee
-        USER/Task/USART_Recive
+        src/task
+        src/task/ins
+        src/task/motor
+        src/task/cmd
+        src/task/gimbal
+        src/task/chassis
+        src/task/trans
+        src/task/shoot
+        src/task/usart_recive
 
 )
 
@@ -131,35 +143,24 @@ add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -DUSE_PWR_LDO_SUPPLY)
 
 # 源文件
 file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE/*.*"
-        "USER/Algorithm/MahonyAHRS/*.*"
-        "USER/Algorithm/MyType/*.*"
-        "USER/Algorithm/PID/*.*"
-        "USER/Algorithm/Dwt/*.*"
-        "USER/Algorithm/User_Lib/*.*"
-        "USER/Algorithm/Ramp/*.*"
-        "USER/Algorithm/Filter/*.*"
-        "USER/Algorithm/Crc/*.*"
-       # "USER/Algorithm/Fifo/*.*"
-
-       # "USER/Module/Bmi088/*.*"
-       # "USER/Module/Vofa+/*.*"
-        "USER/Module/Fdcan/*.*"
-        "USER/Module/DM_Motor_Fdcan/*.*"
-        "USER/Module/DJ_Motor/*.*"
-        "USER/Module/Rc/Sbus/*.*"
-        "USER/Module/Referee/*.*"
-        "USER/Module/Keyboard/*.*"
-        "USER/Module/Pump/*.*"
-
-       # "USER/Task/Imu/*.*"
-        "USER/Task/Chassis/*.*"
-        "USER/Task/Robot_Config/*.*"
-        "USER/Task/Cmd/*.*"
-        "USER/Task/DMmotor/*.*"
-       # "USER/Task/Arm/*.*"
-        "USER/Task/Referee/*.*"
-        "USER/Task/USART_Recive/*.*"
-
+        "src/algorithm/*.*"
+        "src/modules/BMI088/*.*"
+        "src/modules/can/*.*"
+        "src/modules/dwt/*.*"
+        "src/modules/ipc/*.*"
+        "src/modules/leg_wbr/*.*"
+        "src/modules/leg_vmc/*.*"
+        "src/modules/log/*.*"
+        "src/modules/motor/*.*"
+        "src/modules/pwm/*.*"
+        "src/modules/rc/dbus/*.*"
+        "src/modules/rc/keyboard/*.*"
+        "src/modules/referee/*.*"
+        "src/modules/rm_module.h"
+        "src/task/*.*"
+        "src/rm_config.h"
+        "src/robot.c"
+        "src/robot.h"
 )
 
 # 链接脚本

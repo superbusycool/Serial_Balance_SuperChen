@@ -22,37 +22,31 @@
 #include "dma.h"
 #include "fdcan.h"
 #include "memorymap.h"
+#include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "SEGGER_RTT.h"
+#include "BMI088driver.h"
 #include "drv_dwt.h"
-#include "rc_sbus.h"
-#include "bsp_fdcan.h"
-#include "dm_motor_drv.h"
-#include "dm_motor_ctrl.h"
+#include "hal_can.h"
+#include "robot.h"
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 // 全局声明信号量
-SemaphoreHandle_t xSemaphoreUART10 = NULL;
-SemaphoreHandle_t xSemaphoreUART1 = NULL;           // 通知任务处理信号量
-SemaphoreHandle_t xSemaphoreUART5 = NULL;
-QueueSetHandle_t xUartQueueSet = NULL; // 定义队列集句柄,统一管理串口中断信号量
-// 声明互斥锁句柄
-SemaphoreHandle_t  sbus_cmd_mutex = NULL;
 
-QueueHandle_t xControlQueue = NULL; // 队列句柄
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define CONTROL_QUEUE_LENGTH 10    // 队列长度，可根据需要调整
-#define CONTROL_QUEUE_ITEM_SIZE sizeof(float)*7 // 每个队列元素占用的字节数
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -111,60 +105,20 @@ int main(void)
   MX_FDCAN1_Init();
   MX_FDCAN2_Init();
   MX_FDCAN3_Init();
-  MX_USART1_UART_Init();
   MX_UART5_Init();
+  MX_SPI2_Init();
+  MX_TIM3_Init();
+  MX_TIM4_Init();
   MX_USART10_UART_Init();
-  MX_UART7_Init();
   /* USER CODE BEGIN 2 */
-    MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
 
-    // FreeRTOS 初始化
-    xSemaphoreUART10 = xSemaphoreCreateBinary();  // <-- 在此处创建信号量
-    xSemaphoreUART1 = xSemaphoreCreateBinary();  // <-- 在此处创建信号量
-    xSemaphoreUART5 = xSemaphoreCreateBinary();  // <-- 在此处创建信号量
-    // 定义队列集（最多监听 3 个信号量）
-    xUartQueueSet = xQueueCreateSet(3);
-    // 将各串口信号量加入队列集
-    xQueueAddToSet(xSemaphoreUART1, xUartQueueSet);
-    xQueueAddToSet(xSemaphoreUART5, xUartQueueSet);
-    xQueueAddToSet(xSemaphoreUART10, xUartQueueSet);
-
-    // 创建队列
-    xControlQueue = xQueueCreate(CONTROL_QUEUE_LENGTH, CONTROL_QUEUE_ITEM_SIZE);
-    if (xControlQueue == NULL) {
-        // 队列创建失败，进入错误处理
-        Error_Handler();
-    }
-
-    sbus_cmd_mutex = xSemaphoreCreateMutex();  // 初始化互斥锁
-
-    HAL_GPIO_WritePin(PUMP1_GPIO_Port, PUMP1_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(PUMP2_GPIO_Port, PUMP2_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(PUMP2_1_GPIO_Port, PUMP2_1_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(PUMP2_2_GPIO_Port, PUMP2_2_Pin, GPIO_PIN_RESET);
-
-    dwt_init(480);
-  // 达妙4310驱动设置
-    power(1);
-    bsp_fdcan_set_baud(&hfdcan1, CAN_CLASS, CAN_BR_1M);
-    bsp_fdcan_set_baud(&hfdcan2, CAN_CLASS, CAN_BR_1M);
-    bsp_fdcan_set_baud(&hfdcan3, CAN_CLASS, CAN_BR_1M);
-////	bsp_fdcan_set_baud(&hfdcan1, CAN_FD_BRS, CAN_BR_1M);
-    bsp_can_init();
-    dm_motor_init();
-
-
-//    write_motor_data(motor[Motor1].id, 10, mit_mode, 0, 0, 0);
-//	write_motor_data(motor[Motor1].id, 35, CAN_BR_5M, 0, 0, 0);
-//    	read_motor_data(motor[Motor1].id, RID_CAN_BR);
-//    dm_motor_disable(&hfdcan2, &motor[Motor1]);
-
-//    save_motor_data(motor[Motor1].id, 10);
-
-
-
-//    HAL_TIM_Base_Start_IT(&htim3);
-//	read_all_motor_data(&motor[Motor1]);
+  dwt_init(480);
+  CAN_service_init();
+  BMI088_init(&hspi2);
+  robot_init();
+  SEGGER_RTT_Init();//系统日志log初始化
+  HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
@@ -182,6 +136,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
   }
   /* USER CODE END 3 */
 }
@@ -219,7 +174,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 2;
   RCC_OscInitStruct.PLL.PLLN = 40;
   RCC_OscInitStruct.PLL.PLLP = 1;
-  RCC_OscInitStruct.PLL.PLLQ = 6;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
@@ -253,27 +208,7 @@ void SystemClock_Config(void)
 
 /* USER CODE END 4 */
 
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM23 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
 
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM23)
-  {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

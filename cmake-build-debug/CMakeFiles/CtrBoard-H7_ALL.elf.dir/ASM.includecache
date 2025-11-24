@@ -6,5 +6,23 @@
 
 #IncludeRegexTransform: 
 
-D:/GitHub_Project/Engineering_Robot_H723/Core/Startup/startup_stm32h723vgtx.s
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Core/Startup/startup_stm32h723vgtx.s
+
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h
+intrinsics.h
+-
+machine.h
+-
+
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h
+../Config/SEGGER_RTT_Conf.h
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h
+stdlib.h
+-
+stdarg.h
+-
+
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s
+SEGGER_RTT.h
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h
 
