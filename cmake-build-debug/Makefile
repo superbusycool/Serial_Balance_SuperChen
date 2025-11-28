@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20
+CMAKE_SOURCE_DIR = D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\cmake-build-debug
+CMAKE_BINARY_DIR = D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -2208,6 +2208,30 @@ src/modules/referee/referee_system.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.s
 .PHONY : src/modules/referee/referee_system.c.s
 
+src/modules/ws2812b/ws2812.obj: src/modules/ws2812b/ws2812.c.obj
+.PHONY : src/modules/ws2812b/ws2812.obj
+
+# target to build an object file
+src/modules/ws2812b/ws2812.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj
+.PHONY : src/modules/ws2812b/ws2812.c.obj
+
+src/modules/ws2812b/ws2812.i: src/modules/ws2812b/ws2812.c.i
+.PHONY : src/modules/ws2812b/ws2812.i
+
+# target to preprocess a source file
+src/modules/ws2812b/ws2812.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.i
+.PHONY : src/modules/ws2812b/ws2812.c.i
+
+src/modules/ws2812b/ws2812.s: src/modules/ws2812b/ws2812.c.s
+.PHONY : src/modules/ws2812b/ws2812.s
+
+# target to generate assembly for a file
+src/modules/ws2812b/ws2812.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.s
+.PHONY : src/modules/ws2812b/ws2812.c.s
+
 src/robot.obj: src/robot.c.obj
 .PHONY : src/robot.obj
 
@@ -2693,6 +2717,9 @@ help:
 	@echo ... src/modules/referee/referee_system.obj
 	@echo ... src/modules/referee/referee_system.i
 	@echo ... src/modules/referee/referee_system.s
+	@echo ... src/modules/ws2812b/ws2812.obj
+	@echo ... src/modules/ws2812b/ws2812.i
+	@echo ... src/modules/ws2812b/ws2812.s
 	@echo ... src/robot.obj
 	@echo ... src/robot.i
 	@echo ... src/robot.s

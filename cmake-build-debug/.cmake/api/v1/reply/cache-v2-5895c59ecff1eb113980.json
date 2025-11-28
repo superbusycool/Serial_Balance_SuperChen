@@ -163,7 +163,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/cmake-build-debug"
+			"value" : "d:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -687,7 +687,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -747,7 +747,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20"
+			"value" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1227,7 +1227,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/cmake-build-debug"
+			"value" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug"
 		},
 		{
 			"name" : "CtrBoard-H7_ALL_IS_TOP_LEVEL",
@@ -1251,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20"
+			"value" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20"
 		},
 		{
 			"name" : "ProcessorCount_cmd_getconf",

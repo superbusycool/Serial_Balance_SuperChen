@@ -1,4 +1,4 @@
-# Install script for directory: D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20
+# Install script for directory: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -20,10 +20,6 @@ static volatile uint16_t referee_rx_size;
 static uint8_t referee_rx_buffer[2][REFEREE_RX_BUF_SIZE];
 extern SemaphoreHandle_t xSemaphoreUART10;
 
-// 外部引用
-extern QueueSetHandle_t xUartQueueSet; // 定义队列集句柄,统一管理串口中断信号量
-extern struct referee_fdb_msg referee_fdb;
-
 
 void USART5_DMA_Init(void) {
     memset(usart5_rx_buffer, 0, SBUS_RX_BUF_SIZE);

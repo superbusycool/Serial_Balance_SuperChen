@@ -53,9 +53,7 @@
 #define GIMBAL_RC_MOVE_RATIO_YAW 0.5f
 
 /*******************************选择使用的电机*********************************************/
-//#define BSP_USING_C_TO_C  //板间通信
-//#define BSP_USING_HT_MOTOR
-//#define BSP_USING_LK_MOTOR
+
 #define BSP_USING_DJI_MOTOR
 #define BSP_USING_DM_MOTOR
 
@@ -117,8 +115,8 @@
 #define YAW_MOTOR_ID     0x207
 #define PITCH_MOTOR_ID   0x208
 
-#define CENTER_ECD_YAW   7837         //云台yaw轴编码器归中值
-#define CENTER_ECD_PITCH 1420         //云台pitch轴编码器归中值
+#define CENTER_ECD_YAW   0        //云台yaw轴编码器归中值
+#define CENTER_ECD_PITCH 0        //云台pitch轴编码器归中值
 
 /* 云台控制周期 (ms) */
 #define GIMBAL_PERIOD 1
@@ -268,8 +266,11 @@
 #define roll_MaxVal 50
 
 /**************************************************************************/
-#define BSP_USING_C_TO_C
+/*使用imu校准*/
+#define BSP_BMI088_CALI
+/*轮子3508输入置零*/
 //#define M3508_SET_ZERO
+/*8009输入置零*/
 #define DM8009P_SET_ZERO
 /* -------------------------------------------------------------------------- */
 /*                                   遥控器相关                                  */

@@ -8,7 +8,7 @@
 extern FDCAN_HandleTypeDef hfdcan1;
 extern FDCAN_HandleTypeDef hfdcan2;
 
-#define DM_MOTOR_CNT 4
+#define DM_MOTOR_CNT 5
 static dm_motor_object_t dm_motor_obj[DM_MOTOR_CNT];
 static uint8_t idx=0;
 
@@ -215,6 +215,9 @@ dm_motor_object_t *dm_motor_register(motor_config_t *config, void *control)
         case 2:
             dm_motor_obj[idx].fdcan = &hfdcan2;
             break;
+        case 3:
+            dm_motor_obj[idx].fdcan = &hfdcan3;
+            break;
         default:
             break;
     }
@@ -304,6 +307,15 @@ static void pack_contol_para(dm_motor_para_t para, uint8_t *buf)
 
     }
 
+}
+void dm_motor_relax(dm_motor_object_t *motor)
+{
+    motor->stop_flag = MOTOR_STOP;
+}
+
+void dm_motor_enable(dm_motor_object_t *motor)
+{
+    motor->stop_flag = MOTOR_ENALBED;
 }
 
 /* 预留命令接口，可用于调试 */

@@ -1,8 +1,8 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\src\modules\log\bsp_log.c \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\src\modules\log\bsp_log.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
- d:\hnu_rm_codestorage\hnu_serial_h723_2025_11_20\middlewares\third_party\segger\config\segger_rtt_conf.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\log\bsp_log.c \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\log\bsp_log.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
+ d:\hnu_rm_codestorage\serial_balance_h723_11_24\hnu_serial_h723_2025_11_20\middlewares\third_party\segger\config\segger_rtt_conf.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\ieeefp.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
@@ -21,7 +21,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\machine\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\alloca.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdio.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\types.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \

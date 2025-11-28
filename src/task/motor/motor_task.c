@@ -52,6 +52,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 #endif /* BSP_USING_DM_MOTOR */
 
     }
+
+    /*hal_delay依赖的时钟,tick累加,注意不要删去,会导致hal_delay卡死*/
     if (htim->Instance == TIM23)
     {
         HAL_IncTick();
