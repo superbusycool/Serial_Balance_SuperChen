@@ -3,7 +3,7 @@
 * Date            Author          Notes
 * 2023-09-24      ChuShicheng     first version
 * 2025-07-25      SuperChen       second version
-* 2025-11-01      SuperChen       third version (结合上交的lqr+哈工程的vmc)
+* 2025-11-01      SuperChen       third version (结合上交建模lqr)
 *
 */
 #include "chassis_task.h"
@@ -72,8 +72,9 @@ static dm_motor_object_t *dm_motor[4];
 
 /* 驱动电机 LK9025 实例 */
 static dji_motor_object_t *m3508_motor[2];
-
-#define M3508_TOR_TO_CUR  200  //扭矩电流系数
+/*查3508资料和xroll减速箱淘宝详情得到*/
+#define M3508_TOR_TO_CUR  2220  //扭矩电流系数
+#define M3508_TOR_MAX  3.69  //堵转扭矩
 
 static float phi1_R,phi1_L, phi2_R,phi2_L;
 
@@ -127,7 +128,7 @@ static void leg_calc();
 
 static wbr_leg_obj_t * leg[2] = {NULL};
 static float ft_l[2], ft_r[2];  // FT = [PendulumForce PendulumTorque]
-static float WBR_T_L[2];  // wbr计算得出的扭矩值 左边腿
+static float WBR_T_L[2];  // wbr计算得出的扭矩值 左边腿,即关节电机扭矩控制值
 static float WBR_T_R[2];  // wbr计算得出的扭矩值 右边腿
 static float jump_out_l[2]; // 跳跃附加扭矩值 左边腿
 static float jump_out_r[2]; // 跳跃附加扭矩值 右边腿
@@ -235,7 +236,7 @@ float a410[6] = {-4.4463,0.45343,-1.4457,1.4709,0.2886,-0.15014};
 
 
 /* [T_lwl T_lwr(轮子输出扭矩) T_bll T_blr(髋关节输出扭矩)] */
-static float LQROutBuf[1][4]={0};
+static float LQROutBuf[4]={0};
 
 /* X= [s s_dot φ φ_dot θ_ll θ_ll_dot θ_lr θ_lr_dot θ_b θ_b_dot] 参量命名跟上交开源一致*/
 static float LQRXerrorBuf[1][10]={0};
@@ -275,7 +276,7 @@ static arm_matrix_instance_f32 MatLQRErrX    = {10, 1, LQRXerrorBuf[0]};
  * T_blr
  * ]
  * */
-static arm_matrix_instance_f32 MatLQROutU = {4, 1, LQROutBuf[0]};
+static arm_matrix_instance_f32 MatLQROutU = {4, 1, LQROutBuf};
 
 
 
@@ -752,16 +753,6 @@ static void leg_calc()
     update_LQR_obs();
     LQR_Cal();
 
-    /* 双腿角度协调控制 */
-    pid_calculate(theta_pid, leg[LEFT]->wbr_theta - leg[RIGHT]->wbr_theta, 0);
-
-    //根据离地状态计算左右腿推力，若离地则不考虑roll轴PID输出和前馈量
-    LIMIT_MIN_MAX(ft_l[0], -FORCE_LIMIT, FORCE_LIMIT);
-    ft_l[1] = -LQROutBuf[LEFT][1] - theta_pid->Output ;
-
-    LIMIT_MIN_MAX(ft_r[0], -FORCE_LIMIT, FORCE_LIMIT);
-    ft_r[1] = -LQROutBuf[RIGHT][1] + theta_pid->Output;
-
     /* 离地检测，计算两腿地面支持力 */
     Leg_FN_Calculation(0,0.5*(leg[LEFT]->wbr_L_ref + leg[RIGHT]->wbr_L_ref));
 
@@ -772,11 +763,13 @@ static void leg_calc()
 
 static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){
 
+    leg[LEFT]->L_average = 0.5f * (leg[LEFT]->L + leg[RIGHT]->L);
+
     F_roll = pid_calculate(roll_pid, ins.roll, ROLL_TARGET);  //TODO 注意方向,沿正方形顺时针为正
 
-    F_l_L = pid_calculate(L_length_pid, leg[LEFT]->L, L_TARGET);
+    F_l_L = pid_calculate(L_length_pid, leg[LEFT]->L_average, L_TARGET);
 
-    F_l_R = pid_calculate(L_length_pid, leg[RIGHT]->L, L_TARGET);
+    F_l_R = pid_calculate(L_length_pid, leg[RIGHT]->L_average, L_TARGET);
 
     F_bl_gravity = 0.5 * m_b * g;
     F_bl_intertial = 0.5 * m_b * (0.5*(leg[LEFT]->L + leg[RIGHT]->L)/(2.0f*Rl)) * LQRXObsBuf[0][3] * LQRXObsBuf[0][1];
@@ -1022,6 +1015,7 @@ static void dm_motor_init()
 static int16_t set_l,set_r;
 static int16_t M3508_control_l(lk_motor_measure_t measure){
     static int16_t set;
+    LIMIT_MIN_MAX(LQROutBuf[0],-M3508_TOR_MAX,M3508_TOR_MAX);
 
     if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
     {
@@ -1031,13 +1025,13 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(LQROutBuf[LEFT][0] * M3508_TOR_TO_CUR) ;
+                set = (int16_t)(LQROutBuf[0] * M3508_TOR_TO_CUR) ;
             }else{
                 set = 0.0f;
             }
 
         }else{
-            set = (int16_t)(LQROutBuf[LEFT][0] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(LQROutBuf[0] * M3508_TOR_TO_CUR) ;
         }
 
     }
@@ -1056,7 +1050,7 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
 
 static int16_t M3508_control_r(lk_motor_measure_t measure){
     static int16_t set;
-
+    LIMIT_MIN_MAX(LQROutBuf[1],-M3508_TOR_MAX,M3508_TOR_MAX);
     if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
     {
         set = 0;
@@ -1065,13 +1059,13 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = -(int16_t)(LQROutBuf[RIGHT][0] * M3508_TOR_TO_CUR);
+                set = (int16_t)(-LQROutBuf[1] * M3508_TOR_TO_CUR);
             }else{
                 set = 0.0f;
             }
 
         }else{
-            set = -(int16_t)(LQROutBuf[RIGHT][0] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(-LQROutBuf[1] * M3508_TOR_TO_CUR) ;
         }
 
         set_r = set;
@@ -1252,12 +1246,9 @@ static void Leg_Is_Ok(){
  * @brief 在非平衡状态下,把length_pid相关的积分清空,防止长时间累加开腿时失控
  */
 void Process_Clear(){
-    L_length_pid->Iout = 0;//防止在revoery到openloop状态积分累加导致输出过大的情况
-    R_length_pid->Iout = 0;
-
-    roll_pid->Iout = 0;
-    roll_pid->Output = 0;
-    roll_pid->Dout = 0;
+    pid_clear(L_length_pid);
+    pid_clear(R_length_pid);
+    pid_clear(roll_pid);
 
     LQRXRefBuf[0][1] = 0; //不稳定状态时应避免速度的影响
     LQRXObsBuf[0][1] = 0;

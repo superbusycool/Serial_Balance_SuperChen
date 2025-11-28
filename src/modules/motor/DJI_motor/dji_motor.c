@@ -9,7 +9,7 @@
 #include "rm_algorithm.h"
 #include "hal_can.h"
 
-#define DJI_MOTOR_CNT 14             // 默认波特率下，实测挂载电机极限数量
+#define DJI_MOTOR_CNT 6             // 默认波特率下，实测挂载电机极限数量
 
 /* 滤波系数设置为1的时候即关闭滤波 */
 #define SPEED_SMOOTH_COEF 0.85f      // 最好大于0.85
@@ -227,7 +227,7 @@ void dji_motor_control()
         // 分组填入发送数据
         group = motor->send_group;
         num = motor->message_num;
-        send_msg[group].data[2 * num] = (uint8_t)(set >> 8);
+        send_msg[group].data[2 * num] = (uint8_t)(set >> 8);//一拖四电流控制
         send_msg[group].data[2 * num + 1] = (uint8_t)(set & 0x00ff);
 
         // 若该电机处于停止状态,直接将buff置零

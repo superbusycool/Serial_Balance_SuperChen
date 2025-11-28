@@ -19,13 +19,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
-#include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ws2812.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -134,6 +133,7 @@ void MX_FREERTOS_Init(void) {
   * @param  argument: Not used
   * @retval None
   */
+
 /* USER CODE END Header_StartDefaultTask */
 __weak void StartDefaultTask(void const * argument)
 {
@@ -143,7 +143,11 @@ __weak void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+      WS2812_Ctrl(1, 100, 1);
+      osDelay(1000);
+      WS2812_Ctrl(0, 0, 0);
+      osDelay(1000);
+
   }
   /* USER CODE END StartDefaultTask */
 }

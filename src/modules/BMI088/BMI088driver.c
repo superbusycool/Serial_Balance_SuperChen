@@ -141,8 +141,8 @@ void Calibrate_MPU_Offset(ImuDataTypeDef *bmi088)
     float gNormTemp, gNormMax, gNormMin;
 #ifndef BSP_BMI088_CALI  // 更换开发板或定期校准，以便快速启动
     static uint8_t cali_dt_max = 0;
-#elif
-    static uint8_t cali_dt_max = 10;
+#else
+    static uint8_t cali_dt_max = 200;
 #endif /* BSP_BMI088_CALI */
 
     startTime = dwt_get_time_s();

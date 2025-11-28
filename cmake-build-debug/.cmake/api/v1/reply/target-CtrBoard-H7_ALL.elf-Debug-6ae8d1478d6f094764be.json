@@ -30,7 +30,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 175,
+				"line" : 178,
 				"parent" : 0
 			},
 			{
@@ -42,25 +42,25 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 170,
+				"line" : 173,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 171,
+				"line" : 174,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 172,
+				"line" : 175,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 178,
+				"line" : 181,
 				"parent" : 0
 			},
 			{
@@ -102,7 +102,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 142,
+				"line" : 143,
 				"parent" : 0
 			},
 			{
@@ -201,211 +201,215 @@
 			[
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/USB_DEVICE/App"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/USB_DEVICE/App"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/USB_DEVICE/Target"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/USB_DEVICE/Target"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/ARM/DSP/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/ARM/DSP/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/arm_math"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/arm_math"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/kalman_filter"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/kalman_filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/Filter"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/Filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/MahonyAHRS"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/MahonyAHRS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/PID"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/PID"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/Ramp"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/Ramp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/QuaternionEKF"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/QuaternionEKF"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/User_lib"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/User_lib"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/crc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/crc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/BMI088"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/BMI088"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/can"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/can"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/dwt"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/ipc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/log"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/DJI_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DJI_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/DM_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DM_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/pwm"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/pwm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/referee"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ws2812b"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/referee"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/rc/keyboard"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/keyboard"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/ins"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/ins"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/cmd"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/gimbal"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/cmd"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/chassis"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/gimbal"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/trans"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/shoot"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
 				}
 			],
 			"language" : "C",
@@ -505,15 +509,16 @@
 				246,
 				248,
 				250,
-				254,
-				257,
+				253,
+				256,
 				259,
 				261,
 				263,
 				265,
-				268,
+				267,
 				270,
-				272
+				272,
+				274
 			]
 		},
 		{
@@ -610,211 +615,215 @@
 			[
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Include"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/USB_DEVICE/App"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/USB_DEVICE/App"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/USB_DEVICE/Target"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/USB_DEVICE/Target"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/Config"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/Third_Party/SEGGER/RTT"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/Middlewares/ST/ARM/DSP/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/ARM/DSP/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/arm_math"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/arm_math"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/kalman_filter"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/kalman_filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/Filter"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/Filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/MahonyAHRS"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/MahonyAHRS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/PID"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/PID"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/Ramp"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/Ramp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/QuaternionEKF"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/QuaternionEKF"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/User_lib"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/User_lib"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/algorithm/crc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/algorithm/crc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/BMI088"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/BMI088"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/can"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/can"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/dwt"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/ipc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/log"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/DJI_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DJI_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/motor/DM_motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DM_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/pwm"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/pwm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/referee"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ws2812b"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/referee"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/modules/rc/keyboard"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/keyboard"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/ins"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/motor"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/ins"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/cmd"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/gimbal"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/cmd"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/chassis"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/gimbal"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/trans"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/shoot"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
 				}
 			],
 			"language" : "ASM",
@@ -855,7 +864,7 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/cmake-build-debug/CtrBoard-H7_ALL.map",
+				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug/CtrBoard-H7_ALL.map",
 				"role" : "flags"
 			},
 			{
@@ -875,12 +884,12 @@
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_2025_11_20/STM32H723VGTX_FLASH.ld",
+				"fragment" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/STM32H723VGTX_FLASH.ld",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 6,
-				"fragment" : "D:\\HNU_RM_CodeStorage\\HNU_Serial_H723_2025_11_20\\Middlewares\\ST\\ARM\\DSP\\Lib\\libarm_cortexM7lfsp_math.a",
+				"fragment" : "D:\\HNU_RM_CodeStorage\\Serial_Balance_H723_11_24\\HNU_Serial_H723_2025_11_20\\Middlewares\\ST\\ARM\\DSP\\Lib\\libarm_cortexM7lfsp_math.a",
 				"role" : "libraries"
 			}
 		],
@@ -1044,17 +1053,18 @@
 				249,
 				251,
 				252,
-				253,
+				254,
 				255,
-				258,
+				257,
 				260,
 				262,
 				264,
 				266,
-				267,
+				268,
 				269,
 				271,
-				273
+				273,
+				275
 			]
 		},
 		{
@@ -1147,15 +1157,16 @@
 				246,
 				248,
 				250,
-				254,
-				257,
+				253,
+				256,
 				259,
 				261,
 				263,
 				265,
-				268,
+				267,
 				270,
-				272
+				272,
+				274
 			]
 		},
 		{
@@ -1181,8 +1192,8 @@
 				235,
 				241,
 				245,
-				256,
-				274
+				258,
+				276
 			]
 		},
 		{
@@ -2548,6 +2559,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/modules/rm_module.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/modules/ws2812b/ws2812.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/modules/ws2812b/ws2812.h",
 			"sourceGroupIndex" : 0
 		},
 		{

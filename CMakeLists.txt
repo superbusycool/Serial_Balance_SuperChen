@@ -123,6 +123,7 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         src/modules/motor/HT_motor
         src/modules/motor/DM_motor
         src/modules/pwm
+        src/modules/ws2812b
         src/modules/referee
         src/modules/rc/dbus
         src/modules/rc/keyboard
@@ -153,6 +154,7 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE
         "src/modules/log/*.*"
         "src/modules/motor/*.*"
         "src/modules/pwm/*.*"
+        "src/modules/ws2812b/*.*"
         "src/modules/rc/dbus/*.*"
         "src/modules/rc/keyboard/*.*"
         "src/modules/referee/*.*"
@@ -164,7 +166,8 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE
 )
 
 # 链接脚本
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32H723VGTX_FLASH.ld)
+set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32H723VGTX_FLASH.ld
+)
 
 # 链接选项
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)

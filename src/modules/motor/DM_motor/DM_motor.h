@@ -140,5 +140,7 @@ void dm_motor_task_init(void);
  */
 void dm_controll_all_poll(void);
 
+void dm_motor_relax(dm_motor_object_t *motor);
+void dm_motor_enable(dm_motor_object_t *motor);
 
 #endif //HNU_RM_DOWN_DM_MOTOR_H

@@ -22,7 +22,7 @@ static struct ins_msg ins_data;
 
 static uint32_t pulse = 0;
 static pid_obj_t *imu_temp_pid;
-static pid_config_t imu_temp_config = INIT_PID_CONFIG(500,100,10, 4000, 10000, PID_Integral_Limit);
+static pid_config_t imu_temp_config = INIT_PID_CONFIG(100,50,10, 1000, 10000, PID_Integral_Limit);
 
 /* ----------------------------- IMU_TEMPRETURE ----------------------------- */
 

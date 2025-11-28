@@ -1,5 +1,5 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj: \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\src\algorithm\User_Lib\user_lib.c \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\User_Lib\user_lib.c \
  d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\ieeefp.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
@@ -21,20 +21,20 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
  d:\stm32environment\arm\arm-none-eabi\include\strings.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\string.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\src\algorithm\User_Lib\user_lib.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\User_Lib\user_lib.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_intsup.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/core_cm7.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_version.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_gcc.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/mpu_armv7.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/core_cm7.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_version.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_gcc.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/mpu_armv7.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
  d:\stm32environment\arm\arm-none-eabi\include\math.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\float.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\limits.h \
