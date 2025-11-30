@@ -31,6 +31,8 @@
 #include "rc_dbus.h"
 #include "hal_can.h"
 #include "referee_system.h"
+#include "dm_imu.h"
+#include "dm_imu.h"
 
 
 #endif /* _RM_MODULE_H */

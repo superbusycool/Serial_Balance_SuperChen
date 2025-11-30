@@ -1,34 +1,5 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee\referee_system.c \
- d:\stm32environment\arm\arm-none-eabi\include\stdio.h \
- d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
- d:\stm32environment\arm\arm-none-eabi\include\newlib.h \
- d:\stm32environment\arm\arm-none-eabi\include\_newlib_version.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\config.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\ieeefp.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\features.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\cdefs.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\_default_types.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\reent.h \
- d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_types.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\_types.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\lock.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\types.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\endian.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\_endian.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\select.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_sigset.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_timeval.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\timespec.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_timespec.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_pthreadtypes.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\sched.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\types.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\stdio.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee\referee_system.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/main.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
@@ -40,14 +11,29 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/core_cm7.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdint.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\_default_types.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\features.h \
+ d:\stm32environment\arm\arm-none-eabi\include\_newlib_version.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_intsup.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_version.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_gcc.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/mpu_armv7.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/Legacy/stm32_hal_legacy.h \
+ d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
  d:\stm32environment\arm\arm-none-eabi\include\math.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\reent.h \
+ d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
+ d:\stm32environment\arm\arm-none-eabi\include\newlib.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\config.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\ieeefp.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_types.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\_types.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\lock.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\cdefs.h \
+ d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc_ex.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio_ex.h \
@@ -74,18 +60,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\crc/crc8_crc16.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/FreeRTOSConfig.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
- d:\stm32environment\arm\arm-none-eabi\include\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
  d:\stm32environment\arm\arm-none-eabi\include\strings.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\string.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/list.h
+ d:\stm32environment\arm\arm-none-eabi\include\sys\string.h

@@ -27,7 +27,7 @@ uint8_t Data_Save_zero[8]={0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE};	//�
  * @param  x_max    	目标浮点数的最大值
  * @param  bits      	无符号整数的位数
  */
-float uint_to_float(int x_int, float x_min, float x_max, int bits){
+static float uint_to_float(int x_int, float x_min, float x_max, int bits){
 /// converts unsigned int to float, given range and number of bits ///
     float span = x_max - x_min;
     float offset = x_min;

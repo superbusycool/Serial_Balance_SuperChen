@@ -24,6 +24,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\lock.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/main.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/stm32h7xx_hal_conf.h \
@@ -67,8 +69,6 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \

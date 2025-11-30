@@ -121,6 +121,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can/hal_can.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/fdcan.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee/referee_system.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu/dm_imu.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm/rm_algorithm.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \

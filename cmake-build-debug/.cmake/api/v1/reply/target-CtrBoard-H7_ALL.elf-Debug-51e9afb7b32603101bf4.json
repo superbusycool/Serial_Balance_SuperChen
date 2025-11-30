@@ -30,7 +30,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 178,
+				"line" : 181,
 				"parent" : 0
 			},
 			{
@@ -42,25 +42,25 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 173,
+				"line" : 176,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 174,
+				"line" : 177,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 175,
+				"line" : 178,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 181,
+				"line" : 184,
 				"parent" : 0
 			},
 			{
@@ -102,7 +102,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 143,
+				"line" : 144,
 				"parent" : 0
 			},
 			{
@@ -329,6 +329,10 @@
 				},
 				{
 					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu"
+				},
+				{
+					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
 				},
 				{
@@ -409,7 +413,7 @@
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart"
 				}
 			],
 			"language" : "C",
@@ -497,28 +501,29 @@
 				210,
 				212,
 				215,
-				218,
-				221,
+				217,
+				220,
 				223,
 				225,
-				228,
-				231,
+				227,
+				230,
 				233,
-				239,
-				243,
-				246,
+				235,
+				241,
+				245,
 				248,
 				250,
-				253,
-				256,
-				259,
+				252,
+				255,
+				258,
 				261,
 				263,
 				265,
 				267,
-				270,
+				269,
 				272,
-				274
+				274,
+				276
 			]
 		},
 		{
@@ -743,6 +748,10 @@
 				},
 				{
 					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu"
+				},
+				{
+					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
 				},
 				{
@@ -823,7 +832,7 @@
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
+					"path" : "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart"
 				}
 			],
 			"language" : "ASM",
@@ -1039,32 +1048,33 @@
 				211,
 				213,
 				216,
-				219,
-				222,
+				218,
+				221,
 				224,
 				226,
-				229,
-				232,
+				228,
+				231,
 				234,
-				240,
+				236,
 				242,
 				244,
-				247,
+				246,
 				249,
 				251,
-				252,
+				253,
 				254,
-				255,
+				256,
 				257,
-				260,
+				259,
 				262,
 				264,
 				266,
 				268,
-				269,
+				270,
 				271,
 				273,
-				275
+				275,
+				277
 			]
 		},
 		{
@@ -1145,28 +1155,29 @@
 				210,
 				212,
 				215,
-				218,
-				221,
+				217,
+				220,
 				223,
 				225,
-				228,
-				231,
+				227,
+				230,
 				233,
-				239,
-				243,
-				246,
+				235,
+				241,
+				245,
 				248,
 				250,
-				253,
-				256,
-				259,
+				252,
+				255,
+				258,
 				261,
 				263,
 				265,
 				267,
-				270,
+				269,
 				272,
-				274
+				274,
+				276
 			]
 		},
 		{
@@ -1185,24 +1196,24 @@
 				176,
 				199,
 				214,
-				217,
-				220,
-				227,
-				230,
-				235,
-				241,
-				245,
-				258,
-				276
+				219,
+				222,
+				229,
+				232,
+				237,
+				243,
+				247,
+				260,
+				278
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				236,
-				237,
-				238
+				238,
+				239,
+				240
 			]
 		}
 	],
@@ -2361,6 +2372,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/modules/dm_imu/dm_imu.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/modules/dm_imu/dm_imu.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/modules/dwt/drv_dwt.c",
 			"sourceGroupIndex" : 1
 		},
@@ -2520,18 +2542,18 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/modules/rc/Dbus/README.md",
+			"path" : "src/modules/rc/dbus/README.md",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/modules/rc/Dbus/rc_dbus.c",
+			"path" : "src/modules/rc/dbus/rc_dbus.c",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/modules/rc/Dbus/rc_dbus.h",
+			"path" : "src/modules/rc/dbus/rc_dbus.h",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -2678,12 +2700,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/task/usart_recive/usart_recive_task.c",
+			"path" : "src/task/uart/uart_receive.c",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/task/usart_recive/usart_recive_task.h",
+			"path" : "src/task/uart/uart_receive.h",
 			"sourceGroupIndex" : 0
 		},
 		{

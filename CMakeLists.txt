@@ -115,6 +115,7 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         src/modules/dwt
         src/modules/ipc
         src/modules/log
+        src/modules/dm_imu
         src/modules/leg_vmc
         src/modules/leg_wbr
         src/modules/motor
@@ -136,7 +137,7 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         src/task/chassis
         src/task/trans
         src/task/shoot
-        src/task/usart_recive
+        src/task/uart
 
 )
 
@@ -149,6 +150,7 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE
         "src/modules/can/*.*"
         "src/modules/dwt/*.*"
         "src/modules/ipc/*.*"
+        "src/modules/dm_imu/*.*"
         "src/modules/leg_wbr/*.*"
         "src/modules/leg_vmc/*.*"
         "src/modules/log/*.*"
@@ -167,6 +169,7 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE
 
 # 链接脚本
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32H723VGTX_FLASH.ld
+
 )
 
 # 链接选项

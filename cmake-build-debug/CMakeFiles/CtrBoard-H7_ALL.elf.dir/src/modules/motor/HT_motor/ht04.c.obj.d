@@ -121,6 +121,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can/hal_can.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/fdcan.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee/referee_system.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu/dm_imu.h \
  d:\stm32environment\arm\arm-none-eabi\include\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
  d:\stm32environment\arm\arm-none-eabi\include\strings.h \

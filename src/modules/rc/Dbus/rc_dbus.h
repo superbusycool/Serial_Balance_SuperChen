@@ -6,12 +6,7 @@
 #define NOW 0
 #define LAST 1
 
-#define SBUS_HEAD 0X0F
-#define SBUS_END 0X00
-#define SBUS_RX_BUF_SIZE (25+12+4) //41
-
-#define DBUS_RX_BUF_SIZE (25+12+4) //41
-
+#define RC_DBUS_MAX_VALUE      660.0f  /* DBUS遥控器通道最大值 */
 
 /**
   * @brief dbus遥控器拨杆值
@@ -77,8 +72,8 @@ typedef struct
     /* 遥控器左侧拨轮数据数值范围:（左）660 ~ -660(右) */
     int16_t wheel;
 }rc_dbus_obj_t;
-void dbus_data_unpack(uint8_t *data, uint16_t len);
-void dbus_data_init();
+int dbus_rc_decode(uint8_t *buff);
+void dbus_init();
 /* 解析后的遥控器数据传递给keyboard */
 extern rc_dbus_obj_t rc_dbus_obj[2];
 

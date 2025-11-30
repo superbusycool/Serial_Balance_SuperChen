@@ -120,6 +120,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can/hal_can.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/fdcan.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee/referee_system.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu/dm_imu.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\USB_DEVICE\App/usbd_cdc_if.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc/usbd_cdc.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\ST\STM32_USB_Device_Library\Core\Inc/usbd_ioreq.h \

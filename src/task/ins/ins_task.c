@@ -8,6 +8,7 @@
 #include "rm_algorithm.h"
 #include "robot.h"
 
+
 #define X 0
 #define Y 1
 #define Z 2
@@ -16,13 +17,16 @@
 MCN_DECLARE(ins_topic);
 static struct ins_msg ins_data;
 
+MCN_DECLARE(gimbal_ins_topic);
+static struct dm_imu_t *gimbal_imu;
 /* ----------------------------- IMU_TEMPRETURE ----------------------------- */
 #define IMU_TARGET_TEMP           40            /* imu期望恒温温度 */
 
 
 static uint32_t pulse = 0;
 static pid_obj_t *imu_temp_pid;
-static pid_config_t imu_temp_config = INIT_PID_CONFIG(100,50,10, 1000, 10000, PID_Integral_Limit);
+//static pid_config_t imu_temp_config = INIT_PID_CONFIG(100,50,10, 100, 500, PID_Integral_Limit);
+static pid_config_t imu_temp_config = INIT_PID_CONFIG(0,0,0, 0, 0, PID_Integral_Limit);
 
 /* ----------------------------- IMU_TEMPRETURE ----------------------------- */
 
@@ -58,6 +62,7 @@ void ins_task_init(){
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
     BMI088_Read(&BMI088);
     ins_init();
+    gimbal_imu = dm_imu_init(0x10,0x11,&hfdcan3);/*位于云台的dm_imu*/
     dt = dwt_get_delta(&ins_dwt);
     ins_start = dwt_get_time_ms();
 
@@ -123,6 +128,7 @@ void ins_control()
         ins_data.motion_accel_b[1] = ins.motion_accel_b[1];
         ins_data.motion_accel_b[2] = ins.motion_accel_b[2];
         mcn_publish(MCN_HUB(ins_topic), &ins_data);
+        mcn_publish(MCN_HUB(gimbal_ins_topic), gimbal_imu);
     }
     // temperature control
     if ((count % 2) == 0)
@@ -134,9 +140,26 @@ void ins_control()
     count++;
     vTaskDelayUntil(&ins_wake_time, 1);
 }
+static uint8_t imu_flag=0;
+void dm_imu_control(){
+    if(imu_flag == 3)imu_flag=0;
+    switch (imu_flag) {
+        case 0:
+            imu_request_accel();
+            break;
+        case 1:
+            imu_request_gyro();
+            break;
+        case 2:
+            imu_request_euler();
+            break;
+    }
+    imu_flag++;
 
+}
 void ins_control_task(){
     ins_control();
+    dm_imu_control();
 }
 /**
  * @brief 初始化 ins 解算系统
