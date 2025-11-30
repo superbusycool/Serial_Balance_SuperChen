@@ -1896,6 +1896,30 @@ src/modules/can/hal_can.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.s
 .PHONY : src/modules/can/hal_can.c.s
 
+src/modules/dm_imu/dm_imu.obj: src/modules/dm_imu/dm_imu.c.obj
+.PHONY : src/modules/dm_imu/dm_imu.obj
+
+# target to build an object file
+src/modules/dm_imu/dm_imu.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj
+.PHONY : src/modules/dm_imu/dm_imu.c.obj
+
+src/modules/dm_imu/dm_imu.i: src/modules/dm_imu/dm_imu.c.i
+.PHONY : src/modules/dm_imu/dm_imu.i
+
+# target to preprocess a source file
+src/modules/dm_imu/dm_imu.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.i
+.PHONY : src/modules/dm_imu/dm_imu.c.i
+
+src/modules/dm_imu/dm_imu.s: src/modules/dm_imu/dm_imu.c.s
+.PHONY : src/modules/dm_imu/dm_imu.s
+
+# target to generate assembly for a file
+src/modules/dm_imu/dm_imu.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.s
+.PHONY : src/modules/dm_imu/dm_imu.c.s
+
 src/modules/dwt/drv_dwt.obj: src/modules/dwt/drv_dwt.c.obj
 .PHONY : src/modules/dwt/drv_dwt.obj
 
@@ -2136,30 +2160,6 @@ src/modules/pwm/drv_PWM.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.s
 .PHONY : src/modules/pwm/drv_PWM.c.s
 
-src/modules/rc/Dbus/rc_dbus.obj: src/modules/rc/Dbus/rc_dbus.c.obj
-.PHONY : src/modules/rc/Dbus/rc_dbus.obj
-
-# target to build an object file
-src/modules/rc/Dbus/rc_dbus.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj
-.PHONY : src/modules/rc/Dbus/rc_dbus.c.obj
-
-src/modules/rc/Dbus/rc_dbus.i: src/modules/rc/Dbus/rc_dbus.c.i
-.PHONY : src/modules/rc/Dbus/rc_dbus.i
-
-# target to preprocess a source file
-src/modules/rc/Dbus/rc_dbus.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.i
-.PHONY : src/modules/rc/Dbus/rc_dbus.c.i
-
-src/modules/rc/Dbus/rc_dbus.s: src/modules/rc/Dbus/rc_dbus.c.s
-.PHONY : src/modules/rc/Dbus/rc_dbus.s
-
-# target to generate assembly for a file
-src/modules/rc/Dbus/rc_dbus.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.s
-.PHONY : src/modules/rc/Dbus/rc_dbus.c.s
-
 src/modules/rc/Keyboard/keyboard.obj: src/modules/rc/Keyboard/keyboard.c.obj
 .PHONY : src/modules/rc/Keyboard/keyboard.obj
 
@@ -2183,6 +2183,30 @@ src/modules/rc/Keyboard/keyboard.s: src/modules/rc/Keyboard/keyboard.c.s
 src/modules/rc/Keyboard/keyboard.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.s
 .PHONY : src/modules/rc/Keyboard/keyboard.c.s
+
+src/modules/rc/dbus/rc_dbus.obj: src/modules/rc/dbus/rc_dbus.c.obj
+.PHONY : src/modules/rc/dbus/rc_dbus.obj
+
+# target to build an object file
+src/modules/rc/dbus/rc_dbus.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj
+.PHONY : src/modules/rc/dbus/rc_dbus.c.obj
+
+src/modules/rc/dbus/rc_dbus.i: src/modules/rc/dbus/rc_dbus.c.i
+.PHONY : src/modules/rc/dbus/rc_dbus.i
+
+# target to preprocess a source file
+src/modules/rc/dbus/rc_dbus.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.i
+.PHONY : src/modules/rc/dbus/rc_dbus.c.i
+
+src/modules/rc/dbus/rc_dbus.s: src/modules/rc/dbus/rc_dbus.c.s
+.PHONY : src/modules/rc/dbus/rc_dbus.s
+
+# target to generate assembly for a file
+src/modules/rc/dbus/rc_dbus.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.s
+.PHONY : src/modules/rc/dbus/rc_dbus.c.s
 
 src/modules/referee/referee_system.obj: src/modules/referee/referee_system.c.obj
 .PHONY : src/modules/referee/referee_system.obj
@@ -2424,29 +2448,29 @@ src/task/trans/trans_task.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.s
 .PHONY : src/task/trans/trans_task.c.s
 
-src/task/usart_recive/usart_recive_task.obj: src/task/usart_recive/usart_recive_task.c.obj
-.PHONY : src/task/usart_recive/usart_recive_task.obj
+src/task/uart/uart_receive.obj: src/task/uart/uart_receive.c.obj
+.PHONY : src/task/uart/uart_receive.obj
 
 # target to build an object file
-src/task/usart_recive/usart_recive_task.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj
-.PHONY : src/task/usart_recive/usart_recive_task.c.obj
+src/task/uart/uart_receive.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj
+.PHONY : src/task/uart/uart_receive.c.obj
 
-src/task/usart_recive/usart_recive_task.i: src/task/usart_recive/usart_recive_task.c.i
-.PHONY : src/task/usart_recive/usart_recive_task.i
+src/task/uart/uart_receive.i: src/task/uart/uart_receive.c.i
+.PHONY : src/task/uart/uart_receive.i
 
 # target to preprocess a source file
-src/task/usart_recive/usart_recive_task.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.i
-.PHONY : src/task/usart_recive/usart_recive_task.c.i
+src/task/uart/uart_receive.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.i
+.PHONY : src/task/uart/uart_receive.c.i
 
-src/task/usart_recive/usart_recive_task.s: src/task/usart_recive/usart_recive_task.c.s
-.PHONY : src/task/usart_recive/usart_recive_task.s
+src/task/uart/uart_receive.s: src/task/uart/uart_receive.c.s
+.PHONY : src/task/uart/uart_receive.s
 
 # target to generate assembly for a file
-src/task/usart_recive/usart_recive_task.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.s
-.PHONY : src/task/usart_recive/usart_recive_task.c.s
+src/task/uart/uart_receive.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.s
+.PHONY : src/task/uart/uart_receive.c.s
 
 # Help Target
 help:
@@ -2678,6 +2702,9 @@ help:
 	@echo ... src/modules/can/hal_can.obj
 	@echo ... src/modules/can/hal_can.i
 	@echo ... src/modules/can/hal_can.s
+	@echo ... src/modules/dm_imu/dm_imu.obj
+	@echo ... src/modules/dm_imu/dm_imu.i
+	@echo ... src/modules/dm_imu/dm_imu.s
 	@echo ... src/modules/dwt/drv_dwt.obj
 	@echo ... src/modules/dwt/drv_dwt.i
 	@echo ... src/modules/dwt/drv_dwt.s
@@ -2708,12 +2735,12 @@ help:
 	@echo ... src/modules/pwm/drv_PWM.obj
 	@echo ... src/modules/pwm/drv_PWM.i
 	@echo ... src/modules/pwm/drv_PWM.s
-	@echo ... src/modules/rc/Dbus/rc_dbus.obj
-	@echo ... src/modules/rc/Dbus/rc_dbus.i
-	@echo ... src/modules/rc/Dbus/rc_dbus.s
 	@echo ... src/modules/rc/Keyboard/keyboard.obj
 	@echo ... src/modules/rc/Keyboard/keyboard.i
 	@echo ... src/modules/rc/Keyboard/keyboard.s
+	@echo ... src/modules/rc/dbus/rc_dbus.obj
+	@echo ... src/modules/rc/dbus/rc_dbus.i
+	@echo ... src/modules/rc/dbus/rc_dbus.s
 	@echo ... src/modules/referee/referee_system.obj
 	@echo ... src/modules/referee/referee_system.i
 	@echo ... src/modules/referee/referee_system.s
@@ -2744,9 +2771,9 @@ help:
 	@echo ... src/task/trans/trans_task.obj
 	@echo ... src/task/trans/trans_task.i
 	@echo ... src/task/trans/trans_task.s
-	@echo ... src/task/usart_recive/usart_recive_task.obj
-	@echo ... src/task/usart_recive/usart_recive_task.i
-	@echo ... src/task/usart_recive/usart_recive_task.s
+	@echo ... src/task/uart/uart_receive.obj
+	@echo ... src/task/uart/uart_receive.i
+	@echo ... src/task/uart/uart_receive.s
 .PHONY : help
 
 

@@ -1,8 +1,6 @@
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\LK_motor\lk_motor.c \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\LK_motor\lk_motor.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor/motor_def.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/main.h \
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu\dm_imu.c \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu\dm_imu.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/stm32h7xx_hal_conf.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc.h \
@@ -60,8 +58,9 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src/rm_config.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can/hal_can.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/fdcan.h \
+ D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/main.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/FreeRTOSConfig.h \
@@ -80,65 +79,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/event_groups.h \
  D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm/rm_algorithm.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Drivers\CMSIS\Include/cmsis_compiler.h \
  d:\stm32environment\arm\arm-none-eabi\include\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
  d:\stm32environment\arm\arm-none-eabi\include\strings.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\string.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\float.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\limits.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\syslimits.h \
- d:\stm32environment\arm\arm-none-eabi\include\limits.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\syslimits.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\Filter/filter32.h \
- d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\stdlib.h \
- d:\stm32environment\arm\arm-none-eabi\include\alloca.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\kalman_filter/kalman_filter.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\MahonyAHRS/MahonyAHRS.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\PID/PID.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\QuaternionEKF/QuaternionEKF.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\Ramp/ramp.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\User_lib/user_lib.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\crc/crc8_crc16.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules/rm_module.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src/robot.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\DJI_motor/dji_motor.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdbool.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\chassis/chassis_task.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\LK_motor/lk_motor.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\HT_motor/ht04.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\DM_motor/DM_motor.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dwt/drv_dwt.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\leg_vmc/drv_leg.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\leg_wbr/leg_wbr.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\pwm/drv_PWM.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/tim.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/main.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\BMI088/BMI088driver.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\ipc/uMCN.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\log/bsp_log.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
- d:\hnu_rm_codestorage\serial_balance_h723_11_24\hnu_serial_h723_2025_11_20\middlewares\third_party\segger\config\segger_rtt_conf.h \
- d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
- d:\stm32environment\arm\arm-none-eabi\include\stdio.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\types.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\endian.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\_endian.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\select.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_sigset.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_timeval.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\timespec.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_timespec.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_pthreadtypes.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\sched.h \
- d:\stm32environment\arm\arm-none-eabi\include\machine\types.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\stdio.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\dbus/rc_dbus.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can/hal_can.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\Core\Inc/fdcan.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee/referee_system.h \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu/dm_imu.h
+ d:\stm32environment\arm\arm-none-eabi\include\sys\string.h

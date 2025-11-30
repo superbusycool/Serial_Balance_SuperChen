@@ -22,6 +22,9 @@ static struct chassis_cmd_msg chass_cmd;
 MCN_DECLARE(gimbal_cmd);
 static McnNode_t gimbal_cmd_node;
 static struct gimbal_cmd_msg gim_cmd;
+MCN_DECLARE(gimbal_ins_topic);
+static McnNode_t gimbal_ins_node;
+static struct dm_imu_t gim_ins;
 
 // 发布
 MCN_DECLARE(gimbal_fdb);
@@ -104,11 +107,11 @@ void gimbal_control()
     // 云台本身相对于归中值的角度，取负
     yaw_motor_relive = -(int16_t)get_relative_pos(gim_motor_yaw[0]->measure.total_angle, CENTER_ECD_YAW) / 22.75f;
 //     pitch_motor_relive = -(int16_t )get_relative_pos(gim_motor_pitch->measure.total_angle, CENTER_ECD_PITCH) / 22.75f;
-    pitch_motor_relive = ins.pitch;   //pitch轴改用丝杆结构，直接使用ins_data.pitch作为相对角度值
+    pitch_motor_relive = gim_ins.pitch;   //pitch轴改用丝杆结构，直接使用ins_data.pitch作为相对角度值
 
 //        if((gim_cmd.ctrl_mode==GIMBAL_GYRO||GIMBAL_AUTO)&&gimbal_fdb_data.back_mode==BACK_IS_OK)
 //        {
-//        yaw_motor_relive = (rt_int16_t)(gim_cmd.yaw+ins.yaw_total_angle);
+//        yaw_motor_relive = (rt_int16_t)(gim_cmd.yaw+gim_ins.yaw_total_angle);
 //        }
 
     for (uint8_t i = 0; i < GIM_PITCH_MOTOR_NUM; i++)
@@ -149,17 +152,17 @@ void gimbal_control()
             gim_motor_ref[PITCH] = pitch_motor_relive* ( 1 - pit_ramp->calc(pit_ramp));
 
             //pitch轴改用丝杆结构，只能根据imu数据控制归中
-            if(abs(ins.pitch) <= (20 / 22.75f)
+            if(abs(gim_ins.pitch) <= (20 / 22.75f)
                && (abs(gim_motor_yaw[0]->measure.total_angle - CENTER_ECD_YAW) <= 20)
                // 若长时间陷于归中模式，可以适当放宽归中条件
-               || ((abs(ins.pitch) <= (200 / 22.75f))
+               || ((abs(gim_ins.pitch) <= (200 / 22.75f))
                    && (abs(gim_motor_yaw[0]->measure.total_angle - CENTER_ECD_YAW) <= 200)
                    && (init_dt > INIT_TIMEOUT)))
             {
                 gimbal_fdb_data.back_mode = BACK_IS_OK;
-                gimbal_fdb_data.yaw_offset_angle_total = ins.yaw_total_angle;/*云台抽风的原因，期望应该为总角度。抽风原因：不应该用ins_data.yaw*/
-                gimbal_fdb_data.yaw_offset_angle=ins.yaw;
-                gimbal_fdb_data.pit_offset_angle = ins.pitch;
+                gimbal_fdb_data.yaw_offset_angle_total = gim_ins.yaw_total_angle;/*云台抽风的原因，期望应该为总角度。抽风原因：不应该用ins_data.yaw*/
+                gimbal_fdb_data.yaw_offset_angle=gim_ins.yaw;
+                gimbal_fdb_data.pit_offset_angle = gim_ins.pitch;
                 auto_staus=1;
             }
             else
@@ -173,9 +176,9 @@ void gimbal_control()
             gim_motor_ref[PITCH] = gim_cmd.pitch;
             // 底盘相对于云台归中值的角度，取负
             gimbal_fdb_data.yaw_relative_angle = -yaw_motor_relive;
-//            gimbal_fdb_data.yaw_relative_angle = -(/*ins.yaw_total_angle - */gimbal_fdb_data.yaw_offset_angle_total);
-            gimbal_fdb_data.yaw_offset_angle=ins.yaw;
-            gimbal_fdb_data.pit_offset_angle=ins.pitch;
+//            gimbal_fdb_data.yaw_relative_angle = -(/*gim_ins.yaw_total_angle - */gimbal_fdb_data.yaw_offset_angle_total);
+            gimbal_fdb_data.yaw_offset_angle=gim_ins.yaw;
+            gimbal_fdb_data.pit_offset_angle=gim_ins.pitch;
             if (auto_staus==0)
             {
                 auto_staus=1;
@@ -188,7 +191,7 @@ void gimbal_control()
             /*gim_motor_ref[YAW] = gim_cmd.yaw_auto;*/
             if(auto_staus==1)
             {
-                //gimbal_fdb_data.yaw_offset_angle=ins.yaw;
+                //gimbal_fdb_data.yaw_offset_angle=gim_ins.yaw;
                 auto_staus=0;
                 auto_relative_angle_status=RELATIVE_ANGLE_TRANS;
             }
@@ -280,7 +283,7 @@ static int16_t motor_control_yaw(dji_motor_measure_t measure){
         case GIMBAL_INIT:
             pid_speed = gim_controller[YAW].pid_speed_imu;
             pid_angle = gim_controller[YAW].pid_angle_imu;
-            get_speed = ins.gyro[Z];
+            get_speed = gim_ins.gyro[Z];
             get_angle = -yaw_motor_relive;
             break;
         case GIMBAL_GYRO:
@@ -295,15 +298,15 @@ static int16_t motor_control_yaw(dji_motor_measure_t measure){
             // {
             //     get_angle = 0;
             // }
-            get_speed = ins.gyro[Z];
-            get_angle = ins.yaw_total_angle - gimbal_fdb_data.yaw_offset_angle_total;
+            get_speed = gim_ins.gyro[Z];
+            get_angle = gim_ins.yaw_total_angle - gimbal_fdb_data.yaw_offset_angle_total;
 
             break;
         case GIMBAL_AUTO:
             pid_speed = gim_controller[YAW].pid_speed_auto;
             pid_angle = gim_controller[YAW].pid_angle_auto;
-            get_speed = ins.gyro[Z];
-            get_angle = ins.yaw_total_angle - gimbal_fdb_data.yaw_offset_angle_total;
+            get_speed = gim_ins.gyro[Z];
+            get_angle = gim_ins.yaw_total_angle - gimbal_fdb_data.yaw_offset_angle_total;
             break;
         default:
             break;
@@ -357,20 +360,20 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
         case GIMBAL_INIT:// TODO: 云台初始化模式加入斜坡算法，可以控制归中时间
             pid_speed = gim_controller[PITCH].pid_speed_imu;
             pid_angle = gim_controller[PITCH].pid_angle_imu;
-            get_speed = ins.gyro[Y];
-            get_angle = ins.pitch;  //pitch轴改用丝杆结构，直接使用ins_data.pitch作为相对角度值
+            get_speed = gim_ins.gyro[Y];
+            get_angle = gim_ins.pitch;  //pitch轴改用丝杆结构，直接使用ins_data.pitch作为相对角度值
             break;
         case GIMBAL_GYRO:
             pid_speed = gim_controller[PITCH].pid_speed_imu;
             pid_angle = gim_controller[PITCH].pid_angle_imu;
-            get_speed = ins.gyro[Y];
-            get_angle = ins.pitch;
+            get_speed = gim_ins.gyro[Y];
+            get_angle = gim_ins.pitch;
             break;
         case GIMBAL_AUTO:
             pid_speed = gim_controller[PITCH].pid_speed_auto;
             pid_angle = gim_controller[PITCH].pid_angle_auto;
-            get_speed = ins.gyro[Y];
-            get_angle = ins.pitch;
+            get_speed = gim_ins.gyro[Y];
+            get_angle = gim_ins.pitch;
             break;
         default:
             break;
@@ -454,6 +457,7 @@ static void gimbal_sub_init(void)
     ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
     chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
     gimbal_cmd_node = mcn_subscribe(MCN_HUB(gimbal_cmd), NULL, NULL);
+    gimbal_ins_node = mcn_subscribe(MCN_HUB(gimbal_ins_topic), NULL, NULL);
 }
 
 
@@ -475,6 +479,11 @@ static void gimbal_sub_pull(void)
     if (mcn_poll(gimbal_cmd_node))
     {
         mcn_copy(MCN_HUB(gimbal_cmd), gimbal_cmd_node, &gim_cmd);
+    }
+
+    if (mcn_poll(gimbal_ins_node))
+    {
+        mcn_copy(MCN_HUB(gimbal_ins_topic), gimbal_ins_node, &gim_ins);
     }
 }
 

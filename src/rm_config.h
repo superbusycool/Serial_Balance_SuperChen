@@ -265,7 +265,13 @@
 #define roll_InteVal 0
 #define roll_MaxVal 50
 
-/**************************************************************************/
+/*****************************相关功能开启*********************************************/
+/*使用dbus协议*/
+#define BSP_USING_DBUS
+/*使用sbus协议*/
+//#define BSP_USING_SBUS
+/*使用位于云台的达妙imu*/
+#define  BSP_USING_DM_IMU
 /*使用imu校准*/
 #define BSP_BMI088_CALI
 /*轮子3508输入置零*/

@@ -13,6 +13,7 @@
 MCN_DEFINE(chassis_cmd, sizeof(struct chassis_cmd_msg));
 MCN_DEFINE(chassis_fdb, sizeof(struct chassis_fdb_msg));
 MCN_DEFINE(ins_topic, sizeof(struct ins_msg));
+MCN_DEFINE(gimbal_ins_topic, sizeof(struct dm_imu_t));
 MCN_DEFINE(trans_fdb,sizeof(struct trans_fdb_msg));
 MCN_DEFINE(gimbal_cmd,sizeof(struct gimbal_cmd_msg));
 MCN_DEFINE(shoot_cmd,sizeof(struct shoot_cmd_msg));
@@ -41,6 +42,7 @@ void robot_init()
     trans_task_init();
     shoot_task_init();
     ins_task_init();
+
     // 初始化完成,开启中断
     __enable_irq();
 }
@@ -52,6 +54,7 @@ void robot_init()
 static void mcn_topic_init(void)
 {
     mcn_advertise(MCN_HUB(ins_topic), NULL);
+    mcn_advertise(MCN_HUB(gimbal_ins_topic), NULL);
     mcn_advertise(MCN_HUB(chassis_cmd), NULL);
     mcn_advertise(MCN_HUB(chassis_fdb), NULL);
     mcn_advertise(MCN_HUB(trans_fdb), NULL);

@@ -1116,10 +1116,24 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.s"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\can\hal_can.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\can\hal_can.c.s
 
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu/dm_imu.c
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu\dm_imu.c
+
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.i"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu\dm_imu.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.i
+
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.s"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dm_imu\dm_imu.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.s
+
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt/drv_dwt.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dwt\drv_dwt.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dwt\drv_dwt.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\dwt\drv_dwt.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.i: cmake_force
@@ -1133,7 +1147,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc/uMCN.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ipc\uMCN.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ipc\uMCN.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\ipc\uMCN.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.i: cmake_force
@@ -1147,7 +1161,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc/drv_leg.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_vmc\drv_leg.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_vmc\drv_leg.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\leg_vmc\drv_leg.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.i: cmake_force
@@ -1161,7 +1175,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr/leg_wbr.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_wbr\leg_wbr.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_wbr\leg_wbr.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\leg_wbr\leg_wbr.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.i: cmake_force
@@ -1175,7 +1189,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log/bsp_log.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\log\bsp_log.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\log\bsp_log.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\log\bsp_log.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.i: cmake_force
@@ -1189,7 +1203,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DJI_motor/dji_motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DJI_motor\dji_motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DJI_motor\dji_motor.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\DJI_motor\dji_motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.i: cmake_force
@@ -1203,7 +1217,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.s: cm
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/DM_motor/DM_Motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DM_motor\DM_Motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DM_motor\DM_Motor.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\DM_motor\DM_Motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.i: cmake_force
@@ -1217,7 +1231,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor/ht04.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\HT_motor\ht04.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\HT_motor\ht04.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\HT_motor\ht04.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.i: cmake_force
@@ -1231,7 +1245,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.s: cmake_fo
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor/lk_motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\LK_motor\lk_motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\LK_motor\lk_motor.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\motor\LK_motor\lk_motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.i: cmake_force
@@ -1245,7 +1259,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/pwm/drv_PWM.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\pwm\drv_PWM.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\pwm\drv_PWM.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\pwm\drv_PWM.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.i: cmake_force
@@ -1256,24 +1270,24 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.s"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\pwm\drv_PWM.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\pwm\drv_PWM.c.s
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Dbus/rc_dbus.c
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\Dbus\rc_dbus.c
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus/rc_dbus.c
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\dbus\rc_dbus.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\dbus\rc_dbus.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\dbus\rc_dbus.c
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.i"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\Dbus\rc_dbus.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.i
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.i"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\dbus\rc_dbus.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\dbus\rc_dbus.c.i
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.s"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\Dbus\rc_dbus.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.s
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.s"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\dbus\rc_dbus.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\dbus\rc_dbus.c.s
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Keyboard/keyboard.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Keyboard\keyboard.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Keyboard\keyboard.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\rc\Keyboard\keyboard.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.i: cmake_force
@@ -1287,7 +1301,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.s: cmake_f
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/referee/referee_system.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\referee\referee_system.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\referee\referee_system.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\referee\referee_system.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.i: cmake_force
@@ -1301,7 +1315,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.s: cmake
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ws2812b/ws2812.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ws2812b\ws2812.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ws2812b\ws2812.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\modules\ws2812b\ws2812.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.i: cmake_force
@@ -1315,7 +1329,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/robot.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\robot.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\robot.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\robot.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.i: cmake_force
@@ -1329,7 +1343,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis/chassis_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\chassis\chassis_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\chassis\chassis_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\chassis\chassis_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.i: cmake_force
@@ -1343,7 +1357,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.s: cmake_forc
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/cmd/cmd_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\cmd\cmd_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\cmd\cmd_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\cmd\cmd_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.i: cmake_force
@@ -1357,7 +1371,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/gimbal/gimbal_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\gimbal\gimbal_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\gimbal\gimbal_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\gimbal\gimbal_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.i: cmake_force
@@ -1371,7 +1385,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/ins/ins_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\ins\ins_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\ins\ins_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\ins\ins_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.i: cmake_force
@@ -1385,7 +1399,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/motor/motor_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\motor\motor_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\motor\motor_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\motor\motor_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.i: cmake_force
@@ -1399,7 +1413,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot/shoot_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\shoot\shoot_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\shoot\shoot_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\shoot\shoot_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.i: cmake_force
@@ -1413,7 +1427,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans/trans_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\trans\trans_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\trans\trans_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\trans\trans_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.i: cmake_force
@@ -1424,19 +1438,19 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.s"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\trans\trans_task.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\trans\trans_task.c.s
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive/usart_recive_task.c
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\usart_recive\usart_recive_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\usart_recive\usart_recive_task.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\usart_recive\usart_recive_task.c
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart/uart_receive.c
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\uart\uart_receive.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\uart\uart_receive.c.obj -c D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\uart\uart_receive.c
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.i"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\usart_recive\usart_recive_task.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\usart_recive\usart_recive_task.c.i
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.i"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\uart\uart_receive.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\uart\uart_receive.c.i
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.s"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\usart_recive\usart_recive_task.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\usart_recive\usart_recive_task.c.s
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.s"
+	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\task\uart\uart_receive.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\uart\uart_receive.c.s
 
 # Object files for target CtrBoard-H7_ALL.elf
 CtrBoard__H7_ALL_elf_OBJECTS = \
@@ -1515,6 +1529,7 @@ CtrBoard__H7_ALL_elf_OBJECTS = \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj" \
+"CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj" \
@@ -1525,7 +1540,7 @@ CtrBoard__H7_ALL_elf_OBJECTS = \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj" \
-"CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj" \
+"CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj" \
@@ -1537,7 +1552,7 @@ CtrBoard__H7_ALL_elf_OBJECTS = \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj" \
-"CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj"
+"CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj"
 
 # External object files for target CtrBoard-H7_ALL.elf
 CtrBoard__H7_ALL_elf_EXTERNAL_OBJECTS =
@@ -1617,6 +1632,7 @@ CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI08
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj
+CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj
@@ -1627,7 +1643,7 @@ CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_mot
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj
-CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj
+CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj
@@ -1639,12 +1655,12 @@ CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj
-CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj
+CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/build.make
 CtrBoard-H7_ALL.elf: D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM7lfsp_math.a
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/objects1.rsp
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Linking C executable CtrBoard-H7_ALL.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Linking C executable CtrBoard-H7_ALL.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\CtrBoard-H7_ALL.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug/CtrBoard-H7_ALL.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/cmake-build-debug/CtrBoard-H7_ALL.bin"

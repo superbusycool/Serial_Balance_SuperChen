@@ -2,12 +2,10 @@
 // Created by 刘嘉俊 on 25-2-25.
 //
 
-#include <stdio.h>
 #include "referee_system.h"
 #include "crc8_crc16.h"
-#include "FreeRTOS.h"
 #include "string.h"
-#include "queue.h"
+
 
 /* --------------------------------裁判系统串口句柄 ------------------------------- */
 static referee_data_header_t referee_data_header;   //接收数据帧头结构体

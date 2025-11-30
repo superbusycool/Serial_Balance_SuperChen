@@ -63,6 +63,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log"/>
+					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor"/>
@@ -83,7 +84,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot"/>
-					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"/>
+					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -144,6 +145,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log"/>
+					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor"/>
@@ -164,7 +166,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans"/>
 					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot"/>
-					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"/>
+					<Add directory="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -848,6 +850,12 @@
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/can/hal_can.md">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu/dm_imu.c">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu/dm_imu.h">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt/drv_dwt.c">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
@@ -941,19 +949,19 @@
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/pwm/drv_PWM.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Dbus/README.md">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Dbus/rc_dbus.c">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Dbus/rc_dbus.h">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Keyboard/keyboard.c">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Keyboard/keyboard.h">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus/README.md">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus/rc_dbus.c">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus/rc_dbus.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/referee/referee_system.c">
@@ -1028,10 +1036,10 @@
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans/trans_task.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive/usart_recive_task.c">
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart/uart_receive.c">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive/usart_recive_task.h">
+		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart/uart_receive.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/CMakeLists.txt">

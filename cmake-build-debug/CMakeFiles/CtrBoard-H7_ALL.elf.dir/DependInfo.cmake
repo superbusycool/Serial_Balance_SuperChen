@@ -58,6 +58,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/log"
+  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_wbr"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor"
@@ -78,7 +79,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/chassis"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot"
-  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive"
+  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart"
   )
 
 # The set of dependency files which are needed:
@@ -156,6 +157,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/BMI088/BMI088driver.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/BMI088/transfer_function.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/can/hal_can.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj.d"
+  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dm_imu/dm_imu.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/dwt/drv_dwt.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ipc/uMCN.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/leg_vmc/drv_leg.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj.d"
@@ -166,8 +168,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/HT_motor/ht04.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/motor/LK_motor/lk_motor.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/pwm/drv_PWM.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj.d"
-  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Dbus/rc_dbus.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/Keyboard/keyboard.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj.d"
+  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/rc/dbus/rc_dbus.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/dbus/rc_dbus.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/referee/referee_system.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/modules/ws2812b/ws2812.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/robot.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj.d"
@@ -178,7 +180,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/motor/motor_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/shoot/shoot_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj.d"
   "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/trans/trans_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj.d"
-  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/usart_recive/usart_recive_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/usart_recive/usart_recive_task.c.obj.d"
+  "D:/HNU_RM_CodeStorage/Serial_Balance_H723_11_24/HNU_Serial_H723_2025_11_20/src/task/uart/uart_receive.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -36,6 +36,8 @@
 #include "hal_can.h"
 #include "robot.h"
 
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,6 +118,7 @@ int main(void)
 
   dwt_init(480);
   CAN_service_init();
+  dbus_init();
   BMI088_init(&hspi2);
   robot_init();
   SEGGER_RTT_Init();//系统日志log初始化
@@ -208,7 +211,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
 
 
 /**

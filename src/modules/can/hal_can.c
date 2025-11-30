@@ -27,9 +27,10 @@ void CAN_send(FDCAN_HandleTypeDef *hfdcan, uint32_t send_id, uint8_t data[])
     tx_message.Identifier = send_id;
     tx_message.IdType = FDCAN_STANDARD_ID;
     tx_message.TxFrameType = FDCAN_DATA_FRAME;
-    tx_message.DataLength = 8;
+    tx_message.DataLength = FDCAN_DLC_BYTES_8;
     tx_message.ErrorStateIndicator = FDCAN_ESI_ACTIVE; //CAN发送错误指示
     tx_message.BitRateSwitch = FDCAN_BRS_OFF;//波特率切换关闭
+    tx_message.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
     tx_message.FDFormat = FDCAN_CLASSIC_CAN;//经典can
     tx_message.TxEventFifoControl = FDCAN_NO_TX_EVENTS;//不储存发送事件
     tx_message.MessageMarker = 0;//消息标记0
@@ -84,7 +85,7 @@ void CAN_service_init(void)
     HAL_FDCAN_Start(&hfdcan3);//使能CAN3
 }
 
-void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
     FDCAN_RxHeaderTypeDef rx_header;
     uint8_t rx_data[8];
@@ -109,7 +110,10 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
         }
         if (hfdcan == &hfdcan3)
         {
-            return;
+#ifdef BSP_USING_DM_IMU
+            if(dm_imu_rx_callback(rx_header.Identifier, rx_data) == 0)
+                return;
+#endif
 
         }
 
