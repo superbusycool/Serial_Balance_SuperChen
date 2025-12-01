@@ -23,7 +23,6 @@ static void cmd_sub_pull(void);
 
 /* --------------------------------------------------- 遥控器相关 ---------------------------------------------------- */
 #ifdef BSP_USING_RC_DBUS
-extern rc_dbus_obj_t dbus_data_fdb;
 static rc_dbus_obj_t *rc_now, *rc_last;
 
 #else
@@ -38,6 +37,7 @@ static void remote_to_cmd(void);
 void cmd_task_init(void)
 {
     cmd_sub_init();
+    rc_now = dbus_rc_init();
     rc_last = (rc_now + 1);   // rc_obj[0]:当前数据NOW,[1]:上一次的数据LAST
 }
 
@@ -62,8 +62,6 @@ static void remote_to_cmd(void)
     gimbal_cmd_data.last_mode = gimbal_cmd_data.ctrl_mode;
     chassis_cmd_data.last_mode = chassis_cmd_data.ctrl_mode;
     shoot_cmd_data.last_mode=shoot_cmd_data.ctrl_mode;
-    *rc_now = dbus_data_fdb;  // 复制到临时变量
-    rc_last = (rc_now + 1);   // rc_obj[0]:当前数据NOW,[1]:上一次的数据LAST
 
     /* 保存上一次数据 */
     // gim_cmd.last_mode = gim_cmd.ctrl_mode;

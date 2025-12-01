@@ -73,7 +73,7 @@ typedef struct
     int16_t wheel;
 }rc_dbus_obj_t;
 int dbus_rc_decode(uint8_t *buff);
-void dbus_init();
+rc_dbus_obj_t *dbus_rc_init(void);
 /* 解析后的遥控器数据传递给keyboard */
 extern rc_dbus_obj_t rc_dbus_obj[2];
 

@@ -16,11 +16,7 @@ extern UART_HandleTypeDef huart5;
 #define RC_FRAME_LENGTH 18 /*DT7遥控器一次发送的数据量为18字节*/
 static uint8_t SBUS_MultiRx_Buf[2][RC_FRAME_LENGTH];
 uint32_t DataLength = 36;
-
 rc_dbus_obj_t rc_dbus_obj[2];   // [0]:当前数据NOW,[1]:上一次的数据LAST
-
-rc_dbus_obj_t dbus_data_fdb;
-
 
 /*
  * @brief dma双缓冲区配置
@@ -74,14 +70,18 @@ static void USART_DMAEx_MultiBuffer_Init(UART_HandleTypeDef *huart, uint32_t *Ds
 //    HAL_DMAEx_MultiBufferStart(huart->hdmarx,(uint32_t)&huart->Instance->RDR,(uint32_t)DstAddress,(uint32_t)SecondMemAddress,DataLength);
 //}
 
-void dbus_init()
+/**
+ * @brief 初始化sbus_rc
+ *
+ * @return rc_obj_t* 指向NOW和LAST两次数据的数组起始地址
+ */
+rc_dbus_obj_t *dbus_rc_init(void)
 {
     USART_DMAEx_MultiBuffer_Init(&huart5,SBUS_MultiRx_Buf[0], SBUS_MultiRx_Buf[1],36);
-    memset(&rc_dbus_obj[NOW], 0, sizeof(rc_dbus_obj_t));
-    memset(&rc_dbus_obj[LAST], 0, sizeof(rc_dbus_obj_t));
-    memset(&dbus_data_fdb, 0, sizeof(rc_dbus_obj_t));
-
+    // 遥控器离线检测定时器相关
+    return rc_dbus_obj;
 }
+
 /**
  * @brief 遥控器dbus数据解析
  *

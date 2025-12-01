@@ -11,8 +11,8 @@ km_control_t km;
 
 int16_t delta_spd = MAX_CHASSIS_VX_SPEED*1.0f/KEY_ACC_TIME*GIMBAL_PERIOD;
 
-extern ramp_obj_t *km_vx_ramp;//x轴控制斜坡
-extern ramp_obj_t *km_vy_ramp;//y周控制斜坡
+ramp_obj_t *km_vx_ramp;//x轴控制斜坡
+ramp_obj_t *km_vy_ramp;//y周控制斜坡
 
 /**
   * @brief     鼠标按键状态机
