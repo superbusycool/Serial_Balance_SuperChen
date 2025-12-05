@@ -1,6 +1,6 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj: \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\MahonyAHRS\MahonyAHRS.c \
- D:\HNU_RM_CodeStorage\Serial_Balance_H723_11_24\HNU_Serial_H723_2025_11_20\src\algorithm\MahonyAHRS\MahonyAHRS.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\MahonyAHRS\MahonyAHRS.c \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\MahonyAHRS\MahonyAHRS.h \
  d:\stm32environment\arm\arm-none-eabi\include\math.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
