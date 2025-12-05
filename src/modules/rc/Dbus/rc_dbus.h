@@ -1,6 +1,7 @@
 #ifndef _RC_DBUS_H
 #define _RC_DBUS_H
 
+#include <stdbool.h>
 #include "cmsis_os.h"
 
 #define NOW 0
@@ -39,6 +40,7 @@ typedef struct
         /* 鼠标移动相关 */
         int16_t x;   //鼠标平移
         int16_t y;   //鼠标上下
+        int16_t z;
         /* 鼠标按键相关，1为按下，0为松开 */
         uint8_t l;   //左侧按键
         uint8_t r;   //右侧按键
@@ -76,5 +78,65 @@ int dbus_rc_decode(uint8_t *buff);
 rc_dbus_obj_t *dbus_rc_init(void);
 /* 解析后的遥控器数据传递给keyboard */
 extern rc_dbus_obj_t rc_dbus_obj[2];
+
+
+/**
+ * @brief typedef structure that contains the information for the remote control.
+ */
+typedef  struct
+{
+    /**
+     * @brief structure that contains the information for the lever/Switch.
+     */
+    struct
+    {
+        int16_t ch[5];
+        uint8_t s[2];
+    } rc;
+
+    /**
+     * @brief structure that contains the information for the mouse.
+     */
+    struct
+    {
+        int16_t x;
+        int16_t y;
+        int16_t z;
+        uint8_t press_l;
+        uint8_t press_r;
+    } mouse;
+
+    /**
+     * @brief structure that contains the information for the keyboard.
+     */
+    union
+    {
+        uint16_t v;
+        struct
+        {
+            uint16_t W:1;
+            uint16_t S:1;
+            uint16_t A:1;
+            uint16_t D:1;
+            uint16_t SHIFT:1;
+            uint16_t CTRL:1;
+            uint16_t Q:1;
+            uint16_t E:1;
+            uint16_t R:1;
+            uint16_t F:1;
+            uint16_t G:1;
+            uint16_t Z:1;
+            uint16_t X:1;
+            uint16_t C:1;
+            uint16_t V:1;
+            uint16_t B:1;
+        } set;
+    } key;
+
+    bool rc_lost;   /*!< lost flag */
+    uint8_t online_cnt;   /*!< online count */
+} Remote_Info_Typedef;
+
+
 
 #endif /* _RC_DBUS_H */
