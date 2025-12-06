@@ -396,7 +396,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.obj: D:/HNU_RM_CodeStorage/HN
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Src/memorymap.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/memorymap.h \
@@ -4169,6 +4170,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj: D:/HNU
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088reg.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088Middleware.h
 
@@ -4359,7 +4361,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj: D:/HNU_RM_Code
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
@@ -4682,6 +4685,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: D:/HNU_RM_
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -4826,6 +4830,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: D:/HNU_RM_
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
   D:/stm32environment/arm/arm-none-eabi/include/string.h \
@@ -5107,6 +5112,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: D:
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/stm32environment/arm/arm-none-eabi/include/string.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_locale.h \
   D:/stm32environment/arm/arm-none-eabi/include/strings.h \
@@ -5243,6 +5249,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: D:/HNU
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/stm32environment/arm/arm-none-eabi/include/string.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_locale.h \
   D:/stm32environment/arm/arm-none-eabi/include/strings.h \
@@ -5406,7 +5413,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: D:
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/pwm/drv_PWM.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/pwm/drv_PWM.h \
@@ -5556,7 +5564,64 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_
   D:/stm32environment/arm/arm-none-eabi/include/sys/string.h \
   D:/stm32environment/arm/arm-none-eabi/include/stdlib.h \
   D:/stm32environment/arm/arm-none-eabi/include/machine/stdlib.h \
-  D:/stm32environment/arm/arm-none-eabi/include/alloca.h
+  D:/stm32environment/arm/arm-none-eabi/include/alloca.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rm_module.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/robot.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DJI_motor/dji_motor.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/motor_def.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/chassis/chassis_task.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/LK_motor/lk_motor.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/HT_motor/ht04.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DM_motor/DM_motor.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt/drv_dwt.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/leg_vmc/drv_leg.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/leg_wbr/leg_wbr.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/pwm/drv_PWM.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/tim.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088driver.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/ipc/uMCN.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/log/bsp_log.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h \
+  D:/stm32environment/arm/arm-none-eabi/include/stdio.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/endian.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/_endian.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/select.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_sigset.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_timeval.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/timespec.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_timespec.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_pthreadtypes.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/sched.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/stdio.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/float.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h \
+  D:/stm32environment/arm/arm-none-eabi/include/limits.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/syslimits.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/Filter/filter32.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/kalman_filter/kalman_filter.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/MahonyAHRS/MahonyAHRS.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/PID/PID.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/QuaternionEKF/QuaternionEKF.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/Ramp/ramp.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/User_Lib/user_lib.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc/crc8_crc16.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
@@ -5681,6 +5746,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: D:/HN
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -5953,6 +6019,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: D:/HNU_RM_CodeStorage/HNU_Se
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/rm_task.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/ins/ins_task.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/motor/motor_task.h \
@@ -6103,7 +6170,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: D:/HNU_R
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/cmd/cmd_task.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/cmd/cmd_task.h \
@@ -6228,6 +6296,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: D:/HNU_RM_CodeSt
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -6372,6 +6441,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: D:/HNU_RM_
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -6516,6 +6586,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: D:/HNU_RM_CodeSt
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -6659,7 +6730,8 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: D:/HNU_RM_Co
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot/shoot_task.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/rm_config.h \
@@ -6803,6 +6875,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: D:/HNU_RM_Co
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot/shoot_task.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans/trans_task.c \
@@ -6927,6 +7000,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: D:/HNU_RM_Co
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/USB_DEVICE/App/usbd_cdc_if.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
@@ -7259,6 +7333,8 @@ D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/r
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h:
 
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h:
+
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Src/memorymap.c:
@@ -7458,8 +7534,6 @@ D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/m
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.c:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.c:
-
-D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.c:
 

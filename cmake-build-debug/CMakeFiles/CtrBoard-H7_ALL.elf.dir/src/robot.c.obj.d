@@ -123,6 +123,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/fdcan.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\referee/referee_system.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\rc\keyboard/keyboard.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\task/rm_task.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\task\ins/ins_task.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\task\motor/motor_task.h \

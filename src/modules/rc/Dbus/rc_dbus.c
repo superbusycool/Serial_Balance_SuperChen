@@ -5,11 +5,11 @@
 #include <string.h>
 #include "cmsis_os.h"
 #include "stdlib.h"
+#include "rm_module.h"
+#include "rm_algorithm.h"
 
 extern UART_HandleTypeDef huart5;
 
-/* 数据有效性检查 */
-#define VALID_CHANNEL(val) (abs(val) <= RC_MAX_VALUE)
 
 /**
  * @brief offset of remote control channel data
@@ -19,7 +19,8 @@ extern UART_HandleTypeDef huart5;
  * @brief Length of SBUS received data
  */
 #define SBUS_RX_BUF_NUM		18u
-#define SBUS_RX_BUF_NUM_L	18u
+#define now 0u
+#define last 1u
 static uint8_t SBUS_MultiRx_Buf[2][SBUS_RX_BUF_NUM];
 
 /**
@@ -30,8 +31,6 @@ Remote_Info_Typedef remote_ctrl={
         .rc_lost = true,
 };
 
-rc_dbus_obj_t rc_dbus_obj[2];   // [0]:当前数据NOW,[1]:上一次的数据LAST
-
 static void USER_USART5_RxHandler(UART_HandleTypeDef *huart,uint16_t Size);
 
 static void USER_USART2_RxHandler(UART_HandleTypeDef *huart,uint16_t Size);
@@ -41,70 +40,11 @@ static void USER_USART3_RxHandler(UART_HandleTypeDef *huart,uint16_t Size);
 static void USART_RxDMA_MultiBuffer_Init(UART_HandleTypeDef *, uint32_t *, uint32_t *, uint32_t );
 
 /**
- * @brief 遥控器dbus数据解析
- *
- * @param rc_dbus_obj 指向dbus_rc实例的指针
- */
-int dbus_rc_decode(uint8_t *buff)
-{
-    /* 下面是正常遥控器数据的处理 */
-    rc_dbus_obj[NOW].ch1 = (buff[0] | buff[1] << 8) & 0x07FF;
-    rc_dbus_obj[NOW].ch1 -= 1024;
-    rc_dbus_obj[NOW].ch2 = (buff[1] >> 3 | buff[2] << 5) & 0x07FF;
-    rc_dbus_obj[NOW].ch2 -= 1024;
-    rc_dbus_obj[NOW].ch3 = (buff[2] >> 6 | buff[3] << 2 | buff[4] << 10) & 0x07FF;
-    rc_dbus_obj[NOW].ch3 -= 1024;
-    rc_dbus_obj[NOW].ch4 = (buff[4] >> 1 | buff[5] << 7) & 0x07FF;
-    rc_dbus_obj[NOW].ch4 -= 1024;
-
-    /* 防止遥控器零点有偏差 */
-    if(rc_dbus_obj[NOW].ch1 <= 5 && rc_dbus_obj[NOW].ch1 >= -5)
-        rc_dbus_obj[NOW].ch1 = 0;
-    if(rc_dbus_obj[NOW].ch2 <= 5 && rc_dbus_obj[NOW].ch2 >= -5)
-        rc_dbus_obj[NOW].ch2 = 0;
-    if(rc_dbus_obj[NOW].ch3 <= 5 && rc_dbus_obj[NOW].ch3 >= -5)
-        rc_dbus_obj[NOW].ch3 = 0;
-    if(rc_dbus_obj[NOW].ch4 <= 5 && rc_dbus_obj[NOW].ch4 >= -5)
-        rc_dbus_obj[NOW].ch4 = 0;
-
-    /* 拨杆值获取 */
-    rc_dbus_obj[NOW].sw1 = ((buff[5] >> 4) & 0x000C) >> 2;
-    rc_dbus_obj[NOW].sw2 = (buff[5] >> 4) & 0x0003;
-
-    /* 遥控器异常值处理，函数直接返回 */
-    if ((abs(rc_dbus_obj[NOW].ch1) > RC_DBUS_MAX_VALUE) || \
-      (abs(rc_dbus_obj[NOW].ch2) > RC_DBUS_MAX_VALUE) || \
-      (abs(rc_dbus_obj[NOW].ch3) > RC_DBUS_MAX_VALUE) || \
-      (abs(rc_dbus_obj[NOW].ch4) > RC_DBUS_MAX_VALUE))
-    {
-        memset(&rc_dbus_obj[NOW], 0, sizeof(rc_dbus_obj_t));
-        return -1;
-    }
-
-    /* 鼠标移动速度获取 */
-    rc_dbus_obj[NOW].mouse.x = buff[6] | (buff[7] << 8);
-    rc_dbus_obj[NOW].mouse.y = buff[8] | (buff[9] << 8);
-
-    /* 鼠标左右按键键值获取 */
-    rc_dbus_obj[NOW].mouse.l = buff[12];
-    rc_dbus_obj[NOW].mouse.r = buff[13];
-
-    /* 键盘按键键值获取 */
-    rc_dbus_obj[NOW].kb.key_code = buff[14] | buff[15] << 8;
-
-    /* 遥控器左侧上方拨轮数据获取，和遥控器版本有关，有的无法回传此项数据 */
-    rc_dbus_obj[NOW].wheel = buff[16] | buff[17] << 8;
-    rc_dbus_obj[NOW].wheel -= 1024;
-
-    rc_dbus_obj[LAST] = rc_dbus_obj[NOW];
-}
-
-/**
   * @brief  Configures the USART.
   * @param  None
   * @retval None
   */
-void BSP_USART_Init(void){
+void BSP_USART_Init(){
 
     USART_RxDMA_MultiBuffer_Init(&huart5,(uint32_t *)SBUS_MultiRx_Buf[0],(uint32_t *)SBUS_MultiRx_Buf[1],SBUS_RX_BUF_NUM);
 
@@ -248,6 +188,7 @@ static void USER_USART5_RxHandler(UART_HandleTypeDef *huart,uint16_t Size){
         {
             /* Memory 1 to data update to remote_ctrl*/
             SBUS_TO_RC(SBUS_MultiRx_Buf[1],&remote_ctrl);
+
         }
 
     }
@@ -319,13 +260,40 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart,uint16_t Size)
 }
 
 /**
+  * @brief  clear the remote control data while the device offline
+  * @param  remote_ctrl: pointer to a Remote_Info_Typedef structure that
+  *         contains the information  for the remote control.
+  * @retval none
+  */
+void Remote_Message_Moniter(Remote_Info_Typedef  *remote_ctrl)
+{
+    /* Juege the device status */
+    if(remote_ctrl->online_cnt <= 0x32U)
+    {
+        /* clear the data */
+        memset(remote_ctrl,0,sizeof(Remote_Info_Typedef));
+
+        /* reset the online count */
+
+        /* set the lost flag */
+        remote_ctrl->rc_lost = true;
+
+    }
+    else if(remote_ctrl->online_cnt > 0)
+    {
+        /* online count decrements which reseted in received interrupt  */
+        remote_ctrl->online_cnt--;
+    }
+}
+
+/**
  * @brief 初始化sbus_rc
  *
  * @return rc_obj_t* 指向NOW和LAST两次数据的数组起始地址
  */
-rc_dbus_obj_t *dbus_rc_init(void)
+Remote_Info_Typedef *dbus_rc_init(void)
 {
     BSP_USART_Init();
-    // 遥控器离线检测定时器相关
-    return rc_dbus_obj;
+
+    return &remote_ctrl;
 }

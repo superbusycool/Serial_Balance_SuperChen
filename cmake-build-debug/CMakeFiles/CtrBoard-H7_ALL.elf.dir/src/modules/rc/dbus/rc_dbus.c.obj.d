@@ -85,4 +85,61 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\stdlib.h \
- d:\stm32environment\arm\arm-none-eabi\include\alloca.h
+ d:\stm32environment\arm\arm-none-eabi\include\alloca.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules/rm_module.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src/robot.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\motor\DJI_motor/dji_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\motor/motor_def.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/main.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\task\chassis/chassis_task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\motor\LK_motor/lk_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\motor\HT_motor/ht04.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\motor\DM_motor/DM_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\dwt/drv_dwt.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\leg_vmc/drv_leg.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\leg_wbr/leg_wbr.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\pwm/drv_PWM.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/tim.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/main.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\BMI088/BMI088driver.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\ipc/uMCN.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\log/bsp_log.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
+ d:\hnu_rm_codestorage\hnu_serial_h723_12_04\hnu_embedded_framework\middlewares\third_party\segger\config\segger_rtt_conf.h \
+ d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
+ d:\stm32environment\arm\arm-none-eabi\include\stdio.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\types.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\endian.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\_endian.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\select.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_sigset.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_timeval.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\timespec.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_timespec.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\_pthreadtypes.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\sched.h \
+ d:\stm32environment\arm\arm-none-eabi\include\machine\types.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\stdio.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\rc\dbus/rc_dbus.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\can/hal_can.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/fdcan.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\referee/referee_system.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\rc\keyboard/keyboard.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm/rm_algorithm.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
+ d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\float.h \
+ d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\limits.h \
+ d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\syslimits.h \
+ d:\stm32environment\arm\arm-none-eabi\include\limits.h \
+ d:\stm32environment\arm\arm-none-eabi\include\sys\syslimits.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\Filter/filter32.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\kalman_filter/kalman_filter.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\MahonyAHRS/MahonyAHRS.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\PID/PID.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\QuaternionEKF/QuaternionEKF.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\Ramp/ramp.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\User_lib/user_lib.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\algorithm\crc/crc8_crc16.h
