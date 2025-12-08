@@ -139,6 +139,12 @@ static void dm_motor_control(void const *parameter)
             }
             pack_contol_para(set, data_buf); // 将控制参数打包成报文数据帧
             CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
+
+        }
+        else if(motor->ctrl_mode == DM_CMD_RESET_MODE){
+            memset(data_buf, 0xff, 7);  // 发送电机指令的时候前面7bytes都是0xff
+            data_buf[7] = (uint8_t)motor->ctrl_mode; // 最后一位是命令id
+            CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
         }
     }
 

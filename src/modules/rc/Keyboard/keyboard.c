@@ -11,8 +11,9 @@ km_control_t km;
 
 int16_t delta_spd = MAX_CHASSIS_VX_SPEED*1.0f/KEY_ACC_TIME*GIMBAL_PERIOD;
 
-ramp_obj_t *km_vx_ramp;//x轴控制斜坡
-ramp_obj_t *km_vy_ramp;//y周控制斜坡
+extern ramp_obj_t *km_vx_ramp;//x轴控制斜坡
+extern ramp_obj_t *km_vy_ramp;//y周控制斜坡
+
 
 /**
   * @brief     鼠标按键状态机
@@ -92,12 +93,12 @@ static void key_fsm(kb_state_e *sta, uint8_t key)
   */
 void PC_Handle_kb(void)
 {
-    if (rc_dbus_obj[0].kb.bit.SHIFT)
+    if (remote_ctrl.key.set.SHIFT)
     {
         km.move_mode = FAST_MODE;
         km.max_spd = 3500;
     }
-    else if (rc_dbus_obj[0].kb.bit.CTRL)
+    else if (remote_ctrl.key.set.CTRL)
     {
         km.move_mode = SLOW_MODE;
         km.max_spd = 1000;
@@ -109,18 +110,18 @@ void PC_Handle_kb(void)
     }
 
     //add ramp
-    if (rc_dbus_obj[0].kb.bit.W)
+    if (remote_ctrl.key.set.W)
         km.vy += (float)delta_spd;
-    else if (rc_dbus_obj[0].kb.bit.S)
+    else if (remote_ctrl.key.set.S)
         km.vy -= (float)delta_spd;
     else
     {
         km.vy =(float)km.vy* ( 1 - km_vy_ramp->calc(km_vy_ramp));
     }
 
-    if (rc_dbus_obj[0].kb.bit.A)
+    if (remote_ctrl.key.set.A)
         km.vx -= (float)delta_spd;
-    else if (rc_dbus_obj[0].kb.bit.D)
+    else if (remote_ctrl.key.set.D)
         km.vx += (float)delta_spd;
     else
     {
@@ -130,12 +131,12 @@ void PC_Handle_kb(void)
     VAL_LIMIT(km.vx, -km.max_spd, km.max_spd);
     VAL_LIMIT(km.vy, -km.max_spd, km.max_spd);
 
-//    if(rc_dbus_obj[0].kb.bit.SHIFT)
+//    if(remote_ctrl.key.set.SHIFT)
 //    {
 //        VAL_LIMIT(km.vx, -MAX_CHASSIS_VX_SPEED_HIGH, MAX_CHASSIS_VX_SPEED_HIGH);
 //        VAL_LIMIT(km.vy, -MAX_CHASSIS_VY_SPEED_HIGH, MAX_CHASSIS_VY_SPEED_HIGH);
 //    }
-//    else if(rc_dbus_obj[0].kb.bit.CTRL)
+//    else if(remote_ctrl.key.set.CTRL)
 //    {
 //        VAL_LIMIT(km.vx, -MAX_CHASSIS_VX_SPEED_LOW, MAX_CHASSIS_VX_SPEED_LOW);
 //        VAL_LIMIT(km.vy, -MAX_CHASSIS_VY_SPEED_LOW, MAX_CHASSIS_VY_SPEED_LOW);
@@ -149,12 +150,13 @@ void PC_Handle_kb(void)
     VAL_LIMIT(km.vx, -MAX_CHASSIS_VX_SPEED, MAX_CHASSIS_VX_SPEED);
     VAL_LIMIT(km.vy, -MAX_CHASSIS_VY_SPEED, MAX_CHASSIS_VY_SPEED);
 
-    key_fsm(&km.lk_sta, rc_dbus_obj[0].mouse.l);
-    key_fsm(&km.rk_sta, rc_dbus_obj[0].mouse.r);
-    key_fsm(&km.e_sta, rc_dbus_obj[0].kb.bit.E);
-    key_fsm(&km.f_sta, rc_dbus_obj[0].kb.bit.F);
-    key_fsm(&km.shift_sta, rc_dbus_obj[0].kb.bit.SHIFT);
-    key_fsm(&km.ctrl_sta, rc_dbus_obj[0].kb.bit.CTRL);
-    key_fsm(&km.v_sta, rc_dbus_obj[0].kb.bit.V);
-    key_fsm(&km.b_sta, rc_dbus_obj[0].kb.bit.B);
+    key_fsm(&km.lk_sta, remote_ctrl.mouse.press_l);
+    key_fsm(&km.rk_sta, remote_ctrl.mouse.press_r);
+    key_fsm(&km.e_sta, remote_ctrl.key.set.E);
+    key_fsm(&km.f_sta, remote_ctrl.key.set.F);
+    key_fsm(&km.shift_sta, remote_ctrl.key.set.SHIFT);
+    key_fsm(&km.ctrl_sta, remote_ctrl.key.set.CTRL);
+    key_fsm(&km.v_sta, remote_ctrl.key.set.V);
+    key_fsm(&km.b_sta, remote_ctrl.key.set.B);
 }
+

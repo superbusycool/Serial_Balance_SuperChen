@@ -33,6 +33,7 @@
 #include "referee_system.h"
 #include "dm_imu.h"
 #include "dm_imu.h"
+#include "keyboard.h"
 
 
 #endif /* _RM_MODULE_H */

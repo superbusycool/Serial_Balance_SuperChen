@@ -121,4 +121,5 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\can/hal_can.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\Core\Inc/fdcan.h \
  D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\referee/referee_system.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_04\HNU_Embedded_Framework\src\modules\rc\keyboard/keyboard.h

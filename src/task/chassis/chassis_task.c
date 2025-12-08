@@ -609,7 +609,7 @@ void chassis_control_task(void)
             break;
         case CHASSIS_RECOVERY:/*不稳定的状态,介于init和relex状态的过渡状态*/
             Process_Clear();
-
+            motor_enable();
             if(usr_abs(ins.pitch) < 2.0f )/*判断是否站立稳定是通过phi角大小*/
                 chassis_fdb_data.stand_state = CAHSSIS_IS_STAND;
 
@@ -810,10 +810,6 @@ static void leg_init_get_zero()
 static void motor_enable()
 {
     dm_motor_enable_all();  // 所有电机进入 motor 模式
-    for (uint8_t i = 0; i < 4; i++)
-    {
-        dm_motor_set_type(dm_motor[i], MOTOR_ENALBED);
-    }
     for (uint8_t i = 0; i < 2; i++)
     {
         dji_motor_enable(m3508_motor[i]);
@@ -823,10 +819,6 @@ static void motor_enable()
 static void motor_relax()
 {
     dm_motor_disable_all();
-    for (uint8_t i = 0; i < 4; i++)
-    {
-        dm_motor_set_type(dm_motor[i], MOTOR_STOP);
-    }
     for (uint8_t i = 0; i < 2; i++)
     {
         dji_motor_relax(m3508_motor[i]);

@@ -2,6 +2,7 @@
 #define RTTHREAD_KEYBOARD_H
 
 #include "rm_config.h"
+#include "rm_module.h"
 
 /**
   * @brief     底盘运动速度快慢模式
@@ -65,5 +66,6 @@ extern km_control_t km;
   * @brief     PC 处理键盘鼠标数据函数
   */
 void PC_Handle_kb(void);
+
 
 #endif //RTTHREAD_KEYBOARD_H
