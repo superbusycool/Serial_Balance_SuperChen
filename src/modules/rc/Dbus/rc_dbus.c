@@ -45,6 +45,8 @@ static void USART_RxDMA_MultiBuffer_Init(UART_HandleTypeDef *, uint32_t *, uint3
   * @retval None
   */
 void BSP_USART_Init(){
+    // 3. 清除所有UART错误标志（重点：ORE溢出标志）
+    huart5.Instance->ICR = USART_ICR_ORECF | USART_ICR_NECF | USART_ICR_FECF | USART_ICR_PECF;
 
     USART_RxDMA_MultiBuffer_Init(&huart5,(uint32_t *)SBUS_MultiRx_Buf[0],(uint32_t *)SBUS_MultiRx_Buf[1],SBUS_RX_BUF_NUM);
 
