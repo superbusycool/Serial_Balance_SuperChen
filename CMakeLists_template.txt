@@ -111,6 +111,7 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
 
         src/modules
         src/modules/BMI088
+        src/modules/bsp
         src/modules/can
         src/modules/dwt
         src/modules/ipc
@@ -137,7 +138,6 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         src/task/chassis
         src/task/trans
         src/task/shoot
-        src/task/uart
 
 )
 
@@ -147,6 +147,7 @@ add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx -DUSE_PWR_LDO_SUPPLY)
 file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE/*.*"
         "src/algorithm/*.*"
         "src/modules/BMI088/*.*"
+        "src/modules/bsp/*.*"
         "src/modules/can/*.*"
         "src/modules/dwt/*.*"
         "src/modules/ipc/*.*"

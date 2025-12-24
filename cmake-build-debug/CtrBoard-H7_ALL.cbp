@@ -59,6 +59,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088"/>
+					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/ipc"/>
@@ -84,7 +85,6 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/chassis"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot"/>
-					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -141,6 +141,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088"/>
+					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/ipc"/>
@@ -166,7 +167,6 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/chassis"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot"/>
-					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\stm32environment\arm\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -841,6 +841,12 @@
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/transfer_function.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.c">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.h">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.c">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
@@ -1034,12 +1040,6 @@
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans/trans_task.h">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart/uart_receive.c">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart/uart_receive.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/CMakeLists.txt">

@@ -54,6 +54,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088"
+  "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/ipc"
@@ -79,7 +80,6 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/chassis"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot"
-  "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart"
   )
 
 # The set of dependency files which are needed:
@@ -156,6 +156,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088Middleware.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088driver.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/transfer_function.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj.d"
+  "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt/drv_dwt.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj.d"
@@ -180,7 +181,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/motor/motor_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot/shoot_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj.d"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans/trans_task.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj.d"
-  "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart/uart_receive.c" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj" "gcc" "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

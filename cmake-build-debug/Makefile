@@ -1872,6 +1872,30 @@ src/modules/BMI088/transfer_function.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.s
 .PHONY : src/modules/BMI088/transfer_function.c.s
 
+src/modules/bsp/bsp_uart.obj: src/modules/bsp/bsp_uart.c.obj
+.PHONY : src/modules/bsp/bsp_uart.obj
+
+# target to build an object file
+src/modules/bsp/bsp_uart.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj
+.PHONY : src/modules/bsp/bsp_uart.c.obj
+
+src/modules/bsp/bsp_uart.i: src/modules/bsp/bsp_uart.c.i
+.PHONY : src/modules/bsp/bsp_uart.i
+
+# target to preprocess a source file
+src/modules/bsp/bsp_uart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.i
+.PHONY : src/modules/bsp/bsp_uart.c.i
+
+src/modules/bsp/bsp_uart.s: src/modules/bsp/bsp_uart.c.s
+.PHONY : src/modules/bsp/bsp_uart.s
+
+# target to generate assembly for a file
+src/modules/bsp/bsp_uart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.s
+.PHONY : src/modules/bsp/bsp_uart.c.s
+
 src/modules/can/hal_can.obj: src/modules/can/hal_can.c.obj
 .PHONY : src/modules/can/hal_can.obj
 
@@ -2448,30 +2472,6 @@ src/task/trans/trans_task.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.s
 .PHONY : src/task/trans/trans_task.c.s
 
-src/task/uart/uart_receive.obj: src/task/uart/uart_receive.c.obj
-.PHONY : src/task/uart/uart_receive.obj
-
-# target to build an object file
-src/task/uart/uart_receive.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj
-.PHONY : src/task/uart/uart_receive.c.obj
-
-src/task/uart/uart_receive.i: src/task/uart/uart_receive.c.i
-.PHONY : src/task/uart/uart_receive.i
-
-# target to preprocess a source file
-src/task/uart/uart_receive.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.i
-.PHONY : src/task/uart/uart_receive.c.i
-
-src/task/uart/uart_receive.s: src/task/uart/uart_receive.c.s
-.PHONY : src/task/uart/uart_receive.s
-
-# target to generate assembly for a file
-src/task/uart/uart_receive.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.s
-.PHONY : src/task/uart/uart_receive.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -2699,6 +2699,9 @@ help:
 	@echo ... src/modules/BMI088/transfer_function.obj
 	@echo ... src/modules/BMI088/transfer_function.i
 	@echo ... src/modules/BMI088/transfer_function.s
+	@echo ... src/modules/bsp/bsp_uart.obj
+	@echo ... src/modules/bsp/bsp_uart.i
+	@echo ... src/modules/bsp/bsp_uart.s
 	@echo ... src/modules/can/hal_can.obj
 	@echo ... src/modules/can/hal_can.i
 	@echo ... src/modules/can/hal_can.s
@@ -2771,9 +2774,6 @@ help:
 	@echo ... src/task/trans/trans_task.obj
 	@echo ... src/task/trans/trans_task.i
 	@echo ... src/task/trans/trans_task.s
-	@echo ... src/task/uart/uart_receive.obj
-	@echo ... src/task/uart/uart_receive.i
-	@echo ... src/task/uart/uart_receive.s
 .PHONY : help
 
 

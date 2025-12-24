@@ -1,294 +1,369 @@
-//
-// Created by 刘嘉俊 on 25-2-25.
-//
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : Referee_System_Info.c
+  * @brief          : Referee_System_Info interfaces functions
+  * @author         : GrassFan Wang
+  * @date           : 2025/1/22
+  * @version        : v1.0
+  ******************************************************************************
+  * @attention      : to be tested
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
-#include "referee_system.h"
+/* Includes ------------------------------------------------------------------*/
+#include "Referee_System.h"
 #include "crc8_crc16.h"
 #include "string.h"
 
-
-/* --------------------------------裁判系统串口句柄 ------------------------------- */
-static referee_data_header_t referee_data_header;   //接收数据帧头结构体
-static referee_data_t referee_data;   //接收数据帧头结构体
-static unpack_data_t referee_unpack_obj;
-static float float_values[7] = {0}; // 存储转换后的7个float。改成队列传输
-
-
-struct referee_fdb_msg referee_fdb;
-
-
-/*!结构体实例化*/
-static game_status_t                           game_status;
-static game_result_t                           game_result;
-static game_robot_HP_t                         game_robot_HP;
-static event_data_t                            event_data;
-static referee_warning_t                       referee_warning;
-static dart_info_t                             dart_info;
-static robot_status_t                          robot_status;
-static power_heat_data_t                       power_heat_data;
-static robot_pos_t                             robot_pos;
-static buff_t                                  buff;
-static hurt_data_t                             hurt_data;
-static shoot_data_t                            shoot_data;
-static projectile_allowance_t                  projectile_allowance;
-static rfid_status_t                           rfid_status;
-static dart_client_cmd_t                       dart_client_cmd;
-static ground_robot_position_t                 ground_robot_position;
-static radar_mark_data_t                       radar_mark_data;
-static sentry_info_t                           sentry_info;
-static radar_info_t                            radar_info;
-static robot_interaction_data_t                robot_interaction_data;
-static map_command_t                           map_command;
-static map_robot_data_t                        map_robot_data;
-static map_data_t                              map_data;
-static custom_info_t                           custom_info;
-static custom_robot_data_t                     custom_robot_data;
-static robot_custom_data_t                     robot_custom_data;
-static remote_control_t                        remote_control;
-static custom_client_data_t                    custom_client_data;
-
-void referee_system_init()
-{
-    memset(&referee_data_header, 0, sizeof(referee_data_header_t));
-    memset(&referee_data, 0, sizeof(referee_data_t));
-    memset(&referee_unpack_obj, 0, sizeof(unpack_data_t));
-
-    memset(&game_status, 0, sizeof(game_status_t));
-    memset(&game_result, 0, sizeof(game_result_t));
-    memset(&game_robot_HP, 0, sizeof(game_robot_HP_t));
-    memset(&event_data, 0, sizeof(event_data_t));
-    memset(&referee_warning, 0, sizeof(referee_warning_t));
-    memset(&dart_info, 0, sizeof(dart_info_t));
-    memset(&robot_status, 0, sizeof(robot_status_t));
-    memset(&power_heat_data, 0, sizeof(power_heat_data_t));
-    memset(&robot_pos, 0, sizeof(robot_pos_t));
-    memset(&buff, 0, sizeof(buff_t));
-    memset(&hurt_data, 0, sizeof(hurt_data_t));
-    memset(&shoot_data, 0, sizeof(shoot_data_t));
-    memset(&projectile_allowance, 0, sizeof(projectile_allowance_t));
-    memset(&rfid_status, 0, sizeof(rfid_status_t));
-    memset(&dart_client_cmd, 0, sizeof(dart_client_cmd_t));
-    memset(&ground_robot_position, 0, sizeof(ground_robot_position_t));
-    memset(&radar_mark_data, 0, sizeof(radar_mark_data_t));
-    memset(&sentry_info, 0, sizeof(sentry_info_t));
-    memset(&radar_info, 0, sizeof(radar_info_t));
-    memset(&robot_interaction_data, 0, sizeof(robot_interaction_data_t));
-    memset(&map_command, 0, sizeof(map_command_t));
-    memset(&map_robot_data, 0, sizeof(map_robot_data_t ));
-    memset(&map_data, 0, sizeof(map_data_t));
-    memset(&custom_info, 0, sizeof(custom_info_t));
-    memset(&custom_robot_data, 0, sizeof(custom_robot_data_t));
-    memset(&robot_custom_data, 0, sizeof(robot_custom_data_t));
-    memset(&remote_control, 0, sizeof(remote_control_t));
-    memset(&custom_client_data, 0, sizeof(custom_client_data_t));
-
-    memset(&referee_fdb, 0, sizeof(struct referee_fdb_msg));
-}
-
+/* Exported variables ---------------------------------------------------------*/
+/**
+ * @brief Referee_System_Info_RxDMA MultiBuffer
+ */
+uint8_t Referee_System_Info_MultiRx_Buf[2][REFEREE_RXFRAME_LENGTH];
 
 /**
- * @brief 裁判系统数据解包函数
+ * @brief Referee structure variable
  */
-void referee_data_unpack(uint8_t *data, uint16_t len)
+Referee_System_Info_TypeDef Referee_System_Info;
+/* Private function prototypes -----------------------------------------------*/
+static uint32_t bit8TObit32(uint8_t change_info[4]);
+static uint32_t bit8TObit64(uint8_t change_info[8]);
+static float    bit8TOfloat32(uint8_t change_info[4]);
+static uint8_t bit32TObit8(uint8_t Index_need,uint32_t bit32);
+static int16_t bit8TObit16(uint8_t change_info[2]);
+static uint8_t bit16TObit8(uint8_t Index_need,int16_t bit16);
+static void Referee_System_Info_Update(uint8_t *Buff,Referee_System_Info_TypeDef *Referee_System_Info);
+
+/**
+  * @brief  Check if the referee system receives data correctly
+  * @param  *Buff: pointer to a array that contains the information of the received message
+  * @retval none
+  */
+void Referee_System_Frame_Update(uint8_t *Buff)
 {
-    for (uint16_t i = 0; i < len; i++) {
-        uint8_t byte = data[i];
-        switch (referee_unpack_obj.unpack_step)  //状态转换机
+    Referee_System_Info.Index = 0;
+    Referee_System_Info.DataLength = 0;
+    /*Check the header frame */
+    while (Buff[Referee_System_Info.Index] == 0xA5)
+    {
+        /*CRC8 verification*/
+        if(verify_CRC8_check_sum(&Buff[Referee_System_Info.Index],FrameHeader_Length) == true)
         {
-            case STEP_HEADER_SOF:      //如果是读取帧头SOF的状态
+            /*Update data length */
+            Referee_System_Info.DataLength = (uint16_t)(Buff[Referee_System_Info.Index+2]<<8 | Buff[Referee_System_Info.Index+1]) + FrameHeader_Length + CMDID_Length + CRC16_Length;
+
+            /*CRC16 verification*/
+            if(verify_CRC16_check_sum(&Buff[Referee_System_Info.Index],Referee_System_Info.DataLength) == true)
             {
-                if (byte == HEADER_SOF)       //判断是否为SOF
-                {
-                    referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;  //将数据码好，并将索引长度加1
-                    referee_unpack_obj.unpack_step = STEP_DATA_SIZE_LOW;       //改变状态，下次拿出来的byte，去试图照应数据长度的低八位
-                } else {
-                    referee_unpack_obj.index = 0;   //如果不是，就再从fifo中拿出来一个byte，继续读，直到读出来一个sof
-                }
-            }
-                break;
-
-            case STEP_DATA_SIZE_LOW:       //如果目前的状态是读的数据长度的低八位
-            {
-                referee_unpack_obj.p_header->data_length = byte;           //低八位直接放入
-                referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;   //码好数据
-                referee_unpack_obj.unpack_step = STEP_DATA_SIZE_HIGH;          //转变状态
-            }
-                break;
-
-            case STEP_DATA_SIZE_HIGH:  //如果目前的状态时读数据长度的高八位
-            {
-                referee_unpack_obj.p_header->data_length |= (byte << 8);     //放入data_len的高八位
-                referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;  //码好数据
-                if (referee_unpack_obj.p_header->data_length < REF_PROTOCOL_DATA_MAX_SIZE) {
-                    referee_unpack_obj.unpack_step = STEP_FRAME_SEQ;        //转变状态，下一个该读包序号
-                } else {
-                    //如果数据长度不合法，就重头开始读取，并且之前码好的数据作废
-                    memset(&referee_unpack_obj, 0, sizeof(unpack_data_t));
-                    referee_unpack_obj.unpack_step = STEP_HEADER_SOF;
-                    referee_unpack_obj.index = 0;
-                }
+                /*Update the referee system data*/
+                Referee_System_Info_Update(Buff,&Referee_System_Info);
 
             }
-                break;
 
-            case STEP_FRAME_SEQ: {
-                referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;  //码好数据
-                referee_unpack_obj.unpack_step = STEP_HEADER_CRC8;          //转换状态，下一个byte读的是CRC8
-            }
-                break;
+        }else{
 
-            case STEP_HEADER_CRC8: {
-                //先将这一byte数据放入，使帧头结构完整，以便后面可以进行CRC校验
-                referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;
-                //如果这一byte放入之后，数据长度是一个帧头的长度，那么就进行CRC校验
-                if (referee_unpack_obj.index == REF_PROTOCOL_HEADER_SIZE) {
-                    if (verify_CRC8_check_sum(referee_unpack_obj.protocol_packet, REF_PROTOCOL_HEADER_SIZE)) {
-                        referee_unpack_obj.unpack_step = STEP_DATA_CRC16;   //如果校验通过，则状态转换成去读取帧尾
-                    } else {
-                        //如果校验不通过，则从头开始，之前码好的数据作废
-                        memset(&referee_unpack_obj, 0, sizeof(unpack_data_t));
-                        referee_unpack_obj.unpack_step = STEP_HEADER_SOF;
-                        referee_unpack_obj.index = 0;
-                    }
-                }
-            }
-                break;
+            break;
 
-            case STEP_DATA_CRC16: {
-                //从帧头到帧尾的过程中的数据一律码好
-                if (referee_unpack_obj.index < (REF_HEADER_CRC_CMD_SIZE + referee_unpack_obj.p_header->data_length)) {
-                    referee_unpack_obj.protocol_packet[referee_unpack_obj.index++] = byte;
-                }
-                //如果数据读取到data末尾，则转换状态，准备开始新一帧的读取
-                if (referee_unpack_obj.index >= (REF_HEADER_CRC_CMD_SIZE + referee_unpack_obj.p_header->data_length)) {
-                    //整包数据校验
-                    if (verify_CRC16_check_sum(referee_unpack_obj.protocol_packet,
-                                               REF_HEADER_CRC_CMD_SIZE + referee_unpack_obj.p_header->data_length)) {
-                        referee_data_save(referee_unpack_obj.protocol_packet);
-                    }
-                    memset(&referee_unpack_obj, 0, sizeof(unpack_data_t));
-                    referee_unpack_obj.unpack_step = STEP_HEADER_SOF;
-                    referee_unpack_obj.index = 0;
-                }
-            }
-                break;
-
-            default:
-                memset(&referee_unpack_obj, 0, sizeof(unpack_data_t));
-                referee_unpack_obj.unpack_step = STEP_HEADER_SOF;
-                referee_unpack_obj.index = 0;
-                break;
         }
+        /*Continue updating	*/
+        Referee_System_Info.Index += Referee_System_Info.DataLength;
+
+    }
+
+}
+/**
+  * @brief  Update the referee system data
+  * @param  *Buff: pointer to a array that contains the information of the received message
+  * @param  *Referee_System_Info pointer to a array that contains the information of Referee_System
+  * @retval None
+  */
+static void Referee_System_Info_Update(uint8_t *Buff,Referee_System_Info_TypeDef *Referee_System_Info)
+{
+    switch (bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length]))
+    {
+#ifdef GAME_STATUS_ID
+        case GAME_STATUS_ID:
+				Referee_System_Info->game_status.game_type         =  Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length] & 0x0F  ;
+				Referee_System_Info->game_status.game_progress     = (Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length] & 0xF0) >> 4  ;
+				Referee_System_Info->game_status.stage_remain_time = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 1]);
+				Referee_System_Info->game_status.SyncTimeStamp     = bit8TObit64(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 3]);
+    break;
+#endif
+
+#ifdef GAME_RESULT_ID
+        case GAME_RESULT_ID:
+		    Referee_System_Info->game_result.winner = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+		break;
+#endif
+
+#ifdef GAME_ROBOTHP_ID
+        case GAME_ROBOTHP_ID:
+				Referee_System_Info->game_robot_HP.red_1_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+				Referee_System_Info->game_robot_HP.red_2_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2]);
+				Referee_System_Info->game_robot_HP.red_3_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+				Referee_System_Info->game_robot_HP.red_4_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 6]);
+				Referee_System_Info->game_robot_HP.red_7_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 10]);
+				Referee_System_Info->game_robot_HP.red_outpost_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12]);
+				Referee_System_Info->game_robot_HP.red_base_HP    = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 14]);
+
+				Referee_System_Info->game_robot_HP.blue_1_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 16]);
+				Referee_System_Info->game_robot_HP.blue_2_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 18]);
+				Referee_System_Info->game_robot_HP.blue_3_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 20]);
+				Referee_System_Info->game_robot_HP.blue_4_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 22]);
+				Referee_System_Info->game_robot_HP.blue_7_robot_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 26]);
+				Referee_System_Info->game_robot_HP.blue_outpost_HP = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 28]);
+				Referee_System_Info->game_robot_HP.blue_base_HP    = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 30]);
+    break;
+#endif
+
+#ifdef EVENE_DATA_ID
+        case EVENE_DATA_ID:
+        Referee_System_Info->event_data.event_data = bit8TObit32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+    break;
+#endif
+
+#ifdef REFEREE_WARNING_ID
+        case REFEREE_WARNING_ID:
+				Referee_System_Info->referee_warning.level = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+				Referee_System_Info->referee_warning.offending_robot_id = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length+1];
+				Referee_System_Info->referee_warning.count = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length+2];
+	  break;
+#endif
+
+#ifdef DART_INFO_ID
+        case DART_INFO_ID:
+        Referee_System_Info->dart_info.dart_remaining_time = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+		    Referee_System_Info->dart_info.dart_info = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length+1]);
+		break;
+#endif
+
+#ifdef ROBOT_STATUS_ID
+        case ROBOT_STATUS_ID:
+		    Referee_System_Info->robot_status.robot_id  = 	 Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+		    Referee_System_Info->robot_status.robot_level =  Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 1];
+		    Referee_System_Info->robot_status.current_HP =   bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2]);
+		    Referee_System_Info->robot_status.maximum_HP =   bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+		    Referee_System_Info->robot_status.shooter_barrel_cooling_value =  bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 6]);
+		    Referee_System_Info->robot_status.shooter_barrel_heat_limit =     bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 8]);
+		    Referee_System_Info->robot_status.chassis_power_limit =           bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 10]);
+        Referee_System_Info->robot_status.mains_power_gimbal_output  = (Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12] & 0x01);
+        Referee_System_Info->robot_status.mains_power_chassis_output = (Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12] & 0x02) >> 1;
+        Referee_System_Info->robot_status.mains_power_shooter_output = (Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12] & 0x04) >> 2;
+    break;
+#endif
+
+#ifdef POWER_HEAT_ID
+        case POWER_HEAT_ID:
+				Referee_System_Info->power_heat_data.buffer_energy      = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 8]);
+				Referee_System_Info->power_heat_data.shooter_17mm_1_barrel_heat = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 10]);
+				Referee_System_Info->power_heat_data.shooter_17mm_2_barrel_heat = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12]);
+				Referee_System_Info->power_heat_data.shooter_42mm_barrel_heat   = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 14]);
+    break;
+#endif
+
+#ifdef ROBOT_POSITION_ID
+        case ROBOT_POSITION_ID:
+				Referee_System_Info->robot_pos.x     = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+				Referee_System_Info->robot_pos.y     = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+				Referee_System_Info->robot_pos.angle = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 8]);
+    break;
+#endif
+
+#ifdef ROBOT_BUFF_ID
+        case ROBOT_BUFF_ID:
+				Referee_System_Info->buff.recovery_buff = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+				Referee_System_Info->buff.cooling_buff  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 1];
+				Referee_System_Info->buff.defence_buff  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2];
+				Referee_System_Info->buff.vulnerability_buff  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 3];
+				Referee_System_Info->buff.attack_buff = bit8TObit16 (&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+				Referee_System_Info->buff.remaining_energy = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 5];
+    break;
+#endif
+
+#ifdef ROBOT_HURT_ID
+        case ROBOT_HURT_ID:
+      Referee_System_Info->hurt_data.armor_id  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length] & 0x0F ;
+      Referee_System_Info->hurt_data.HP_deduction_reason = (Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length] & 0xF0) >>4;
+    break;
+#endif
+
+#ifdef SHOOT_DATA_ID
+        case SHOOT_DATA_ID:
+      Referee_System_Info->shoot_data.bullet_type  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+      Referee_System_Info->shoot_data.shooter_number   = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 1];
+      Referee_System_Info->shoot_data.launching_frequency  = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2];
+      Referee_System_Info->shoot_data.initial_speed = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 3]);
+    break;
+#endif
+
+#ifdef PROJECTILE_ALLOWANCE_ID
+        case PROJECTILE_ALLOWANCE_ID:
+      Referee_System_Info->projectile_allowance.projectile_allowance_17mm = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+      Referee_System_Info->projectile_allowance.projectile_allowance_42mm = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2]);
+      Referee_System_Info->projectile_allowance.remaining_gold_coin       = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+    break;
+#endif
+
+#ifdef RFID_STATUS_ID
+        case RFID_STATUS_ID:
+      Referee_System_Info->rfid_status.rfid_status = bit8TObit32(&Buff[Referee_System_Info->Index+FrameHeader_Length+CMDID_Length]);
+    break;
+#endif
+
+#ifdef DART_CLIENT_CMD_ID
+        case DART_CLIENT_CMD_ID:
+      Referee_System_Info->dart_client_cmd.dart_launch_opening_status = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+      Referee_System_Info->dart_client_cmd.reserved = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 1];
+      Referee_System_Info->dart_client_cmd.target_change_time = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 2]);
+      Referee_System_Info->dart_client_cmd.latest_launch_cmd_time = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+    break;
+#endif
+
+#ifdef GROUND_ROBOT_POSITION_ID
+        case GROUND_ROBOT_POSITION_ID:
+      Referee_System_Info->ground_robot_position.hero_x       = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+      Referee_System_Info->ground_robot_position.hero_y       = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+      Referee_System_Info->ground_robot_position.engineer_x   = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 8]);
+      Referee_System_Info->ground_robot_position.engineer_y   = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 12]);
+      Referee_System_Info->ground_robot_position.standard_3_x = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 16]);
+      Referee_System_Info->ground_robot_position.standard_3_y = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 20]);
+      Referee_System_Info->ground_robot_position.standard_4_x = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 24]);
+      Referee_System_Info->ground_robot_position.standard_4_y = bit8TOfloat32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 28]);
+    break;
+#endif
+
+#ifdef RADAR_MARAKING_DATA_ID
+        case RADAR_MARAKING_DATA_ID :
+     Referee_System_Info->radar_mark_data.mark_progress = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+
+   break;
+#endif
+
+#ifdef SENTRY_INFO_ID
+        case SENTRY_INFO_ID:
+		 Referee_System_Info->sentry_info.sentry_info   = bit8TObit32(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length]);
+	   Referee_System_Info->sentry_info.sentry_info_2 = bit8TObit16(&Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length + 4]);
+
+	 break;
+#endif
+#ifdef RADAR_INFO_ID
+        case RADAR_INFO_ID:
+		 Referee_System_Info->radar_info.radar_info = Buff[Referee_System_Info->Index + FrameHeader_Length + CMDID_Length];
+	 break;
+#endif
+
+        default:break;
     }
 }
 
 /**
- * @brief 裁判系统命令数据解包函数
- * @param referee_data_frame: 接收到的整帧数据
- */
-void referee_data_save(uint8_t* frame)
+ * @brief  transform the bit8 to bit32
+*/
+static uint32_t bit8TObit32(uint8_t change_info[4])
 {
-    uint16_t cmd_id = 0;
-    uint8_t index = 0;
+    union
+    {
+        uint32_t bit32;
+        uint8_t  byte[4];
+    }u32val;
 
-    memcpy(&referee_data_header, frame, sizeof(referee_data_header_t));
-    index += sizeof(referee_data_header_t);
-    memcpy(&cmd_id, frame + index, sizeof(uint16_t));
-    index += sizeof(uint16_t);
+    u32val.byte[0] = change_info[0];
+    u32val.byte[1] = change_info[1];
+    u32val.byte[2] = change_info[2];
+    u32val.byte[3] = change_info[3];
 
-    switch (cmd_id) {
-        case GAME_STATUS_CMD_ID:
-            memcpy(&game_status, frame + index, sizeof(game_status_t));
-            break;
-        case GAME_RESULT_CMD_ID:
-            memcpy(&game_result, frame + index, sizeof(game_result_t));
-            break;
-        case GAME_ROBOT_HP_CMD_ID:
-            memcpy(&game_robot_HP, frame + index, sizeof(game_robot_HP_t));
-            break;
-        case FIELD_EVENTS_CMD_ID:
-            memcpy(&event_data, frame + index, sizeof(event_data_t));
-            break;
-        case REFEREE_WARNING_CMD_ID:
-            memcpy(&referee_warning, frame + index, sizeof(referee_warning_t));
-            break;
-        case DART_FIRE_CMD_ID :
-            memcpy(&dart_info, frame + index, sizeof(dart_info_t));
-            break;
-        case ROBOT_STATUS_CMD_ID:
-            memcpy(&robot_status, frame + index, sizeof(robot_status_t));
-            memcpy(&(referee_fdb.robot_status),&robot_status, sizeof(robot_status_t));
-            break;
-        case POWER_HEAT_DATA_CMD_ID:
-            memcpy(&power_heat_data, frame + index, sizeof(power_heat_data_t));
-            break;
-        case ROBOT_POS_CMD_ID:
-            memcpy(&robot_pos, frame + index, sizeof(robot_pos_t));
-            break;
-        case BUFF_MUSK_CMD_ID:
-            memcpy(&buff, frame + index, sizeof(buff_t));
-            break;
-        case ROBOT_HURT_CMD_ID:
-            memcpy(&hurt_data, frame + index, sizeof(hurt_data_t));
-            break;
-        case SHOOT_DATA_CMD_ID:
-            memcpy(&shoot_data, frame + index, sizeof(shoot_data_t));
-            break;
-        case BULLET_REMAINING_CMD_ID:
-            memcpy(&projectile_allowance, frame + index, sizeof(projectile_allowance_t));
-            break;
-        case ROBOT_RFID_CMD_ID :
-            memcpy(&rfid_status, frame + index, sizeof(rfid_status_t));
-            break;
-        case DART_DIRECTIONS_CMD_ID  :
-            memcpy(&dart_client_cmd, frame + index, sizeof(dart_client_cmd_t));
-            break;
-        case ROBOT_LOCATION_CMD_ID :
-            memcpy(&ground_robot_position, frame + index, sizeof(ground_robot_position_t));
-            break;
-        case RADAR_PROGRESS_CMD_ID :
-            memcpy(&radar_mark_data, frame + index, sizeof(radar_mark_data_t));
-            break;
-        case SENTRY_AUTONOMY__CMD_ID :
-            memcpy(&sentry_info, frame + index, sizeof(sentry_info_t));
-            break;
-        case RADAR_AUTONOMY_CMD_ID :
-            memcpy(&radar_info, frame + index, sizeof(radar_info_t));
-            break;
-        case STUDENT_INTERACTIVE_DATA_CMD_ID:
-            memcpy(&robot_interaction_data, frame + index, sizeof(robot_interaction_data_t));
-            break;
-        case ARM_DATA_FROM_CONTROLLER_CMD_ID_2 :
-            memcpy(&custom_robot_data, frame + index, sizeof(custom_robot_data_t));
-            // 直接转存遥控数据
-            for (int i = 0; i < 7; i++) {
-                uint8_t *byte_ptr = &custom_robot_data.data[i * 4];
-                memcpy(&float_values[i], byte_ptr, sizeof(float));
-            }
-            break;
-        case PLAYER_MINIMAP_CMD_ID :
-            memcpy(&map_command, frame + index, sizeof(map_command_t));
-            break;
-        case KEYBOARD_MOUSE_CMD_ID :
-            memcpy(&remote_control, frame + index, sizeof(remote_control_t));
-            memcpy(&(referee_fdb.remote_control), &remote_control, sizeof(remote_control_t));
-            break;
-        case RADAR_MINIMAP_CMD_ID :
-            memcpy(&map_robot_data, frame + index, sizeof(map_robot_data_t));
-            break;
-        case CUSTOMER_CONTROLLER_PLAYER_CMD_ID :
-            memcpy(&custom_client_data, frame + index, sizeof(custom_client_data_t));
-            break;
-        case PLAYER_MINIMAP_SENTRY_CMD_ID :
-            memcpy(&map_data, frame + index, sizeof(map_data_t));
-            break;
-        case PLAYER_MINIMAP_ROBOT_CMD_ID :
-            memcpy(&custom_info, frame + index, sizeof(custom_info_t));
-            break;
-        case ARM_DATA_FROM_CONTROLLER_CMD_ID_9 :
-            memcpy(&robot_custom_data, frame + index, sizeof(robot_custom_data_t));
-            break;
-        default:
-            break;
-    }
+    return u32val.bit32;
 }
+//------------------------------------------------------------------------------
+static uint32_t bit8TObit64(uint8_t change_info[8]){
+    union
+    {
+        uint64_t bit32;
+        uint8_t  byte[4];
+    }u64val;
+
+    u64val.byte[0] = change_info[0];
+    u64val.byte[1] = change_info[1];
+    u64val.byte[2] = change_info[2];
+    u64val.byte[3] = change_info[3];
+
+    return u64val.bit32;
+
+}
+/**
+ * @brief  transform the bit8 to float32
+*/
+static float bit8TOfloat32(uint8_t change_info[4])
+{
+    union
+    {
+        float float32;
+        uint8_t  byte[4];
+    }u32val;
+
+    u32val.byte[0] = change_info[0];
+    u32val.byte[1] = change_info[1];
+    u32val.byte[2] = change_info[2];
+    u32val.byte[3] = change_info[3];
+
+    return u32val.float32;
+}
+//------------------------------------------------------------------------------
+
+/**
+ * @brief  transform the bit32 to bit8
+*/
+static uint8_t bit32TObit8(uint8_t Index_need,uint32_t bit32)
+{
+    union
+    {
+        uint32_t  bit32;
+        uint8_t  byte[4];
+    }u32val;
+
+    u32val.bit32 = bit32;
+
+    return u32val.byte[Index_need];
+}
+//------------------------------------------------------------------------------
+
+/**
+ * @brief  transform the bit8 to bit16
+*/
+static int16_t bit8TObit16(uint8_t change_info[2])
+{
+    union
+    {
+        int16_t  bit16;
+        uint8_t  byte[2];
+    }u16val;
+
+    u16val.byte[0] = change_info[0];
+    u16val.byte[1] = change_info[1];
+
+    return u16val.bit16;
+}
+//------------------------------------------------------------------------------
+
+/**
+ * @brief  transform the bit16 to bit8
+*/
+static uint8_t bit16TObit8(uint8_t Index_need,int16_t bit16)
+{
+    union
+    {
+        int16_t  bit16;
+        uint8_t  byte[2];
+    }u16val;
+
+    u16val.bit16 = bit16;
+    return u16val.byte[Index_need];
+}
+//------------------------------------------------------------------------------
+
+
+
+
+

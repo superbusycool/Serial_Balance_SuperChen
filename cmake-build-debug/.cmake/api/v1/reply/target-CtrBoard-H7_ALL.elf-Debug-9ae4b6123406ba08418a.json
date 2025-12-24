@@ -30,19 +30,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 181,
+				"line" : 182,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
 				"line" : 38,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 176,
 				"parent" : 0
 			},
 			{
@@ -58,9 +52,15 @@
 				"parent" : 0
 			},
 			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 179,
+				"parent" : 0
+			},
+			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 184,
+				"line" : 185,
 				"parent" : 0
 			},
 			{
@@ -313,6 +313,10 @@
 				},
 				{
 					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp"
+				},
+				{
+					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can"
 				},
 				{
@@ -410,10 +414,6 @@
 				{
 					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot"
-				},
-				{
-					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart"
 				}
 			],
 			"language" : "C",
@@ -500,28 +500,28 @@
 				207,
 				210,
 				212,
-				215,
+				214,
 				217,
-				220,
-				223,
+				219,
+				222,
 				225,
 				227,
-				230,
-				233,
+				229,
+				232,
 				235,
-				241,
-				245,
-				248,
+				237,
+				243,
+				247,
 				250,
 				252,
-				255,
-				258,
-				261,
+				254,
+				257,
+				260,
 				263,
 				265,
 				267,
 				269,
-				272,
+				271,
 				274,
 				276
 			]
@@ -732,6 +732,10 @@
 				},
 				{
 					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp"
+				},
+				{
+					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can"
 				},
 				{
@@ -829,10 +833,6 @@
 				{
 					"backtrace" : 14,
 					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/shoot"
-				},
-				{
-					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart"
 				}
 			],
 			"language" : "ASM",
@@ -1047,31 +1047,31 @@
 				209,
 				211,
 				213,
-				216,
+				215,
 				218,
-				221,
-				224,
+				220,
+				223,
 				226,
 				228,
-				231,
-				234,
+				230,
+				233,
 				236,
-				242,
+				238,
 				244,
 				246,
-				249,
+				248,
 				251,
 				253,
-				254,
+				255,
 				256,
-				257,
+				258,
 				259,
-				262,
+				261,
 				264,
 				266,
 				268,
 				270,
-				271,
+				272,
 				273,
 				275,
 				277
@@ -1154,28 +1154,28 @@
 				207,
 				210,
 				212,
-				215,
+				214,
 				217,
-				220,
-				223,
+				219,
+				222,
 				225,
 				227,
-				230,
-				233,
+				229,
+				232,
 				235,
-				241,
-				245,
-				248,
+				237,
+				243,
+				247,
 				250,
 				252,
-				255,
-				258,
-				261,
+				254,
+				257,
+				260,
 				263,
 				265,
 				267,
 				269,
-				272,
+				271,
 				274,
 				276
 			]
@@ -1195,15 +1195,15 @@
 				142,
 				176,
 				199,
-				214,
-				219,
-				222,
-				229,
-				232,
-				237,
-				243,
-				247,
-				260,
+				216,
+				221,
+				224,
+				231,
+				234,
+				239,
+				245,
+				249,
+				262,
 				278
 			]
 		},
@@ -1211,9 +1211,9 @@
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				238,
-				239,
-				240
+				240,
+				241,
+				242
 			]
 		}
 	],
@@ -2356,6 +2356,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/modules/bsp/bsp_uart.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/modules/bsp/bsp_uart.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/modules/can/hal_can.c",
 			"sourceGroupIndex" : 1
 		},
@@ -2695,17 +2706,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/task/trans/trans_task.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/task/uart/uart_receive.c",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "src/task/uart/uart_receive.h",
 			"sourceGroupIndex" : 0
 		},
 		{
