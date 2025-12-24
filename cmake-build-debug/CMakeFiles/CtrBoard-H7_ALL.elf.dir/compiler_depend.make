@@ -4239,6 +4239,93 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj: D
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
 
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.c \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/usart.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/stm32h7xx_hal_conf.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/core_cm7.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  D:/stm32environment/arm/arm-none-eabi/include/stdint.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/_default_types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/features.h \
+  D:/stm32environment/arm/arm-none-eabi/include/_newlib_version.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_intsup.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_stdint.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_version.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_gcc.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/mpu_armv7.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  D:/stm32environment/arm/arm-none-eabi/include/math.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/reent.h \
+  D:/stm32environment/arm/arm-none-eabi/include/_ansi.h \
+  D:/stm32environment/arm/arm-none-eabi/include/newlib.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/config.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/ieeefp.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/_types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/lock.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/cdefs.h \
+  D:/stm32environment/arm/arm-none-eabi/include/_ansi.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/FreeRTOSConfig.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+  D:/stm32environment/arm/arm-none-eabi/include/reent.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+  D:/stm32environment/arm/arm-none-eabi/include/string.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_locale.h \
+  D:/stm32environment/arm/arm-none-eabi/include/strings.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/string.h
+
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
@@ -5479,13 +5566,11 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: D:/HNU_RM_Code
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.c \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/stm32h7xx_hal_conf.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/core_cm7.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
   D:/stm32environment/arm/arm-none-eabi/include/stdint.h \
   D:/stm32environment/arm/arm-none-eabi/include/machine/_default_types.h \
@@ -5493,14 +5578,13 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_
   D:/stm32environment/arm/arm-none-eabi/include/_newlib_version.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_intsup.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_stdint.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_version.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_gcc.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/mpu_armv7.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
-  D:/stm32environment/arm/arm-none-eabi/include/math.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/FreeRTOSConfig.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+  D:/stm32environment/arm/arm-none-eabi/include/reent.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/reent.h \
   D:/stm32environment/arm/arm-none-eabi/include/_ansi.h \
   D:/stm32environment/arm/arm-none-eabi/include/newlib.h \
@@ -5509,44 +5593,6 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_
   D:/stm32environment/arm/arm-none-eabi/include/sys/_types.h \
   D:/stm32environment/arm/arm-none-eabi/include/machine/_types.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/lock.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/cdefs.h \
-  D:/stm32environment/arm/arm-none-eabi/include/_ansi.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/FreeRTOSConfig.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
-  D:/stm32environment/arm/arm-none-eabi/include/reent.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
@@ -5556,72 +5602,15 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/rm_config.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
   D:/stm32environment/arm/arm-none-eabi/include/string.h \
+  D:/stm32environment/arm/arm-none-eabi/include/_ansi.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/cdefs.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_locale.h \
   D:/stm32environment/arm/arm-none-eabi/include/strings.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/string.h \
   D:/stm32environment/arm/arm-none-eabi/include/stdlib.h \
   D:/stm32environment/arm/arm-none-eabi/include/machine/stdlib.h \
-  D:/stm32environment/arm/arm-none-eabi/include/alloca.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rm_module.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/robot.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DJI_motor/dji_motor.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/motor_def.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/chassis/chassis_task.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/LK_motor/lk_motor.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/HT_motor/ht04.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DM_motor/DM_motor.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dwt/drv_dwt.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/leg_vmc/drv_leg.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/leg_wbr/leg_wbr.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/pwm/drv_PWM.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/tim.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/BMI088/BMI088driver.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/ipc/uMCN.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/log/bsp_log.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h \
-  D:/stm32environment/arm/arm-none-eabi/include/stdio.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/types.h \
-  D:/stm32environment/arm/arm-none-eabi/include/machine/endian.h \
-  D:/stm32environment/arm/arm-none-eabi/include/machine/_endian.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/select.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_sigset.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_timeval.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/timespec.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_timespec.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_pthreadtypes.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/sched.h \
-  D:/stm32environment/arm/arm-none-eabi/include/machine/types.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/stdio.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/can/hal_can.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/fdcan.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/rm_algorithm.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc/arm_math.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/float.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h \
-  D:/stm32environment/arm/arm-none-eabi/include/limits.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/syslimits.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/Filter/filter32.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/kalman_filter/kalman_filter.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/MahonyAHRS/MahonyAHRS.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/PID/PID.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/QuaternionEKF/QuaternionEKF.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/Ramp/ramp.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/User_Lib/user_lib.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc/crc8_crc16.h
+  D:/stm32environment/arm/arm-none-eabi/include/alloca.h
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/rc/Keyboard/keyboard.h \
@@ -5770,6 +5759,15 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj: D:/HN
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.c \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/referee/referee_system.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  D:/stm32environment/arm/arm-none-eabi/include/stdint.h \
+  D:/stm32environment/arm/arm-none-eabi/include/machine/_default_types.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/features.h \
+  D:/stm32environment/arm/arm-none-eabi/include/_newlib_version.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_intsup.h \
+  D:/stm32environment/arm/arm-none-eabi/include/sys/_stdint.h \
+  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc/crc8_crc16.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/main.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Inc/stm32h7xx_hal_conf.h \
@@ -5778,13 +5776,6 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: D:/
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/core_cm7.h \
-  D:/stm32environment/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
-  D:/stm32environment/arm/arm-none-eabi/include/stdint.h \
-  D:/stm32environment/arm/arm-none-eabi/include/machine/_default_types.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/features.h \
-  D:/stm32environment/arm/arm-none-eabi/include/_newlib_version.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_intsup.h \
-  D:/stm32environment/arm/arm-none-eabi/include/sys/_stdint.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_version.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_compiler.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/CMSIS/Include/cmsis_gcc.h \
@@ -5828,7 +5819,6 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: D:/
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
-  D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/crc/crc8_crc16.h \
   D:/stm32environment/arm/arm-none-eabi/include/string.h \
   D:/stm32environment/arm/arm-none-eabi/include/sys/_locale.h \
   D:/stm32environment/arm/arm-none-eabi/include/strings.h \
@@ -7016,8 +7006,6 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: D:/HNU_RM_Co
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/trans/trans_task.h \
   D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/gimbal/gimbal_task.h
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/uart/uart_receive.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart/uart_receive.c
-
 
 D:/stm32environment/arm/arm-none-eabi/include/sys/_stdint.h:
 
@@ -7233,6 +7221,8 @@ D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/S
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.h:
+
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/USB_DEVICE/Target/usbd_conf.h:
 
 D:/stm32environment/arm/arm-none-eabi/include/stdio.h:
@@ -7376,6 +7366,8 @@ D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Src/tim.
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/algorithm/kalman_filter/kalman_filter.c:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/Core/Src/usart.c:
+
+D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.c:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/USB_DEVICE/Target/usbd_conf.c:
 
@@ -7524,8 +7516,6 @@ D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/l
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DJI_motor/dji_motor.c:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/DM_motor/DM_Motor.c:
-
-D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/task/uart/uart_receive.c:
 
 D:/HNU_RM_CodeStorage/HNU_Serial_H723_12_04/HNU_Embedded_Framework/src/modules/motor/HT_motor/ht04.c:
 

@@ -4,6 +4,41 @@
 #include <stdbool.h>
 #include "cmsis_os.h"
 
+/* Exported defines -----------------------------------------------------------*/
+/**
+ * @brief Length of SBUS received data
+ */
+#define SBUS_RX_BUF_NUM		18u
+/**
+ * @brief offset of remote control channel data
+ */
+#define RC_CH_VALUE_OFFSET		1024U
+
+/**
+ * @brief judgement keyboard set short time
+ */
+#define KEY_SET_SHORT_TIME		50U
+/**
+ * @brief judgement keyboard set long time
+ */
+#define KEY_SET_LONG_TIME		1000U
+
+/**
+ * @brief status of keyboard up
+ */
+#define KEY_UP                    0x00U
+/**
+ * @brief status of keyboard down
+ */
+#define KEY_DOWN                  0x01U
+
+/**
+ * @brief MAX speed of mouse speed
+ */
+#define MOUSE_SPEED_MAX		300U
+
+/* Exported types ------------------------------------------------------------*/
+
 /**
  * @brief typedef structure that contains the information for the remote control.
  */
@@ -62,10 +97,28 @@ typedef  struct
     uint8_t online_cnt;   /*!< online count */
 } Remote_Info_Typedef;
 
+/* Exported variables ---------------------------------------------------------*/
+/**
+ * @brief remote control structure variable
+ */
 extern Remote_Info_Typedef remote_ctrl;
-Remote_Info_Typedef *dbus_rc_init(void);
+/**
+ * @brief remote control usart RxDMA MultiBuffer
+ */
+extern uint8_t SBUS_MultiRx_Buf[2][SBUS_RX_BUF_NUM];
+/* Exported functions prototypes ---------------------------------------------*/
+/**
+  * @brief  convert the remote control received message
+  */
+extern void SBUS_TO_RC(volatile const uint8_t *sbus_buf, Remote_Info_Typedef *remote_ctrl);
+/**
+  * @brief  clear the remote control data while the device offline
+  */
+extern void Remote_Message_Moniter(Remote_Info_Typedef *remote_ctrl);
+
+
 void BSP_USART_Init();
-void Remote_Message_Moniter(Remote_Info_Typedef  *remote_ctrl);
+
 
 
 

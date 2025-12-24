@@ -1,8 +1,0 @@
-//
-// Created by SuperChen on 2025/11/30.
-//
-
-#ifndef CTRBOARD_H7_ALL_UART_RECEIVE_H
-#define CTRBOARD_H7_ALL_UART_RECEIVE_H
-
-#endif //CTRBOARD_H7_ALL_UART_RECEIVE_H

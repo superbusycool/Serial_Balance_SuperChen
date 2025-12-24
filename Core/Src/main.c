@@ -113,6 +113,8 @@ int main(void)
   MX_TIM4_Init();
   MX_USART10_UART_Init();
   MX_SPI6_Init();
+  MX_USART1_UART_Init();
+  MX_UART7_Init();
   /* USER CODE BEGIN 2 */
   MX_USB_DEVICE_Init();
 
@@ -206,8 +208,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-
 
 /**
   * @brief  This function is executed in case of error occurrence.
