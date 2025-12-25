@@ -57,28 +57,22 @@ delta_T以相反的符号加在左右lk电机最终的控制命令扭矩.
 * [达妙电机资料](https://gitee.com/kit-miao)
 * [达妙电机上手流程](https://gl1po2nscb.feishu.cn/wiki/Se1Dw464piCcERktZuOco7IPnTb)
 
-#### 2025.11.07
-* 整理一下代码,目前modules/can和modules/motor/dm_motor采用中科大麻神开源
-* 由于dvc_motor_dm.cpp是cpp文件,我们主体是c文件,二者无法很好的兼容,所以我把chassis_task需要的底层用cpp写的dm8009p驱动,再往上封装一层留给c文件的接口  
+#### 2025.11.07 
 * 
 #ifdef __cplusplus  
     
 extern "C" {
-    
+  
+cpp代码
 #endif  
 
 #ifdef __cplusplus
   
 }
 #endif  
-* 目前通过这种写法,通过gcc与g++同时分区域编译
-* 至于说电机数据我在chassis线程怎么读到,以及我怎么把电机的控制参数传输到底层cpp
-* 我参考了牢大的双向数据流写法(通过地址实现)
-- 控制参数流： Dm_Motor[x]->dm8009P_set → dm8009p_obj_t[i]->dm8009P_set → 通过 Dm8009_Set_Control() 函数设置给电机
-- 反馈数据流向：电机反馈 → dm8009p_obj_t[i]->dm8009_read → Dm_Motor[x]->dm8009_read → 供chassis_task使用  
-* 大概这么个思路
-* 关于dm8009的can数据发送是在task/motor_task.c中的定时中断回调中进行的,而dm8009的can数据接收是在modules/can/drv_can.c中的CAN1_Motor_Call_Back()函数进行的,而为什么can1收到数据的回调函数是这个
-因为main.c中的CAN_Init(&hcan1,CAN1_Motor_Call_Back)进行与can1的绑定,在drc_can.c中HAL_CAN_RxFifo0MsgPendingCallback中存在CAN1_Motor_Call_Back实现回调
+* 这种写法,通过gcc与g++同时分区域编译
+* 这只是可以同时兼容c和cpp的一种写法,不推荐,我们的主体代码全是c,可以参考cpp代码思路但是最好不要移植cpp
+
 #### 2025.11.19
 * <font color="red">警告不要在全是c的代码里塞cpp的东西,编译就算不报错了,但实际烧录之后测试任然会存在问题,中科大的开源只能参考思路,不要试图用他们的cpp代码,主要是编译器没法同时兼容</font>  
 * 现在框架任然使用并腿那一套,今天测试wbr腿部角度q的解算感觉没什么问题,修改了ht的驱动代码,改成dm的,收数据那一块不能直接用data[0]作为发送的ID,damiao是data[0]包含了ID和ERR,需要&oxof才行
@@ -98,3 +92,7 @@ extern "C" {
 ![串腿正方向.jpg ](Image/串腿正方向.jpg )
 * 后续腿部解算以此方向为基准
 * 目前代码的uart_dma部分是照搬了辽科的王草凡的开源
+
+* | 1 ----- 4 | 正方向  
+
+* | 2 ----- 3 | ----->

@@ -50,7 +50,8 @@ motor_config_t gimbal_motor_config[GIM_MOTOR_NUM] = {
         {
                 .motor_type = DM4310,
                 .can_id = CAN_ID_CHASSIS_MOTOR,
-                .rx_id = YAW_MOTOR_ID,
+                .tx_id = YAW_MOTOR_ID,
+                .rx_id = CHASSIS_JOINT_AND_YAW_RX_ID,
                 .controller = &gim_controller[YAW],
         },
         {
