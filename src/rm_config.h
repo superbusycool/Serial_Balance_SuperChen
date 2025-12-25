@@ -21,13 +21,9 @@
 #define user_malloc free
 #endif
 
- /* [0]为yaw，[1]为pitch */
-#define YAW 0
-#define PITCH 1
 
 /* 底盘和云台分别对应的 can 总线 */
 #define CAN_GIMBAL     hfdcan2
-#define CAN_CHASSIS_MOTOR hfdcan1
 #define CAN_WHEEL_MOTOR hfdcan2
 #define CAN_ID_WHEEL_MOTOR 2
 #define CAN_ID_GIMBAL_MOTOR 2
@@ -52,16 +48,17 @@
 /* 云台yaw轴速度 */
 #define GIMBAL_RC_MOVE_RATIO_YAW 0.5f
 
-/*******************************选择使用的电机*********************************************/
-
-#define BSP_USING_DJI_MOTOR
-#define BSP_USING_DM_MOTOR
-
-/*********************************************************************************/
-
-
-
 /* ---------------------------------- 底盘相关 ---------------------------------- */
+/*chassis_can_allocation*/
+#define CHASSIS_JOINT_LEFT_FRONT     4
+#define CHASSIS_JOINT_RIGHT_FRONT    3
+#define CHASSIS_JOINT_LEFT_BACK      1
+#define CHASSIS_JOINT_RIGHT_BACK     2
+#define CHASSIS_JOINT_AND_YAW_RX_ID  0X10
+
+#define CHASSIS_WHEEL_LEFT_ID    0X204
+#define CHASSIS_WHEEL_RIGHT_ID   0X205
+
 #ifdef WHEEL_LEG_INFANTRY
 /* 底盘轮距(m) */
 #define WHEEL_DISTANCE    0.110f
@@ -81,13 +78,6 @@
 #define LENGTH_B 294 //底盘宽的一半(mm)
 #endif
 
-#define CHASSIS_PERIOD     1.0f //(ms)
-
-/******** 底盘电机使用3508 *******/
-/* 3508底盘电机减速比 */
-#define CHASSIS_DECELE_RATIO (1.0f/19.0f)
-/* 单个电机速度极限，单位是分钟每转 */
-#define MAX_WHEEL_RPM        9000   //8347rpm = 3500mm/s
 
 /******** 底盘最大速度设置 *******/
 /* 底盘移动最大速度，单位是毫米每秒 */
@@ -96,23 +86,13 @@
 /* 底盘旋转最大速度，单位是度每秒 */
 #define MAX_CHASSIS_VR_SPEED 360
 
-/* --------------------------------- 底盘PID参数 -------------------------------- */
-/* 电机速度环 */
-#define CHASSIS_KP_V_MOTOR              6
-#define CHASSIS_KI_V_MOTOR              15
-#define CHASSIS_KD_V_MOTOR              0
-#define CHASSIS_INTEGRAL_V_MOTOR        8000
-#define CHASSIS_MAX_V_MOTOR             16000
-// TODO: 参数待整定
-/* 跟随云台PID */
-#define CHASSIS_KP_V_FOLLOW             0.05
-#define CHASSIS_KI_V_FOLLOW             0
-#define CHASSIS_KD_V_FOLLOW             0
-#define CHASSIS_INTEGRAL_V_FOLLOW       300
-#define CHASSIS_MAX_V_FOLLOW            1500
-
 /* ---------------------------------- 云台相关 ---------------------------------- */
-#define YAW_MOTOR_ID     0x207
+
+ /* [0]为yaw，[1]为pitch */
+#define YAW 0
+#define PITCH 1
+ /*gimbal_can allocation*/
+#define YAW_MOTOR_ID     5
 #define PITCH_MOTOR_ID   0x208
 
 #define CENTER_ECD_YAW   0        //云台yaw轴编码器归中值
@@ -132,11 +112,11 @@
 /* ------------------------------------------------------- 发射相关 --------------------------------------------------- */
 // TODO: 实际值待整定
 #define RIGHT_FRICTION_MOTOR_ID     0x201
-#define LEFT_FRICTION_MOTOR_ID   0x202
-#define TRIGGER_MOTOR_ID  0x204 //0x205
+#define LEFT_FRICTION_MOTOR_ID      0x202
+#define TRIGGER_MOTOR_ID            0x203
 
-#define FRICTION_SPEED_ONE  6000
-#define FRICTION_SPEED_CONTINUE  6000
+#define FRICTION_SPEED_ONE           6000
+#define FRICTION_SPEED_CONTINUE      6000
 
 #define TRIGGER_MOTOR_51_TO_ANGLE 51.47f
 /* -------------------------------- 发射电机PID参数 ------------------------------- */
@@ -265,35 +245,32 @@
 #define roll_InteVal 0
 #define roll_MaxVal 50
 
-/*****************************相关功能开启*********************************************/
-/*使用dbus协议*/
-#define BSP_USING_DBUS
-/*使用sbus协议*/
-//#define BSP_USING_SBUS
-/*使用位于云台的达妙imu*/
-#define  BSP_USING_DM_IMU
-/*使用imu校准*/
-#define BSP_BMI088_CALI
-/*轮子3508输入置零*/
-//#define M3508_SET_ZERO
+/*****************************function_open******************************************/
+
+/*使用3508*/
+#define BSP_USING_DJI_MOTOR
+/*使用dm电机,后续可细分电机种类*/
+#define BSP_USING_DM_MOTOR
+/*使用lk电机*/
+//#define  BSP_USING_LK_MOTOR
+/*使用ht电机*/
+//#define BSP_USING_HT_MOTOR
+
+/*3508输入置零*/
+#define M3508_SET_ZERO
 /*8009输入置零*/
 #define DM8009P_SET_ZERO
+
+/*使用位于云台的达妙imu*/
+#define  BSP_USING_DM_IMU
+/*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
+//#define BSP_BMI088_CALI
+
 /* -------------------------------------------------------------------------- */
-/*                                   遥控器相关                                  */
+/*                            remote_controler                                  */
 /* -------------------------------------------------------------------------- */
 #define BSP_USING_RC_DBUS
 //#define BSP_USING_RC_DBUS_KEYBOARD
-/* -------------------------------------------------------------------------- */
-/*                                   上下板间通讯                                   */
-/* -------------------------------------------------------------------------- */
-#define CAN_UP_TX_INFO 0x334
-/* 上下板CAN通信的扩展标识符 */
-#define CAN_RPY_TX          0x340   /* 底盘跟随云台相对角度 */
-// #define CAN_ODOM_TX_ONE     0x141   /* odom数据帧第一帧 */
-// #define CAN_ODOM_TX_TWO     0x142   /* odom数据帧第二帧 */
-// #define CAN_ODOM_TX_THREE   0x143   /* odom数据帧第二帧 */
 
-#define CAN_GIM_STATE         0x345   /* 底盘状态数据 */
-#define CAN_REFEREE_INFO      0x348   /* 裁判系统数据 */
 
 #endif /* _RM_CONFIG_H */

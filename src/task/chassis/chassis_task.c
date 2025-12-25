@@ -56,16 +56,13 @@ static float yaw_turn_region_min ;
 #define yaw_turn_region 1.7543f
 /* 髋关节电机零点偏移 需要提前测出 ,打开HT_OFFSET_CALIBRATION宏定义,改写HT_OFFSET_ ..的参数*/
 
-#define DM_ZERO_OFFSET_LF  -0.126777649f   //电机enable后,原先设置零点的位置会有误差,这里记录下误差,此误差会导致左右轮输出扭矩存在50-100的误差
-#define DM_ZERO_OFFSET_LB  0.0626602173f
-#define DM_ZERO_OFFSET_RF  0.109291077f
-#define DM_ZERO_OFFSET_RB  -0.0626602173f
+#define DM_ZERO_OFFSET_LF  0.0f   //电机enable后,原先设置零点的位置会有误差,这里记录下误差,此误差会导致左右轮输出扭矩存在50-100的误差
+#define DM_ZERO_OFFSET_LB  0.0f
+#define DM_ZERO_OFFSET_RF  0.0f
+#define DM_ZERO_OFFSET_RB  0.0f
 
 #define phi4_set -0.314
 #define phi1_set 0.314   //3.14+0.314,0.314对应18°为限位的角度
-
-/*dm8009p电机返回的值()*/
-#define dm_number  4
 
 /*髋关节电机 DMJ8009P-2EC 实例*/
 static dm_motor_object_t *dm_motor[4];
@@ -88,7 +85,7 @@ static float F_l_R;
 #define Rl 0.0f    //轮间距
 
 #define WHEEL_RADIUS  0.1f      //轮子半径/m
-#define WHEEL_MASS    1.635f     //轮子带lk电机总重
+#define WHEEL_MASS    1.635f     //轮子带3508电机总重
 
 /*跳跃相关*/
 #define JUMP_TORQUE_PRESS    30.0f   // 跳跃时下压扭矩，正负需对应各电机确定,待重新调试
@@ -792,7 +789,7 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){
  */
 
 
-/* --------------------------------- 电机控制相关 --------------------------------- */
+/* ----------------------------------------- 电机控制相关 ---------------------------------------------------------- */
 static void leg_init_get_zero()
 {
     // 首先各个电机给定一个适当的力矩，并持续，确保撞到限位
@@ -968,35 +965,35 @@ static void dm_motor_init()
 {
 
     /*电机id等可参考平步实物进行修改*/
-    motor_config_t dm_motor_config1 = {   //left_front
+    motor_config_t dm_motor_config1 = {   //left_back
             .motor_type = DM8009P,
             .can_id = CAN_ID_CHASSIS_MOTOR,
-            .tx_id = 1,
-            .rx_id = 0x10,
+            .tx_id = CHASSIS_JOINT_LEFT_BACK,
+            .rx_id = CHASSIS_JOINT_AND_YAW_RX_ID,
     };
     dm_motor[0] = dm_motor_register(&dm_motor_config1, dm_control[0]);
 
-    motor_config_t dm_motor_config4 = {     //left_back
+    motor_config_t dm_motor_config4 = {     //left_front
             .motor_type = DM8009P,
             .can_id = CAN_ID_CHASSIS_MOTOR,
-            .tx_id = 4,
-            .rx_id = 0x10,
+            .tx_id = CHASSIS_JOINT_LEFT_FRONT,
+            .rx_id = CHASSIS_JOINT_AND_YAW_RX_ID,
     };
     dm_motor[3] = dm_motor_register(&dm_motor_config4, dm_control[3]);
 
-    motor_config_t dm_motor_config2 = {     //rigdm_front
+    motor_config_t dm_motor_config2 = {     //right_back
             .motor_type = DM8009P,
             .can_id = CAN_ID_CHASSIS_MOTOR,
-            .tx_id = 2,
-            .rx_id = 0x10,
+            .tx_id = CHASSIS_JOINT_RIGHT_BACK,
+            .rx_id = CHASSIS_JOINT_AND_YAW_RX_ID,
     };
     dm_motor[1] = dm_motor_register(&dm_motor_config2, dm_control[1]);
 
-    motor_config_t dm_motor_config3 = {     //rogdm_back
+    motor_config_t dm_motor_config3 = {     //roght_front
             .motor_type = DM8009P,
             .can_id = CAN_ID_CHASSIS_MOTOR,
-            .tx_id = 3,
-            .rx_id = 0x10,
+            .tx_id = CHASSIS_JOINT_RIGHT_FRONT,
+            .rx_id = CHASSIS_JOINT_AND_YAW_RX_ID,
     };
     dm_motor[2] = dm_motor_register(&dm_motor_config3, dm_control[2]);
 
@@ -1086,14 +1083,14 @@ static void m3508_motor_init()
     motor_config_t motor_config1 = {
             .motor_type = M3508,
             .can_id = CAN_ID_WHEEL_MOTOR,
-            .rx_id = 0x201,
+            .rx_id = CHASSIS_WHEEL_LEFT_ID,
     };
     m3508_motor[LEFT] = dji_motor_register(&motor_config1, M3508_control[LEFT]);
 
     motor_config_t motor_config_2 = {
             .motor_type = M3508,
             .can_id = CAN_ID_WHEEL_MOTOR,
-            .rx_id = 0x202,
+            .rx_id = CHASSIS_WHEEL_RIGHT_ID,
     };
     m3508_motor[RIGHT] = dji_motor_register(&motor_config_2, M3508_control[RIGHT]);
 }
