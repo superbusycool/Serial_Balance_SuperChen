@@ -13,10 +13,13 @@
 #define DM_P_MAX 12.5		//位置最大值
 #define DM_V_MIN -45			//速度最小值
 #define DM_V_MAX 45			//速度最大值
+//#define DM_KP_MIN 0.0		//Kp最小值
+//#define DM_KP_MAX 54.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
 #define DM_KP_MIN 0.0		//Kp最小值
-#define DM_KP_MAX 54.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
+#define DM_KP_MAX 0.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
 #define DM_KD_MIN 0.0		//Kd最小值
-#define DM_KD_MAX 4.0		//Kd最大值
+//#define DM_KD_MAX 4.0		//Kd最大值
+#define DM_KD_MAX 0		//Kd最大值
 #define DM_T_MIN -35			//转矩最小值
 #define DM_T_MAX 35			//转矩最大值
 
@@ -65,8 +68,9 @@ typedef struct
     float total_angle;        // 角度为多圈角度,范围是-95.5~95.5,单位为rad
     float last_angle;
     float speed_rads;         // 在 0 和 4095 之间，缩放 V MIN 和 V MAX
-    float speed_buf[DM_SPEED_BUFFER_SIZE];  // 速度缓冲区，用于滤波
-    float real_current;     // 实际转矩电流,在 0 ~ 4095 之间，缩放到-40 和 40 安培，对应于峰值相电流
+    float torque;             //扭矩
+    float  temperature_MOS;   /*!< Motor Temperature_MOS   */
+    float  temperature_Rotor; /*!< Motor Temperature_Rotor */
     float  target;            // 目标值(输出轴扭矩矩/速度/角度(单位度))
 } dm_motor_measure_t;
 

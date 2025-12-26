@@ -829,8 +829,11 @@ float dm_obs[4];
 #define DM_RATIO 1.0f
 #define DM_OUTPUT_LIMIT  10.0f
 
+
 /*目前是以护栏较窄的一侧为正方向,从正方向向后看去,rigdm_front:id 2 ; rigdm_back:id 3;left_front:id 1;left_back:id 4*/
-/* 1 号电机 */
+/* 1 号电机
+ * 输入值为正,逆时针
+ * */
 static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
 {
     control_dt[0] = dwt_get_time_us() - control_start[0];
@@ -860,7 +863,9 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     }
     return set;
 }
-/* 2 号电机 */
+/* 2 号电机
+* 输入值为正,逆时针
+ * */
 static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
 {
     control_dt[1] = dwt_get_time_us() - control_start[1];
@@ -891,7 +896,9 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
     }
     return set;
 }
-/* 3 号电机 */
+/* 3 号电机
+ * 输入值为正,逆时针
+ * */
 static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
 {
     control_dt[2] = dwt_get_time_us() - control_start[2];
@@ -920,7 +927,9 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
     }
     return set;
 }
-/* 4 号电机 */
+/* 4 号电机
+ * 输入为正,方向逆时针
+ * */
 static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
 {
     control_dt[3] = dwt_get_time_us() - control_start[3];
@@ -939,6 +948,7 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
     }
 #ifdef DM8009P_SET_ZERO
     dm_send_t[3] = 0;
+
 
 #endif
 
