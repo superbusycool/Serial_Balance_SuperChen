@@ -96,3 +96,6 @@ cpp代码
 * | 1 ----- 4 | 正方向  
 
 * | 2 ----- 3 | ----->
+### 2025.12.26
+* 目前的关于uart_dma,can,referee_system的代码是参考 [辽科王草凡佬的](https://zhuanlan.zhihu.com/p/720966722)
+* 代码在cubemx重新生成后main.c的void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)函数会报错删去即可,和motor_task里的重复定义了

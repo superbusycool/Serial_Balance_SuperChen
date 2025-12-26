@@ -3942,9 +3942,9 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
  .text.FDCAN1_IT0_IRQHandler
                 0x0800214c       0x10 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj
                 0x0800214c                FDCAN1_IT0_IRQHandler
- .text.FDCAN2_IT1_IRQHandler
+ .text.FDCAN2_IT0_IRQHandler
                 0x0800215c       0x10 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj
-                0x0800215c                FDCAN2_IT1_IRQHandler
+                0x0800215c                FDCAN2_IT0_IRQHandler
  .text.TIM4_IRQHandler
                 0x0800216c       0x10 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj
                 0x0800216c                TIM4_IRQHandler
@@ -4119,6 +4119,7 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
                 0x08002b54                CRS_IRQHandler
                 0x08002b54                EXTI4_IRQHandler
                 0x08002b54                RNG_IRQHandler
+                0x08002b54                FDCAN2_IT1_IRQHandler
                 0x08002b54                ETH_IRQHandler
                 0x08002b54                TIM1_UP_IRQHandler
                 0x08002b54                BDMA_Channel4_IRQHandler
@@ -4127,7 +4128,6 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
                 0x08002b54                SPI6_IRQHandler
                 0x08002b54                MDIOS_IRQHandler
                 0x08002b54                I2C4_EV_IRQHandler
-                0x08002b54                FDCAN2_IT0_IRQHandler
                 0x08002b54                LPUART1_IRQHandler
                 0x08002b54                TIM2_IRQHandler
                 0x08002b54                DMA2D_IRQHandler
