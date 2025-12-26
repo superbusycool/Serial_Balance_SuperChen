@@ -56,8 +56,8 @@
 #define CHASSIS_JOINT_RIGHT_BACK     2
 #define CHASSIS_JOINT_AND_YAW_RX_ID  0X10
 
-#define CHASSIS_WHEEL_LEFT_ID    0X204
-#define CHASSIS_WHEEL_RIGHT_ID   0X205
+#define CHASSIS_WHEEL_LEFT_ID    0X201
+#define CHASSIS_WHEEL_RIGHT_ID   0X202
 
 #ifdef WHEEL_LEG_INFANTRY
 /* 底盘轮距(m) */
@@ -111,9 +111,9 @@
 
 /* ------------------------------------------------------- 发射相关 --------------------------------------------------- */
 // TODO: 实际值待整定
-#define RIGHT_FRICTION_MOTOR_ID     0x201
-#define LEFT_FRICTION_MOTOR_ID      0x202
-#define TRIGGER_MOTOR_ID            0x203
+#define RIGHT_FRICTION_MOTOR_ID     0x203
+#define LEFT_FRICTION_MOTOR_ID      0x204
+#define TRIGGER_MOTOR_ID            0x205
 
 #define FRICTION_SPEED_ONE           6000
 #define FRICTION_SPEED_CONTINUE      6000

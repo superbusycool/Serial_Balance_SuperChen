@@ -73,12 +73,13 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
     measure->total_angle = uint_to_float(value_temp, DM_P_MIN, DM_P_MAX, 16);
 
     value_temp=(uint16_t)(rxbuff[3]<<4)|(rxbuff[4]>>4);
-    measure->speed_rads = AverageFilter((uint_to_float(value_temp, DM_V_MIN, DM_V_MAX, 12) - DM_SPEED_BIAS), measure->speed_buf, DM_SPEED_BUFFER_SIZE); //取平均值
+    measure->speed_rads = uint_to_float(value_temp, DM_V_MIN, DM_V_MAX, 12);
 
     value_temp=(uint16_t)((rxbuff[4]&0x0F)<<8)|rxbuff[5];
-    measure->real_current = DM_CURRENT_SMOOTH_COEF * uint_to_float(value_temp, DM_T_MIN, DM_T_MAX, 12) +
-                            (1 - DM_CURRENT_SMOOTH_COEF) * measure->real_current;  //一阶滤波
+    measure->torque = uint_to_float(value_temp, DM_T_MIN, DM_T_MAX, 12);
 
+    measure->temperature_MOS   = (float)(rxbuff[6]);
+    measure->temperature_Rotor = (float)(rxbuff[7]);
 }
 
 /**
@@ -107,7 +108,12 @@ int dm_motor_rx_callback(uint32_t id, uint8_t *data){
 
 static float fdb_dt[4];
 static float fdb_start[4];
-
+uint8_t data_obs[8];
+float p;     // 目标位置，单位为弧度(rad)
+float v;     // 目标速度，单位为 rad/s
+float kp;    // 为位置增益，单位为 N-m/rad
+float kd;    // 为速度增益，单位为 N-m*s/rad
+float t;     // 力矩，单位为 N-m
 // 运算电机实例的控制器,发送控制报文
 static void dm_motor_control(void const *parameter)
 {
@@ -134,17 +140,21 @@ static void dm_motor_control(void const *parameter)
     {
         if (motor->ctrl_mode == DM_CMD_MOTOR_MODE) {
             set = control_get;
-            if (motor->stop_flag == MOTOR_STOP) {
-                memset(&set, 0, sizeof(dm_motor_para_t));
-            }
+            p=set.p;
+            v=set.v;
+            kp=set.kp;
+            kd=set.kd;
+            t=set.t;
             pack_contol_para(set, data_buf); // 将控制参数打包成报文数据帧
+            memcpy(data_obs, data_buf, sizeof(data_obs));
             CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
 
         }
-        else if(motor->ctrl_mode == DM_CMD_RESET_MODE){
+        else if(motor->ctrl_mode == DM_CMD_RESET_MODE){ //确保失能
             memset(data_buf, 0xff, 7);  // 发送电机指令的时候前面7bytes都是0xff
             data_buf[7] = (uint8_t)motor->ctrl_mode; // 最后一位是命令id
             CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
+            motor->ctrl_mode = motor->to_mode;  // 切换模式成功
         }
     }
 
