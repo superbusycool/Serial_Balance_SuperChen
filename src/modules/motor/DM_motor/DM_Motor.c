@@ -12,7 +12,7 @@ extern FDCAN_HandleTypeDef hfdcan2;
 static dm_motor_object_t dm_motor_obj[DM_MOTOR_CNT];
 static uint8_t idx=0;
 
-static void pack_contol_para(dm_motor_para_t para, uint8_t *buf);
+static void pack_contol_para(dm_motor_object_t dm_motor_obiect,dm_motor_para_t para, uint8_t *buf);
 
 uint8_t Data_Enable[8]={0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC};		//电机使能命令
 uint8_t Data_Failure[8]={0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFD};		//电机失能命令
@@ -91,7 +91,7 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
  */
 int dm_motor_rx_callback(uint32_t id, uint8_t *data){
     // 找到对应的实例后再调用motor_decode进行解析
-    for (size_t i = 0; i < idx; ++i)
+    for (size_t i = 0; i < idx; i++)
     {   /* 电机手册反馈报文 */
         if (dm_motor_obj[i].tx_id == (data[0]&0x0f))
         {
@@ -108,12 +108,7 @@ int dm_motor_rx_callback(uint32_t id, uint8_t *data){
 
 static float fdb_dt[4];
 static float fdb_start[4];
-uint8_t data_obs[8];
-float p;     // 目标位置，单位为弧度(rad)
-float v;     // 目标速度，单位为 rad/s
-float kp;    // 为位置增益，单位为 N-m/rad
-float kd;    // 为速度增益，单位为 N-m*s/rad
-float t;     // 力矩，单位为 N-m
+static uint8_t data_buf[8] = {0};
 // 运算电机实例的控制器,发送控制报文
 static void dm_motor_control(void const *parameter)
 {
@@ -121,7 +116,6 @@ static void dm_motor_control(void const *parameter)
     dm_motor_measure_t measure = motor->measure;
     dm_motor_para_t set; // 电机控制器计算得到的控制参数
     dm_motor_para_t control_get; // 电机控制器计算得到的控制参数
-    uint8_t data_buf[8];
 
     fdb_dt[motor->tx_id-1] = dwt_get_time_us() - fdb_start[motor->tx_id-1];
     fdb_start[motor->tx_id-1] = dwt_get_time_us();
@@ -140,17 +134,11 @@ static void dm_motor_control(void const *parameter)
     {
         if (motor->ctrl_mode == DM_CMD_MOTOR_MODE) {
             set = control_get;
-            p=set.p;
-            v=set.v;
-            kp=set.kp;
-            kd=set.kd;
-            t=set.t;
-            pack_contol_para(set, data_buf); // 将控制参数打包成报文数据帧
-            memcpy(data_obs, data_buf, sizeof(data_obs));
+            pack_contol_para(*motor,set, data_buf); // 将控制参数打包成报文数据帧
             CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
 
         }
-        else if(motor->ctrl_mode == DM_CMD_RESET_MODE){ //确保失能
+        else if(motor->to_mode == DM_CMD_RESET_MODE){ //确保失能
             memset(data_buf, 0xff, 7);  // 发送电机指令的时候前面7bytes都是0xff
             data_buf[7] = (uint8_t)motor->ctrl_mode; // 最后一位是命令id
             CAN_send(motor->fdcan, motor->tx_id, data_buf);  // 发送报文
@@ -160,14 +148,12 @@ static void dm_motor_control(void const *parameter)
 
 }
 
-
+static uint8_t i;
 
 void dm_controll_all_poll(void)
 {
-    static uint8_t i;
-    dm_motor_control(&dm_motor_obj[i++]);
-    if(i==4)
-        i=0;
+    dm_motor_control(&dm_motor_obj[i]);
+    i = (i + 1) % idx;
 }
 
 /**
@@ -257,11 +243,11 @@ dm_motor_object_t *dm_motor_register(motor_config_t *config, void *control)
   * @retval
   */
 uint8_t *pbuf,*vbuf;
-static void pack_contol_para(dm_motor_para_t para, uint8_t *buf)
+static void pack_contol_para(dm_motor_object_t dm_motor_obiect,dm_motor_para_t para, uint8_t *buf)
 {
     uint16_t p, v, kp, kd, t;
 
-    switch (dm_motor_obj[idx].set_control_mode) {
+    switch (dm_motor_obiect.set_control_mode) {
 
         case MIT:
 
