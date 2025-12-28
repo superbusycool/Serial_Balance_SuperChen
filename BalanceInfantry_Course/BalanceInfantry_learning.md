@@ -96,3 +96,11 @@ cpp代码
 * | 1 ----- 4 | 正方向  
 
 * | 2 ----- 3 | ----->
+### 2025.12.26
+* 目前的关于uart_dma,can,referee_system的代码是参考 [辽科王草凡佬的](https://zhuanlan.zhihu.com/p/720966722)
+* 代码在cubemx重新生成后main.c的void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)函数会报错删去即可,和motor_task里的重复定义了
+### 2025.12.28
+* 之前一直存在一个bug,电机有时候会在使能之后疯狂抽分,后面测试发现问题在DM_Motror.c中的static void dm_motor_control(void const *parameter)函数
+其中的发送报文使用uint8_t data_buf[8]存储,动态分配内存并且没有初值会导致每次使用时其动态地址处的随机值被当做电机的控制数据发出导致抽疯[推测],非常危险
+目前改成了static uint8_t data_buf[8] = {0};静态内存并且有初值
+* 可以通过开发板灯是否闪烁判断程序是否卡死
