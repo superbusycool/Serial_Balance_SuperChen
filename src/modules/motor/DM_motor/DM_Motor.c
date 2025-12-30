@@ -50,7 +50,8 @@ static uint16_t float_to_uint(float x, float x_min, float x_max, int bits){
 }
 
 
-
+static bool angle_direct_falg1 ;
+static bool angle_direct_falg2 ;
 /**
  * @brief 根据返回的can_object对反馈报文进行解析
  *
@@ -64,13 +65,12 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
     dm_motor_measure_t *measure = &motor->measure; // measure要多次使用,保存指针减小访存开销
 
     // 解析数据并对电流和速度进行滤波,电机的反馈报文具体格式见电机说明手册
-    measure->last_angle = measure->total_angle;
 
     measure->id = (rxbuff[0])&0x0f;
     measure->ERR = (rxbuff[0])>>4;
 
     value_temp=(uint16_t)(rxbuff[1]<<8)|rxbuff[2];
-    measure->total_angle = uint_to_float(value_temp, DM_P_MIN, DM_P_MAX, 16);
+    measure->angle = uint_to_float(value_temp, DM_P_MIN, DM_P_MAX, 16);
 
     value_temp=(uint16_t)(rxbuff[3]<<4)|(rxbuff[4]>>4);
     measure->speed_rads = uint_to_float(value_temp, DM_V_MIN, DM_V_MAX, 12);
@@ -80,6 +80,22 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
 
     measure->temperature_MOS   = (float)(rxbuff[6]);
     measure->temperature_Rotor = (float)(rxbuff[7]);
+
+    measure->angle_delta = measure->angle - measure->last_angle;
+    /*关于套圈的情况*/
+    if((measure->angle_delta <= -DM_ANGLE_DELTA_THRESHOLD)){/*计算圈数,后续可能会用到*/
+        measure->circle_cnt ++;
+        angle_direct_falg1 = TRUE;
+        angle_direct_falg2 = FALSE;
+    }
+    if((measure->angle_delta >= DM_ANGLE_DELTA_THRESHOLD)){
+        measure->circle_cnt --;
+        angle_direct_falg2 = TRUE;
+        angle_direct_falg1 = FALSE;
+    }
+    measure->angle_abs = fmod(DM_P_MAX + measure->angle, DM_P_MAX); //double取余操作
+
+    measure->last_angle = measure->angle;
 }
 
 /**
@@ -208,6 +224,7 @@ dm_motor_object_t *dm_motor_register(motor_config_t *config, void *control)
     dm_motor_obj[idx].tx_id = config->tx_id;                       // 发送报文的ID(主发)
     dm_motor_obj[idx].control = control;                           // 电机控制器执行
     dm_motor_obj[idx].set_mode = motor_set_mode;                   // 对接电机设置参数方法
+    dm_motor_obj[idx].measure.circle_cnt = 0;                      //电机圈数初始为零
     // 电机挂载CAN总线
     switch (config->can_id)
     {

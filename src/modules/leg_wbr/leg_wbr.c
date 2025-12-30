@@ -18,10 +18,10 @@ static void wbr_calc(struct wbr_leg_obj *leg,struct ins_msg *ins,float dt){
 
     leg->thetab = ins->pitch * DEGREE_2_RAD;//机体倾角,沿机体正方向前倾为正,注意正负号,实测需要修正
 
-    leg->X1 = leg->L1a - leg->L1u * arm_cos_f32(leg->q1);
-    leg->X2 = leg->L2a - leg->L2u * arm_cos_f32(leg->q2);
-    leg->Y1 = leg->L1u * arm_sin_f32(leg->q1);
-    leg->Y2 = leg->L2u * arm_sin_f32(leg->q2);
+    leg->X1 = leg->L1a - leg->L1u * arm_cos_f32(leg->phi1);
+    leg->X2 = leg->L2a - leg->L2u * arm_cos_f32(leg->phi2);
+    leg->Y1 = leg->L1u * arm_sin_f32(leg->phi1);
+    leg->Y2 = leg->L2u * arm_sin_f32(leg->phi2);
     leg->sigma1 = sqrt(-(-leg->L1d*leg->L1d-2*leg->L1d*leg->L2d-leg->L2d*leg->L2d+leg->X1*leg->X1+2*leg->X1*leg->X2+leg->X2*leg->X2+leg->Y1*leg->Y1-2*leg->Y1*leg->Y2+leg->Y2*leg->Y2) * (-leg->L1d*leg->L1d+2*leg->L1d*leg->L2d-leg->L2d*leg->L2d+leg->X1*leg->X1+2*leg->X1*leg->X2+leg->X2*leg->X2+leg->Y1*leg->Y1-2*leg->Y1*leg->Y2+leg->Y2*leg->Y2));
     leg->Xe = (leg->Y1*leg->sigma1-leg->Y2*leg->sigma1+leg->L1d*leg->L1d*leg->X1+leg->L1d*leg->L1d*leg->X2-leg->L2d*leg->L2d*leg->X1-leg->L2d*leg->L2d*leg->X2+leg->X1*leg->X2*leg->X2-leg->X1*leg->X1*leg->X2-leg->X1*leg->Y1*leg->Y1-leg->X1*leg->Y2*leg->Y2+leg->X2*leg->Y1*leg->Y1+leg->X2*leg->Y2*leg->Y2-leg->X1*leg->X1*leg->X1+leg->X2*leg->X2*leg->X2+2*leg->X1*leg->Y1*leg->Y2-2*leg->X2*leg->Y1*leg->Y2) / (2*(leg->X1*leg->X1+2*leg->X1*leg->X2+leg->X2*leg->X2+leg->Y1*leg->Y1-2*leg->Y1*leg->Y2+leg->Y2*leg->Y2));
     leg->Ye = (leg->X1*leg->sigma1+leg->X2*leg->sigma1-leg->L1d*leg->L1d*leg->Y1+leg->L1d*leg->L1d*leg->Y2+leg->L2d*leg->L2d*leg->Y1-leg->L2d*leg->L2d*leg->Y2+leg->X1*leg->X1*leg->Y1+leg->X1*leg->X1*leg->Y2+leg->X2*leg->X2*leg->Y1+leg->X2*leg->X2*leg->Y2-leg->Y1*leg->Y2*leg->Y2-leg->Y1*leg->Y1*leg->Y2+leg->Y1*leg->Y1*leg->Y1+leg->Y2*leg->Y2*leg->Y2+2*leg->X1*leg->X2*leg->Y1+2*leg->X1*leg->X2*leg->Y2) / (2*(leg->X1*leg->X1+2*leg->X1*leg->X2+leg->X2*leg->X2+leg->Y1*leg->Y1-2*leg->Y1*leg->Y2+leg->Y2*leg->Y2));
@@ -46,10 +46,10 @@ static void wbr_calc(struct wbr_leg_obj *leg,struct ins_msg *ins,float dt){
 static void wbr_calculation_Torque(struct wbr_leg_obj *leg,float *WBR_T){
 
     //雅可比矩阵元素计算
-    leg->q1_L = ((leg->Xe+leg->X1)*arm_sin_f32(leg->q) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->q))/(leg->L1u*(-(leg->Xe+leg->X1)*arm_sin_f32(leg->q1) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->q1)));
-    leg->q1_q = (leg->L*((leg->Xe+leg->X1)*arm_cos_f32(leg->q) - (leg->Ye-leg->Y1)*arm_sin_f32(leg->q)))/(leg->L1u*(-(leg->Xe+leg->X1)*arm_sin_f32(leg->q1) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->q1)));
-    leg->q2_L = ((leg->Xe-leg->X2)*arm_sin_f32(leg->q) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->q))/(leg->L2u*((leg->Xe-leg->X2)*arm_sin_f32(leg->q2) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->q2)));
-    leg->q2_q = (leg->L*((leg->Xe-leg->X2)*arm_cos_f32(leg->q) - (leg->Ye-leg->Y2)*arm_sin_f32(leg->q)))/(leg->L2u*((leg->Xe-leg->X2)*arm_sin_f32(leg->q2) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->q2)));
+    leg->q1_L = ((leg->Xe+leg->X1)*arm_sin_f32(leg->q) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->q))/(leg->L1u*(-(leg->Xe+leg->X1)*arm_sin_f32(leg->phi1) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->phi1)));
+    leg->q1_q = (leg->L*((leg->Xe+leg->X1)*arm_cos_f32(leg->q) - (leg->Ye-leg->Y1)*arm_sin_f32(leg->q)))/(leg->L1u*(-(leg->Xe+leg->X1)*arm_sin_f32(leg->phi1) + (leg->Ye-leg->Y1)*arm_cos_f32(leg->phi1)));
+    leg->q2_L = ((leg->Xe-leg->X2)*arm_sin_f32(leg->q) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->q))/(leg->L2u*((leg->Xe-leg->X2)*arm_sin_f32(leg->phi2) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->phi2)));
+    leg->q2_q = (leg->L*((leg->Xe-leg->X2)*arm_cos_f32(leg->q) - (leg->Ye-leg->Y2)*arm_sin_f32(leg->q)))/(leg->L2u*((leg->Xe-leg->X2)*arm_sin_f32(leg->phi2) + (leg->Ye-leg->Y2)*arm_cos_f32(leg->phi2)));
 
     //定义矩阵A的元素(对角线)
 
@@ -79,13 +79,13 @@ static void wbr_calculation_Torque(struct wbr_leg_obj *leg,float *WBR_T){
     WBR_T[1] = leg->J_inv_T[1][0] * leg->wbr_Fbl + leg->J_inv_T[1][1] * leg->WBR_Tbl;
 }
 
-static int8_t input_wbr_leg_angle(struct wbr_leg_obj *leg, float q1, float q2){
+static int8_t input_wbr_leg_angle(struct wbr_leg_obj *leg, float phi1, float phi2){
 
-    leg->q1 = q1;
-    leg->q2 = q2;
+    leg->phi1 = phi1;
+    leg->phi2 = phi2;
 
-    if(q1 < leg->q1_max && q1 > leg->q1_min){
-        if(q2 < leg->q2_max && q2 > leg->q2_min){
+    if(phi1 < leg->phi1_max && phi1 > leg->phi1_min){
+        if(phi2 < leg->phi2_max && phi2 > leg->phi2_min){
             leg->wbr_leg_state = LEG_NORMAL;
         }else{
             leg->wbr_leg_state = LEG_ERROR;
@@ -112,10 +112,10 @@ wbr_leg_obj_t * wbr_leg_register(wbr_leg_config_t *config)
     wbr_obj[idx].L2d = config->L2d;
     wbr_obj[idx].L1a = config->L1a;
     wbr_obj[idx].L2a = config->L2a;
-    wbr_obj[idx].q1_max = PI;    //根据实际修改
-    wbr_obj[idx].q1_min = 0;
-    wbr_obj[idx].q2_max = PI;
-    wbr_obj[idx].q2_min = 0;
+    wbr_obj[idx].phi1_max = PI;    //根据实际修改
+    wbr_obj[idx].phi1_min = 0;
+    wbr_obj[idx].phi2_max = PI;
+    wbr_obj[idx].phi2_min = 0;
     wbr_obj[idx].wbr_leg_state = WBR_LEG_ERROR;
     wbr_obj[idx].q = PI/2;
     wbr_obj[idx].wbr_calc = wbr_calc;

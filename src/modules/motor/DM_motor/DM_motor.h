@@ -20,6 +20,8 @@
 #define DM_T_MIN -35			//转矩最小值
 #define DM_T_MAX 35			//转矩最大值
 
+#define DM_ANGLE_DELTA_THRESHOLD   12.0f  //实测数据电机套圈时角度的变化,此值观测得到,和上位机DM_P_MAX取值有关
+
 #define DM_SPEED_BIAS 0.0f   //电机速度偏差 rad/s
 /* 滤波系数设置为1的时候即关闭滤波 */
 #define DM_CURRENT_SMOOTH_COEF 0.9f
@@ -62,13 +64,17 @@ typedef struct
     uint8_t id;
     uint8_t ERR;   //错误码
 
-    float total_angle;        // 角度为多圈角度,范围是-95.5~95.5,单位为rad
+    float total_angle;        // 角度为多圈角度
+    float circle_cnt;          //圈数
+    float angle;              //角度范围在-2π到2π
+    float angle_abs;          //绝对角度,每个位置固定
     float last_angle;
+    float angle_delta;
     float speed_rads;         // 在 0 和 4095 之间，缩放 V MIN 和 V MAX
     float torque;             //扭矩
-    float  temperature_MOS;   /*!< Motor Temperature_MOS   */
-    float  temperature_Rotor; /*!< Motor Temperature_Rotor */
-    float  target;            // 目标值(输出轴扭矩矩/速度/角度(单位度))
+    float temperature_MOS;   /*!< Motor Temperature_MOS   */
+    float temperature_Rotor; /*!< Motor Temperature_Rotor */
+    float target;            // 目标值(输出轴扭矩矩/速度/角度(单位度))
 } dm_motor_measure_t;
 
 /**

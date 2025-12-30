@@ -132,7 +132,7 @@ static void remote_to_cmd(void)
                                 if(chassis_cmd_data.last_mode != CHASSIS_JUMP){
                                     chassis_cmd_data.ctrl_mode = CHASSIS_SPIN;
                                 }
-//
+
                             }
                             else if(remote_ctrl_last.rc.s[1] == RC_DN){
                                 chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;

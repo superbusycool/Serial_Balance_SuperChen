@@ -20,13 +20,13 @@ typedef struct wbr_leg_obj
     float L1d,L2d; // L1d=L2d,与轮毂电机连接一侧杆长
     float L1a,L2a; //电机间距,串腿则默认为0
 
-    float q1,q2; //对应上交开源中的φ1和φ2
+    float phi1,phi2; //对应上交开源中的φ1和φ2
 
     /*极限值*/
-    float q1_min;
-    float q1_max;
-    float q2_min;
-    float q2_max;
+    float phi1_min;
+    float phi1_max;
+    float phi2_min;
+    float phi2_max;
 
     /*杆状态*/
     uint8_t wbr_leg_state;
