@@ -601,8 +601,9 @@ void chassis_control_task(void)
         case CHASSIS_INIT:
             Process_Clear();
             motor_enable();
+#ifdef DM_8009_SET_ZERO
             leg_init_get_zero();
-
+#endif
             break;
         case CHASSIS_RECOVERY:/*不稳定的状态,介于init和relex状态的过渡状态*/
             Process_Clear();
@@ -736,14 +737,14 @@ static void leg_calc()
     // 左腿解算
     /*Warning: 若是电机没有按照规定安装,需要调整phi1和phi4的计算,这会很大程度影响到后续的vmc解算*/
 
-    phi1_L = PI - (-(dm_motor[3]->measure.total_angle - DM_ZERO_OFFSET_LF)) + phi1_set;
-    phi2_L = (dm_motor[0]->measure.total_angle - DM_ZERO_OFFSET_LB) + phi4_set;
+    phi1_L = PI - (-(dm_motor[3]->measure.angle_abs - DM_ZERO_OFFSET_LF)) + phi1_set;
+    phi2_L = (dm_motor[0]->measure.angle_abs - DM_ZERO_OFFSET_LB) + phi4_set;
     leg[LEFT]->input_wbr_leg_angle(leg[LEFT],phi1_L, phi2_L);
     leg[LEFT]->wbr_calc(leg[LEFT],&ins,chassis_dt);
 
     // 右腿解算
-    phi1_R = PI - (dm_motor[2]->measure.total_angle - DM_ZERO_OFFSET_RF) + phi1_set;
-    phi2_R = - (dm_motor[1]->measure.total_angle - DM_ZERO_OFFSET_RB) + phi4_set;
+    phi1_R = fmod(DEGREE_2_RAD*(60.0f) + (dm_motor[1]->measure.angle_abs - DM_ZERO_OFFSET_RF),DM_P_MAX);  //因为使用链条的缘故并非电机和齿轮一一对应,和并腿有差别
+    phi2_R = fmod(DEGREE_2_RAD*(110.0f) + (DM_P_MAX - (dm_motor[2]->measure.angle_abs - DM_ZERO_OFFSET_RB)),DM_P_MAX);
     leg[RIGHT]->input_wbr_leg_angle(leg[RIGHT],phi1_R, phi2_R);
     leg[RIGHT]->wbr_calc(leg[RIGHT],&ins,chassis_dt);
 

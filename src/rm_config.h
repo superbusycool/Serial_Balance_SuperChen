@@ -249,10 +249,13 @@
 
 /*使用3508*/
 #define BSP_USING_DJI_MOTOR
+
 /*使用dm电机,后续可细分电机种类*/
 #define BSP_USING_DM_MOTOR
+
 /*使用lk电机*/
 //#define  BSP_USING_LK_MOTOR
+
 /*使用ht电机*/
 //#define BSP_USING_HT_MOTOR
 
@@ -263,8 +266,14 @@
 
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
+
 /*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
 //#define BSP_BMI088_CALI
+
+/*设置髋关节damiao电机的零点
+ * 零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
+ * */
+#define DM_8009_SET_ZERO
 
 /* -------------------------------------------------------------------------- */
 /*                            remote_controler                                  */
