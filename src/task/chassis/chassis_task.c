@@ -75,6 +75,12 @@ static dji_motor_object_t *m3508_motor[2];
 
 static float phi1_R,phi1_L, phi2_R,phi2_L;
 
+/*每一边腿的上半部分杆和对应的关节电机零点的固定角度差,这里采用°为单位*/
+#define PHI1R_OFFSET  0.0f
+#define PHI2R_OFFSET  0.0f
+#define PHI1L_OFFSET  0.0f
+#define PHI2L_OFFSET  0.0f
+
 static float F_bl_gravity ; //重力补偿前馈
 static float F_bl_intertial ; //侧向惯性力矩补偿前馈
 static float F_roll;
@@ -737,14 +743,14 @@ static void leg_calc()
     // 左腿解算
     /*Warning: 若是电机没有按照规定安装,需要调整phi1和phi4的计算,这会很大程度影响到后续的vmc解算*/
 
-    phi1_L = PI - (-(dm_motor[3]->measure.angle_abs - DM_ZERO_OFFSET_LF)) + phi1_set;
-    phi2_L = (dm_motor[0]->measure.angle_abs - DM_ZERO_OFFSET_LB) + phi4_set;
+    phi1_L = fmod(DEGREE_2_RAD*(PHI1L_OFFSET) + (dm_motor[3]->measure.angle_abs - DM_ZERO_OFFSET_LF),DM_P_MAX);
+    phi2_L = fmod(DEGREE_2_RAD*(PHI2L_OFFSET) + (dm_motor[0]->measure.angle_abs - DM_ZERO_OFFSET_LB),DM_P_MAX);
     leg[LEFT]->input_wbr_leg_angle(leg[LEFT],phi1_L, phi2_L);
     leg[LEFT]->wbr_calc(leg[LEFT],&ins,chassis_dt);
 
     // 右腿解算
-    phi1_R = fmod(DEGREE_2_RAD*(60.0f) + (dm_motor[1]->measure.angle_abs - DM_ZERO_OFFSET_RF),DM_P_MAX);  //因为使用链条的缘故并非电机和齿轮一一对应,和并腿有差别
-    phi2_R = fmod(DEGREE_2_RAD*(110.0f) + (DM_P_MAX - (dm_motor[2]->measure.angle_abs - DM_ZERO_OFFSET_RB)),DM_P_MAX);
+    phi1_R = fmod(DEGREE_2_RAD*(PHI1R_OFFSET) + (dm_motor[1]->measure.angle_abs - DM_ZERO_OFFSET_RF),DM_P_MAX);  //因为使用链条的缘故并非电机和齿轮一一对应,和并腿有差别
+    phi2_R = fmod(DEGREE_2_RAD*(PHI2R_OFFSET) + (dm_motor[2]->measure.angle_abs - DM_ZERO_OFFSET_RB),DM_P_MAX);
     leg[RIGHT]->input_wbr_leg_angle(leg[RIGHT],phi1_R, phi2_R);
     leg[RIGHT]->wbr_calc(leg[RIGHT],&ins,chassis_dt);
 

@@ -97,6 +97,7 @@ static void remote_to_cmd(void)
            break;
 
        case RC_MI:
+#ifdef DM_8009_SET_ZERO
            if((chassis_fdb.stand_state != CAHSSIS_IS_DANGER)  && (chassis_fdb.leg_state == LEG_BACK_IS_OK))
            {
                 if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)
@@ -161,6 +162,69 @@ static void remote_to_cmd(void)
            }
 
            break;
+#else
+           if((chassis_fdb.stand_state != CAHSSIS_IS_DANGER))
+           {
+                if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)
+                {
+                    chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;//完成倒地自起
+                }
+                else if(chassis_cmd_data.last_mode == CHASSIS_RECOVERY)
+                {
+                    if(chassis_fdb.stand_state == CAHSSIS_IS_STAND)
+                    {
+                        chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
+
+                    }
+                    else if(chassis_fdb.stand_state == CAHSSIS_IS_DANGER)
+                    {
+                        chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
+                    }
+                    else{
+                        chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;
+                    }
+                }
+                else
+                {
+                    if(chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP || chassis_cmd_data.last_mode == CHASSIS_SPIN || chassis_cmd_data.last_mode == CHASSIS_JUMP ){
+                        if(chassis_fdb.stand_state == CAHSSIS_IS_FALL){
+
+                            chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;/*姿态溃散,安全起见直接relex*/
+                        }
+                        else
+                        {
+
+                            if(remote_ctrl_last.rc.s[1] == RC_MI){
+                                if(chassis_cmd_data.last_mode != CHASSIS_JUMP){
+                                    chassis_cmd_data.ctrl_mode = CHASSIS_SPIN;
+                                }
+
+                            }
+                            else if(remote_ctrl_last.rc.s[1] == RC_DN){
+                                chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
+                                if(chassis_fdb.stand_state == CAHSSIS_IS_JUMPOK){
+                                    chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
+                                }else{
+                                    chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
+                                }
+                            }
+                            else{
+                                chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
+                            }
+
+                        }
+                    }
+                }
+
+           }
+
+           else{
+               chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
+           }
+
+           break;
+
+#endif
 
        case RC_DN:
 
