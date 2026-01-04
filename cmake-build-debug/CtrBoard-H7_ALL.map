@@ -7561,7 +7561,7 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm
 LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000    0x69dce
+.debug_info     0x00000000    0x69dd2
  .debug_info    0x00000000      0x9da CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/dma.c.obj
  .debug_info    0x000009da     0x183c CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/fdcan.c.obj
  .debug_info    0x00002216      0xde6 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj
@@ -7633,22 +7633,22 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
  .debug_info    0x00051d59      0xf99 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj
  .debug_info    0x00052cf2      0x8d7 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj
  .debug_info    0x000535c9     0x1b3f CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj
- .debug_info    0x00055108     0x337b CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
- .debug_info    0x00058483      0xc69 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj
- .debug_info    0x000590ec     0x21e2 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj
- .debug_info    0x0005b2ce     0x26c6 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj
- .debug_info    0x0005d994      0xc17 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj
- .debug_info    0x0005e5ab     0x199d CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj
- .debug_info    0x0005ff48      0xe8c CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj
- .debug_info    0x00060dd4      0xc1e D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_trans_f32.o)
- .debug_info    0x000619f2      0xbf9 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_sub_f32.o)
- .debug_info    0x000625eb      0xcb5 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_mult_f32.o)
- .debug_info    0x000632a0      0xd81 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_inverse_f32.o)
- .debug_info    0x00064021      0xb0c D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_init_f32.o)
- .debug_info    0x00064b2d      0xbf9 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_add_f32.o)
- .debug_info    0x00065726     0x1612 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_sin_f32.o)
- .debug_info    0x00066d38     0x1612 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_cos_f32.o)
- .debug_info    0x0006834a     0x1a84 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_common_tables.o)
+ .debug_info    0x00055108     0x337f CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+ .debug_info    0x00058487      0xc69 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj
+ .debug_info    0x000590f0     0x21e2 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj
+ .debug_info    0x0005b2d2     0x26c6 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj
+ .debug_info    0x0005d998      0xc17 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj
+ .debug_info    0x0005e5af     0x199d CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj
+ .debug_info    0x0005ff4c      0xe8c CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj
+ .debug_info    0x00060dd8      0xc1e D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_trans_f32.o)
+ .debug_info    0x000619f6      0xbf9 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_sub_f32.o)
+ .debug_info    0x000625ef      0xcb5 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_mult_f32.o)
+ .debug_info    0x000632a4      0xd81 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_inverse_f32.o)
+ .debug_info    0x00064025      0xb0c D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_init_f32.o)
+ .debug_info    0x00064b31      0xbf9 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_add_f32.o)
+ .debug_info    0x0006572a     0x1612 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_sin_f32.o)
+ .debug_info    0x00066d3c     0x1612 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_cos_f32.o)
+ .debug_info    0x0006834e     0x1a84 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_common_tables.o)
 
 .debug_abbrev   0x00000000     0xc79b
  .debug_abbrev  0x00000000      0x137 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/dma.c.obj
@@ -8003,7 +8003,7 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
  .debug_ranges  0x00003560       0x10 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_sin_f32.o)
  .debug_ranges  0x00003570       0x10 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_cos_f32.o)
 
-.debug_line     0x00000000    0x442bc
+.debug_line     0x00000000    0x442b3
  .debug_line    0x00000000      0x22a CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/dma.c.obj
  .debug_line    0x0000022a      0x913 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/fdcan.c.obj
  .debug_line    0x00000b3d      0x420 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj
@@ -8075,22 +8075,22 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
  .debug_line    0x0003a912      0x743 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj
  .debug_line    0x0003b055      0x350 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj
  .debug_line    0x0003b3a5      0xb60 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj
- .debug_line    0x0003bf05     0x24d7 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
- .debug_line    0x0003e3dc      0x701 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj
- .debug_line    0x0003eadd      0xf11 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj
- .debug_line    0x0003f9ee     0x117e CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj
- .debug_line    0x00040b6c      0x6af CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj
- .debug_line    0x0004121b      0xac3 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj
- .debug_line    0x00041cde      0x98a CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj
- .debug_line    0x00042668      0x32a D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_trans_f32.o)
- .debug_line    0x00042992      0x326 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_sub_f32.o)
- .debug_line    0x00042cb8      0x3ac D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_mult_f32.o)
- .debug_line    0x00043064      0x4eb D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_inverse_f32.o)
- .debug_line    0x0004354f      0x259 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_init_f32.o)
- .debug_line    0x000437a8      0x326 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_add_f32.o)
- .debug_line    0x00043ace      0x2d1 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_sin_f32.o)
- .debug_line    0x00043d9f      0x2da D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_cos_f32.o)
- .debug_line    0x00044079      0x243 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_common_tables.o)
+ .debug_line    0x0003bf05     0x24ce CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+ .debug_line    0x0003e3d3      0x701 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj
+ .debug_line    0x0003ead4      0xf11 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj
+ .debug_line    0x0003f9e5     0x117e CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj
+ .debug_line    0x00040b63      0x6af CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj
+ .debug_line    0x00041212      0xac3 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj
+ .debug_line    0x00041cd5      0x98a CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj
+ .debug_line    0x0004265f      0x32a D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_trans_f32.o)
+ .debug_line    0x00042989      0x326 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_sub_f32.o)
+ .debug_line    0x00042caf      0x3ac D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_mult_f32.o)
+ .debug_line    0x0004305b      0x4eb D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_inverse_f32.o)
+ .debug_line    0x00043546      0x259 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_init_f32.o)
+ .debug_line    0x0004379f      0x326 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_mat_add_f32.o)
+ .debug_line    0x00043ac5      0x2d1 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_sin_f32.o)
+ .debug_line    0x00043d96      0x2da D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_cos_f32.o)
+ .debug_line    0x00044070      0x243 D:\HNU_RM_CodeStorage\HNU_Serial_H723_12_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Lib\libarm_cortexM7lfsp_math.a(arm_common_tables.o)
 
 .debug_str      0x00000000    0x14101
  .debug_str     0x00000000      0xbe5 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/dma.c.obj
