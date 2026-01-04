@@ -58,8 +58,8 @@ static float yaw_turn_region_min ;
 
 #define DM_ZERO_OFFSET_LF  0.0f   //电机enable后,原先设置零点的位置会有误差,这里记录下误差,此误差会导致左右轮输出扭矩存在50-100的误差
 #define DM_ZERO_OFFSET_LB  0.0f
-#define DM_ZERO_OFFSET_RF  0.0f
-#define DM_ZERO_OFFSET_RB  0.0f
+#define DM_ZERO_OFFSET_RF  2.64212799f
+#define DM_ZERO_OFFSET_RB  2.60051823f
 
 #define phi4_set -0.314
 #define phi1_set 0.314   //3.14+0.314,0.314对应18°为限位的角度
@@ -75,11 +75,11 @@ static dji_motor_object_t *m3508_motor[2];
 
 static float phi1_R,phi1_L, phi2_R,phi2_L;
 
-/*每一边腿的上半部分杆和对应的关节电机零点的固定角度差,这里采用°为单位*/
-#define PHI1R_OFFSET  0.0f
-#define PHI2R_OFFSET  0.0f
-#define PHI1L_OFFSET  0.0f
-#define PHI2L_OFFSET  0.0f
+/*这里为phi1和phi2分别对应的各自的水平基准线的绝对角度,测量时需要将杆移动至相应水平基准线读出绝对角度*/
+#define PHI1R_HORIZION  0.0f
+#define PHI2R_HORIZION  0.0f
+#define PHI1L_HORIZION  0.0f
+#define PHI2L_HORIZION  0.0f
 
 static float F_bl_gravity ; //重力补偿前馈
 static float F_bl_intertial ; //侧向惯性力矩补偿前馈
@@ -682,8 +682,8 @@ static int chassis_motor_init(void)
     wbr_leg_config_t leg_config =
             {
                     /*单位m*/
-                    0.15f,  // l4=l1
-                    0.15f,
+                    0.22f,  // l4=l1
+                    0.22f,
                     0.250f, // l3=l2
                     0.250f,
                     0.0f,   //电机间距
@@ -743,14 +743,14 @@ static void leg_calc()
     // 左腿解算
     /*Warning: 若是电机没有按照规定安装,需要调整phi1和phi4的计算,这会很大程度影响到后续的vmc解算*/
 
-    phi1_L = fmod(DEGREE_2_RAD*(PHI1L_OFFSET) + (dm_motor[3]->measure.angle_abs - DM_ZERO_OFFSET_LF),DM_P_MAX);
-    phi2_L = fmod(DEGREE_2_RAD*(PHI2L_OFFSET) + (dm_motor[0]->measure.angle_abs - DM_ZERO_OFFSET_LB),DM_P_MAX);
+    phi1_L = fmod((dm_motor[0]->measure.angle_abs - DM_ZERO_OFFSET_LF) - PHI1L_HORIZION,DM_P_MAX);
+    phi2_L = fmod((dm_motor[3]->measure.angle_abs - DM_ZERO_OFFSET_LB) - PHI2L_HORIZION,DM_P_MAX);
     leg[LEFT]->input_wbr_leg_angle(leg[LEFT],phi1_L, phi2_L);
     leg[LEFT]->wbr_calc(leg[LEFT],&ins,chassis_dt);
 
     // 右腿解算
-    phi1_R = fmod(DEGREE_2_RAD*(PHI1R_OFFSET) + (dm_motor[1]->measure.angle_abs - DM_ZERO_OFFSET_RF),DM_P_MAX);  //因为使用链条的缘故并非电机和齿轮一一对应,和并腿有差别
-    phi2_R = fmod(DEGREE_2_RAD*(PHI2R_OFFSET) + (dm_motor[2]->measure.angle_abs - DM_ZERO_OFFSET_RB),DM_P_MAX);
+    phi1_R = fmod((dm_motor[1]->measure.angle_abs - DM_ZERO_OFFSET_RF) - PHI1R_HORIZION,DM_P_MAX);  //因为使用链条的缘故并非电机和齿轮一一对应,和并腿有差别
+    phi2_R = -fmod((dm_motor[2]->measure.angle_abs - DM_ZERO_OFFSET_RB) - PHI2R_HORIZION,DM_P_MAX);
     leg[RIGHT]->input_wbr_leg_angle(leg[RIGHT],phi1_R, phi2_R);
     leg[RIGHT]->wbr_calc(leg[RIGHT],&ins,chassis_dt);
 
@@ -980,7 +980,6 @@ static void *dm_control[4] =
 
 static void dm_motor_init()
 {
-
     /*电机id等可参考平步实物进行修改*/
     motor_config_t dm_motor_config1 = {   //left_back
             .motor_type = DM8009P,
