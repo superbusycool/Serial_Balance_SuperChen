@@ -86,16 +86,41 @@ static int8_t input_wbr_leg_angle(struct wbr_leg_obj *leg, float phi1, float phi
 
     if(phi1 < leg->phi1_max && phi1 > leg->phi1_min){
         if(phi2 < leg->phi2_max && phi2 > leg->phi2_min){
-            leg->wbr_leg_state = LEG_NORMAL;
+            leg->wbr_leg_state = WBR_LEG_NORMAL;
         }else{
-            leg->wbr_leg_state = LEG_ERROR;
+            leg->wbr_leg_state = WBR_LEG_ERROR;
         }
     }else{
-        leg->wbr_leg_state = LEG_ERROR;
+        leg->wbr_leg_state = WBR_LEG_ERROR;
     }
 
 
     return (uint8_t)leg->wbr_leg_state;
+}
+
+/*
+ * @brief 通过电机角度解算phi1和phi2值
+ * @param struct wbr_leg_obj *leg:腿部实例;
+ * @param phi1_raw:phi1对应的电机angle_abs;
+ * @param phi2_raw:phi2对应的电机angle_abs
+ * */
+/*这两个函数在电机位置更换时重新写!!!*/
+static void phi1_phi2_calc_left(struct wbr_leg_obj *leg, float phi1_raw, float phi2_raw){
+
+    leg->phi1 = fmod(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi2 = fmod(PI - (PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD)),PI2) ;
+
+}
+/*
+ * @brief 通过电机角度解算phi1和phi2值
+ * @param struct wbr_leg_obj *leg:腿部实例;
+ * @param phi1_raw:phi1对应的电机angle_abs;
+ * @param phi2_raw:phi2对应的电机angle_abs
+ * */
+static void phi1_phi2_calc_right(struct wbr_leg_obj *leg, float phi1_raw, float phi2_raw){
+
+    leg->phi1 = fmod((phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD),PI2);
+    leg->phi2 = fmod(PI2 - (phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD) + PI,PI2);
 
 }
 
@@ -117,9 +142,11 @@ wbr_leg_obj_t * wbr_leg_register(wbr_leg_config_t *config)
     wbr_obj[idx].phi2_max = PI;
     wbr_obj[idx].phi2_min = 0;
     wbr_obj[idx].wbr_leg_state = WBR_LEG_ERROR;
-    wbr_obj[idx].q = PI/2;
+    wbr_obj[idx].q = 0;
     wbr_obj[idx].wbr_calc = wbr_calc;
     wbr_obj[idx].wbr_cal_T = wbr_calculation_Torque;
+    wbr_obj[idx].phi_calc_L = phi1_phi2_calc_left ;
+    wbr_obj[idx].phi_calc_R = phi1_phi2_calc_right ;
     wbr_obj[idx].input_wbr_leg_angle = input_wbr_leg_angle;
 
     return &wbr_obj[idx++];

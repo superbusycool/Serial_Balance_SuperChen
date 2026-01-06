@@ -97,6 +97,10 @@ typedef struct wbr_leg_obj
     /* wbr_cal_T 输入支持力和摆杆力矩,解算出关节电机的输入扭矩 */
     void (*wbr_cal_T)(struct wbr_leg_obj *leg,float *WBR_T);
 
+    /*解算腿部的phi1和phi2值,方便后续计算*/
+    void (*phi_calc_L)(struct wbr_leg_obj *leg, float phi1_raw, float phi2_raw);
+    /*解算腿部的phi1和phi2值,方便后续计算*/
+    void (*phi_calc_R)(struct wbr_leg_obj *leg, float phi1_raw, float phi2_raw);
     /*获取q1和q2的角度值,由关节电机读取*/
     int8_t (*input_wbr_leg_angle)(struct wbr_leg_obj *leg, float q1, float q2);
 
