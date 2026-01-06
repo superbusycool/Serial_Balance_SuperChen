@@ -97,7 +97,7 @@ static void remote_to_cmd(void)
            break;
 
        case RC_MI:
-#ifdef DM_8009_SET_ZERO
+#ifdef DM_8009_SET_ZERO_POSITION
            if((chassis_fdb.stand_state != CAHSSIS_IS_DANGER)  && (chassis_fdb.leg_state == LEG_BACK_IS_OK))
            {
                 if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)

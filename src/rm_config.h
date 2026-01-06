@@ -8,7 +8,7 @@
 
 #define CPU_FREQUENCY 168     /* CPU主频(mHZ) */
 
-#define WHEEL_LEG_INFANTRY
+
 #define BSP_CHASSIS_LEG_MODE
 
 #include "stm32h723xx.h" // 使用的芯片
@@ -59,24 +59,19 @@
 #define CHASSIS_WHEEL_LEFT_ID    0X201
 #define CHASSIS_WHEEL_RIGHT_ID   0X202
 
-#ifdef WHEEL_LEG_INFANTRY
-/* 底盘轮距(m) */
-#define WHEEL_DISTANCE    0.110f
-/* 底盘轮子半径(m) */
 #define WHEEL_RADIUS      0.1f
-/* 底盘控制间隔(ms) */
-#define CHASSIS_PERIOD    1.0f
-#else
-/* 底盘轮距(mm) */
-#define WHEELTRACK        300
-/* 底盘轴距(mm) */
-#define WHEELBASE         388
-/* 底盘轮子周长(mm) */
-#define WHEEL_PERIMETER   481
 
-#define LENGTH_A 278 //底盘长的一半(mm)
-#define LENGTH_B 294 //底盘宽的一半(mm)
-#endif
+/*腿部角度phi1和phi2计算时涉及*/
+#define DM_ZERO_OFFSET_LF  62.17f   /*对应phi1*/
+#define DM_ZERO_OFFSET_LB  35.22f   /*对应phi2*/
+#define DM_ZERO_OFFSET_RF  62.17f
+#define DM_ZERO_OFFSET_RB  35.22f
+
+#define LEG_SAFE_AREA      10.0f  /*能接受的腿部theta角运动范围扩展角度*/
+
+/*查3508资料和xroll减速箱淘宝详情得到*/
+#define M3508_TOR_TO_CUR  2220  //扭矩电流系数
+#define M3508_TOR_MAX  3.69  //堵转扭矩
 
 
 /******** 底盘最大速度设置 *******/
@@ -246,6 +241,7 @@
 #define roll_MaxVal 50
 
 /*****************************function_open******************************************/
+/*要使用时打开宏定义!!!*/
 
 /*使用3508*/
 #define BSP_USING_DJI_MOTOR
@@ -273,7 +269,7 @@
 /*设置髋关节damiao电机的零点
  * 零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
  * */
-//#define DM_8009_SET_ZERO
+//#define DM_8009_SET_ZERO_POSITION
 
 /* -------------------------------------------------------------------------- */
 /*                            remote_controler                                  */
