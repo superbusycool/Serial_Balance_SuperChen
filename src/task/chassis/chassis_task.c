@@ -176,7 +176,7 @@ lqr_R = [0.25,      0,       0,       0;
          0,      0,       1.5,       0;
          0,      0,       0,       1.5];
 
-    'p00 + p10*x + p01*y + p20*x^2 + p11*x*y + p02*y^2'
+    'a00 + a10*x + a01*y + a20*x^2 + a11*x*y + a02*y^2'
 */
 
 float a11[6] = {-1.3634,-6.4195,6.0531,12.239,-5.1442,-6.4679};
@@ -367,12 +367,10 @@ static void chassis_kf_update(void)
         _kf_dt = 0.003f;
     _kf_start = dwt_get_time_ms();
 
-//    speed_rads_ground_l = m3508_motor[LEFT]->measure.speed_rads + ins.gyro[1] + leg[LEFT]->wbr_d_theta ;
-    speed_rads_ground_l = m3508_motor[LEFT]->measure.speed_aps * DEGREE_2_RAD/*TODO 单位可能不对*/ + ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->wbr_d_theta ;
+    speed_rads_ground_l = m3508_motor[LEFT]->measure.speed_aps * DEGREE_2_RAD/* Wecd */ + ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[LEFT]->wbr_d_theta/*Web*/ ;
     wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->wbr_d_theta*leg[LEFT]->L* arm_cos_f32(leg[LEFT]->wbr_theta)+ leg[LEFT]->d_L*arm_sin_f32(leg[LEFT]->wbr_theta) ;//TODO机体速度推出轮子速度
 
-//    speed_rads_ground_r = m3508_motor[LEFT]->measure.speed_rads + ins.gyro[1] + leg[LEFT]->wbr_d_theta ;
-    speed_rads_ground_r = m3508_motor[LEFT]->measure.speed_aps * DEGREE_2_RAD - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->wbr_d_theta ;
+    speed_rads_ground_r = m3508_motor[RIGHT]->measure.speed_aps * DEGREE_2_RAD/* Wecd */ - ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[RIGHT]->wbr_d_theta/*Web*/ ;
     wheel_to_ground_r = speed_rads_ground_r * WHEEL_RADIUS + leg[RIGHT]->wbr_d_theta*leg[RIGHT]->L* arm_cos_f32(leg[RIGHT]->wbr_theta)+ leg[RIGHT]->d_L*arm_sin_f32(leg[RIGHT]->wbr_theta);
 
     chassis_kf_l.MeasuredVector[0] = wheel_to_ground_l ;
@@ -483,13 +481,13 @@ static void update_LQR_obs() {
         Wheel_Shut_Flag = 0;
 
         /* K_4*10 */
-        /*% 拟合出的函数表达式为 p(x,y) = p00 + p10*x + p01*y + p20*x^2 + p11*x*y + p02*y^2
-         * % - 第1列对应p00
-           % - 第2列对应p10
-           % - 第3列对应p01
-           % - 第4列对应p20
-           % - 第5列对应p11
-           % - 第6列对应p02
+        /*% 拟合出的函数表达式为 p(x,y) = a00 + a10*x + a01*y + a20*x^2 + a11*x*y + a02*y^2
+         * % - 第1列对应a00
+           % - 第2列对应a10
+           % - 第3列对应a01
+           % - 第4列对应a20
+           % - 第5列对应a11
+           % - 第6列对应a02
         % 其中x对应左腿腿长l_l，y对应右腿腿长l_r,这里的p用a_** 表示拟合系数 */
         MatLQR_K[0][0] = a11[0] + a11[1] * leg[LEFT]->L + a11[2] * leg[RIGHT]->L + a11[3] * leg[LEFT]->L * leg[LEFT]->L + a11[4] * leg[LEFT]->L * leg[RIGHT]->L + a11[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
         MatLQR_K[0][1] = a12[0] + a12[1] * leg[LEFT]->L + a12[2] * leg[RIGHT]->L + a12[3] * leg[LEFT]->L * leg[LEFT]->L + a12[4] * leg[LEFT]->L * leg[RIGHT]->L + a12[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
@@ -815,7 +813,7 @@ static float control_dt[4];
 static float control_start[4];
 static float dm_send_t[4];
 float dm_obs[4];
-#define DM_RATIO 1.0f
+#define DM_RATIO 0.1f
 #define DM_OUTPUT_LIMIT  10.0f
 
 
@@ -829,8 +827,8 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     control_start[0] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-//    dm_send_t[0] = WBR_T_L[1] * DM_RATIO;
-    dm_send_t[0] = 0;
+    dm_send_t[0] = WBR_T_L[1] * DM_RATIO;
+//    dm_send_t[0] = 0;
     LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[0] = dm_send_t[0] ;
 
@@ -862,8 +860,8 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
     static dm_motor_para_t set;
 
 
-//    dm_send_t[1] = -WBR_T_R[1] * DM_RATIO;
-    dm_send_t[1] = 0;
+    dm_send_t[1] = -WBR_T_R[1] * DM_RATIO;
+//    dm_send_t[1] = 0;
     LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[1] = dm_send_t[1] ;
 
@@ -894,8 +892,8 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
     control_start[2] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-//    dm_send_t[2] = -WBR_T_R[0] * DM_RATIO ;
-    dm_send_t[2] = 0;
+    dm_send_t[2] = -WBR_T_R[0] * DM_RATIO ;
+//    dm_send_t[2] = 0;
     LIMIT_MIN_MAX(dm_send_t[2], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[2] = dm_send_t[2] ;
 
@@ -927,8 +925,8 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
 
     // 每次上电归中电机给定一个适当的力矩，并持续，确保撞到限位
 
-//    dm_send_t[3] = WBR_T_L[0] * DM_RATIO;
-    dm_send_t[3] = 0;
+    dm_send_t[3] = WBR_T_L[0] * DM_RATIO;
+//    dm_send_t[3] = 0;
     LIMIT_MIN_MAX(dm_send_t[3], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[3] = dm_send_t[3];
 
@@ -999,7 +997,10 @@ static void dm_motor_init()
 }
 
 
-static int16_t set_l,set_r;
+static int16_t set_l,set_r;/*观测用*/
+/*当输入为正是,转动方向为 顺时针 时针
+ * 计算输入应该为负
+ * */
 static int16_t M3508_control_l(lk_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[0],-M3508_TOR_MAX,M3508_TOR_MAX);
@@ -1031,10 +1032,12 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
         set = 0;
     }
     set_l = set;
-
+    set = 800;
     return set;
 }
-
+/*当输入为正是,转动方向为 顺时针 时针
+ * 计算输入应该为正
+ * */
 static int16_t M3508_control_r(lk_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[1],-M3508_TOR_MAX,M3508_TOR_MAX);
@@ -1066,7 +1069,7 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
         set = 0;
     }
     set_r = set;
-
+    set = 800;
     return set;
 }
 
@@ -1135,42 +1138,6 @@ static void jumping_control(void)
     }
 }
 #endif /* BSP_CHASSIS_LEG_MODE */
-
-
-
-/**
- * @brief chassis 线程中所有订阅者初始化
- */
-static void chassis_sub_init(void)
-{
-    ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
-    chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
-}
-
-/**
- * @brief chassis 线程中所有发布者推送更新话题
- */
-static void chassis_pub_push(void)
-{
-    mcn_publish(MCN_HUB(chassis_fdb), &chassis_fdb_data);
-}
-
-/**
- * @brief chassis 线程中所有订阅者获取更新话题
- */
-static void chassis_sub_pull(void)
-{
-    if (mcn_poll(ins_topic_node))
-    {
-        mcn_copy(MCN_HUB(ins_topic), ins_topic_node, &ins);
-    }
-
-    if (mcn_poll(chassis_cmd_node))
-    {
-        mcn_copy(MCN_HUB(chassis_cmd), chassis_cmd_node, &chassis_cmd);
-    }
-}
-
 
 
 /*
@@ -1260,3 +1227,37 @@ static void Chassis_Vx_Detect(){
     }
 }
 
+/*********************************************subcription and publication***************************************************************************/
+
+/**
+ * @brief chassis 线程中所有订阅者初始化
+ */
+static void chassis_sub_init(void)
+{
+    ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
+    chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
+}
+
+/**
+ * @brief chassis 线程中所有发布者推送更新话题
+ */
+static void chassis_pub_push(void)
+{
+    mcn_publish(MCN_HUB(chassis_fdb), &chassis_fdb_data);
+}
+
+/**
+ * @brief chassis 线程中所有订阅者获取更新话题
+ */
+static void chassis_sub_pull(void)
+{
+    if (mcn_poll(ins_topic_node))
+    {
+        mcn_copy(MCN_HUB(ins_topic), ins_topic_node, &ins);
+    }
+
+    if (mcn_poll(chassis_cmd_node))
+    {
+        mcn_copy(MCN_HUB(chassis_cmd), chassis_cmd_node, &chassis_cmd);
+    }
+}

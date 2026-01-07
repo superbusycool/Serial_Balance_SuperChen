@@ -236,15 +236,15 @@ void dji_motor_control()
     }
 
     // 遍历flag,检查是否要发送这一帧报文
-    for (size_t i = 0; i < 6; ++i)
+    for (size_t i = 0; i < idx; ++i)
     {
         if (sender_enable_flag[i])
         {
             if(i < 3){
-                CAN_send(&CAN_WHEEL_MOTOR, motor->tx_id, send_msg[i].data);
+                CAN_send(&CAN_WHEEL_MOTOR, send_msg[i].id, send_msg[i].data);
             }
             else{
-                CAN_send(&CAN_GIMBAL, motor->tx_id, send_msg[i].data);
+                CAN_send(&CAN_GIMBAL, send_msg[i].id, send_msg[i].data);
             }
         }
     }
