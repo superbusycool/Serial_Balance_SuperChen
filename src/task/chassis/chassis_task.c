@@ -61,24 +61,11 @@ static dm_motor_object_t *dm_motor[4];
 /* 驱动电机 LK9025 实例 */
 static dji_motor_object_t *m3508_motor[2];
 
-
-/*这里为phi1和phi2分别对应的各自的水平基准线的绝对角度,测量时需要将杆移动至相应水平基准线读出绝对角度*/
-#define PHI1R_HORIZION  0.0f
-#define PHI2R_HORIZION  0.0f
-#define PHI1L_HORIZION  0.0f
-#define PHI2L_HORIZION  0.0f
-
 static float F_bl_gravity ; //重力补偿前馈
 static float F_bl_intertial ; //侧向惯性力矩补偿前馈
 static float F_roll;
 static float F_l_L;
 static float F_l_R;
-#define m_b  0.0f
-#define g  9.8f
-#define Rl 0.0f    //轮间距
-
-#define WHEEL_RADIUS  0.1f      //轮子半径/m
-#define WHEEL_MASS    1.635f     //轮子带3508电机总重
 
 /*跳跃相关*/
 #define JUMP_TORQUE_PRESS    30.0f   // 跳跃时下压扭矩，正负需对应各电机确定,待重新调试
@@ -357,7 +344,7 @@ static void chassis_kf_init(void)
 }
 static float  speed_rads_ground_l;
 static float  wheel_to_ground_l,speed_rads_ground_r,wheel_to_ground_r;
-
+static float Wecd_L,Wecd_R; //轮子对地的角速度
 static void chassis_kf_update(void)
 {
     static float _kf_dt, _kf_start;
@@ -367,10 +354,12 @@ static void chassis_kf_update(void)
         _kf_dt = 0.003f;
     _kf_start = dwt_get_time_ms();
 
-    speed_rads_ground_l = m3508_motor[LEFT]->measure.speed_aps * DEGREE_2_RAD/* Wecd */ + ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[LEFT]->wbr_d_theta/*Web*/ ;
+    Wecd_L = m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_L * DEGREE_2_RAD;
+    speed_rads_ground_l = Wecd_L + ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[LEFT]->wbr_d_theta/*Web*/ ;
     wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->wbr_d_theta*leg[LEFT]->L* arm_cos_f32(leg[LEFT]->wbr_theta)+ leg[LEFT]->d_L*arm_sin_f32(leg[LEFT]->wbr_theta) ;//TODO机体速度推出轮子速度
 
-    speed_rads_ground_r = m3508_motor[RIGHT]->measure.speed_aps * DEGREE_2_RAD/* Wecd */ - ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[RIGHT]->wbr_d_theta/*Web*/ ;
+    Wecd_R = m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD;
+    speed_rads_ground_r = Wecd_R - ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[RIGHT]->wbr_d_theta/*Web*/ ;
     wheel_to_ground_r = speed_rads_ground_r * WHEEL_RADIUS + leg[RIGHT]->wbr_d_theta*leg[RIGHT]->L* arm_cos_f32(leg[RIGHT]->wbr_theta)+ leg[RIGHT]->d_L*arm_sin_f32(leg[RIGHT]->wbr_theta);
 
     chassis_kf_l.MeasuredVector[0] = wheel_to_ground_l ;
@@ -756,7 +745,7 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){
     F_l_R = pid_calculate(L_length_pid, leg[RIGHT]->L_average, L_TARGET);
 
     F_bl_gravity = 0.5 * m_b * g;
-    F_bl_intertial = 0.5 * m_b * (0.5*(leg[LEFT]->L + leg[RIGHT]->L)/(2.0f*Rl)) * LQRXObsBuf[0][3] * LQRXObsBuf[0][1];
+    F_bl_intertial = 0.5 * m_b * (leg[LEFT]->L_average / (2.0f*Rl)) * LQRXObsBuf[0][3] * LQRXObsBuf[0][1];
 
 
     leg[LEFT]->wbr_Fbl = F_roll + F_l_L + F_bl_gravity - F_bl_intertial;
@@ -1032,7 +1021,6 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
         set = 0;
     }
     set_l = set;
-    set = 800;
     return set;
 }
 /*当输入为正是,转动方向为 顺时针 时针
@@ -1069,7 +1057,6 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
         set = 0;
     }
     set_r = set;
-    set = 800;
     return set;
 }
 
