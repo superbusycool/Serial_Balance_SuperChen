@@ -88,7 +88,7 @@
 #define PITCH 1
  /*gimbal_can allocation*/
 #define YAW_MOTOR_ID     6
-#define PITCH_MOTOR_ID   0x208
+#define PITCH_MOTOR_ID   0x206
 
 #define CENTER_ECD_YAW   0        //云台yaw轴编码器归中值
 #define CENTER_ECD_PITCH 0        //云台pitch轴编码器归中值
