@@ -72,7 +72,14 @@
 /*查3508资料和xroll减速箱淘宝详情得到*/
 #define M3508_TOR_TO_CUR  2220  //扭矩电流系数
 #define M3508_TOR_MAX  3.69  //堵转扭矩
+#define M3508_READUCTION_RATIO_R   14.08        //15.77/1.12 = 14.08  //268/17 貌似淘宝店给的参数不对  //右轮3508改装xroll减速箱减速比
+#define M3508_READUCTION_RATIO_L   12.543       //26.34/2.1 = 12.543   //268/17   //右轮3508改装xroll减速箱减速比
 
+/*底盘机体相关*/
+#define WHEEL_RADIUS  0.058f      //轮子半径/m
+#define m_b  6.120f
+#define g  9.8f
+#define Rl 0.214f    //轮间距
 
 /******** 底盘最大速度设置 *******/
 /* 底盘移动最大速度，单位是毫米每秒 */
