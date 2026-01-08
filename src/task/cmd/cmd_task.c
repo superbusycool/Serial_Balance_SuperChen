@@ -184,37 +184,37 @@ static void remote_to_cmd(void)
                         chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;
                     }
                 }
-                else
-                {
-                    if(chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP || chassis_cmd_data.last_mode == CHASSIS_SPIN || chassis_cmd_data.last_mode == CHASSIS_JUMP ){
-                        if(chassis_fdb.stand_state == CAHSSIS_IS_FALL){
-
-                            chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;/*姿态溃散,安全起见直接relex*/
-                        }
-                        else
-                        {
-
-                            if(remote_ctrl_last.rc.s[1] == RC_MI){
-                                if(chassis_cmd_data.last_mode != CHASSIS_JUMP){
-                                    chassis_cmd_data.ctrl_mode = CHASSIS_SPIN;
-                                }
-
-                            }
-                            else if(remote_ctrl_last.rc.s[1] == RC_DN){
-                                chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
-                                if(chassis_fdb.stand_state == CAHSSIS_IS_JUMPOK){
-                                    chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
-                                }else{
-                                    chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
-                                }
-                            }
-                            else{
-                                chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
-                            }
-
-                        }
-                    }
-                }
+//                else
+//                {
+//                    if(chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP || chassis_cmd_data.last_mode == CHASSIS_SPIN || chassis_cmd_data.last_mode == CHASSIS_JUMP ){
+//                        if(chassis_fdb.stand_state == CAHSSIS_IS_FALL){
+//
+//                            chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;/*姿态溃散,安全起见直接relex*/
+//                        }
+//                        else
+//                        {
+//
+//                            if(remote_ctrl_last.rc.s[1] == RC_MI){
+//                                if(chassis_cmd_data.last_mode != CHASSIS_JUMP){
+//                                    chassis_cmd_data.ctrl_mode = CHASSIS_SPIN;
+//                                }
+//
+//                            }
+//                            else if(remote_ctrl_last.rc.s[1] == RC_DN){
+//                                chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
+//                                if(chassis_fdb.stand_state == CAHSSIS_IS_JUMPOK){
+//                                    chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
+//                                }else{
+//                                    chassis_cmd_data.ctrl_mode = CHASSIS_JUMP;
+//                                }
+//                            }
+//                            else{
+//                                chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
+//                            }
+//
+//                        }
+//                    }
+//                }
 
            }
 
@@ -242,11 +242,11 @@ static void remote_to_cmd(void)
             chassis_cmd_data.leg_level = LEG_LOW;
             break;
         case RC_MI:
-//            chassis_cmd_data.leg_level = LEG_MID;
+            chassis_cmd_data.leg_level = LEG_MID;
 
             break;
         case RC_DN:
-//            chassis_cmd_data.leg_level = LEG_HIG;
+            chassis_cmd_data.leg_level = LEG_HIG;
 
 //                if(chassis_cmd_data.last_mode == CHASSIS_JUMP){
 //                    if(chassis_fdb.stand_state == CAHSSIS_IS_DANGER){

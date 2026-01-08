@@ -59,7 +59,6 @@
 #define CHASSIS_WHEEL_LEFT_ID    0X201
 #define CHASSIS_WHEEL_RIGHT_ID   0X202
 
-#define WHEEL_RADIUS      0.1f
 
 /*腿部角度phi1和phi2计算时涉及*/
 #define DM_ZERO_OFFSET_LF  62.17f   /*对应phi1*/

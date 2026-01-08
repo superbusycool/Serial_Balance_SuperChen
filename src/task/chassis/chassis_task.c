@@ -44,16 +44,17 @@ static void chassis_sub_pull(void);
 #define FORCE_Length_LIMIT 200.0f //
 #define FORCE_LIMIT 200.0f // 支持力限幅
 
-#define Theta_Compensation  0.038f //+0.038f
+#define Theta_Compensation  0.0f //
 
 #define VX_MAX        673.0f
 #define WX_MAX        270.0f
 #define V_SET         2.0f
+#define YAW_TURN_RATIO  0.017f  //有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
 static float Vx_Delta;
 #define VX_DELTA_MAX 0.05f
 static float yaw_turn_region_max ;//限制转向范围,防止转向时抽风
 static float yaw_turn_region_min ;
-#define yaw_turn_region 1.7543f
+#define yaw_turn_region 50.0f
 
 /*髋关节电机 DMJ8009P-2EC 实例*/
 static dm_motor_object_t *dm_motor[4];
@@ -80,11 +81,11 @@ static int Body_roll_JudgeOK;
 static int Leg_len_JudgeOK;
 static float FN_Average;       //左右腿平均支持力
 
-static int Off_Ground_Cnt = 0 ;
-static int Touch_Ground_Cnt = 0;
-static int  Off_Ground_Flag = 0;
-static int Wheel_Shut_Flag = 0;
-static int  Touch_Ground_Flag;
+static uint8_t Off_Ground_Cnt = 0 ;
+static uint8_t Touch_Ground_Cnt = 0;
+static uint8_t  Off_Ground_Flag = 0;
+static uint8_t Wheel_Shut_Flag = 0;
+static uint8_t  Touch_Ground_Flag;
 
 #define Len_pid_output_LIMIT 80.0f
 
@@ -398,7 +399,7 @@ static void update_LQR_obs() {
     LIMIT_MIN_MAX(LQRXObsBuf[0][6],-1.4,1.4);
     LQRXObsBuf[0][7] = leg[RIGHT]->wbr_d_theta;
     LQRXObsBuf[0][8] = ins.pitch * DEGREE_2_RAD;  //机体与水平方向倾角正负待标定
-    LQRXObsBuf[0][9] = ins.gyro[1] * DEGREE_2_RAD ;
+    LQRXObsBuf[0][9] = -ins.gyro[0] * DEGREE_2_RAD ;
 
     LQRXRefBuf[0][0] = 0; //目前采用速度控制,后续对速度误差积分作为位移s项
     LQRXRefBuf[0][1] = (chassis_cmd.vx_set / VX_MAX) * V_SET;  //  m/s
@@ -413,7 +414,7 @@ static void update_LQR_obs() {
 
     if(chassis_cmd.leg_leng_change == LENGTH_STAY && Off_Ground_Flag == 1 ){//TODO: 应该改成离地检测满足时,起跳时,将除了K21和K22以外的K置零,防止空中腿部姿态溃散
         Wheel_Shut_Flag = 1;
-        yaw_target = ins.yaw_total_angle;
+        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
 
         LQRXRefBuf[0][0] = 0; //目前采用速度控制,后续对速度误差积分作为位移s项
         LQRXRefBuf[0][1] = 0;  //  m/s
@@ -600,9 +601,9 @@ void chassis_control_task(void)
             if(usr_abs(ins.pitch) > 50.0f )
                 chassis_fdb_data.stand_state = CAHSSIS_IS_FALL;
             Chassis_Vx_Detect();
-            Ground_Detect();
-            yaw_turn_region_max = ins.yaw_total_angle * DEGREE_2_RAD + yaw_turn_region;
-            yaw_turn_region_min = ins.yaw_total_angle * DEGREE_2_RAD - yaw_turn_region;
+//            Ground_Detect();
+            yaw_turn_region_max = -ins.yaw_total_angle * DEGREE_2_RAD + yaw_turn_region * DEGREE_2_RAD;
+            yaw_turn_region_min = -ins.yaw_total_angle * DEGREE_2_RAD - yaw_turn_region * DEGREE_2_RAD;
 
             break;
 
@@ -738,7 +739,7 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){
 
     leg[LEFT]->L_average = 0.5f * (leg[LEFT]->L + leg[RIGHT]->L);
 
-    F_roll = pid_calculate(roll_pid, ins.roll, ROLL_TARGET);  //TODO 注意方向,沿正方形顺时针为正
+    F_roll = pid_calculate(roll_pid, ins.roll * DEGREE_2_RAD, ROLL_TARGET);  //TODO 注意方向,沿正方形顺时针为正
 
     F_l_L = pid_calculate(L_length_pid, leg[LEFT]->L_average, L_TARGET);
 
@@ -1194,7 +1195,7 @@ void Process_Clear(){
     LQRXRefBuf[0][1] = 0; //不稳定状态时应避免速度的影响
     LQRXObsBuf[0][1] = 0;
 
-    yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
+    yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
 }
 
 static void Chassis_Vx_Detect(){
@@ -1202,13 +1203,13 @@ static void Chassis_Vx_Detect(){
 
     Vx_Delta = usr_abs(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
     if(Vx_Delta > VX_DELTA_MAX){
-        yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
+        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }
-    if(usr_abs(yaw_target - ins.yaw_total_angle * DEGREE_2_RAD) > YAW_DELTA_MX){
-        yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
+    if(usr_abs(yaw_target - (-ins.yaw_total_angle * DEGREE_2_RAD)) > YAW_DELTA_MX* DEGREE_2_RAD){
+        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }else{
         //更新航向角期望
-        yaw_target += (chassis_cmd.vw_set / WX_MAX) * 0.017f;
+        yaw_target += ( - chassis_cmd.vw_set / WX_MAX) * YAW_TURN_RATIO * DEGREE_2_RAD;
         LIMIT_MIN_MAX(yaw_target,yaw_turn_region_min,yaw_turn_region_max); //限制与目标偏航角的误差,防止失控
 
     }
