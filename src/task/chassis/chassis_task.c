@@ -388,8 +388,7 @@ static void update_LQR_obs() {
 
     LQRXObsBuf[0][0] = 0;
     LQRXObsBuf[0][1] = chassis_vx_filter ;
-//    LQRXObsBuf[0][2] = -ins.yaw_total_angle * DEGREE_2_RAD;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
-    LQRXObsBuf[0][2] = 0.0f;
+    LQRXObsBuf[0][2] = -ins.yaw_total_angle * DEGREE_2_RAD;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
     LQRXObsBuf[0][3] = -ins.gyro[2] * DEGREE_2_RAD;  //偏航角角速度,沿着机体正方向逆时针设为正
     LQRXObsBuf[0][4] = leg[LEFT]->wbr_theta + Theta_Compensation;
     LIMIT_MIN_MAX(LQRXObsBuf[0][4],-1.4,1.4);
@@ -805,7 +804,7 @@ static float control_dt[4];
 static float control_start[4];
 static float dm_send_t[4];
 float dm_obs[4];
-#define DM_RATIO 0.1f
+#define DM_RATIO 0.5f
 #define DM_OUTPUT_LIMIT  10.0f
 
 
@@ -819,7 +818,7 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     control_start[0] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-    dm_send_t[0] = WBR_T_L[1] * DM_RATIO;
+    dm_send_t[0] = - WBR_T_L[1] * DM_RATIO;
 //    dm_send_t[0] = 0;
     LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[0] = dm_send_t[0] ;
@@ -845,6 +844,7 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
 /* 2 号电机
 * 输入值为正,逆时针
  * */
+/*应该顺时针转*/
 static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
 {
     control_dt[1] = dwt_get_time_us() - control_start[1];
@@ -852,7 +852,7 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
     static dm_motor_para_t set;
 
 
-    dm_send_t[1] = -WBR_T_R[1] * DM_RATIO;
+    dm_send_t[1] = WBR_T_R[1] * DM_RATIO;
 //    dm_send_t[1] = 0;
     LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[1] = dm_send_t[1] ;
@@ -878,6 +878,7 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
 /* 3 号电机
  * 输入值为正,逆时针
  * */
+/*应该逆时针转*/
 static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
 {
     control_dt[2] = dwt_get_time_us() - control_start[2];
@@ -1005,7 +1006,7 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(LQROutBuf[0] * M3508_TOR_TO_CUR) ;
+                set = (int16_t)(- LQROutBuf[0] * M3508_TOR_TO_CUR) ;
             }else{
                 set = 0.0f;
             }
@@ -1040,7 +1041,7 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(-LQROutBuf[1] * M3508_TOR_TO_CUR);
+                set = (int16_t)(LQROutBuf[1] * M3508_TOR_TO_CUR);
             }else{
                 set = 0.0f;
             }
