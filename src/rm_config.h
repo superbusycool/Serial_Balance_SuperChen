@@ -77,7 +77,7 @@
 /*底盘机体相关*/
 #define WHEEL_RADIUS  0.058f      //轮子半径/m
 #define m_b  6.120f
-#define g  9.8f
+#define g  9.81f
 #define Rl 0.214f    //轮间距
 
 /******** 底盘最大速度设置 *******/
@@ -268,6 +268,8 @@
 
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
+/*使用damiao板imu加热*/
+#define  BSP_USING_IMU_HEAT
 
 /*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
 //#define BSP_BMI088_CALI

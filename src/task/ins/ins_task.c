@@ -25,8 +25,11 @@ static struct dm_imu_t *gimbal_imu;
 
 static uint32_t pulse = 0;
 static pid_obj_t *imu_temp_pid;
-//static pid_config_t imu_temp_config = INIT_PID_CONFIG(100,50,10, 100, 500, PID_Integral_Limit);
+#ifdef BSP_USING_IMU_HEAT
+static pid_config_t imu_temp_config = INIT_PID_CONFIG(100,50,10, 100, 500, PID_Integral_Limit);
+#else
 static pid_config_t imu_temp_config = INIT_PID_CONFIG(0,0,0, 0, 0, PID_Integral_Limit);
+#endif
 
 /* ----------------------------- IMU_TEMPRETURE ----------------------------- */
 
