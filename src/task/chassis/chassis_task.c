@@ -49,7 +49,7 @@ static void chassis_sub_pull(void);
 #define VX_MAX        673.0f
 #define WX_MAX        270.0f
 #define V_SET         2.0f
-#define YAW_TURN_RATIO  0.017f  //有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
+#define YAW_TURN_RATIO  0.0017f  //有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
 static float Vx_Delta;
 #define VX_DELTA_MAX 0.05f
 static float yaw_turn_region_max ;//限制转向范围,防止转向时抽风
@@ -159,57 +159,57 @@ lqr_Q = [1,    0,     0,      0,       0,       0,        0,       0,        0, 
          0,    0,     0,      0,       0,       0,        0,       0,        0,      1];
 
 %        T_wl    T_wr     T_bl     T_br
-lqr_R = [1.5,      0,       0,       0;
-         0,      1.5,       0,       0;
+lqr_R = [1.75,      0,       0,       0;
+         0,      1.75,       0,       0;
          0,      0,       0.75,       0;
          0,      0,       0,       0.75];
 
     'a00 + a10*x + a01*y + a20*x^2 + a11*x*y + a02*y^2'
 */
 
-float a11[6] = {-0.57195,-0.82493,0.78636,2.1545,-2.0241,-0.050428};
-float a12[6] = {-2.697,-1.4713,4.9106,8.9983,-14.115,-0.012922};
-float a13[6] = {-25.256,22.715,-22.945,-38.953,-1.5425,38.444};
-float a14[6] = {-8.0305,7.3123,-7.3726,-12.459,-0.51656,12.315};
-float a15[6] = {-9.9502,-34.833,19.84,57.186,8.876,-38.004};
-float a16[6] = {-0.55176,-3.0669,1.4343,2.3826,0.50774,-2.2192};
-float a17[6] = {-6.3024,8.5644,-22.506,-24.16,4.6713,36.939};
-float a18[6] = {-0.38714,0.58992,-1.7934,-0.81993,-0.72319,1.6125};
-float a19[6] = {-18.42,47.409,39.87,-59.647,-3.495,-43.46};
-float a110[6] = {-1.1509,2.3878,2.3811,-2.094,-1.9303,-2.0156};
+float a11[6] = {-0.52674,-0.70886,0.67292,1.6846,-1.4664,-0.14055};
+float a12[6] = {-2.257,-1.7927,3.509,7.4208,-9.8377,0.24745};
+float a13[6] = {-16.518,15.316,-15.339,-26.139,-1.0758,25.517};
+float a14[6] = {-7.418,6.9495,-6.9504,-11.793,-0.50567,11.533};
+float a15[6] = {-8.9064,-34.707,18.685,54.667,9.4702,-35.451};
+float a16[6] = {-0.48879,-2.9681,1.2899,2.1226,0.74352,-2.0693};
+float a17[6] = {-5.4579,8.7685,-23.171,-23.372,5.3334,35.644};
+float a18[6] = {-0.33359,0.57497,-1.7983,-0.90646,-0.36243,1.4437};
+float a19[6] = {-9.8375,22.168,19.37,-22.66,-11.259,-16.941};
+float a110[6] = {-0.91048,1.7629,1.8091,-1.2767,-1.9225,-1.3296};
 
-float a21[6] = {-0.57195,0.78636,-0.82493,-0.050428,-2.0241,2.1545};
-float a22[6] = {-2.697,4.9106,-1.4713,-0.012922,-14.115,8.9983};
-float a23[6] = {25.256,22.945,-22.715,-38.444,1.5425,38.953};
-float a24[6] = {8.0305,7.3726,-7.3123,-12.315,0.51656,12.459};
-float a25[6] = {-6.3024,-22.506,8.5644,36.939,4.6713,-24.16};
-float a26[6] = {-0.38714,-1.7934,0.58992,1.6125,-0.72319,-0.81993};
-float a27[6] = {-9.9502,19.84,-34.833,-38.004,8.876,57.186};
-float a28[6] = {-0.55176,1.4343,-3.0669,-2.2192,0.50774,2.3826};
-float a29[6] = {-18.42,39.87,47.409,-43.46,-3.495,-59.647};
-float a210[6] = {-1.1509,2.3811,2.3878,-2.0156,-1.9303,-2.094};
+float a21[6] = {-0.52674,0.67292,-0.70886,-0.14055,-1.4664,1.6846};
+float a22[6] = {-2.257,3.509,-1.7927,0.24745,-9.8377,7.4208};
+float a23[6] = {16.518,15.339,-15.316,-25.517,1.0758,26.139};
+float a24[6] = {7.418,6.9504,-6.9495,-11.533,0.50567,11.793};
+float a25[6] = {-5.4579,-23.171,8.7685,35.644,5.3334,-23.372};
+float a26[6] = {-0.33359,-1.7983,0.57497,1.4437,-0.36243,-0.90646};
+float a27[6] = {-8.9064,18.685,-34.707,-35.451,9.4702,54.667};
+float a28[6] = {-0.48879,1.2899,-2.9681,-2.0693,0.74352,2.1226};
+float a29[6] = {-9.8375,19.37,22.168,-16.941,-11.259,-22.66};
+float a210[6] = {-0.91048,1.8091,1.7629,-1.3296,-1.9225,-1.2767};
 
-float a31[6] = {0.11668,1.6365,-2.2919,-1.561,1.2735,0.51045};
-float a32[6] = {0.49531,6.5451,-9.548,-6.8867,5.2458,3.7037};
-float a33[6] = {-7.283,1.5163,-3.1334,15.209,0.55487,7.4452};
-float a34[6] = {-2.3396,0.34034,-1.0824,4.9604,-0.032188,2.4059};
-float a35[6] = {21.528,-47.057,22.189,76.707,32.143,-51.593};
-float a36[6] = {1.1361,-2.7707,1.113,7.772,2.2019,-3.1322};
-float a37[6] = {-3.6202,-16.236,-40.669,46.21,-40.77,34.988};
-float a38[6] = {-0.22499,-1.1043,-1.7725,2.9564,-2.8651,-3.0963};
-float a39[6] = {-31.545,-108.86,64.589,159.46,-7.7349,-75.399};
-float a310[6] = {-1.5327,-5.8239,3.4103,7.133,0.41042,-3.7409};
+float a31[6] = {-0.16617,1.6668,-0.9344,-1.2527,0.67927,-1.1509};
+float a32[6] = {-0.6923,6.7127,-3.5631,-5.1189,1.5412,-3.4165};
+float a33[6] = {-5.2609,1.1667,-3.2677,12.254,-0.58532,6.7374};
+float a34[6] = {-2.3786,0.43263,-1.5352,5.5672,-0.41228,3.0538};
+float a35[6] = {21.954,-46.889,24.158,65.413,44.043,-54.675};
+float a36[6] = {1.1163,-3.01,1.54,7.2521,3.4215,-3.8964};
+float a37[6] = {-3.1481,-13.427,-41.207,46.342,-41.535,32.504};
+float a38[6] = {-0.2406,-0.95067,-1.7408,3.1288,-3.1338,-3.0886};
+float a39[6] = {-15.811,-61.617,36.425,86.046,-9.5943,-35.503};
+float a310[6] = {-1.2256,-4.5625,2.9147,5.6191,-0.35275,-2.7872};
 
-float a41[6] = {0.11668,-2.2919,1.6365,0.51045,1.2735,-1.561};
-float a42[6] = {0.49531,-9.548,6.5451,3.7037,5.2458,-6.8867};
-float a43[6] = {7.283,3.1334,-1.5163,-7.4452,-0.55487,-15.209};
-float a44[6] = {2.3396,1.0824,-0.34034,-2.4059,0.032188,-4.9604};
-float a45[6] = {-3.6202,-40.669,-16.236,34.988,-40.77,46.21};
-float a46[6] = {-0.22499,-1.7725,-1.1043,-3.0963,-2.8651,2.9564};
-float a47[6] = {21.528,22.189,-47.057,-51.593,32.143,76.707};
-float a48[6] = {1.1361,1.113,-2.7707,-3.1322,2.2019,7.772};
-float a49[6] = {-31.545,64.589,-108.86,-75.399,-7.7349,159.46};
-float a410[6] = {-1.5327,3.4103,-5.8239,-3.7409,0.41042,7.133};
+float a41[6] = {-0.16617,-0.9344,1.6668,-1.1509,0.67927,-1.2527};
+float a42[6] = {-0.6923,-3.5631,6.7127,-3.4165,1.5412,-5.1189};
+float a43[6] = {5.2609,3.2677,-1.1667,-6.7374,0.58532,-12.254};
+float a44[6] = {2.3786,1.5352,-0.43263,-3.0538,0.41228,-5.5672};
+float a45[6] = {-3.1481,-41.207,-13.427,32.504,-41.535,46.342};
+float a46[6] = {-0.2406,-1.7408,-0.95067,-3.0886,-3.1338,3.1288};
+float a47[6] = {21.954,24.158,-46.889,-54.675,44.043,65.413};
+float a48[6] = {1.1163,1.54,-3.01,-3.8964,3.4215,7.2521};
+float a49[6] = {-15.811,36.425,-61.617,-35.503,-9.5943,86.046};
+float a410[6] = {-1.2256,2.9147,-4.5625,-2.7872,-0.35275,5.6191};
 
 /* [T_lwl T_lwr(轮子输出扭矩) T_bll T_blr(髋关节输出扭矩)] */
 static float LQROutBuf[4]={0};
@@ -353,7 +353,7 @@ static void chassis_kf_update(void)
         _kf_dt = 0.003f;
     _kf_start = dwt_get_time_ms();
 
-    Wecd_L = m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_L * DEGREE_2_RAD;
+    Wecd_L = - (m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_L * DEGREE_2_RAD);
     speed_rads_ground_l = Wecd_L + ins.gyro[0] * DEGREE_2_RAD/*φ_dot_bc*/ + leg[LEFT]->wbr_d_theta/*Web*/ ;
     wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->wbr_d_theta*leg[LEFT]->L* arm_cos_f32(leg[LEFT]->wbr_theta)+ leg[LEFT]->d_L*arm_sin_f32(leg[LEFT]->wbr_theta) ;//TODO机体速度推出轮子速度
 
@@ -585,7 +585,10 @@ void chassis_control_task(void)
 #endif
             break;
         case CHASSIS_RECOVERY:/*不稳定的状态,介于init和relex状态的过渡状态*/
-            Process_Clear();
+            LQRXRefBuf[0][1] = 0; //不稳定状态时应避免速度的影响
+            LQRXObsBuf[0][1] = 0;
+
+            yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
             motor_enable();
             if(usr_abs(ins.pitch) < 2.0f )/*判断是否站立稳定是通过phi角大小*/
                 chassis_fdb_data.stand_state = CAHSSIS_IS_STAND;
@@ -739,6 +742,7 @@ static void leg_calc()
 static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){
 
     leg[LEFT]->L_average = 0.5f * (leg[LEFT]->L + leg[RIGHT]->L);
+    leg[RIGHT]->L_average = leg[LEFT]->L_average;
 
     F_roll = pid_calculate(roll_pid, ins.roll * DEGREE_2_RAD, ROLL_TARGET);  //TODO 注意方向,沿正方形顺时针为正
 
@@ -804,7 +808,7 @@ static float control_dt[4];
 static float control_start[4];
 static float dm_send_t[4];
 float dm_obs[4];
-#define DM_RATIO 0.5f
+#define DM_RATIO 1.0f
 #define DM_OUTPUT_LIMIT  10.0f
 
 
@@ -818,15 +822,17 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     control_start[0] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-    dm_send_t[0] = - WBR_T_L[1] * DM_RATIO;
+    dm_send_t[0] = WBR_T_L[1] * DM_RATIO;
 //    dm_send_t[0] = 0;
     LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[0] = dm_send_t[0] ;
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//        dm_send_t[0] = 0;
+//    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX ){
         dm_send_t[0] = 0;
     }
-
 #ifdef DM8009P_SET_ZERO
         dm_send_t[0] = 0;
 #endif
@@ -852,13 +858,16 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
     static dm_motor_para_t set;
 
 
-    dm_send_t[1] = WBR_T_R[1] * DM_RATIO;
+    dm_send_t[1] = - WBR_T_R[1] * DM_RATIO;
 //    dm_send_t[1] = 0;
     LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[1] = dm_send_t[1] ;
 
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//        dm_send_t[1] = 0;
+//    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX ){
         dm_send_t[1] = 0;
     }
 #ifdef DM8009P_SET_ZERO
@@ -885,14 +894,18 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
     control_start[2] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-    dm_send_t[2] = -WBR_T_R[0] * DM_RATIO ;
+    dm_send_t[2] = WBR_T_R[0] * DM_RATIO ;
 //    dm_send_t[2] = 0;
     LIMIT_MIN_MAX(dm_send_t[2], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[2] = dm_send_t[2] ;
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//        dm_send_t[2] = 0;
+//    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX ){
         dm_send_t[2] = 0;
     }
+
 #ifdef DM8009P_SET_ZERO
         dm_send_t[2] = 0;
 #endif
@@ -918,14 +931,18 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
 
     // 每次上电归中电机给定一个适当的力矩，并持续，确保撞到限位
 
-    dm_send_t[3] = WBR_T_L[0] * DM_RATIO;
+    dm_send_t[3] = - WBR_T_L[0] * DM_RATIO;
 //    dm_send_t[3] = 0;
     LIMIT_MIN_MAX(dm_send_t[3], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[3] = dm_send_t[3];
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+//        dm_send_t[3] = 0;
+//    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX ){
         dm_send_t[3] = 0;
     }
+
 #ifdef DM8009P_SET_ZERO
     dm_send_t[3] = 0;
 
@@ -1012,11 +1029,11 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
             }
 
         }else{
-            set = (int16_t)(LQROutBuf[0] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(-LQROutBuf[0] * M3508_TOR_TO_CUR) ;
         }
 
     }
-
+    set_l = set;
 
 #ifdef M3508_SET_ZERO
     set = 0;
@@ -1024,7 +1041,7 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
         set = 0;
     }
-    set_l = set;
+//    set = 1000;
     return set;
 }
 /*当输入为正是,转动方向为 顺时针 时针
@@ -1047,12 +1064,12 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
             }
 
         }else{
-            set = (int16_t)(-LQROutBuf[1] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(LQROutBuf[1] * M3508_TOR_TO_CUR) ;
         }
 
-        set_r = set;
 
     }
+    set_r = set;
 
 #ifdef M3508_SET_ZERO
     set = 0;
@@ -1060,7 +1077,7 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
         set = 0;
     }
-    set_r = set;
+//    set = -1000;
     return set;
 }
 
