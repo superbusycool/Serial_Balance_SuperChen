@@ -66,7 +66,7 @@
 #define DM_ZERO_OFFSET_RF  62.17f
 #define DM_ZERO_OFFSET_RB  35.22f
 
-#define LEG_SAFE_AREA      10.0f  /*能接受的腿部theta角运动范围扩展角度*/
+#define LEG_SAFE_AREA      -50.0f  /*能接受的腿部theta角运动范围扩展角度*/
 
 /*查3508资料和xroll减速箱淘宝详情得到*/
 #define M3508_TOR_TO_CUR  2220  //扭矩电流系数
@@ -211,19 +211,19 @@
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/
-#define l_length_Kp 0.8
-#define l_length_Ki 0.16
-#define l_length_Kd 0.01
-#define l_length_InteVal 1
-#define l_length_MaxVal 1
+#define l_length_Kp 300.0
+#define l_length_Ki 60.00
+#define l_length_Kd 0.00001
+#define l_length_InteVal 50
+#define l_length_MaxVal 100
 
 
 /*位置*/
-#define r_length_Kp 0.8
-#define r_length_Ki 0.16
-#define r_length_Kd 0.01
-#define r_length_InteVal 1
-#define r_length_MaxVal 1
+#define r_length_Kp 300.0
+#define r_length_Ki 60.00
+#define r_length_Kd 0.00001
+#define r_length_InteVal 50
+#define r_length_MaxVal 100
 
 
 
@@ -262,9 +262,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-#define M3508_SET_ZERO
+//#define M3508_SET_ZERO
 /*8009输入置零*/
-#define DM8009P_SET_ZERO
+//#define DM8009P_SET_ZERO
 
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
