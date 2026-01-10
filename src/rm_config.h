@@ -211,17 +211,17 @@
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/
-#define l_length_Kp 300.0
-#define l_length_Ki 60.00
-#define l_length_Kd 0.00001
+#define l_length_Kp 100.0
+#define l_length_Ki 40.00
+#define l_length_Kd 0.000001
 #define l_length_InteVal 50
 #define l_length_MaxVal 100
 
 
 /*位置*/
-#define r_length_Kp 300.0
-#define r_length_Ki 60.00
-#define r_length_Kd 0.00001
+#define r_length_Kp 100.0
+#define r_length_Ki 40.00
+#define r_length_Kd 0.000001
 #define r_length_InteVal 50
 #define r_length_MaxVal 100
 
@@ -240,9 +240,9 @@
 #define yaw_InteVal 0
 #define yaw_MaxVal 800
 /*roll相关*/
-#define roll_Kp 3
-#define roll_Ki 0.4
-#define roll_Kd 0.005
+#define roll_Kp 0//3
+#define roll_Ki 0//0.4
+#define roll_Kd 0//0.005
 #define roll_InteVal 0
 #define roll_MaxVal 50
 
@@ -262,9 +262,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-//#define M3508_SET_ZERO
+#define M3508_SET_ZERO
 /*8009输入置零*/
-//#define DM8009P_SET_ZERO
+#define DM8009P_SET_ZERO
 
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
