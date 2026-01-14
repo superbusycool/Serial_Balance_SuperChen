@@ -66,7 +66,7 @@
 #define DM_ZERO_OFFSET_RF  62.17f
 #define DM_ZERO_OFFSET_RB  35.22f
 
-#define LEG_SAFE_AREA      -50.0f  /*能接受的腿部theta角运动范围扩展角度*/
+#define LEG_SAFE_AREA      -30.0f  /*能接受的腿部theta角运动范围扩展角度*/
 
 /*查3508资料和xroll减速箱淘宝详情得到*/
 #define M3508_TOR_TO_CUR  2220  //扭矩电流系数
@@ -211,16 +211,16 @@
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/
-#define l_length_Kp 100.0
-#define l_length_Ki 40.00
+#define l_length_Kp 150.0
+#define l_length_Ki 30.00
 #define l_length_Kd 0.000001
 #define l_length_InteVal 50
 #define l_length_MaxVal 100
 
 
 /*位置*/
-#define r_length_Kp 100.0
-#define r_length_Ki 40.00
+#define r_length_Kp 150.0
+#define r_length_Ki 30.00
 #define r_length_Kd 0.000001
 #define r_length_InteVal 50
 #define r_length_MaxVal 100
@@ -249,6 +249,13 @@
 /*****************************function_open******************************************/
 /*要使用时打开宏定义!!!*/
 
+/*
+ * @brief设置髋关节damiao电机的零点
+ * @warning零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
+ * @warning 不小心开启并烧录的话需要重新校准零点,不然一定疯车
+ * */
+//#define DM_8009_SET_ZERO_POSITION
+
 /*使用3508*/
 #define BSP_USING_DJI_MOTOR
 
@@ -262,9 +269,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-#define M3508_SET_ZERO
+//#define M3508_SET_ZERO
 /*8009输入置零*/
-#define DM8009P_SET_ZERO
+//#define DM8009P_SET_ZERO
 
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
@@ -274,10 +281,7 @@
 /*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
 //#define BSP_BMI088_CALI
 
-/*设置髋关节damiao电机的零点
- * 零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
- * */
-//#define DM_8009_SET_ZERO_POSITION
+
 
 /* -------------------------------------------------------------------------- */
 /*                            remote_controler                                  */
