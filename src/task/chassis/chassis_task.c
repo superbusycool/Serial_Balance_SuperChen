@@ -4,7 +4,7 @@
 * 2023-09-24      ChuShicheng     first version
 * 2025-07-25      SuperChen       second version
 * 2025-11-01      SuperChen       third version (结合上交建模lqr)
-*
+* 2026-01-15      SuperChen       fourth version (尝试港大的仿真)
 */
 #include "chassis_task.h"
 #include "rm_config.h"
@@ -44,7 +44,7 @@ static void chassis_sub_pull(void);
 #define FORCE_Length_LIMIT 200.0f //
 #define FORCE_LIMIT 200.0f // 支持力限幅
 
-#define Theta_Compensation  -0.10f //-0.07
+#define Theta_Compensation  -0.125f //-0.07
 
 #define VX_MAX        673.0f
 #define WX_MAX        270.0f
@@ -144,80 +144,69 @@ static void leg_init_get_zero();
 /* --------------------------------- LQR控制相关 -------------------------------- */
 
 /*记录下Q和R
+L = 0.2m
+float K[4][10] = {
+    {  -0.218365f,   -0.886697f,   -4.366343f,   -0.681761f,    7.851981f,    0.460853f,  -11.688398f,   -0.716310f,   41.927717f,    1.992520f},  // T_r_to_b
+    {  -0.218365f,   -0.886697f,    4.366343f,    0.681761f,  -11.688398f,   -0.716310f,    7.851981f,    0.460853f,   41.927717f,    1.992520f},  // T_l_to_b
+    {   0.405560f,    1.660786f,   -3.353969f,   -0.428159f,    2.728525f,    0.211072f,    8.620103f,    0.600530f,    5.751655f,    0.480080f},  // T_wr_to_r
+    {   0.405560f,    1.660786f,    3.353969f,    0.428159f,    8.620103f,    0.600530f,    2.728525f,    0.211072f,    5.751655f,    0.480080f}   // T_wl_to_l
+};
 
-    L = 0.13 m
-    K =
+% Q矩阵: 状态权重
+%      状态: [X_b^h, V_b^h, phi, dphi, theta_l, dtheta_l, theta_r, dtheta_r, theta_b, dtheta_b]
+%              位置    速度  偏航  偏航速  左腿角   左腿速   右腿角   右腿速    俯仰角   俯仰速
+lqr_Q = diag([1,      10,  100,   1  ,  200,     1 ,        200,      1,       4000,    1]);
 
-       -1.4106   -4.2049  -61.3892  -19.4519  -12.9229   -4.1634   -9.1305   -2.6297  -14.4377   -0.8536
-       -1.4106   -4.2049   61.3892   19.4519   -9.1305   -2.6297  -12.9229   -4.1634  -14.4377   -0.8536
-        0.0580    0.1957   -8.7819   -2.8470    7.6818    2.1501   -5.1821   -1.4884  -45.3765   -1.9785
-        0.0580    0.1957    8.7819    2.8470   -5.1821   -1.4884    7.6818    2.1501  -45.3765   -1.9785
-
-%        s     ds     phi     dphi     theta_ll dtheta_ll theta_lr dtheta_lr theta_b dtheta_b
-lqr_Q = [1,    0,     0,      0,       0,       0,        0,       0,        0,      0;
-         0,    2,     0,      0,       0,       0,        0,       0,        0,      0;
-         0,    0,     2000,      0,       0,       0,        0,       0,        0,      0;
-         0,    0,     0,      200,       0,       0,        0,       0,        0,      0;
-         0,    0,     0,      0,       50,       0,        0,       0,        0,      0;
-         0,    0,     0,      0,       0,       10,        0,       0,        0,      0;
-         0,    0,     0,      0,       0,       0,        50,       0,        0,      0;
-         0,    0,     0,      0,       0,       0,        0,       10,        0,      0;
-         0,    0,     0,      0,       0,       0,        0,       0,        3000,   0;
-         0,    0,     0,      0,       0,       0,        0,       0,        0,      1];
-
-% 矩阵中，以下列分别对应：
-%        T_wl    T_wr     T_bl     T_br
-lqr_R = [0.25,      0,       0,       0;
-         0,      0.25,       0,       0;
-         0,      0,       0.75,       0;
-         0,      0,       0,       0.75];
+% R矩阵: 控制输入权重
+% 控制: [T_{r→b}, T_{l→b}, T_{wr→r}, T_{wl→l}]
+%        右髋扭矩   左髋扭矩   右轮扭矩   左轮扭矩
+lqr_R = diag([1,       1,        2.75,        2.75]);
 
     'a00 + a10*x + a01*y + a20*x^2 + a11*x*y + a02*y^2'
 */
 
-float a11[6] = {-1.391,-2.0479,1.9661,7.13,-8.0864,1.0275};
-float a12[6] = {-5.7957,-3.7654,10.471,25.829,-39.841,3.7329};
-float a13[6] = {-42.228,16.883,-26.987,-46.853,5.0237,53.768};
-float a14[6] = {-18.916,7.7658,-12.258,-21.229,2.2033,24.334};
-float a15[6] = {-22.132,-39.55,35.892,90.744,-10.989,-67.656};
-float a16[6] = {-4.2257,-5.7986,5.6466,13.031,-2.2361,-11.489};
-float a17[6] = {-11.497,6.6736,-32.692,-30.229,-10.992,70.219};
-float a18[6] = {-2.0698,-0.014323,-5.062,-4.3253,-2.81,10.282};
-float a19[6] = {-18.268,44.346,39.473,-48.242,-14.207,-39.621};
-float a110[6] = {-1.4214,2.8205,3.122,-1.7198,-3.6514,-2.3213};
-
-float a21[6] = {-1.391,1.9661,-2.0479,1.0275,-8.0864,7.13};
-float a22[6] = {-5.7957,10.471,-3.7654,3.7329,-39.841,25.829};
-float a23[6] = {42.228,26.987,-16.883,-53.768,-5.0237,46.853};
-float a24[6] = {18.916,12.258,-7.7658,-24.334,-2.2033,21.229};
-float a25[6] = {-11.497,-32.692,6.6736,70.219,-10.992,-30.229};
-float a26[6] = {-2.0698,-5.062,-0.014323,10.282,-2.81,-4.3253};
-float a27[6] = {-22.132,35.892,-39.55,-67.656,-10.989,90.744};
-float a28[6] = {-4.2257,5.6466,-5.7986,-11.489,-2.2361,13.031};
-float a29[6] = {-18.268,39.473,44.346,-39.621,-14.207,-48.242};
-float a210[6] = {-1.4214,3.122,2.8205,-2.3213,-3.6514,-1.7198};
-
-float a31[6] = {-0.17315,2.6942,-1.9229,-3.3033,2.9007,-1.1752};
-float a32[6] = {-0.61634,10.04,-7.1064,-12.72,9.1574,-2.3303};
-float a33[6] = {-8.7365,24.373,-4.3226,-21.503,-10.798,18.285};
-float a34[6] = {-3.9329,10.816,-2.0159,-9.55,-4.9635,8.2136};
-float a35[6] = {12.013,-17.618,21.553,33.159,50.681,-59.868};
-float a36[6] = {2.4528,-7.2224,4.0697,12.321,5.6693,-11.335};
-float a37[6] = {-5.1804,9.5143,-41.364,5.9574,-18.278,20.25};
-float a38[6] = {-1.1083,2.2849,-5.7083,0.2884,0.7057,-0.33545};
-float a39[6] = {-25.653,-76.815,65.898,112.8,-30.58,-64.706};
-float a310[6] = {-1.5297,-4.6695,3.7565,5.6717,-0.67424,-3.7376};
-
-float a41[6] = {-0.17315,-1.9229,2.6942,-1.1752,2.9007,-3.3033};
-float a42[6] = {-0.61634,-7.1064,10.04,-2.3303,9.1574,-12.72};
-float a43[6] = {8.7365,4.3226,-24.373,-18.285,10.798,21.503};
-float a44[6] = {3.9329,2.0159,-10.816,-8.2136,4.9635,9.55};
-float a45[6] = {-5.1804,-41.364,9.5143,20.25,-18.278,5.9574};
-float a46[6] = {-1.1083,-5.7083,2.2849,-0.33545,0.7057,0.2884};
-float a47[6] = {12.013,21.553,-17.618,-59.868,50.681,33.159};
-float a48[6] = {2.4528,4.0697,-7.2224,-11.335,5.6693,12.321};
-float a49[6] = {-25.653,65.898,-76.815,-64.706,-30.58,112.8};
-float a410[6] = {-1.5297,3.7565,-4.6695,-3.7376,-0.67424,5.6717};
+static float K_coef[40][6] = {
+        {    -0.73737f,      3.05967f,    -0.241781f,     -1.82056f,     -4.22821f,      2.33138f},  // K[0][0]
+        {    -0.73737f,    -0.241781f,      3.05967f,      2.33138f,     -4.22821f,     -1.82056f},  // K[0][1]
+        {    0.202708f,    -0.248723f,      1.55762f,     0.263085f,    -0.664854f,     -1.73986f},  // K[0][2]
+        {    0.202708f,      1.55762f,    -0.248723f,     -1.73986f,    -0.664854f,     0.263085f},  // K[0][3]
+        {    -3.73239f,      15.5394f,     -0.60202f,     -8.84552f,        -23.2f,      11.7164f},  // K[0][4]
+        {    -3.73239f,     -0.60202f,      15.5394f,      11.7164f,        -23.2f,     -8.84552f},  // K[0][5]
+        {     1.09386f,     -1.58924f,      7.21367f,     0.533274f,     -0.63337f,     -9.45177f},  // K[0][6]
+        {     1.09386f,      7.21367f,     -1.58924f,     -9.45177f,     -0.63337f,     0.533274f},  // K[0][7]
+        {    -3.03014f,     -7.06972f,     -3.06951f,      11.9458f,     -13.1216f,      10.8667f},  // K[0][8]
+        {     3.03014f,      3.06951f,      7.06972f,     -10.8667f,      13.1216f,     -11.9458f},  // K[0][9]
+        {    -3.91538f,       -1.568f,      5.45772f,     0.704705f,      7.86216f,      -10.155f},  // K[1][0]
+        {     3.91538f,     -5.45772f,        1.568f,       10.155f,     -7.86216f,    -0.704705f},  // K[1][1]
+        {   -0.420261f,    -0.917012f,    -0.678215f,      1.46123f,     -2.14686f,      1.74738f},  // K[1][2]
+        {    0.420261f,     0.678215f,     0.917012f,     -1.74738f,      2.14686f,     -1.46123f},  // K[1][3]
+        {   -0.510137f,    -0.336413f,     0.775887f,      0.21584f,      1.05994f,     -1.23357f},  // K[1][4]
+        {    0.510137f,    -0.775887f,     0.336413f,      1.23357f,     -1.05994f,     -0.21584f},  // K[1][5]
+        {     3.66028f,      19.8788f,      25.0155f,     -17.8548f,      26.4867f,     -50.6838f},  // K[1][6]
+        {    -25.7367f,      55.9712f,     -16.4797f,     -57.4689f,     -28.8167f,      20.8026f},  // K[1][7]
+        {     4.28318f,      25.7321f,     -24.6871f,     -18.1716f,     -25.2738f,      30.1839f},  // K[1][8]
+        {      12.549f,      35.5487f,     -8.18873f,     -53.8857f,      22.6452f,      2.46959f},  // K[1][9]
+        {    0.249431f,     0.231897f,      1.04175f,      1.02326f,    0.0480767f,     -1.69203f},  // K[2][0]
+        {     -1.0644f,      2.58963f,    -0.653863f,     -3.88313f,    -0.483392f,     0.668367f},  // K[2][1]
+        {    0.210319f,      1.01455f,    -0.887321f,    -0.223898f,    -0.607355f,     0.957851f},  // K[2][2]
+        {    0.516413f,      1.27039f,    -0.343494f,     -1.00927f,     0.963344f,    0.0908871f},  // K[2][3]
+        {    -25.7367f,     -16.4797f,      55.9712f,      20.8026f,     -28.8167f,     -57.4689f},  // K[2][4]
+        {     3.66028f,      25.0155f,      19.8788f,     -50.6838f,      26.4867f,     -17.8548f},  // K[2][5]
+        {      12.549f,     -8.18873f,      35.5487f,      2.46959f,      22.6452f,     -53.8857f},  // K[2][6]
+        {     4.28318f,     -24.6871f,      25.7321f,      30.1839f,     -25.2738f,     -18.1716f},  // K[2][7]
+        {     -1.0644f,    -0.653863f,      2.58963f,     0.668367f,    -0.483392f,     -3.88313f},  // K[2][8]
+        {    0.249431f,      1.04175f,     0.231897f,     -1.69203f,    0.0480767f,      1.02326f},  // K[2][9]
+        {    0.516413f,    -0.343494f,      1.27039f,    0.0908871f,     0.963344f,     -1.00927f},  // K[3][0]
+        {    0.210319f,    -0.887321f,      1.01455f,     0.957851f,    -0.607355f,    -0.223898f},  // K[3][1]
+        {     30.1141f,     -47.6694f,      87.8999f,      38.0828f,      14.0628f,     -115.955f},  // K[3][2]
+        {     30.1141f,      87.8999f,     -47.6694f,     -115.955f,      14.0628f,      38.0828f},  // K[3][3]
+        {     14.3487f,     -14.6601f,      -40.803f,       11.736f,      31.2987f,       27.813f},  // K[3][4]
+        {     14.3487f,      -40.803f,     -14.6601f,       27.813f,      31.2987f,       11.736f},  // K[3][5]
+        {     1.39376f,     -2.68527f,      5.80599f,      2.38371f,     -1.20063f,     -6.18575f},  // K[3][6]
+        {     1.39376f,      5.80599f,     -2.68527f,     -6.18575f,     -1.20063f,      2.38371f},  // K[3][7]
+        {     1.09968f,     -1.75109f,     -2.27919f,      1.38558f,      2.86209f,     0.977652f},  // K[3][8]
+        {     1.09968f,     -2.27919f,     -1.75109f,     0.977652f,      2.86209f,      1.38558f}   // K[3][9]
+};
 
 
 /* [T_lwl T_lwr(轮子输出扭矩) T_bll T_blr(髋关节输出扭矩)] */
@@ -270,8 +259,8 @@ static arm_matrix_instance_f32 MatLQROutU = {4, 1, LQROutBuf};
 static void LQR_Cal(){
 
     //Calculate error
-    /*cmsis dsp中的矩阵减法运算,error = ref(目标值) - obs(观测值) */
-    arm_mat_sub_f32(&MatLQRRef,&MatLQRObs,&MatLQRErrX);
+    /*cmsis dsp中的矩阵减法运算,error = -(ref(目标值) - obs(观测值)) TODO 正负对不对待定,港大开源的仿真算出来的k好像要加符号,这里相当于加了*/
+    arm_mat_sub_f32(&MatLQRObs,&MatLQRRef,&MatLQRErrX);
 
     //Calculate output value
     /*矩阵乘法,[4*10]*[10*1] */
@@ -396,12 +385,12 @@ static void update_LQR_obs() {
     /*  更新观测矩阵 [0]:s;[1]:s_dot;[2]:φ;[3]:φ_dot;[4]:θ_ll;[5]:θ_ll_dot;[6]:θ_lr;[7]:θ_lr_dot;[8]:θ_b;[9]:θ_b_dot */
 
     LQRXObsBuf[0][0] = 0;
-    LQRXObsBuf[0][1] = -chassis_vx_filter ;
-//    LQRXObsBuf[0][1] = 0 ;
-    LQRXObsBuf[0][2] = -ins.yaw_total_angle * DEGREE_2_RAD;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
-    LQRXObsBuf[0][3] = -ins.gyro[2] * DEGREE_2_RAD;  //偏航角角速度,沿着机体正方向逆时针设为正
-//    LQRXObsBuf[0][2] = 0;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
-//    LQRXObsBuf[0][3] = 0;  //偏航角角速度,沿着机体正方向逆时针设为正
+//    LQRXObsBuf[0][1] = -chassis_vx_filter ;
+    LQRXObsBuf[0][1] = 0 ;
+//    LQRXObsBuf[0][2] = -ins.yaw_total_angle * DEGREE_2_RAD;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
+//    LQRXObsBuf[0][3] = -ins.gyro[2] * DEGREE_2_RAD;  //偏航角角速度,沿着机体正方向逆时针设为正
+    LQRXObsBuf[0][2] = 0;    //沿着机体正方向逆时针设为正,单位°,TODO: 不知道目前单位是否正确,需要后续测试,或应该把所有角度全部用弧度表示
+    LQRXObsBuf[0][3] = 0;  //偏航角角速度,沿着机体正方向逆时针设为正
     LQRXObsBuf[0][4] = leg[LEFT]->wbr_theta + Theta_Compensation;
 //    LIMIT_MIN_MAX(LQRXObsBuf[0][4],-1.4,1.4);
     LQRXObsBuf[0][5] = leg[LEFT]->wbr_d_theta;
@@ -413,10 +402,10 @@ static void update_LQR_obs() {
 
 
     LQRXRefBuf[0][0] = 0; //目前采用速度控制,后续对速度误差积分作为位移s项
-    LQRXRefBuf[0][1] = (chassis_cmd.vx_set / VX_MAX) * V_SET;  //  m/s
-//    LQRXRefBuf[0][1] = 0;  //  m/s
-    LQRXRefBuf[0][2] = yaw_target;  //转向控制
-//    LQRXRefBuf[0][2] = 0;  //转向控制
+//    LQRXRefBuf[0][1] = (chassis_cmd.vx_set / VX_MAX) * V_SET;  //  m/s
+    LQRXRefBuf[0][1] = 0;  //  m/s
+//    LQRXRefBuf[0][2] = yaw_target;  //转向控制
+    LQRXRefBuf[0][2] = 0;  //转向控制
     LQRXRefBuf[0][3] = 0;
     LQRXRefBuf[0][4] = 0;
     LQRXRefBuf[0][5] = 0;
@@ -433,109 +422,44 @@ static void update_LQR_obs() {
         LQRXRefBuf[0][1] = 0;  //  m/s
         LQRXRefBuf[0][2] = yaw_target;  //转向控制,取消转向控制
 
-        /* K_4*10 X:[[0]:s;[1]:s_dot;[2]:φ;[3]:φ_dot;  [4]:θ_ll;[5]:θ_ll_dot;[6]:θ_lr;[7]:θ_lr_dot;  [8]:θ_b;[9]:θ_b_dot],U:[T_lwl T_lwr(轮子输出扭矩) T_bll T_blr(髋关节输出扭矩)]检测到离地时只考虑维持腿部姿态的量更新,其余量置零,轮子关闭*/
-        MatLQR_K[0][0] = 0 ;
-        MatLQR_K[0][1] = 0 ;
-        MatLQR_K[0][2] = 0 ;
-        MatLQR_K[0][3] = 0 ;
-        MatLQR_K[0][4] = 0 ;
-        MatLQR_K[0][5] = 0 ;
-        MatLQR_K[0][6] = 0 ;
-        MatLQR_K[0][7] = 0 ;
-        MatLQR_K[0][8] = 0 ;
-        MatLQR_K[0][9] = 0 ;
-
-        MatLQR_K[1][0] = 0 ;
-        MatLQR_K[1][1] = 0 ;
-        MatLQR_K[1][2] = 0 ;
-        MatLQR_K[1][3] = 0 ;
-        MatLQR_K[1][4] = 0 ;
-        MatLQR_K[1][5] = 0 ;
-        MatLQR_K[1][6] = 0 ;
-        MatLQR_K[1][7] = 0 ;
-        MatLQR_K[1][8] = 0 ;
-        MatLQR_K[1][9] = 0 ;
-
-        MatLQR_K[2][0] = 0 ;
-        MatLQR_K[2][1] = 0 ;
-        MatLQR_K[2][2] = 0 ;
-        MatLQR_K[2][3] = 0 ;
-        MatLQR_K[2][4] = a35[0] + a35[1] * leg[LEFT]->L + a35[2] * leg[RIGHT]->L + a35[3] * leg[LEFT]->L * leg[LEFT]->L + a35[4] * leg[LEFT]->L * leg[RIGHT]->L + a35[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][5] = a36[0] + a36[1] * leg[LEFT]->L + a36[2] * leg[RIGHT]->L + a36[3] * leg[LEFT]->L * leg[LEFT]->L + a36[4] * leg[LEFT]->L * leg[RIGHT]->L + a36[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][6] = a37[0] + a37[1] * leg[LEFT]->L + a37[2] * leg[RIGHT]->L + a37[3] * leg[LEFT]->L * leg[LEFT]->L + a37[4] * leg[LEFT]->L * leg[RIGHT]->L + a37[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][7] = a38[0] + a38[1] * leg[LEFT]->L + a38[2] * leg[RIGHT]->L + a38[3] * leg[LEFT]->L * leg[LEFT]->L + a38[4] * leg[LEFT]->L * leg[RIGHT]->L + a38[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][8] = 0 ;
-        MatLQR_K[2][9] = 0 ;
-
-        MatLQR_K[3][0] = 0 ;
-        MatLQR_K[3][1] = 0 ;
-        MatLQR_K[3][2] = 0 ;
-        MatLQR_K[3][3] = 0 ;
-        MatLQR_K[3][4] = a35[0] + a35[1] * leg[LEFT]->L + a35[2] * leg[RIGHT]->L + a35[3] * leg[LEFT]->L * leg[LEFT]->L + a35[4] * leg[LEFT]->L * leg[RIGHT]->L + a35[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][5] = a36[0] + a36[1] * leg[LEFT]->L + a36[2] * leg[RIGHT]->L + a36[3] * leg[LEFT]->L * leg[LEFT]->L + a36[4] * leg[LEFT]->L * leg[RIGHT]->L + a36[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][6] = a37[0] + a37[1] * leg[LEFT]->L + a37[2] * leg[RIGHT]->L + a37[3] * leg[LEFT]->L * leg[LEFT]->L + a37[4] * leg[LEFT]->L * leg[RIGHT]->L + a37[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][7] = a38[0] + a38[1] * leg[LEFT]->L + a38[2] * leg[RIGHT]->L + a38[3] * leg[LEFT]->L * leg[LEFT]->L + a38[4] * leg[LEFT]->L * leg[RIGHT]->L + a38[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][8] = 0 ;
-        MatLQR_K[3][9] = 0 ;
+/* K_4*10 X:[[0]:s;[1]:s_dot;[2]:φ;[3]:φ_dot;  [4]:θ_ll;[5]:θ_ll_dot;[6]:θ_lr;[7]:θ_lr_dot;  [8]:θ_b;[9]:θ_b_dot],U:[T_lwl T_lwr(轮子输出扭矩) T_bll T_blr(髋关节输出扭矩)]检测到离地时只考虑维持腿部姿态的量更新,其余量置零,轮子关闭*/
+// 拟合系数 K_coef[40][6]
+// 第n个K元素: K_n = p00 + p10*l_l + p01*l_r + p20*l_l^2 + p11*l_l*l_r + p02*l_r^2
+// 根据腿长计算K矩阵
+        for (int n = 0; n < 40; n++) {
+            int col = n / 4;   // 每4个元素对应一列（0~9）
+            int row = n % 4;   // 每列里的行号（0~3）
+            if((row == 2 && (col >= 4 && col <= 7)) || (row == 4 && (col >= 4 && col <= 7))){
+                MatLQR_K[row][col] = K_coef[n][0]
+                                     + K_coef[n][1] * leg[LEFT]->L
+                                     + K_coef[n][2] * leg[RIGHT]->L
+                                     + K_coef[n][3] * leg[LEFT]->L * leg[LEFT]->L
+                                     + K_coef[n][4] * leg[LEFT]->L * leg[RIGHT]->L
+                                     + K_coef[n][5] * leg[RIGHT]->L * leg[RIGHT]->L;
+            }
+            else{
+                MatLQR_K[row][col] = 0;
+            }
+        }
 
 
     }else{/*TODO 在腿长不切换是每次都进行运算浪费资源 */
         /*更新LQR反馈矩阵K*/
         Wheel_Shut_Flag = 0;
 
-        /* K_4*10 */
-        /*% 拟合出的函数表达式为 p(x,y) = a00 + a10*x + a01*y + a20*x^2 + a11*x*y + a02*y^2
-         * % - 第1列对应a00
-           % - 第2列对应a10
-           % - 第3列对应a01
-           % - 第4列对应a20
-           % - 第5列对应a11
-           % - 第6列对应a02
-        % 其中x对应左腿腿长l_l，y对应右腿腿长l_r,这里的p用a_** 表示拟合系数 */
-        MatLQR_K[0][0] = a11[0] + a11[1] * leg[LEFT]->L + a11[2] * leg[RIGHT]->L + a11[3] * leg[LEFT]->L * leg[LEFT]->L + a11[4] * leg[LEFT]->L * leg[RIGHT]->L + a11[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][1] = a12[0] + a12[1] * leg[LEFT]->L + a12[2] * leg[RIGHT]->L + a12[3] * leg[LEFT]->L * leg[LEFT]->L + a12[4] * leg[LEFT]->L * leg[RIGHT]->L + a12[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][2] = a13[0] + a13[1] * leg[LEFT]->L + a13[2] * leg[RIGHT]->L + a13[3] * leg[LEFT]->L * leg[LEFT]->L + a13[4] * leg[LEFT]->L * leg[RIGHT]->L + a13[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][3] = a14[0] + a14[1] * leg[LEFT]->L + a14[2] * leg[RIGHT]->L + a14[3] * leg[LEFT]->L * leg[LEFT]->L + a14[4] * leg[LEFT]->L * leg[RIGHT]->L + a14[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][4] = a15[0] + a15[1] * leg[LEFT]->L + a15[2] * leg[RIGHT]->L + a15[3] * leg[LEFT]->L * leg[LEFT]->L + a15[4] * leg[LEFT]->L * leg[RIGHT]->L + a15[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][5] = a16[0] + a16[1] * leg[LEFT]->L + a16[2] * leg[RIGHT]->L + a16[3] * leg[LEFT]->L * leg[LEFT]->L + a16[4] * leg[LEFT]->L * leg[RIGHT]->L + a16[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][6] = a17[0] + a17[1] * leg[LEFT]->L + a17[2] * leg[RIGHT]->L + a17[3] * leg[LEFT]->L * leg[LEFT]->L + a17[4] * leg[LEFT]->L * leg[RIGHT]->L + a17[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][7] = a18[0] + a18[1] * leg[LEFT]->L + a18[2] * leg[RIGHT]->L + a18[3] * leg[LEFT]->L * leg[LEFT]->L + a18[4] * leg[LEFT]->L * leg[RIGHT]->L + a18[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][8] = a19[0] + a19[1] * leg[LEFT]->L + a19[2] * leg[RIGHT]->L + a19[3] * leg[LEFT]->L * leg[LEFT]->L + a19[4] * leg[LEFT]->L * leg[RIGHT]->L + a19[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[0][9] = a110[0] + a110[1] * leg[LEFT]->L + a110[2] * leg[RIGHT]->L + a110[3] * leg[LEFT]->L * leg[LEFT]->L + a110[4] * leg[LEFT]->L * leg[RIGHT]->L + a110[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-
-        MatLQR_K[1][0] = a21[0] + a21[1] * leg[LEFT]->L + a21[2] * leg[RIGHT]->L + a21[3] * leg[LEFT]->L * leg[LEFT]->L + a21[4] * leg[LEFT]->L * leg[RIGHT]->L + a21[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][1] = a22[0] + a22[1] * leg[LEFT]->L + a22[2] * leg[RIGHT]->L + a22[3] * leg[LEFT]->L * leg[LEFT]->L + a22[4] * leg[LEFT]->L * leg[RIGHT]->L + a22[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][2] = a23[0] + a23[1] * leg[LEFT]->L + a23[2] * leg[RIGHT]->L + a23[3] * leg[LEFT]->L * leg[LEFT]->L + a23[4] * leg[LEFT]->L * leg[RIGHT]->L + a23[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][3] = a24[0] + a24[1] * leg[LEFT]->L + a24[2] * leg[RIGHT]->L + a24[3] * leg[LEFT]->L * leg[LEFT]->L + a24[4] * leg[LEFT]->L * leg[RIGHT]->L + a24[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][4] = a25[0] + a25[1] * leg[LEFT]->L + a25[2] * leg[RIGHT]->L + a25[3] * leg[LEFT]->L * leg[LEFT]->L + a25[4] * leg[LEFT]->L * leg[RIGHT]->L + a25[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][5] = a26[0] + a26[1] * leg[LEFT]->L + a26[2] * leg[RIGHT]->L + a26[3] * leg[LEFT]->L * leg[LEFT]->L + a26[4] * leg[LEFT]->L * leg[RIGHT]->L + a26[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][6] = a27[0] + a27[1] * leg[LEFT]->L + a27[2] * leg[RIGHT]->L + a27[3] * leg[LEFT]->L * leg[LEFT]->L + a27[4] * leg[LEFT]->L * leg[RIGHT]->L + a27[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][7] = a28[0] + a28[1] * leg[LEFT]->L + a28[2] * leg[RIGHT]->L + a28[3] * leg[LEFT]->L * leg[LEFT]->L + a28[4] * leg[LEFT]->L * leg[RIGHT]->L + a28[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][8] = a29[0] + a29[1] * leg[LEFT]->L + a29[2] * leg[RIGHT]->L + a29[3] * leg[LEFT]->L * leg[LEFT]->L + a29[4] * leg[LEFT]->L * leg[RIGHT]->L + a29[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[1][9] = a210[0] + a210[1] * leg[LEFT]->L + a210[2] * leg[RIGHT]->L + a210[3] * leg[LEFT]->L * leg[LEFT]->L + a210[4] * leg[LEFT]->L * leg[RIGHT]->L + a210[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-
-        MatLQR_K[2][0] = a31[0] + a31[1] * leg[LEFT]->L + a31[2] * leg[RIGHT]->L + a31[3] * leg[LEFT]->L * leg[LEFT]->L + a31[4] * leg[LEFT]->L * leg[RIGHT]->L + a31[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][1] = a32[0] + a32[1] * leg[LEFT]->L + a32[2] * leg[RIGHT]->L + a32[3] * leg[LEFT]->L * leg[LEFT]->L + a32[4] * leg[LEFT]->L * leg[RIGHT]->L + a32[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][2] = a33[0] + a33[1] * leg[LEFT]->L + a33[2] * leg[RIGHT]->L + a33[3] * leg[LEFT]->L * leg[LEFT]->L + a33[4] * leg[LEFT]->L * leg[RIGHT]->L + a33[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][3] = a34[0] + a34[1] * leg[LEFT]->L + a34[2] * leg[RIGHT]->L + a34[3] * leg[LEFT]->L * leg[LEFT]->L + a34[4] * leg[LEFT]->L * leg[RIGHT]->L + a34[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][4] = a35[0] + a35[1] * leg[LEFT]->L + a35[2] * leg[RIGHT]->L + a35[3] * leg[LEFT]->L * leg[LEFT]->L + a35[4] * leg[LEFT]->L * leg[RIGHT]->L + a35[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][5] = a36[0] + a36[1] * leg[LEFT]->L + a36[2] * leg[RIGHT]->L + a36[3] * leg[LEFT]->L * leg[LEFT]->L + a36[4] * leg[LEFT]->L * leg[RIGHT]->L + a36[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][6] = a37[0] + a37[1] * leg[LEFT]->L + a37[2] * leg[RIGHT]->L + a37[3] * leg[LEFT]->L * leg[LEFT]->L + a37[4] * leg[LEFT]->L * leg[RIGHT]->L + a37[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][7] = a38[0] + a38[1] * leg[LEFT]->L + a38[2] * leg[RIGHT]->L + a38[3] * leg[LEFT]->L * leg[LEFT]->L + a38[4] * leg[LEFT]->L * leg[RIGHT]->L + a38[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][8] = a39[0] + a39[1] * leg[LEFT]->L + a39[2] * leg[RIGHT]->L + a39[3] * leg[LEFT]->L * leg[LEFT]->L + a39[4] * leg[LEFT]->L * leg[RIGHT]->L + a39[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[2][9] = a310[0] + a310[1] * leg[LEFT]->L + a310[2] * leg[RIGHT]->L + a310[3] * leg[LEFT]->L * leg[LEFT]->L + a310[4] * leg[LEFT]->L * leg[RIGHT]->L + a310[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-
-        MatLQR_K[3][0] = a41[0] + a41[1] * leg[LEFT]->L + a41[2] * leg[RIGHT]->L + a41[3] * leg[LEFT]->L * leg[LEFT]->L + a41[4] * leg[LEFT]->L * leg[RIGHT]->L + a41[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][1] = a42[0] + a42[1] * leg[LEFT]->L + a42[2] * leg[RIGHT]->L + a42[3] * leg[LEFT]->L * leg[LEFT]->L + a42[4] * leg[LEFT]->L * leg[RIGHT]->L + a42[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][2] = a43[0] + a43[1] * leg[LEFT]->L + a43[2] * leg[RIGHT]->L + a43[3] * leg[LEFT]->L * leg[LEFT]->L + a43[4] * leg[LEFT]->L * leg[RIGHT]->L + a43[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][3] = a44[0] + a44[1] * leg[LEFT]->L + a44[2] * leg[RIGHT]->L + a44[3] * leg[LEFT]->L * leg[LEFT]->L + a44[4] * leg[LEFT]->L * leg[RIGHT]->L + a44[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][4] = a45[0] + a45[1] * leg[LEFT]->L + a45[2] * leg[RIGHT]->L + a45[3] * leg[LEFT]->L * leg[LEFT]->L + a45[4] * leg[LEFT]->L * leg[RIGHT]->L + a45[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][5] = a46[0] + a46[1] * leg[LEFT]->L + a46[2] * leg[RIGHT]->L + a46[3] * leg[LEFT]->L * leg[LEFT]->L + a46[4] * leg[LEFT]->L * leg[RIGHT]->L + a46[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][6] = a47[0] + a47[1] * leg[LEFT]->L + a47[2] * leg[RIGHT]->L + a47[3] * leg[LEFT]->L * leg[LEFT]->L + a47[4] * leg[LEFT]->L * leg[RIGHT]->L + a47[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][7] = a48[0] + a48[1] * leg[LEFT]->L + a48[2] * leg[RIGHT]->L + a48[3] * leg[LEFT]->L * leg[LEFT]->L + a48[4] * leg[LEFT]->L * leg[RIGHT]->L + a48[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][8] = a49[0] + a49[1] * leg[LEFT]->L + a49[2] * leg[RIGHT]->L + a49[3] * leg[LEFT]->L * leg[LEFT]->L + a49[4] * leg[LEFT]->L * leg[RIGHT]->L + a49[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-        MatLQR_K[3][9] = a410[0] + a410[1] * leg[LEFT]->L + a410[2] * leg[RIGHT]->L + a410[3] * leg[LEFT]->L * leg[LEFT]->L + a410[4] * leg[LEFT]->L * leg[RIGHT]->L + a410[5] * leg[RIGHT]->L * leg[RIGHT]->L ;
-
+// 拟合系数 K_coef[40][6]
+// 第n个K元素: K_n = p00 + p10*l_l + p01*l_r + p20*l_l^2 + p11*l_l*l_r + p02*l_r^2
+// 根据腿长计算K矩阵
+        for (int n = 0; n < 40; n++) {
+            int col = n / 4;   // 每4个元素对应一列（0~9）
+            int row = n % 4;   // 每列里的行号（0~3）
+            MatLQR_K[row][col] = K_coef[n][0]
+                          + K_coef[n][1] * leg[LEFT]->L
+                          + K_coef[n][2] * leg[RIGHT]->L
+                          + K_coef[n][3] * leg[LEFT]->L * leg[LEFT]->L
+                          + K_coef[n][4] * leg[LEFT]->L * leg[RIGHT]->L
+                          + K_coef[n][5] * leg[RIGHT]->L * leg[RIGHT]->L;
+        }
     }
 }
 
@@ -679,8 +603,8 @@ static int chassis_motor_init(void)
     wbr_leg_config_t leg_config =
             {
                     /*单位m*/
-                    0.22f,  // l4=l1
-                    0.22f,
+                    0.21f,  // l4=l1
+                    0.21f,
                     0.250f, // l3=l2
                     0.250f,
                     0.0f,   //电机间距
@@ -751,8 +675,8 @@ static void leg_calc()
     /* 离地检测，计算两腿地面支持力 */
     Leg_FN_Calculation(0,0.5*(leg[LEFT]->wbr_L_ref + leg[RIGHT]->wbr_L_ref));
 
-    leg[LEFT]->WBR_Tbl =  LQROutBuf[2];
-    leg[RIGHT]->WBR_Tbl = LQROutBuf[3];
+    leg[LEFT]->WBR_Tbl =  LQROutBuf[1];
+    leg[RIGHT]->WBR_Tbl = LQROutBuf[0];
 
     leg[LEFT]->wbr_cal_T(leg[LEFT],WBR_T_L);
     leg[RIGHT]->wbr_cal_T(leg[RIGHT],WBR_T_R);
@@ -1033,7 +957,7 @@ static int16_t set_l,set_r;/*观测用*/
  * */
 static int16_t M3508_control_l(lk_motor_measure_t measure){
     static int16_t set;
-    LIMIT_MIN_MAX(LQROutBuf[0],-M3508_TOR_MAX,M3508_TOR_MAX);
+    LIMIT_MIN_MAX(LQROutBuf[3],-M3508_TOR_MAX,M3508_TOR_MAX);
 
     if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
     {
@@ -1043,13 +967,13 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(-LQROutBuf[0] * M3508_TOR_TO_CUR) ;
+                set = (int16_t)(-LQROutBuf[3] * M3508_TOR_TO_CUR) ;
             }else{
                 set = 0.0f;
             }
 
         }else{
-            set = (int16_t)(-LQROutBuf[0] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(-LQROutBuf[3] * M3508_TOR_TO_CUR) ;
         }
 
     }
@@ -1069,7 +993,7 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
  * */
 static int16_t M3508_control_r(lk_motor_measure_t measure){
     static int16_t set;
-    LIMIT_MIN_MAX(LQROutBuf[1],-M3508_TOR_MAX,M3508_TOR_MAX);
+    LIMIT_MIN_MAX(LQROutBuf[2],-M3508_TOR_MAX,M3508_TOR_MAX);
     if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
     {
         set = 0;
@@ -1078,13 +1002,13 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
     {
         if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
             if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(LQROutBuf[1] * M3508_TOR_TO_CUR);
+                set = (int16_t)(LQROutBuf[2] * M3508_TOR_TO_CUR);
             }else{
                 set = 0.0f;
             }
 
         }else{
-            set = (int16_t)(LQROutBuf[1] * M3508_TOR_TO_CUR) ;
+            set = (int16_t)(LQROutBuf[2] * M3508_TOR_TO_CUR) ;
         }
 
     }

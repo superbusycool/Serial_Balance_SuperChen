@@ -66,7 +66,7 @@
 #define DM_ZERO_OFFSET_RF  62.17f
 #define DM_ZERO_OFFSET_RB  35.22f
 
-#define LEG_SAFE_AREA      -30.0f  /*能接受的腿部theta角运动范围扩展角度*/
+#define LEG_SAFE_AREA      -50.0f  /*能接受的腿部theta角运动范围扩展角度*/
 
 /*查3508资料和xroll减速箱淘宝详情得到*/
 #define M3508_TOR_TO_CUR  2220  //扭矩电流系数
