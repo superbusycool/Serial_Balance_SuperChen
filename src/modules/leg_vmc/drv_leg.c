@@ -56,8 +56,8 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 
     leg->d_phi0 = (leg->phi0 - leg->last_phi0)/dt;
 
-//    leg->theta = leg->phi0 - (- ins->pitch* DEGREE_2_RAD) - PI/2.0f;
-    leg->theta = PI/2.0f - leg->phi0 - (- ins->pitch* DEGREE_2_RAD);
+
+    leg->theta = PI/2.0f - leg->phi0 - (-ins->pitch* DEGREE_2_RAD);
     leg->d_theta = (leg->theta - leg->last_theta) / dt;
     leg->dd_theta = (leg->d_theta - leg->last_d_theta) / dt;
 
@@ -82,6 +82,31 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 
 }
 
+/*
+ * @brief 通过电机角度解算phi1和phi2值
+ * @param struct wbr_leg_obj *leg:腿部实例;
+ * @param phi1_raw:phi1对应的电机angle_abs;
+ * @param phi2_raw:phi2对应的电机angle_abs
+ * */
+/*这两个函数在电机位置更换时重新写!!!*/
+static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi2_raw){
+
+    leg->phi1 = fmod(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi4 = fmod(PI-(PI - (PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD))),PI2) ;
+
+}
+/*
+ * @brief 通过电机角度解算phi1和phi2值
+ * @param struct wbr_leg_obj *leg:腿部实例;
+ * @param phi1_raw:phi1对应的电机angle_abs;
+ * @param phi2_raw:phi2对应的电机angle_abs
+ * */
+static void phi1_phi4_calc_right(struct leg_obj *leg, float phi1_raw, float phi2_raw){
+
+    leg->phi1 = fmod((phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD),PI2);
+    leg->phi4 = fmod(PI-(PI2 - (phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD) + PI),PI2);
+
+}
 
 
 static int8_t input_leg_angle(leg_obj_t *leg, float phi4, float phi1)
@@ -101,7 +126,7 @@ static int8_t input_leg_angle(leg_obj_t *leg, float phi4, float phi1)
 
 /*Leg motors*/
 /*FT = [F Tp]   Torque = [Motor3Torque(backmotor)  Motor2Torque(frontmotor)] */
-static void vmc_calculation_Torque(leg_obj_t *leg,float *FT,float *Tmotor)
+static void vmc_calculation_Torque(leg_obj_t *leg,float *Tmotor)
 {
     /*计算VMC*/
     volatile float q00,q01,q10,q11;
@@ -117,8 +142,8 @@ static void vmc_calculation_Torque(leg_obj_t *leg,float *FT,float *Tmotor)
     q11 = leg->l4 * arm_cos_f32(leg->phi0 - leg->phi2) * sin34 / (leg->l0 *sin32);
 
     /*矩阵乘法,T1,T2,F,Tp*/
-    Tmotor[0] = q00*FT[0] + q01*FT[1];
-    Tmotor[1] = q10*FT[0] + q11*FT[1];
+    Tmotor[0] = q00*leg->support_force + q01*leg->Tp;
+    Tmotor[1] = q10*leg->support_force + q11*leg->Tp;
 }
 
 /**
@@ -137,6 +162,8 @@ leg_obj_t * leg_register(leg_config_t *config/* , void *control */)
     leg_obj[idx].phi0 = PI/2;
     leg_obj[idx].vmc_calc = vmc_calc;
     leg_obj[idx].vmc_cal_T = vmc_calculation_Torque;
+    leg_obj[idx].phi_calc_L = phi1_phi4_calc_left ;
+    leg_obj[idx].phi_calc_R = phi1_phi4_calc_right ;
     leg_obj[idx].input_leg_angle = input_leg_angle;
 
     return &leg_obj[idx++];

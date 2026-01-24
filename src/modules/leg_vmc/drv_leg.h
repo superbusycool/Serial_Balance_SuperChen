@@ -31,7 +31,7 @@ typedef struct leg_obj
 	float phi1,phi4;
 	float phi2,phi3;
 
-	
+
 	/*极限值*/
 	float phi1_min; // PI/2
 	float phi4_max; // PI/2
@@ -79,6 +79,8 @@ typedef struct leg_obj
     float last_d_theta;
     float last_theta;
 
+    /*摆杆力矩*/
+    float Tp;
 
     /* 受到地面的支持力（用于离地检测） */
     float support_force;
@@ -92,7 +94,13 @@ typedef struct leg_obj
     /* 求得腿部运动速度 [dl0; dphi0] */
 
     /* FT = [PendulumForce PendulumTorque] */
-	void (*vmc_cal_T)(struct leg_obj *leg,float *Ft,float *Tmotor);
+	void (*vmc_cal_T)(struct leg_obj *leg,float *Tmotor);
+
+    /*解算腿部的phi1和phi2值,方便后续计算*/
+    void (*phi_calc_L)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
+    /*解算腿部的phi1和phi2值,方便后续计算*/
+    void (*phi_calc_R)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
+
 	int8_t (*input_leg_angle)(struct leg_obj *leg, float phi4, float phi1);
 }leg_obj_t;
 
