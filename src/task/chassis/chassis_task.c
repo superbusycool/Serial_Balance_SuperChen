@@ -43,7 +43,7 @@ static void chassis_sub_pull(void);
 #define LEN_LEN_MID     0.25f // 单位：m
 #define LEN_LEN_HIG     0.30f // 单位：m
 #define FORCE_Length_LIMIT 200.0f //
-#define FORCE_LIMIT 200.0f // 支持力限幅
+#define FORCE_LIMIT 300.0f // 支持力限幅
 
 #define Theta_Compensation  -0.0890f//-0.125f //-0.07
 #define PITCH_Compensation  0.0f//0.05f
@@ -63,6 +63,7 @@ static dm_motor_object_t *dm_motor[4];
 /* 驱动电机 3508 实例 */
 static dji_motor_object_t *m3508_motor[2];
 
+/*腿部支持力计算相关参数*/
 static float F_bl_gravity ; //重力补偿前馈
 static float F_bl_intertial ; //侧向惯性力矩补偿前馈
 static float F_roll;
@@ -152,11 +153,11 @@ static float MatLQR_K[2][6] = {0};//LQR运算中的反馈系数,在lqr_update参
 /*记录下Q和R
  *
 
-    Q=diag([110 100 1 2 1000 300]);
-    R=diag([10.75 0.5]);
-    K矩阵 =
-  [ -9.550003,  -2.368871,  -0.298871,  -0.817880,   3.580451,   1.533526;
-     9.209798,   2.878136,   0.280860,   0.766447,  40.852737,  23.636911]
+    Q=diag([80 80 1 1 1000 300]);
+    R=diag([3.75 1.05]);
+K矩阵 =
+  [-14.087533,  -4.927184,  -0.511910,  -1.397494,   4.895118,   2.033971;
+     5.834505,   1.919548,   0.127777,   0.355742,  32.921379,  16.629570]
 
 */
 
@@ -315,15 +316,6 @@ static void chassis_kf_update(void)
         _kf_dt = 0.003f;
     _kf_start = dwt_get_time_ms();
 
-//    Wecd_L = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_L * DEGREE_2_RAD);
-//    speed_rads_ground_l = Wecd_L +(-ins.gyro[0] * DEGREE_2_RAD)/*φ_dot_bc*/ + leg[LEFT]->d_theta/*Web*/ ;
-////    wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->d_theta*leg[LEFT]->L* arm_cos_f32(leg[LEFT]->theta)+ leg[LEFT]->d_L*arm_sin_f32(leg[LEFT]->theta) ;//TODO机体速度推出轮子速度
-//    wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS  ;
-//
-//    Wecd_R = (m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD);
-//    speed_rads_ground_r = Wecd_R +(-ins.gyro[0] * DEGREE_2_RAD)/*φ_dot_bc*/ + leg[RIGHT]->d_theta/*Web*/ ;
-////    wheel_to_ground_r = speed_rads_ground_r * WHEEL_RADIUS + leg[RIGHT]->d_theta*leg[RIGHT]->L* arm_cos_f32(leg[RIGHT]->theta)+ leg[RIGHT]->d_L*arm_sin_f32(leg[RIGHT]->theta);
-//    wheel_to_ground_r = speed_rads_ground_r * WHEEL_RADIUS ;
 
     //    speed_rads_ground_l = lk_motor[LEFT]->measure.speed_rads + ins.gyro[1] + leg[LEFT]->d_theta_lpf ;
     speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) + ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
@@ -395,6 +387,7 @@ static void update_LQR_obs() {
 
 
     leg[LEFT]->l0_average = 0.5f * (leg[LEFT]->l0 + leg[RIGHT]->l0); /*TODO 在左右腿长不一致的情况下的k是否合理有待讨论*/
+    leg[RIGHT]->l0_average = leg[LEFT]->l0_average;
     leg[LEFT]->l0_pow3 = leg[LEFT]->l0_average * leg[LEFT]->l0_average * leg[LEFT]->l0_average;
     leg[LEFT]->l0_pow2 = leg[LEFT]->l0_average * leg[LEFT]->l0_average ;
     if(chassis_cmd.leg_leng_change == LENGTH_STAY && Off_Ground_Flag == 1 ){//TODO: 应该改成离地检测满足时,起跳时,将除了K21和K22以外的K置零,防止空中腿部姿态溃散
@@ -509,7 +502,7 @@ void chassis_control_task(void)
             motor_enable();
 //            if(usr_abs(ins.pitch) < 2.0f )/*判断是否站立稳定是通过phi角大小*/
 //                chassis_fdb_data.stand_state = CAHSSIS_IS_STAND;
-            if((usr_abs(ins.pitch) < 2.0f) && (usr_abs(leg[LEFT]->theta) < 0.2f) && (usr_abs(leg[RIGHT]->theta) < 0.2f))/*判断是否站立稳定是通过phi角大小*/
+            if((usr_abs(ins.pitch) < 2.0f) && (usr_abs(leg[LEFT]->theta) < 0.15f) && (usr_abs(leg[RIGHT]->theta) < 0.15f))/*判断是否站立稳定是通过phi角大小*/
                 chassis_fdb_data.stand_state = CAHSSIS_IS_STAND;
 
             //TODO: 处于该模式下，应该屏蔽遥控器等控制
@@ -581,6 +574,10 @@ static int chassis_motor_init(void)
                     0.21f,  // l4=l1
                     0.250f, // l3=l2
                     0.0f,   //电机间距
+                    300,    //气弹簧压力300N
+                    0.0503f,/*气弹簧在l2上安装孔位到膝关节的距离*/
+                    0.20209f,/*气弹簧在l1处端点到膝关节的距离*/
+                    0.214218f,/*气弹簧在l1的安装孔和膝关节连线与l1的夹角,12.28°,转为rad*/
             };
     leg[LEFT] = leg_register(&leg_config);
     leg[RIGHT] = leg_register(&leg_config);
@@ -593,7 +590,7 @@ static int chassis_motor_init(void)
 
     /*右侧腿长pid*/
     pid_config_t R_length_pid_config = INIT_PID_CONFIG(r_length_Kp, r_length_Ki, r_length_Kd, r_length_InteVal, r_length_MaxVal,
-                                                       (PID_Integral_Limit | PID_DerivativeFilter | PID_OutputFilter));
+                                                       (PID_Integral_Limit | PID_OutputFilter));
 
     R_length_pid = pid_register(&R_length_pid_config);
 
@@ -678,7 +675,6 @@ static void leg_calc()
 
 static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){/*交23年平步开源中对于支持力的计算*/
 
-
     F_roll = pid_calculate(roll_pid, ins.roll * DEGREE_2_RAD, ROLL_TARGET);  //TODO 注意方向,沿正方形顺时针为正
 
     F_l_L = pid_calculate(L_length_pid, leg[LEFT]->l0, L_TARGET);
@@ -686,12 +682,14 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){/*交23年平�
     F_l_R = pid_calculate(R_length_pid, leg[RIGHT]->l0, L_TARGET);
 
     F_bl_gravity = 0.5 * m_b * g;
-    F_bl_intertial = 0.5 * m_b * (leg[LEFT]->l0 / (2.0f*Rl)) * (-ins.gyro[2] * DEGREE_2_RAD) * chassis_vx_filter;
+    F_bl_intertial = 0.5 * m_b * (leg[LEFT]->l0_average / (2.0f*Rl)) * (-ins.gyro[2] * DEGREE_2_RAD) * chassis_vx_filter;
 
+    leg[LEFT]->F_Spring_to_F_Vertical(leg[LEFT]);
+    leg[RIGHT]->F_Spring_to_F_Vertical(leg[RIGHT]);
 
-    leg[LEFT]->support_force = -F_roll + F_l_L + F_bl_gravity - F_bl_intertial;
+    leg[LEFT]->support_force = -F_roll + F_l_L + F_bl_gravity - F_bl_intertial - leg[LEFT]->F_Vertical;
     LIMIT_MIN_MAX(leg[LEFT]->support_force, -FORCE_LIMIT, FORCE_LIMIT);
-    leg[RIGHT]->support_force = F_roll + F_l_R + F_bl_gravity + F_bl_intertial;
+    leg[RIGHT]->support_force = F_roll + F_l_R + F_bl_gravity + F_bl_intertial - leg[RIGHT]->F_Vertical;
     LIMIT_MIN_MAX(leg[RIGHT]->support_force, -FORCE_LIMIT, FORCE_LIMIT);
 }
 
@@ -745,7 +743,7 @@ static float control_start[4];
 static float dm_send_t[4];
 float dm_obs[4];
 #define DM_RATIO 1.0f
-#define DM_OUTPUT_LIMIT  10.0f
+#define DM_OUTPUT_LIMIT  20.0f
 
 
 /*目前是以护栏较窄的一侧为正方向,从正方向向后看去,rigdm_front:id 2 ; rigdm_back:id 3;left_front:id 1;left_back:id 4*/
