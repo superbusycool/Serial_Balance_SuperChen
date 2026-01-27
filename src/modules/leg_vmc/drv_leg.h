@@ -82,6 +82,15 @@ typedef struct leg_obj
     /*摆杆力矩*/
     float Tp;
 
+    /*气弹簧分析部分*/
+    float l_s; /*气弹簧长度*/
+    float l_s2;/*气弹簧在l2上安装孔位到膝关节的距离*/
+    float l6;/*气弹簧在l1处端点到膝关节的距离*/
+    float theta_3;/*l1与l2在膝关节处的夹角*/
+    float alpha_s;/*气弹簧在l1的安装孔和膝关节连线与l1的夹角,rad*/
+    float F_Spring;/*气弹簧压力*/
+    float F_Vertical;/*气弹簧映射到竖直方向的力*/
+
     /* 受到地面的支持力（用于离地检测） */
     float support_force;
     /* 接触地面状态量 */
@@ -100,6 +109,8 @@ typedef struct leg_obj
     void (*phi_calc_L)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
     /*解算腿部的phi1和phi2值,方便后续计算*/
     void (*phi_calc_R)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
+    /*解算气弹簧通过虚功原理到竖直方向的支持力*/
+    void (*F_Spring_to_F_Vertical)(struct leg_obj *leg);
 
 	int8_t (*input_leg_angle)(struct leg_obj *leg, float phi4, float phi1);
 }leg_obj_t;
@@ -110,6 +121,10 @@ typedef struct
 	float l1;  // l4=l1
 	float l2; // l3=l2
 	float motor_distance; //电机间距
+    float F_Spring;/*气弹簧压力*/
+    float l_s2;/*气弹簧在l2上安装孔位到膝关节的距离*/
+    float l6;/*气弹簧在l1处端点到膝关节的距离*/
+    float alpha_s;/*气弹簧在l1的安装孔和膝关节连线与l1的夹角,rad*/
     /* 后续可能需要加入更多参数 */
 }leg_config_t;
 

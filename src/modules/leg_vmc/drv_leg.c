@@ -91,8 +91,8 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 /*这两个函数在电机位置更换时重新写!!!*/
 static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi2_raw){
 
-    leg->phi1 = fmod(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
-    leg->phi4 = fmod(PI-(PI - (PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD))),PI2) ;
+    leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi4 = fmodf(PI-(PI - (PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD))),PI2) ;
 
 }
 /*
@@ -103,11 +103,21 @@ static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi2_
  * */
 static void phi1_phi4_calc_right(struct leg_obj *leg, float phi1_raw, float phi2_raw){
 
-    leg->phi1 = fmod((phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD),PI2);
-    leg->phi4 = fmod(PI-(PI2 - (phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD) + PI),PI2);
+    leg->phi1 = fmodf((phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD),PI2);
+    leg->phi4 = fmodf(PI-(PI2 - (phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD) + PI),PI2);
 
 }
 
+/*
+ * @brief 计算气弹簧在不同长度情况下,通过虚功原理得到的竖直方向上的支持
+ * */
+static void F_Spring_to_F_Vertical(struct leg_obj *leg){
+
+    leg->theta_3 = acosf((leg->l1 * leg->l1 + leg->l2 * leg->l2 - leg->l0 * leg->l0 ) / (2 * leg->l1 * leg->l2));
+    leg->l_s = sqrtf(leg->l6 * leg->l6 + leg->l_s2 * leg->l_s2 - 2 * leg->l6 * leg->l_s2 * arm_cos_f32(leg->theta_3 - leg->alpha_s));
+    leg->F_Vertical = (leg->F_Spring * leg->l0 * leg->l6 * leg->l_s2 * arm_sin_f32(leg->theta_3 - leg->alpha_s)) / (leg->l_s * leg->l1 * leg->l2 * arm_sin_f32(leg->theta_3));
+
+}
 
 static int8_t input_leg_angle(leg_obj_t *leg, float phi4, float phi1)
 {
@@ -156,6 +166,10 @@ leg_obj_t * leg_register(leg_config_t *config/* , void *control */)
     leg_obj[idx].l1 = config->l1;
     leg_obj[idx].l2 = config->l2;
     leg_obj[idx].motor_distance = config->motor_distance;
+    leg_obj[idx].F_Spring = config->F_Spring;
+    leg_obj[idx].l_s2 = config->l_s2;
+    leg_obj[idx].l6 = config->l6;
+    leg_obj[idx].alpha_s = config->alpha_s;
     leg_obj[idx].phi4_max = PI/2;
     leg_obj[idx].phi1_min = PI/2;
     leg_obj[idx].leg_state = LEG_ERROR;
@@ -164,6 +178,7 @@ leg_obj_t * leg_register(leg_config_t *config/* , void *control */)
     leg_obj[idx].vmc_cal_T = vmc_calculation_Torque;
     leg_obj[idx].phi_calc_L = phi1_phi4_calc_left ;
     leg_obj[idx].phi_calc_R = phi1_phi4_calc_right ;
+    leg_obj[idx].F_Spring_to_F_Vertical = F_Spring_to_F_Vertical;
     leg_obj[idx].input_leg_angle = input_leg_angle;
 
     return &leg_obj[idx++];
