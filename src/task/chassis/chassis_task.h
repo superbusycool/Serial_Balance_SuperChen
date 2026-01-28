@@ -16,7 +16,6 @@ typedef enum
 {
     CHASSIS_RELAX,         //底盘失能
     CHASSIS_INIT,           //底盘归中初始化
-    CHASSIS_STOP,          //底盘停止
     CHASSIS_OPEN_LOOP,     //底盘开环
     CHASSIS_RECOVERY,      //底盘倒地自起
     CHASSIS_OFF_GROUND,    //底盘离地
@@ -24,7 +23,6 @@ typedef enum
     CHASSIS_JUMPOK,        //完成跳跃,需要重新切换才能再次起跳
     CHASSIS_FOLLOW_GIMBAL, //底盘跟随云台
     CHASSIS_SPIN,          //底盘陀螺模式
-    CHASSIS_FLY,           //底盘飞坡模式
     CHASSIS_AUTO           //底盘自动模式
 } chassis_mode_e;
 
@@ -50,12 +48,13 @@ typedef enum
 /**
   * @brief     底盘倒地状态枚举
   */
-typedef enum
+typedef enum/*默认会赋值第一个*/
 {
-    CAHSSIS_IS_FALL = 0,        //机器人倒地
-    CAHSSIS_IS_STAND,           //机器人站立
-    CAHSSIS_IS_DANGER,           //机器人侧翻
-    CAHSSIS_IS_JUMPOK,          //机器人完成跳跃
+    CHASSIS_IS_RECOVERY,            //机器人底盘起立中
+    CHASSIS_IS_STAND,           //机器人站立
+    CHASSIS_IS_DANGER,           //机器人底盘姿态危险,失能
+    CHASSIS_IS_JUMPOK,          //机器人完成跳跃
+    CHASSIS_LEG_BACK_IS_OK,     //倒地自起时,腿部完成收回并顶起机身
 
 }chassis_stand_state_e;
 

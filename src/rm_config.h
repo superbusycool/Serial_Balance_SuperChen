@@ -66,7 +66,7 @@
 #define DM_ZERO_OFFSET_RF  62.17f
 #define DM_ZERO_OFFSET_RB  35.22f
 
-#define LEG_SAFE_AREA      -50.0f  /*能接受的腿部theta角运动范围扩展角度*/
+#define LEG_SAFE_AREA      20.0f  /*能接受的腿部theta角运动范围扩展角度*/
 
 /*查3508资料和xroll减速箱淘宝详情得到*/
 #define M3508_TOR_TO_CUR  2220  //扭矩电流系数
@@ -211,17 +211,17 @@
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/
-#define l_length_Kp 250.0
-#define l_length_Ki 80.00
-#define l_length_Kd 0.001
+#define l_length_Kp 280.0
+#define l_length_Ki 50.00
+#define l_length_Kd 0.00001
 #define l_length_InteVal 150
 #define l_length_MaxVal 300
 
 
 /*位置*/
-#define r_length_Kp 250.0
-#define r_length_Ki 80.00
-#define r_length_Kd 0.001
+#define r_length_Kp 280.0
+#define r_length_Ki 50.00
+#define r_length_Kd 0.00001
 #define r_length_InteVal 150
 #define r_length_MaxVal 300
 
@@ -246,11 +246,11 @@
 #define yaw_InteVal 0
 #define yaw_MaxVal 10.0
 /*将转向加在腿的Tp方便更快的转向*/
-#define yaw_Kp_Tp 0//10.0
-#define yaw_Ki_Tp 0
-#define yaw_Kd_Tp 0//0.00001
-#define yaw_InteVal_Tp 0
-#define yaw_MaxVal_Tp 2.5
+#define phi0_Kp_Tp 10.0//10.0
+#define phi0_Ki_Tp 2.0
+#define phi0_Kd_Tp 0.00001//0.00001
+#define phi0_InteVal_Tp 2.0
+#define phi0_MaxVal_Tp 8.0
 
 /*roll相关*/
 #define roll_Kp 10.0
@@ -262,6 +262,12 @@
 
 /*****************************function_open******************************************/
 /*要使用时打开宏定义!!!*/
+/*
+ * @brief设置髋关节damiao电机的零点
+ * @warning零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
+ * @warning 不小心开启并烧录的话需要重新校准零点,不然一定疯车
+ * */
+//#define DM_8009_SET_ZERO_POSITION
 
 /*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
 //#define BSP_BMI088_CALI
@@ -269,13 +275,6 @@
 #define  BSP_USING_DM_IMU
 /*使用damiao板imu加热*/
 #define  BSP_USING_IMU_HEAT
-
-/*
- * @brief设置髋关节damiao电机的零点
- * @warning零点设置注意位置,若是位置不对会导致phi的角度都不对会疯车
- * @warning 不小心开启并烧录的话需要重新校准零点,不然一定疯车
- * */
-//#define DM_8009_SET_ZERO_POSITION
 
 /*使用3508*/
 #define BSP_USING_DJI_MOTOR
