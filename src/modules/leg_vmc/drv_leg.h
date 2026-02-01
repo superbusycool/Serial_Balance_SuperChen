@@ -31,6 +31,11 @@ typedef struct leg_obj
 	float phi1,phi4;
 	float phi2,phi3;
 
+    float phi1_inv,phi4_inv;/*更加l0和theta逆解出来phi1和phi4*/
+    float a,b,c;/*二阶方程求解公式常规参数*/
+    /*倒立摆坐标逆解*/
+    float XC_inv,YC_inv;
+
 
 	/*极限值*/
 	float phi1_min; // PI/2
@@ -63,8 +68,6 @@ typedef struct leg_obj
     float d_l0_lpf;//一阶低通滤波值
     /*上一次倒立摆长度速度*/
     float last_dl0;
-    /*倒立摆长度加速度*/
-    float dd_l0;
 
     /*倒立摆角度速度*/
     float d_phi0;
@@ -75,7 +78,6 @@ typedef struct leg_obj
     /*d_theta用于之后计算lqr,为状态矩阵x中的状态量*/
     float d_theta;
     float d_theta_lpf;//一阶低通滤波值
-    float dd_theta;
     float last_d_theta;
     float last_theta;
 
@@ -100,6 +102,8 @@ typedef struct leg_obj
 
     /* vmc计算l0,d_lo,dd_l0,theta,d_theta */
     void (*vmc_calc)(struct leg_obj *leg,struct ins_msg *ins,float dt);
+    /*vmc逆解算,通过目标phi0和l0解算出phi1和phi4*/
+    void (*vmc_calc_inv)(struct leg_obj *leg,float phi0_refer,float l0_refer);
     /* 求得腿部运动速度 [dl0; dphi0] */
 
     /* FT = [PendulumForce PendulumTorque] */

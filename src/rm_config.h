@@ -212,7 +212,7 @@
 
 ///*位置*/
 #define l_length_Kp 280.0
-#define l_length_Ki 50.00
+#define l_length_Ki 60.00
 #define l_length_Kd 0.00001
 #define l_length_InteVal 150
 #define l_length_MaxVal 300
@@ -220,7 +220,7 @@
 
 /*位置*/
 #define r_length_Kp 280.0
-#define r_length_Ki 50.00
+#define r_length_Ki 60.00
 #define r_length_Kd 0.00001
 #define r_length_InteVal 150
 #define r_length_MaxVal 300
@@ -233,24 +233,13 @@
 #define theta_InteVal 0
 #define theta_MaxVal 50
 
-///*yaw相关*/
-//#define yaw_Kp 20
-//#define yaw_Ki 0
-//#define yaw_Kd 0.005
-//#define yaw_InteVal 0
-//#define yaw_MaxVal 800
 /*yaw相关,转向采用pd控制*/
 #define yaw_Kp 5.0
 #define yaw_Ki 0
 #define yaw_Kd 0.00001
 #define yaw_InteVal 0
 #define yaw_MaxVal 10.0
-/*将转向加在腿的Tp方便更快的转向*/
-#define phi0_Kp_Tp 10.0//10.0
-#define phi0_Ki_Tp 2.0
-#define phi0_Kd_Tp 0.00001//0.00001
-#define phi0_InteVal_Tp 2.0
-#define phi0_MaxVal_Tp 8.0
+
 
 /*roll相关*/
 #define roll_Kp 10.0
@@ -258,7 +247,6 @@
 #define roll_Kd 0.000001
 #define roll_InteVal 0
 #define roll_MaxVal 25
-
 
 /*****************************function_open******************************************/
 /*要使用时打开宏定义!!!*/
@@ -291,7 +279,7 @@
 /*3508输入置零*/
 #define M3508_SET_ZERO
 /*8009输入置零*/
-//#define DM8009P_SET_ZERO
+#define DM8009P_SET_ZERO
 
 /* -------------------------------------------------------------------------- */
 /*                            remote_controler                                  */

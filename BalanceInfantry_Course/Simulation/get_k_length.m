@@ -91,7 +91,7 @@ function [K,Q,R] = get_k_length(leg_length)
    
     %模板QR值：
     Q=diag([80 80 1 1 1000 300]);
-    R=diag([3.75 1.05]);
+    R=diag([3.75 0.25]);
 
     % Q=diag([40 1 10 1 400 1]);
     % R=diag([1.25 0.5]);
