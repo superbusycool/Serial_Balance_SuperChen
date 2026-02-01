@@ -5643,19 +5643,18 @@ LOAD d:/stm32environment/arm/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/
  .text.M3508_control_r
                 0x08014688      0x10c CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.Chassis_Recovery
-                0x08014794       0xa8 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+                0x08014794       0xac CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.abs_float
-                0x0801483c       0x12 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
- *fill*         0x0801484e        0x2 
+                0x08014840       0x12 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+ *fill*         0x08014852        0x2 
  .text.Chassis_Vx_Detect
-                0x08014850       0x9c CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+                0x08014854       0x9c CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.Security_Checking
-                0x080148ec       0x98 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+                0x080148f0       0x98 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.chassis_sub_init
-                0x08014984       0x30 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
+                0x08014988       0x30 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.dm_motor_init
-                0x080149b4       0xb0 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
- *fill*         0x08014a64        0x4 
+                0x080149b8       0xb0 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  .text.dm_control_4
                 0x08014a68      0x1a4 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj
  *fill*         0x08014c0c        0x4 

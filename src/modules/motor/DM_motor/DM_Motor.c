@@ -93,7 +93,7 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
         angle_direct_falg2 = TRUE;
         angle_direct_falg1 = FALSE;
     }
-    measure->angle_abs = fmod(DM_P_MAX + measure->angle, DM_P_MAX); //double取余操作
+    measure->angle_abs = fmodf(DM_P_MAX + measure->angle, DM_P_MAX); //float取余操作
 
     measure->last_angle = measure->angle;
 }
