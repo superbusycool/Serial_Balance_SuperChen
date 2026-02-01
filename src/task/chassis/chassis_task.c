@@ -45,9 +45,19 @@ static void chassis_sub_pull(void);
 #define FORCE_Length_LIMIT 200.0f //
 #define FORCE_LIMIT 250.0f // 支持力限幅
 
-#define LEG_RECOVERY_THETA_REFER   0.0f  /*倒地自起时收腿的目标theta,确保将机体顶起后小板凳起立*/
 
-#define LEG_PHI0_REFER 1.57f  //phi0在recovery时的目标值
+static float leg_lenthchange_flag = 0;//倒地自起中腿长切换标志位
+static float leg_phi0_refer_L;/*目标phi0位置,用于vmc_inv*/
+static float leg_l0_refer_L;/*用于vmc_inv*/
+static float leg_phi0_refer_R;/*目标phi0位置,用于vmc_inv*/
+static float leg_l0_refer_R;/*用于vmc_inv*/
+
+static float dm_p_set[2][2];
+static float dm_v_set[2][2];
+
+#define DM_MIT_KP 0.05f
+#define DM_MIT_KD 4.0f
+#define DM_V_SET  0.0f
 
 #define Theta_Compensation  -0.0890f//-0.125f //-0.07
 
@@ -96,7 +106,6 @@ static uint8_t  Touch_Ground_Flag;
 
 static pid_obj_t *theta_pid;  // 双腿角度协调控制
 static pid_obj_t *yaw_pid;    // 航向角控制， 输出为vx的补偿，与vx期望累积
-static pid_obj_t *phi0_tp_pid;  //对角度phi0做pid,仅在recovery时补偿
 static pid_obj_t *roll_pid;   // 横滚角控制
 static pid_obj_t *L_length_pid;  //腿长控制
 static pid_obj_t *R_length_pid;  //腿长控制
@@ -138,6 +147,10 @@ static void Chassis_Vx_Detect();
  * @brief 检查底盘姿态,认为溃散后失能
  * */
 static void Security_Checking();
+/*
+ * @brief 倒地自起
+ * */
+static void Chassis_Recovery();
 /**
  * @brief 底盘跳跃处理
  */
@@ -150,6 +163,20 @@ static void motor_relax();
 static void motor_enable();
 /*设置电机零点*/
 static void leg_init_get_zero();
+/*
+ * @brief 斜坡函数
+ * @param end目标值
+ * @param begin初始值
+ * @param measure 量测值
+ * @param set 斜坡过程值
+ * @param step_length 步长
+ * @param safe_region 合理范围
+ * */
+static uint8_t theta_change_flag_R;
+static uint8_t theta_change_flag_L;
+void slope_phi0_following_begin_end(const float *target,const float *measure,float *set,float step_length,const float safe_region,uint8_t *phi0_change_flag);
+
+static float abs_float(float value);
 
 /* --------------------------------- LQR控制相关 -------------------------------- */
 
@@ -382,26 +409,6 @@ static void update_LQR_obs() {
     LQRXObsBuf[RIGHT][4] = -ins.pitch * DEGREE_2_RAD ;
     LQRXObsBuf[RIGHT][5] = -ins.gyro[1] * DEGREE_2_RAD;
 
-    /*倒地自起部分,为腿部状态机的一部分,确保这段在此函数中靠后,否则更改的值将被覆盖*/
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中没有完成腿部收拢,机体未被顶起*/
-//        LQRXRefBuf[RIGHT][0] = LEG_RECOVERY_THETA_REFER;
-//        LQRXRefBuf[LEFT][0] = LEG_RECOVERY_THETA_REFER;
-        LQRXRefBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation ;
-        LQRXRefBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation ;
-        LQRXRefBuf[LEFT][4] = -ins.pitch * DEGREE_2_RAD;
-        LQRXRefBuf[LEFT][5] = -ins.gyro[1] * DEGREE_2_RAD;
-        LQRXRefBuf[RIGHT][4] = -ins.pitch * DEGREE_2_RAD ;
-        LQRXRefBuf[RIGHT][5] = -ins.gyro[1] * DEGREE_2_RAD;
-
-    }else{
-        LQRXRefBuf[RIGHT][0] = 0;
-        LQRXRefBuf[LEFT][0] = 0;
-        LQRXRefBuf[LEFT][4] = 0;
-        LQRXRefBuf[LEFT][5] = 0;
-        LQRXRefBuf[RIGHT][4] = 0;
-        LQRXRefBuf[RIGHT][5] = 0;
-    }
-    /******************************************************************/
 
 
     LQRXRefBuf[RIGHT][2] = 0;
@@ -519,13 +526,9 @@ void chassis_control_task(void)
 #endif
             break;
         case CHASSIS_RECOVERY:/*不稳定的状态,介于init和relex状态的过渡状态*/
-            leg[LEFT]->length_ref = LEN_LEN_LOW;
-            leg[RIGHT]->length_ref = LEN_LEN_LOW;
             yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;/*消除转向pid的影响*/
             motor_enable();
-
-            if((usr_abs(ins.pitch) < 2.0f) && (usr_abs(leg[LEFT]->theta) < 0.15f) && (usr_abs(leg[RIGHT]->theta) < 0.15f))/*判断是否站立稳定是通过phi角大小*/
-                chassis_fdb_data.stand_state = CHASSIS_IS_STAND;
+            Chassis_Recovery();
 
             //TODO: 处于该模式下，应该屏蔽遥控器等控制
 
@@ -562,7 +565,7 @@ void chassis_control_task(void)
             break;
     }
 #ifdef DM_8009_SET_ZERO_POSITION
-    if(usr_abs(ins.pitch) > 60.0f)
+    if(abs_float(ins.pitch) > 60.0f)
         chassis_fdb_data.stand_state = CAHSSIS_IS_DANGER;
 #endif
 
@@ -618,8 +621,6 @@ static int chassis_motor_init(void)
     pid_config_t yaw_pid_config = INIT_PID_CONFIG(yaw_Kp,yaw_Ki, yaw_Kd, yaw_InteVal, yaw_MaxVal, PID_Integral_Limit | PID_OutputFilter);
     yaw_pid = pid_register(&yaw_pid_config);
 
-    pid_config_t phi0_tp_pid_config = INIT_PID_CONFIG(phi0_Kp_Tp,phi0_Ki_Tp, phi0_Kd_Tp, phi0_InteVal_Tp, phi0_MaxVal_Tp, PID_Integral_Limit | PID_OutputFilter);
-    phi0_tp_pid = pid_register(&phi0_tp_pid_config);
 
     /* 横滚角 PD 控制 控制机体的水平*/
     pid_config_t roll_pid_config = INIT_PID_CONFIG( roll_Kp, roll_Ki, roll_Kd, roll_InteVal,roll_MaxVal, PID_Integral_Limit|PID_OutputFilter);
@@ -641,8 +642,7 @@ static int chassis_motor_init(void)
  * @param cmd cmd 底盘指令值，使用其中的速度
  * @param out_speed 底盘各轮力矩
  */
-static float Left_phi0_output;
-static float Right_phi0_output;
+
 static void leg_calc()
 {
     // 左腿解算
@@ -661,20 +661,14 @@ static void leg_calc()
     /* 航向角控制 */
     pid_calculate(yaw_pid, -ins.yaw_total_angle* DEGREE_2_RAD , yaw_target);
 
-    Left_phi0_output = pid_calculate(phi0_tp_pid, leg[LEFT]->phi0 , LEG_PHI0_REFER);
-    Right_phi0_output = pid_calculate(phi0_tp_pid, leg[RIGHT]->phi0 , LEG_PHI0_REFER);
     /* 横滚角控制 */
     pid_calculate(roll_pid, ins.roll, 0);
 
-    Leg_FN_Calculation(0,0.5*(leg[LEFT]->length_ref + leg[RIGHT]->length_ref));
+    Leg_FN_Calculation(0,0.5f*(leg[LEFT]->length_ref + leg[RIGHT]->length_ref));
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*倒地自起时由于tp不够大不能把机体顶起来,现在采用对phi0计算pid*/
-        leg[LEFT]->Tp = -LQROutBuf[LEFT][1] - theta_pid->Output + Left_phi0_output;/*TODO: 后续验证yaw_tp_pid->Output正负号*/
-        leg[RIGHT]->Tp = -LQROutBuf[RIGHT][1] + theta_pid->Output + Right_phi0_output;
-    }else{
-        leg[LEFT]->Tp = -LQROutBuf[LEFT][1] - theta_pid->Output ;/*TODO: 后续验证yaw_tp_pid->Output正负号*/
-        leg[RIGHT]->Tp = -LQROutBuf[RIGHT][1] + theta_pid->Output ;
-    }
+
+    leg[LEFT]->Tp = -LQROutBuf[LEFT][1] - theta_pid->Output ;
+    leg[RIGHT]->Tp = -LQROutBuf[RIGHT][1] + theta_pid->Output ;
 
     /* 离地检测，计算两腿地面支持力 */
 //    TODO：目前离地检测还存在问题 ins.acc 存在问题，可能需要卡尔曼滤波
@@ -769,26 +763,44 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     static dm_motor_para_t set;
 
     dm_send_t[0] = -vmc_out_l[1] * DM_RATIO;
-//    dm_send_t[0] = 0;
+
     LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[0] = dm_send_t[0] ;
 
-//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-//        dm_send_t[0] = 0;
-//    }
+
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[0] = 0;
     }
-#ifdef DM8009P_SET_ZERO
-        dm_send_t[0] = 0;
-#endif
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+        dm_send_t[0] = 0;/*T置零*/
 
-    LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
-    {
+        LIMIT_MIN_MAX(dm_p_set[LEFT][BACK], DM_P_MIN, DM_P_MAX);
+        set.p = dm_p_set[LEFT][BACK];
+
+        set.kp = DM_MIT_KP;/*TODO 尝试参数待定*/
+        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
+
+        LIMIT_MIN_MAX(dm_v_set[LEFT][BACK], DM_V_MIN, DM_V_MAX);
+        set.v = dm_v_set[LEFT][BACK];
+
+        set.kd = DM_MIT_KD;
+        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
+
+    }
+    else{/*其余情况则使用mit力矩控制*/
         set.p = 0;
         set.kp = 0;
         set.v = 0;
         set.kd = 0;
+    }
+#ifdef DM8009P_SET_ZERO
+        dm_send_t[0] = 0;
+        set.kp = 0;
+        set.kd = 0;
+#endif
+
+    LIMIT_MIN_MAX(dm_send_t[0], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
+    {
         set.t = dm_send_t[0]; // 正负没问题
     }
     return set;
@@ -805,27 +817,45 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
 
 
     dm_send_t[1] = vmc_out_r[1] * DM_RATIO;
-//    dm_send_t[1] = 0;
+
     LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[1] = dm_send_t[1] ;
 
 
-//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-//        dm_send_t[1] = 0;
-//    }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
+    if((chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT)){
         dm_send_t[1] = 0;
     }
-#ifdef DM8009P_SET_ZERO
-        dm_send_t[1] = 0;
-#endif
 
-    LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
-    {
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+        dm_send_t[1] = 0;/*T置零*/
+
+        LIMIT_MIN_MAX(dm_p_set[RIGHT][BACK], DM_P_MIN, DM_P_MAX);
+        set.p = dm_p_set[RIGHT][BACK];
+
+        set.kp = DM_MIT_KP;/*TODO 尝试参数待定*/
+        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
+
+        LIMIT_MIN_MAX(dm_v_set[RIGHT][BACK], DM_V_MIN, DM_V_MAX);
+        set.v = dm_v_set[RIGHT][BACK];
+
+        set.kd = DM_MIT_KD;
+        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
+
+    }
+    else{/*其余情况则使用mit力矩控制*/
         set.p = 0;
         set.kp = 0;
         set.v = 0;
         set.kd = 0;
+    }
+#ifdef DM8009P_SET_ZERO
+        dm_send_t[1] = 0;
+        set.kp = 0;
+        set.kd = 0;
+#endif
+
+    LIMIT_MIN_MAX(dm_send_t[1], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
+    {
         set.t = dm_send_t[1]; // 正负没问题
     }
     return set;
@@ -841,27 +871,44 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
     static dm_motor_para_t set;
 
     dm_send_t[2] = vmc_out_r[0] * DM_RATIO ;
-//    dm_send_t[2] = 0;
+
     LIMIT_MIN_MAX(dm_send_t[2], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[2] = dm_send_t[2] ;
 
-//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-//        dm_send_t[2] = 0;
-//    }
+
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[2] = 0;
     }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+        dm_send_t[2] = 0;/*T置零*/
 
-#ifdef DM8009P_SET_ZERO
-        dm_send_t[2] = 0;
-#endif
+        LIMIT_MIN_MAX(dm_p_set[RIGHT][FRONT], DM_P_MIN, DM_P_MAX);
+        set.p = dm_p_set[RIGHT][FRONT];
 
-    LIMIT_MIN_MAX(dm_send_t[2], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
-    {
+        set.kp = DM_MIT_KP;/*TODO 尝试参数待定*/
+        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
+
+        LIMIT_MIN_MAX(dm_v_set[RIGHT][FRONT], DM_V_MIN, DM_V_MAX);
+        set.v = dm_v_set[RIGHT][FRONT];
+
+        set.kd = DM_MIT_KD;
+        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
+
+    }
+    else{/*其余情况则使用mit力矩控制*/
         set.p = 0;
         set.kp = 0;
         set.v = 0;
         set.kd = 0;
+    }
+#ifdef DM8009P_SET_ZERO
+        dm_send_t[2] = 0;
+        set.kp = 0;
+        set.kd = 0;
+#endif
+
+    LIMIT_MIN_MAX(dm_send_t[2], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
+    {
         set.t = dm_send_t[2]; // 正负没问题
     }
     return set;
@@ -875,32 +922,46 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
     control_start[3] = dwt_get_time_us();
     static dm_motor_para_t set;
 
-    // 每次上电归中电机给定一个适当的力矩，并持续，确保撞到限位
 
     dm_send_t[3] = -vmc_out_l[0] * DM_RATIO;
-//    dm_send_t[3] = 0;
+
     LIMIT_MIN_MAX(dm_send_t[3], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     dm_obs[3] = dm_send_t[3];
 
-//    if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-//        dm_send_t[3] = 0;
-//    }
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[3] = 0;
     }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+        dm_send_t[3] = 0;/*T置零*/
 
+        LIMIT_MIN_MAX(dm_p_set[LEFT][FRONT], DM_P_MIN, DM_P_MAX);
+        set.p = dm_p_set[LEFT][FRONT];
+
+        set.kp = DM_MIT_KP;/*TODO 尝试参数待定*/
+        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
+
+        LIMIT_MIN_MAX(dm_v_set[LEFT][FRONT], DM_V_MIN, DM_V_MAX);
+        set.v = dm_v_set[LEFT][FRONT];
+
+        set.kd = DM_MIT_KD;
+        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
+
+    }
+    else{/*其余情况则使用mit力矩控制*/
+        set.p = 0;
+        set.kp = 0;
+        set.v = 0;
+        set.kd = 0;
+    }
 #ifdef DM8009P_SET_ZERO
     dm_send_t[3] = 0;
-
+    set.kp = 0;
+    set.kd = 0;
 
 #endif
 
     LIMIT_MIN_MAX(dm_send_t[3], -DM_OUTPUT_LIMIT, DM_OUTPUT_LIMIT);
     {
-        set.p = 0;
-        set.kp = 0;
-        set.v = 0;
-        set.kd = 0;
         set.t = dm_send_t[3]; // 正负没问题
     }
     return set;
@@ -975,8 +1036,12 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
             }
 
         }
-        else if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && Wheel_Shut_Flag == 1){
-            set = 0;
+        if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+            if(Wheel_Shut_Flag == 0){
+                set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
+            }else{
+                set = 0;
+            }
         }
     }
     set_l = set;
@@ -1010,9 +1075,14 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
             }
 
         }
-        else if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && Wheel_Shut_Flag == 1){
-            set = 0;
+        if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
+            if(Wheel_Shut_Flag == 0){
+                set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
+            }else{
+                set = 0;
+            }
         }
+
     }
     set_r = set;
 
@@ -1155,7 +1225,10 @@ void Process_Clear(){
     pid_clear(roll_pid);
     pid_clear(theta_pid);
     pid_clear(yaw_pid);
-    pid_clear(phi0_tp_pid);
+
+    theta_change_flag_R = 0;
+    theta_change_flag_L = 0;
+
 
     LQRXRefBuf[LEFT][3] = 0;
     LQRXRefBuf[RIGHT][3] = 0;
@@ -1169,11 +1242,11 @@ void Process_Clear(){
 
 static void Chassis_Vx_Detect(){
 
-    Vx_Delta = usr_abs(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
+    Vx_Delta = abs_float(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
     if(Vx_Delta > VX_DELTA_MAX){
         yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }
-//    if(usr_abs(yaw_target - ins.yaw_total_angle) > YAW_DELTA_MX){
+//    if(abs_float(yaw_target - ins.yaw_total_angle) > YAW_DELTA_MX){
 //        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
 //    }
     else{
@@ -1188,10 +1261,99 @@ static void Chassis_Vx_Detect(){
  * */
 static void Security_Checking(){
 
-    if((usr_abs(ins.pitch) > 60.0f) || (leg[LEFT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 <= 0 )
+    if((abs_float(ins.pitch) > 60.0f) || (leg[LEFT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 <= 0 )
        || (leg[RIGHT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[RIGHT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[RIGHT]->phi0 <= 0 ))
         chassis_fdb_data.stand_state = CHASSIS_IS_DANGER;
 
+}
+
+/*
+ * @brief 倒地自起
+ * */
+static void Chassis_Recovery() {
+
+    if (chassis_fdb_data.stand_state == CHASSIS_IS_DANGER && chassis_cmd.ctrl_mode == CHASSIS_RECOVERY) {
+        leg_lenthchange_flag = 0;/*重置标志位,当腿将机体顶起后会重新切换到最低腿长*/
+    }
+
+    if (chassis_fdb_data.stand_state == CHASSIS_IS_RECOVERY) {
+        Wheel_Shut_Flag = 1; /*腿部姿态还未矫正正确关闭轮子*/
+    } else {
+        Wheel_Shut_Flag = 0;
+    }
+    leg_l0_refer_L = 0.33f;
+    leg_l0_refer_R = 0.33f;
+    leg_phi0_refer_L = 1.57f;
+    leg_phi0_refer_R = 1.57f;
+
+    dm_v_set[LEFT][FRONT] = DM_V_SET;
+    dm_v_set[LEFT][BACK] = DM_V_SET;
+    dm_v_set[RIGHT][FRONT] = DM_V_SET;
+    dm_v_set[RIGHT][BACK] = DM_V_SET;
+
+
+    leg[LEFT]->vmc_calc_inv(leg[LEFT],leg_phi0_refer_L,leg_l0_refer_L);
+    leg[RIGHT]->vmc_calc_inv(leg[RIGHT],leg_phi0_refer_R,leg_l0_refer_R);
+
+//    if ((abs_float(ins.pitch) < 2.0f) && (abs_float(leg[LEFT]->theta) < 0.15f) &&
+//        (abs_float(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
+//        chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制*/
+//    } else {
+//        chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY;
+//    }
+
+
+}
+
+/*
+ * @brief 斜坡函数
+ * @param target目标值
+ * @param measure 量测值
+ * @param set 斜坡过程值
+ * @param step_length 步长
+ * @param safe_region 合理范围
+ * */
+void slope_phi0_following_begin_end(const float *target,const float *measure,float *set,float step_length,const float safe_region,uint8_t *phi0_change_flag){
+
+    if(*target > *measure)
+    {
+        if(*phi0_change_flag == 0 ) {
+            *set = *measure + step_length;
+            *phi0_change_flag = 1;
+        }
+        if((*set - *measure) < safe_region){
+            *set = *set + step_length;
+        }
+        if((*target - *set) < safe_region){
+            *set = *target;
+            *phi0_change_flag = 0;
+        }
+    }
+    else if(*target < *measure)
+    {
+        if(*phi0_change_flag == 0 ) {
+            *set = *measure - step_length;
+            *phi0_change_flag = 1;
+        }
+        if((*measure - *set) < safe_region){
+            *set = *set - step_length;
+        }
+        if((*set - *target) < safe_region){
+            *set = *target;
+            *phi0_change_flag = 0;
+        }
+
+    }
+}
+
+static float abs_float(float value){
+    if(value >= 0.0f){
+        value = value;
+    } else{
+        value = -value;
+    }
+    return value;
+    
 }
 /*********************************************subcription and publication***************************************************************************/
 

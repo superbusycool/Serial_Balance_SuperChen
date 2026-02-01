@@ -13,10 +13,10 @@
 #define DM_P_MAX 6.28318		//位置最大值
 #define DM_V_MIN -45			//速度最小值
 #define DM_V_MAX 45			//速度最大值
-#define DM_KP_MIN 0.0		//Kp最小值
-#define DM_KP_MAX 0.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
-#define DM_KD_MIN 0.0		//Kd最小值
-#define DM_KD_MAX 0		//Kd最大值
+#define DM_KP_MIN 0		//Kp最小值
+#define DM_KP_MAX 10.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
+#define DM_KD_MIN 0		//Kd最小值
+#define DM_KD_MAX 5.0		//Kd最大值
 #define DM_T_MIN -35			//转矩最小值
 #define DM_T_MAX 35			//转矩最大值
 

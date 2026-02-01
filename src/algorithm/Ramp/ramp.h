@@ -46,6 +46,14 @@ ramp_obj_t *ramp_register(int32_t count, int32_t scale);
  * @param acc 斜坡坡度
  *
  * */
-void slope_following(float *target,float *set,float acc);
+void slope_following(const float *target,float *set,float acc);
+/*
+ * @brief 斜坡函数
+ * @param target目标值
+ * @param measure 测量值
+ * @param set 斜坡过程值
+ * @param acc 斜坡坡度
+ * */
+void slope_following_begin_end(const float *target,const float *measure,float *set,float acc);
 
 #endif //_RAMP_H

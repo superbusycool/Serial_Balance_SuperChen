@@ -122,7 +122,7 @@ static void remote_to_cmd(void)
 
            }
            else{
-               chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
+               chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;
            }
 
            break;

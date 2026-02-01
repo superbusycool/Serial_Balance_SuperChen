@@ -59,7 +59,6 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 
     leg->theta = PI/2.0f - leg->phi0 - (-ins->pitch* DEGREE_2_RAD);
     leg->d_theta = (leg->theta - leg->last_theta) / dt;
-    leg->dd_theta = (leg->d_theta - leg->last_d_theta) / dt;
 
     leg->d_theta = (leg->theta - leg->last_theta) / dt ;
 
@@ -70,7 +69,6 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 
     /*l0的一阶和二阶导数,对应腿长变化的速度和加速度*/
     leg->d_l0 = (leg->l0 - leg->last_l0)/dt;
-    leg->dd_l0 = (leg->d_l0 - leg->last_dl0)/dt;
 
     One_Older_LPF(leg->d_l0,&leg->d_l0_lpf,0.5f);
 
@@ -82,6 +80,35 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 
 }
 
+static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//vmc的逆解
+{
+    if(phi0_refer > -PI/2 && phi0_refer < PI/2){
+        leg->XC_inv = leg->motor_distance / 2.0f + sqrtf((l0_refer * l0_refer) / (1 + tanf(phi0_refer) * tanf(phi0_refer)));
+    }
+    else{
+        leg->XC_inv = leg->motor_distance / 2.0f - sqrtf((l0_refer * l0_refer) / (1 + tanf(phi0_refer) * tanf(phi0_refer)));
+    }
+    leg->YC_inv = tanf(phi0_refer) * (leg->XC_inv - leg->motor_distance / 2.0f);
+
+    leg->a = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * leg->XC_inv;
+    leg->b = -4 * leg->l1 * leg->YC;
+    leg->c = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * leg->XC_inv;
+
+    leg->phi1_inv = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    if(leg->phi1_inv >= PI/2.0f){
+        leg->phi1_inv = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    }
+
+    leg->a = (leg->XC_inv + leg->motor_distance) * (leg->XC_inv + leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * (leg->XC_inv + leg->motor_distance);
+    leg->b = -4 * leg->l1 * leg->YC;
+    leg->c = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * (leg->XC_inv + leg->motor_distance);
+
+    leg->phi4_inv = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    if(leg->phi4_inv <= PI/2.0f){
+        leg->phi4_inv = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    }
+
+}
 /*
  * @brief 通过电机角度解算phi1和phi2值
  * @param struct wbr_leg_obj *leg:腿部实例;
@@ -92,7 +119,7 @@ static void vmc_calc(leg_obj_t *leg,struct ins_msg *ins,float dt)//右侧腿部�
 static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi2_raw){
 
     leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
-    leg->phi4 = fmodf(PI-(PI - (PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD))),PI2) ;
+    leg->phi4 = fmodf(PI2 - (phi2_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
 
 }
 /*
@@ -103,8 +130,8 @@ static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi2_
  * */
 static void phi1_phi4_calc_right(struct leg_obj *leg, float phi1_raw, float phi2_raw){
 
-    leg->phi1 = fmodf((phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD),PI2);
-    leg->phi4 = fmodf(PI-(PI2 - (phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD) + PI),PI2);
+    leg->phi1 = fmodf(phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD,PI2);
+    leg->phi4 = fmodf(phi2_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD,PI2);
 
 }
 
@@ -175,6 +202,7 @@ leg_obj_t * leg_register(leg_config_t *config/* , void *control */)
     leg_obj[idx].leg_state = LEG_ERROR;
     leg_obj[idx].phi0 = PI/2;
     leg_obj[idx].vmc_calc = vmc_calc;
+    leg_obj[idx].vmc_calc_inv = vmc_calc_inv;
     leg_obj[idx].vmc_cal_T = vmc_calculation_Torque;
     leg_obj[idx].phi_calc_L = phi1_phi4_calc_left ;
     leg_obj[idx].phi_calc_R = phi1_phi4_calc_right ;
