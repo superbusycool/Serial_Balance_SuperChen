@@ -1283,8 +1283,8 @@ static void Chassis_Recovery() {
     }
     leg_l0_refer_L = 0.33f;
     leg_l0_refer_R = 0.33f;
-    leg_phi0_refer_L = 1.57f;
-    leg_phi0_refer_R = 1.57f;
+    leg_phi0_refer_L = 0.0f;
+    leg_phi0_refer_R = 0.0f;
 
     dm_v_set[LEFT][FRONT] = DM_V_SET;
     dm_v_set[LEFT][BACK] = DM_V_SET;
