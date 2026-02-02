@@ -31,7 +31,7 @@ typedef struct leg_obj
 	float phi1,phi4;
 	float phi2,phi3;
 
-    float phi1_z1,phi1_z4,phi4_z1,phi4_z4;/*phi1_inv和phi4_inv原始解,分为-b+-两种情况*/
+    float phi1_z1,phi4_z4;/*phi1_inv和phi4_inv原始解,分为-b+-两种情况*/
     float phi1_inv,phi4_inv;/*更加l0和theta逆解出来phi1和phi4*/
     float motor_phi1_inv_position_refer,motor_phi4_inv_position_refer;/*vmc逆解算出的phi1和phi4继续逆解出电机实际要转到的输出轴位置(rad)*/
     float a,b,c;/*二阶方程求解公式常规参数*/

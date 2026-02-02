@@ -1270,7 +1270,7 @@ static void Security_Checking(){
 /*
  * @brief 倒地自起
  * */
-#define PHI0_REFER -PI/4
+#define PHI0_REFER 0
 static void Chassis_Recovery() {
 
     if (chassis_fdb_data.stand_state == CHASSIS_IS_DANGER && chassis_cmd.ctrl_mode == CHASSIS_RECOVERY) {

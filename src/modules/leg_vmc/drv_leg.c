@@ -95,23 +95,15 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
     leg->c = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * leg->XC_inv;
 
     leg->phi1_z1 = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
-    leg->phi1_z4 = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
 
     leg->a = (leg->XC_inv - leg->motor_distance) * (leg->XC_inv - leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * (leg->XC_inv - leg->motor_distance);
     leg->b = -4 * leg->l1 * leg->YC_inv;
     leg->c = (leg->XC_inv - leg->motor_distance) * (leg->XC_inv - leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * (leg->XC_inv - leg->motor_distance);
 
-    leg->phi4_z1 = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
     leg->phi4_z4 = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
 
-    if((phi0_refer > 0.0f && phi0_refer <= PI/2) || (phi0_refer > -PI/2 && phi0_refer <= 0.0f)){
-        leg->phi1_inv = leg->phi1_z1;
-        leg->phi4_inv = fmodf(leg->phi4_z4 + PI2,PI2);
-    }
-    if((phi0_refer > PI/2 && phi0_refer <= PI) || (phi0_refer > -PI && phi0_refer <= -PI/2)){
-        leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);
-        leg->phi4_inv = leg->phi4_z4;
-    }
+    leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);
+    leg->phi4_inv = fmodf(leg->phi4_z4 + PI2,PI2);
 
 
 }
