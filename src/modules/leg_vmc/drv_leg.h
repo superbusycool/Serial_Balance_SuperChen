@@ -31,6 +31,7 @@ typedef struct leg_obj
 	float phi1,phi4;
 	float phi2,phi3;
 
+    float phi1_z1,phi1_z4,phi4_z1,phi4_z4;/*phi1_inv和phi4_inv原始解,分为-b+-两种情况*/
     float phi1_inv,phi4_inv;/*更加l0和theta逆解出来phi1和phi4*/
     float motor_phi1_inv_position_refer,motor_phi4_inv_position_refer;/*vmc逆解算出的phi1和phi4继续逆解出电机实际要转到的输出轴位置(rad)*/
     float a,b,c;/*二阶方程求解公式常规参数*/
@@ -105,10 +106,10 @@ typedef struct leg_obj
     void (*vmc_calc)(struct leg_obj *leg,struct ins_msg *ins,float dt);
     /*vmc逆解算,通过目标phi0和l0解算出phi1和phi4*/
     void (*vmc_calc_inv)(struct leg_obj *leg,float phi0_refer,float l0_refer);
-    /*通过vmc_inv解算phi1_inv和phi2_inv对应的原始电机输出轴角度值(rad)*/
-    void (*phi1_phi4_calc_left_inv)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
-    /*通过vmc_inv解算phi1_inv和phi2_inv对应的原始电机输出轴角度值(rad)*/
-    void (*phi1_phi4_calc_right_inv)(struct leg_obj *leg, float phi1_raw, float phi2_raw);
+    /*通过vmc_inv解算phi1_inv和phi4_inv对应的原始电机输出轴角度值(rad)*/
+    void (*phi1_phi4_calc_left_inv)(struct leg_obj *leg, float phi1_inv, float phi2_inv);
+    /*通过vmc_inv解算phi1_inv和phi4_inv对应的原始电机输出轴角度值(rad)*/
+    void (*phi1_phi4_calc_right_inv)(struct leg_obj *leg, float phi1_inv, float phi2_inv);
 
     /* FT = [PendulumForce PendulumTorque] */
 	void (*vmc_cal_T)(struct leg_obj *leg,float *Tmotor);
