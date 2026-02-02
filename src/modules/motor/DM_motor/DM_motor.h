@@ -9,8 +9,8 @@
 
 #define Motar_mode 0	//设置模式为何种模式，为0为IMT模式，为1为位置速度模式，为2为速度模式
 
-#define DM_P_MIN -6.28318		//位置最小值
-#define DM_P_MAX 6.28318		//位置最大值
+#define DM_P_MIN -PI2		//位置最小值
+#define DM_P_MAX PI2		//位置最大值
 #define DM_V_MIN -45			//速度最小值
 #define DM_V_MAX 45			//速度最大值
 #define DM_KP_MIN 0		//Kp最小值

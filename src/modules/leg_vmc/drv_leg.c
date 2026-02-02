@@ -91,35 +91,41 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
     leg->YC_inv = tanf(phi0_refer) * (leg->XC_inv - leg->motor_distance / 2.0f);
 
     leg->a = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * leg->XC_inv;
-    leg->b = -4 * leg->l1 * leg->YC;
+    leg->b = -4 * leg->l1 * leg->YC_inv;
     leg->c = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * leg->XC_inv;
 
-    leg->phi1_inv = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
-    if(leg->phi1_inv <= PI/2.0f){
-        leg->phi1_inv = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    leg->phi1_z1 = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    leg->phi1_z4 = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+
+    leg->a = (leg->XC_inv - leg->motor_distance) * (leg->XC_inv - leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * (leg->XC_inv - leg->motor_distance);
+    leg->b = -4 * leg->l1 * leg->YC_inv;
+    leg->c = (leg->XC_inv - leg->motor_distance) * (leg->XC_inv - leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * (leg->XC_inv - leg->motor_distance);
+
+    leg->phi4_z1 = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+    leg->phi4_z4 = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
+
+    if((phi0_refer > 0.0f && phi0_refer <= PI/2) || (phi0_refer > -PI/2 && phi0_refer <= 0.0f)){
+        leg->phi1_inv = leg->phi1_z1;
+        leg->phi4_inv = fmodf(leg->phi4_z4 + PI2,PI2);
+    }
+    if((phi0_refer > PI/2 && phi0_refer <= PI) || (phi0_refer > -PI && phi0_refer <= -PI/2)){
+        leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);
+        leg->phi4_inv = leg->phi4_z4;
     }
 
-    leg->a = (leg->XC_inv + leg->motor_distance) * (leg->XC_inv + leg->motor_distance) + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 + 2 * leg->l1 * (leg->XC_inv + leg->motor_distance);
-    leg->b = -4 * leg->l1 * leg->YC;
-    leg->c = leg->XC_inv * leg->XC_inv + leg->YC_inv * leg->YC_inv + leg->l1 * leg->l1 - leg->l2 * leg->l2 - 2 * leg->l1 * (leg->XC_inv + leg->motor_distance);
-
-    leg->phi4_inv = 2 * (atanf((-leg->b + sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
-    if(leg->phi4_inv >= PI/2.0f){
-        leg->phi4_inv = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
-    }
 
 }
 /*
  * @brief 通过电机角度解算phi1和phi2值
  * @param struct wbr_leg_obj *leg:腿部实例;
- * @param phi1_raw:phi1对应的电机angle_abs;
- * @param phi4_raw:phi4对应的电机angle_abs
+ * @param phi1_inv:phi1对应的电机angle_abs;
+ * @param phi4_inv:phi4对应的电机angle_abs
  * */
 /*这两个函数在电机位置更换时重新写!!!*/
-static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi4_raw){
+static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_inv, float phi4_inv){
 
-    leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
-    leg->phi4 = fmodf(PI2 - (phi4_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
+    leg->phi1 = fmodf(PI2 - (phi1_inv - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi4 = fmodf(PI2 - (phi4_inv + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
 
 }
 
@@ -132,8 +138,8 @@ static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi4_
 /*这两个函数在电机位置更换时重新写!!!*/
 static void phi1_phi4_calc_left_inv(struct leg_obj *leg, float phi1_inv, float phi4_inv){
 
-    leg->motor_phi1_inv_position_refer = fmodf(PI2 - phi1_inv + DM_ZERO_OFFSET_LF * DEGREE_2_RAD,PI2) ;
-    leg->motor_phi4_inv_position_refer = fmodf(PI2 - phi4_inv - DM_ZERO_OFFSET_LB * DEGREE_2_RAD,PI2) ;
+    leg->motor_phi1_inv_position_refer = fmodf(PI2 - phi1_inv + DM_ZERO_OFFSET_LF * DEGREE_2_RAD - PI2 ,PI2) ;
+    leg->motor_phi4_inv_position_refer = fmodf(PI2 - phi4_inv - DM_ZERO_OFFSET_LB * DEGREE_2_RAD - PI2 ,PI2) ;
 
 }
 
@@ -148,6 +154,7 @@ static void phi1_phi4_calc_right(struct leg_obj *leg, float phi1_raw, float phi4
     leg->phi1 = fmodf(phi1_raw + DM_ZERO_OFFSET_RF * DEGREE_2_RAD,PI2);
     leg->phi4 = fmodf(phi4_raw - DM_ZERO_OFFSET_RB * DEGREE_2_RAD,PI2);
 
+
 }
 
 /*
@@ -158,8 +165,8 @@ static void phi1_phi4_calc_right(struct leg_obj *leg, float phi1_raw, float phi4
  * */
 static void phi1_phi4_calc_right_inv(struct leg_obj *leg, float phi1_inv, float phi4_inv){
 
-    leg->motor_phi1_inv_position_refer = fmodf(phi1_inv - DM_ZERO_OFFSET_RF * DEGREE_2_RAD,PI2);
-    leg->motor_phi4_inv_position_refer = fmodf(phi4_inv + DM_ZERO_OFFSET_RB * DEGREE_2_RAD,PI2);
+    leg->motor_phi1_inv_position_refer = fmodf(phi1_inv - DM_ZERO_OFFSET_RF * DEGREE_2_RAD -  PI2,PI2);
+    leg->motor_phi4_inv_position_refer = fmodf(phi4_inv + DM_ZERO_OFFSET_RB * DEGREE_2_RAD - PI2 ,PI2);
 
 }
 

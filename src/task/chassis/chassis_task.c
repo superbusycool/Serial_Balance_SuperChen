@@ -1270,6 +1270,7 @@ static void Security_Checking(){
 /*
  * @brief 倒地自起
  * */
+#define PHI0_REFER -PI/4
 static void Chassis_Recovery() {
 
     if (chassis_fdb_data.stand_state == CHASSIS_IS_DANGER && chassis_cmd.ctrl_mode == CHASSIS_RECOVERY) {
@@ -1283,8 +1284,10 @@ static void Chassis_Recovery() {
     }
     leg_l0_refer_L = 0.33f;
     leg_l0_refer_R = 0.33f;
-    leg_phi0_refer_L = 0.0f;
-    leg_phi0_refer_R = 0.0f;
+
+    leg_phi0_refer_L = PHI0_REFER;
+    leg_phi0_refer_R = PHI0_REFER;
+
 
     dm_v_set[LEFT][FRONT] = DM_V_SET;
     dm_v_set[LEFT][BACK] = DM_V_SET;
@@ -1294,6 +1297,9 @@ static void Chassis_Recovery() {
 
     leg[LEFT]->vmc_calc_inv(leg[LEFT],leg_phi0_refer_L,leg_l0_refer_L);
     leg[RIGHT]->vmc_calc_inv(leg[RIGHT],leg_phi0_refer_R,leg_l0_refer_R);
+
+    leg[LEFT]->phi1_phi4_calc_left_inv(leg[LEFT],leg[LEFT]->phi1_inv,leg[LEFT]->phi4_inv);
+    leg[RIGHT]->phi1_phi4_calc_right_inv(leg[RIGHT],leg[RIGHT]->phi1_inv,leg[RIGHT]->phi4_inv);
 
 //    if ((abs_float(ins.pitch) < 2.0f) && (abs_float(leg[LEFT]->theta) < 0.15f) &&
 //        (abs_float(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
