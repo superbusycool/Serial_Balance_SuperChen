@@ -102,7 +102,7 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
 
     leg->phi4_z4 = 2 * (atanf((-leg->b - sqrtf(leg->b * leg->b - 4 * leg->a * leg->c) ) / (2 * leg->a)));
 
-    leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);
+    leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);/*实测发现两个解中只能采用一个*/
     leg->phi4_inv = fmodf(leg->phi4_z4 + PI2,PI2);
 
 
@@ -110,14 +110,14 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
 /*
  * @brief 通过电机角度解算phi1和phi2值
  * @param struct wbr_leg_obj *leg:腿部实例;
- * @param phi1_inv:phi1对应的电机angle_abs;
- * @param phi4_inv:phi4对应的电机angle_abs
+ * @param phi1_raw:phi1对应的电机angle_abs;
+ * @param phi4_raw:phi4对应的电机angle_abs
  * */
 /*这两个函数在电机位置更换时重新写!!!*/
-static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_inv, float phi4_inv){
+static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi4_raw){
 
-    leg->phi1 = fmodf(PI2 - (phi1_inv - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
-    leg->phi4 = fmodf(PI2 - (phi4_inv + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
+    leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi4 = fmodf(PI2 - (phi4_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
 
 }
 
@@ -130,8 +130,8 @@ static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_inv, float phi4_
 /*这两个函数在电机位置更换时重新写!!!*/
 static void phi1_phi4_calc_left_inv(struct leg_obj *leg, float phi1_inv, float phi4_inv){
 
-    leg->motor_phi1_inv_position_refer = fmodf(PI2 - phi1_inv + DM_ZERO_OFFSET_LF * DEGREE_2_RAD - PI2 ,PI2) ;
-    leg->motor_phi4_inv_position_refer = fmodf(PI2 - phi4_inv - DM_ZERO_OFFSET_LB * DEGREE_2_RAD - PI2 ,PI2) ;
+    leg->motor_phi1_inv_position_refer = fmodf((PI2 - phi1_inv + DM_ZERO_OFFSET_LF * DEGREE_2_RAD)  ,PI2) ;
+    leg->motor_phi4_inv_position_refer = fmodf((PI2 - phi4_inv - DM_ZERO_OFFSET_LB * DEGREE_2_RAD) ,PI2) ;
 
 }
 

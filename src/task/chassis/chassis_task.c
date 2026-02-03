@@ -51,11 +51,12 @@ static float leg_phi0_refer_L;/*目标phi0位置,用于vmc_inv*/
 static float leg_l0_refer_L;/*用于vmc_inv*/
 static float leg_phi0_refer_R;/*目标phi0位置,用于vmc_inv*/
 static float leg_l0_refer_R;/*用于vmc_inv*/
+static float Phi0_direction;/*倒地自起时phi0摆动方向,0:顺时针;1:逆时针*/
 
 static float dm_p_set[2][2];
 static float dm_v_set[2][2];
 
-#define DM_MIT_KP 0.05f
+#define DM_MIT_KP 0.06f
 #define DM_MIT_KD 4.0f
 #define DM_V_SET  0.0f
 
@@ -1282,24 +1283,45 @@ static void Chassis_Recovery() {
     } else {
         Wheel_Shut_Flag = 0;
     }
-    leg_l0_refer_L = 0.33f;
-    leg_l0_refer_R = 0.33f;
-
-    leg_phi0_refer_L = PHI0_REFER;
-    leg_phi0_refer_R = PHI0_REFER;
-
-
     dm_v_set[LEFT][FRONT] = DM_V_SET;
     dm_v_set[LEFT][BACK] = DM_V_SET;
     dm_v_set[RIGHT][FRONT] = DM_V_SET;
     dm_v_set[RIGHT][BACK] = DM_V_SET;
+    leg_l0_refer_L = 0.33f;
+    leg_l0_refer_R = 0.33f;
 
+
+    if((ins.pitch > 0.0f*DEGREE_2_RAD && ins.pitch <= 90.0f*DEGREE_2_RAD)||(ins.pitch <= 0.0f*DEGREE_2_RAD && ins.pitch >= -90.0f*DEGREE_2_RAD)){/*将ins.pitch分成四块区域,每块区域90°*/
+
+        leg_phi0_refer_L = PI;/*逆时针转动*/
+        leg_phi0_refer_R = PI;
+        Phi0_direction = 1;/*逆时针*/
+        if((fabsf(fabsf(leg[RIGHT]->phi0) - PI) < 0.5f) && (fabsf(fabsf(leg[LEFT]->phi0) - PI) < 0.5f)){
+            leg_phi0_refer_L = 0;
+            leg_phi0_refer_R = 0;
+        }
+    }
+    if((ins.pitch >= -180.0f*DEGREE_2_RAD && ins.pitch <= -90.0f*DEGREE_2_RAD)||(ins.pitch <= 180.0f*DEGREE_2_RAD && ins.pitch > 90.0f*DEGREE_2_RAD)) {/*将ins.pitch分成四块区域,每块区域90°*/
+        leg_phi0_refer_L = 0;/*顺时针转动*/
+        leg_phi0_refer_R = 0;
+        Phi0_direction = 0;/*逆时针*/
+        if((fabsf(fabsf(leg[RIGHT]->phi0) - PI) < 0.2f) && (fabsf(fabsf(leg[LEFT]->phi0) - PI) < 0.2f)){
+            leg_phi0_refer_L = PI;
+            leg_phi0_refer_R = PI;
+        }
+    }
 
     leg[LEFT]->vmc_calc_inv(leg[LEFT],leg_phi0_refer_L,leg_l0_refer_L);
     leg[RIGHT]->vmc_calc_inv(leg[RIGHT],leg_phi0_refer_R,leg_l0_refer_R);
 
     leg[LEFT]->phi1_phi4_calc_left_inv(leg[LEFT],leg[LEFT]->phi1_inv,leg[LEFT]->phi4_inv);
     leg[RIGHT]->phi1_phi4_calc_right_inv(leg[RIGHT],leg[RIGHT]->phi1_inv,leg[RIGHT]->phi4_inv);
+
+    dm_p_set[LEFT][BACK] = leg[LEFT]->motor_phi4_inv_position_refer;
+    dm_p_set[LEFT][FRONT] = leg[LEFT]->motor_phi1_inv_position_refer;
+    dm_p_set[RIGHT][BACK] = leg[RIGHT]->motor_phi4_inv_position_refer;
+    dm_p_set[RIGHT][FRONT] = leg[RIGHT]->motor_phi1_inv_position_refer;
+
 
 //    if ((abs_float(ins.pitch) < 2.0f) && (abs_float(leg[LEFT]->theta) < 0.15f) &&
 //        (abs_float(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
