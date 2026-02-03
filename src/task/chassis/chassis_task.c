@@ -56,9 +56,11 @@ static float Phi0_direction;/*倒地自起时phi0摆动方向,0:顺时针;1:逆�
 static float dm_p_set[2][2];
 static float dm_v_set[2][2];
 
-#define DM_MIT_KP 0.06f
-#define DM_MIT_KD 4.0f
+#define DM_MIT_KP 0.1f
+#define DM_MIT_KD 3.5f
 #define DM_V_SET  0.0f
+
+static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
 #define Theta_Compensation  -0.0890f//-0.125f //-0.07
 
@@ -1053,6 +1055,9 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
         set = 0;
     }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
+        set = 0;
+    }
 
     return set;
 }
@@ -1091,6 +1096,9 @@ static int16_t M3508_control_r(lk_motor_measure_t measure){
     set = 0;
 #endif
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
+        set = 0;
+    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
         set = 0;
     }
 
@@ -1291,31 +1299,38 @@ static void Chassis_Recovery() {
     leg_l0_refer_R = 0.33f;
 
 
-    if((ins.pitch > 0.0f*DEGREE_2_RAD && ins.pitch <= 90.0f*DEGREE_2_RAD)||(ins.pitch <= 0.0f*DEGREE_2_RAD && ins.pitch >= -90.0f*DEGREE_2_RAD)){/*将ins.pitch分成四块区域,每块区域90°*/
-
-        leg_phi0_refer_L = PI;/*逆时针转动*/
-        leg_phi0_refer_R = PI;
-        Phi0_direction = 1;/*逆时针*/
-        if((fabsf(fabsf(leg[RIGHT]->phi0) - PI) < 0.5f) && (fabsf(fabsf(leg[LEFT]->phi0) - PI) < 0.5f)){
-            leg_phi0_refer_L = 0;
-            leg_phi0_refer_R = 0;
-        }
-    }
-    if((ins.pitch >= -180.0f*DEGREE_2_RAD && ins.pitch <= -90.0f*DEGREE_2_RAD)||(ins.pitch <= 180.0f*DEGREE_2_RAD && ins.pitch > 90.0f*DEGREE_2_RAD)) {/*将ins.pitch分成四块区域,每块区域90°*/
-        leg_phi0_refer_L = 0;/*顺时针转动*/
+    if(((ins.pitch <= 0.0f && ins.pitch >= -90.0f)||(ins.pitch > 0.0f && ins.pitch <= 90.0f))&&(phi0_refer_change_flag == 0)){/*将ins.pitch分成四块区域,每块区域90°*/
+        leg_phi0_refer_L = 0;/*逆时针转动*/
         leg_phi0_refer_R = 0;
-        Phi0_direction = 0;/*逆时针*/
-        if((fabsf(fabsf(leg[RIGHT]->phi0) - PI) < 0.2f) && (fabsf(fabsf(leg[LEFT]->phi0) - PI) < 0.2f)){
-            leg_phi0_refer_L = PI;
-            leg_phi0_refer_R = PI;
+        Phi0_direction = 1;/*逆时针*/
+        phi0_refer_change_flag = 1;
+    }
+
+    if((ins.pitch >= -180.0f && ins.pitch <= -90.0f)||(ins.pitch <= 180.0f && ins.pitch > 90.0f)&&(phi0_refer_change_flag == 0)) {/*将ins.pitch分成四块区域,每块区域90°*/
+        leg_phi0_refer_L = PI;
+        leg_phi0_refer_R = PI;
+        Phi0_direction = 0;/*顺时针*/
+        phi0_refer_change_flag = 1;
+
+    }
+    if(phi0_refer_change_flag == 1){
+        if(leg_phi0_refer_L == PI && leg_phi0_refer_R == PI){
+            if((fabsf(ins.pitch) < 5.0f) && ((leg[LEFT]->phi0 <= -2.5f && leg[LEFT]->phi0 > -3.14f) && (leg[RIGHT]->phi0 <= -2.5f && leg[RIGHT]->phi0 > -3.14f))){
+                phi0_refer_change_flag = 0;
+            }
         }
     }
+//    if((fabsf(fabsf(leg[LEFT]->phi0)-leg_phi0_refer_L)<0.5f)&&(fabsf(fabsf(leg[RIGHT]->phi0)-leg_phi0_refer_R)<0.5f)){
+//        phi0_refer_change_flag =0;
+//    }
+
 
     leg[LEFT]->vmc_calc_inv(leg[LEFT],leg_phi0_refer_L,leg_l0_refer_L);
     leg[RIGHT]->vmc_calc_inv(leg[RIGHT],leg_phi0_refer_R,leg_l0_refer_R);
 
     leg[LEFT]->phi1_phi4_calc_left_inv(leg[LEFT],leg[LEFT]->phi1_inv,leg[LEFT]->phi4_inv);
     leg[RIGHT]->phi1_phi4_calc_right_inv(leg[RIGHT],leg[RIGHT]->phi1_inv,leg[RIGHT]->phi4_inv);
+
 
     dm_p_set[LEFT][BACK] = leg[LEFT]->motor_phi4_inv_position_refer;
     dm_p_set[LEFT][FRONT] = leg[LEFT]->motor_phi1_inv_position_refer;
