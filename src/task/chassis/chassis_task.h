@@ -51,6 +51,7 @@ typedef enum
 typedef enum/*默认会赋值第一个*/
 {
     CHASSIS_IS_RECOVERY,            //机器人底盘起立中
+    CHASSIS_IS_RECOVERY_READY,            //机器人底盘到达规定位置满足起立条件
     CHASSIS_IS_STAND,           //机器人站立
     CHASSIS_IS_DANGER,           //机器人底盘姿态危险,失能
     CHASSIS_IS_JUMPOK,          //机器人完成跳跃
