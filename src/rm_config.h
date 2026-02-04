@@ -211,17 +211,17 @@
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/
-#define l_length_Kp 280.0
-#define l_length_Ki 60.00
-#define l_length_Kd 0.00001
+#define l_length_Kp 300.0
+#define l_length_Ki 50.00
+#define l_length_Kd 0.0001
 #define l_length_InteVal 150
 #define l_length_MaxVal 300
 
 
 /*位置*/
-#define r_length_Kp 280.0
-#define r_length_Ki 60.00
-#define r_length_Kd 0.00001
+#define r_length_Kp 300.0
+#define r_length_Ki 50.00
+#define r_length_Kd 0.0001
 #define r_length_InteVal 150
 #define r_length_MaxVal 300
 
@@ -242,10 +242,10 @@
 
 
 /*roll相关*/
-#define roll_Kp 10.0
+#define roll_Kp 80.0
 #define roll_Ki 0.4
-#define roll_Kd 0.000001
-#define roll_InteVal 0
+#define roll_Kd 0.00001
+#define roll_InteVal 5.0
 #define roll_MaxVal 25
 
 /*****************************function_open******************************************/
@@ -277,7 +277,7 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-#define M3508_SET_ZERO
+//#define M3508_SET_ZERO
 /*8009输入置零*/
 //#define DM8009P_SET_ZERO
 

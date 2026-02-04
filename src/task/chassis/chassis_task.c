@@ -51,18 +51,17 @@ static float leg_phi0_refer_L;/*目标phi0位置,用于vmc_inv*/
 static float leg_l0_refer_L;/*用于vmc_inv*/
 static float leg_phi0_refer_R;/*目标phi0位置,用于vmc_inv*/
 static float leg_l0_refer_R;/*用于vmc_inv*/
-static float Phi0_direction;/*倒地自起时phi0摆动方向,0:顺时针;1:逆时针*/
 
 static float dm_p_set[2][2];
 static float dm_v_set[2][2];
 
-#define DM_MIT_KP 0.1f
+#define DM_MIT_KP 0.06f
 #define DM_MIT_KD 3.5f
 #define DM_V_SET  0.0f
 
 static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
-#define Theta_Compensation  -0.0890f//-0.125f //-0.07
+#define Theta_Compensation  -0.08f
 
 #define VX_MAX        673.0f
 #define WX_MAX        270.0f
@@ -179,36 +178,23 @@ static uint8_t theta_change_flag_R;
 static uint8_t theta_change_flag_L;
 void slope_phi0_following_begin_end(const float *target,const float *measure,float *set,float step_length,const float safe_region,uint8_t *phi0_change_flag);
 
-static float abs_float(float value);
 
 /* --------------------------------- LQR控制相关 -------------------------------- */
+static float a11[4];
+static float a12[4];
+static float a13[4];
+static float a14[4];
+static float a15[4];
+static float a16[4];
+static float a21[4];
+static float a22[4];
+static float a23[4];
+static float a24[4];
+static float a25[4];
+static float a26[4];
 
 
 static float MatLQR_K[2][6] = {0};//LQR运算中的反馈系数,在lqr_update参数更新函数中更新
-
-/*记录下Q和R
- *
-
-    Q=diag([80 80 1 1 1000 300]);
-    R=diag([3.75 1.05]);
-K矩阵 =
-  [-14.087533,  -4.927184,  -0.511910,  -1.397494,   4.895118,   2.033971;
-     5.834505,   1.919548,   0.127777,   0.355742,  32.921379,  16.629570]
-
-*/
-
-float a11[4] = {22.2499,-17.3911,-0.1508,-13.9208};
-float a12[4] = {4.2053,-3.9789,0.0278,-4.8944};
-float a13[4] = {0.0702,-0.0321,-0.0107,-0.5106};
-float a14[4] = {-0.6018,0.4468,-0.0006,-1.4013};
-float a15[4] = {42.7387,-30.9604,-0.4676,5.2087};
-float a16[4] = {19.1447,-13.6774,-0.2472,2.1763};
-float a21[4] = {30.9375,-22.5645,0.0763,6.0216};
-float a22[4] = {18.8232,-13.5748,-0.1827,2.0547};
-float a23[4] = {1.5564,-1.1081,-0.0136,0.1387};
-float a24[4] = {4.3678,-3.0309,-0.0876,0.3904};
-float a25[4] = {-15.1433,8.5009,1.5501,32.6965};
-float a26[4] = {-5.7539,2.9877,0.7113,16.5343};
 
 
 /* [T Tp(髋)] */
@@ -363,11 +349,13 @@ static void chassis_kf_update(void)
 
     chassis_kf_l.MeasuredVector[0] = wheel_to_ground_l ;
     chassis_kf_l.MeasuredVector[1] = ins.motion_accel_b[1];//机体加速度作为整体的加速度
+//    chassis_kf_l.MeasuredVector[1] = 0.0f;
 
     Kalman_Filter_Update(&chassis_kf_l);
 
     chassis_kf_r.MeasuredVector[0] = wheel_to_ground_r ;
     chassis_kf_r.MeasuredVector[1] = ins.motion_accel_b[1];//机体加速度作为整体的加速度
+//    chassis_kf_r.MeasuredVector[1] = 0.0f;
 
     Kalman_Filter_Update(&chassis_kf_r);
 }
@@ -382,7 +370,51 @@ static void update_LQR_obs() {
     else
         dt = 0.003f;
     start = dwt_get_time_ms();
-    /*  更新观测矩阵 [0]:θ;[1]:d_θ;[2]:x;[3]:d_x;[4]:φ;[5]:d_φ,*/
+
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*起立时的lqr*/
+        /*记录下Q和R
+    Q=diag([10 100 1 1 1 1]);
+    R=diag([3.75 2.75]);
+    K矩阵 =
+      [-13.065135,  -5.334417,  -0.497871,  -1.279899,   1.786252,   0.387743;
+         2.952166,   1.583785,  -0.159907,  -0.343241,   5.888001,   1.090465]
+        */
+        // 起立时的LQR参数赋值
+        a11[0] = 27.7513f, a11[1] = -21.5353f, a11[2] = -0.2051f, a11[3] = -12.8570f;
+        a12[0] = 4.5651f,  a12[1] = -4.4156f,  a12[2] = 0.1265f,   a12[3] = -5.3075f;
+        a13[0] = 0.1653f, a13[1] = -0.1009f,   a13[2] = -0.0138f,  a13[3] = -0.4957f;
+        a14[0] = 0.1914f, a14[1] = -0.0941f,   a14[2] = -0.0389f,   a14[3] = -1.2753f;
+        a15[0] = 10.4646f, a15[1] = -8.2251f, a15[2] = 0.0687f,  a15[3] = 1.8512f;
+        a16[0] = 1.7105f,  a16[1] = -1.3423f,  a16[2] = 0.0114f,   a16[3] = 0.3983f;
+        a21[0] = -12.2100f, a21[1] = 9.2224f,  a21[2] = 0.0572f,   a21[3] = 2.8664f;
+        a22[0] = 8.7097f,  a22[1] = -6.7896f,  a22[2] = 0.0228f,   a22[3] = 1.6407f;
+        a23[0] = -0.8515f,  a23[1] = 0.6138f,  a23[2] = 0.0184f,   a23[3] = -0.1670f;
+        a24[0] = -1.6668f,  a24[1] = 1.1766f,  a24[2] = 0.0485f,   a24[3] = -0.3582f;
+        a25[0] = -3.4674f, a25[1] = 2.8060f,   a25[2] = -0.0655f,  a25[3] = 5.8700f;
+        a26[0] = -0.4707f, a26[1] = 0.3734f,   a26[2] = -0.0056f,   a26[3] = 1.0878f;
+
+    }else{
+        /*记录下Q和R
+    Q=diag([40 80 1 1 800 150]);
+    R=diag([3.75 1.05]);
+  K矩阵 =
+  [-13.421800,  -4.865737,  -0.509292,  -1.356400,   5.037319,   1.769644;
+     6.364314,   2.328431,   0.160778,   0.445030,  29.446837,  11.692943]
+        */
+        // 正常模式的LQR参数赋值
+        a11[0] = 23.7036f, a11[1] = -18.5204f, a11[2] = -0.1227f, a11[3] = -13.2480f;
+        a12[0] = 4.7774f,  a12[1] = -4.3550f,  a12[2] = 0.0143f,   a12[3] = -4.8284f;
+        a13[0] = 0.1078f, a13[1] = -0.0585f,   a13[2] = -0.0108f,  a13[3] = -0.5077f;
+        a14[0] = -0.4008f, a14[1] = 0.3067f,   a14[2] = -0.0056f,   a14[3] = -1.3585f;
+        a15[0] = 40.3692f, a15[1] = -30.0334f, a15[2] = -0.1539f,  a15[3] = 5.3127f;
+        a16[0] = 14.6321f,  a16[1] = -10.7964f,  a16[2] = -0.0686f,   a16[3] = 1.8698f;
+        a21[0] = 29.6636f, a21[1] = -22.7546f,  a21[2] = 0.4857f,   a21[3] = 6.5136f;
+        a22[0] = 19.9342f,  a22[1] = -14.8277f,  a22[2] = -0.0393f,   a22[3] = 2.4607f;
+        a23[0] = 1.6529f,  a23[1] = -1.2227f,  a23[2] = 0.0012f,   a23[3] = 0.1712f;
+        a24[0] = 4.6329f,  a24[1] = -3.3407f,  a24[2] = -0.0486f,   a24[3] = 0.4787f;
+        a25[0] = -17.7685f, a25[1] = 10.6110f,   a25[2] = 1.4275f,  a25[3] = 29.2157f;
+        a26[0] = -5.8616f, a26[1] = 3.3595f,   a26[2] = 0.5358f,   a26[3] = 11.6116f;
+    }
 
     LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation ;
 
@@ -403,7 +435,6 @@ static void update_LQR_obs() {
     LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation ;
 
     LQRXObsBuf[RIGHT][1] = leg[RIGHT]->d_theta_lpf ;
-
 
     LQRXObsBuf[RIGHT][2] = 0;
     LQRXObsBuf[RIGHT][3] = chassis_vx_filter;
@@ -519,6 +550,7 @@ void chassis_control_task(void)
         case CHASSIS_RELAX:
             Process_Clear();
             motor_relax();
+            chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY;
 
             break;
         case CHASSIS_INIT:
@@ -568,7 +600,7 @@ void chassis_control_task(void)
             break;
     }
 #ifdef DM_8009_SET_ZERO_POSITION
-    if(abs_float(ins.pitch) > 60.0f)
+    if(fabsf(ins.pitch) > 60.0f)
         chassis_fdb_data.stand_state = CAHSSIS_IS_DANGER;
 #endif
 
@@ -774,7 +806,7 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[0] = 0;
     }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[0] = 0;/*T置零*/
 
         LIMIT_MIN_MAX(dm_p_set[LEFT][BACK], DM_P_MIN, DM_P_MAX);
@@ -829,7 +861,7 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
         dm_send_t[1] = 0;
     }
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[1] = 0;/*T置零*/
 
         LIMIT_MIN_MAX(dm_p_set[RIGHT][BACK], DM_P_MIN, DM_P_MAX);
@@ -882,7 +914,7 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[2] = 0;
     }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[2] = 0;/*T置零*/
 
         LIMIT_MIN_MAX(dm_p_set[RIGHT][FRONT], DM_P_MIN, DM_P_MAX);
@@ -934,7 +966,7 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[3] = 0;
     }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[3] = 0;/*T置零*/
 
         LIMIT_MIN_MAX(dm_p_set[LEFT][FRONT], DM_P_MIN, DM_P_MAX);
@@ -1025,28 +1057,20 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[LEFT][0],-M3508_TOR_MAX,M3508_TOR_MAX);
 
-    if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
-    {
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state == CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
+        set = (int16_t)(-(LQROutBuf[LEFT][0])* M3508_TOR_TO_CUR);
+    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){
         set = 0;
     }
-    else
-    {
-        if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
-            if(Wheel_Shut_Flag == 0){
-                set = (int16_t)(-(LQROutBuf[LEFT][0] - yaw_pid->Output )* M3508_TOR_TO_CUR);
-            }else{
-                set = 0;
-            }
-
-        }
-        if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-            if(Wheel_Shut_Flag == 0){
-                set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
-            }else{
-                set = 0;
-            }
+    if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
+        if(Wheel_Shut_Flag == 0){
+            set = (int16_t)(-(LQROutBuf[LEFT][0] - yaw_pid->Output )* M3508_TOR_TO_CUR);
+        }else{
+            set = (int16_t)(-(LQROutBuf[LEFT][0])* M3508_TOR_TO_CUR);
         }
     }
+
     set_l = set;
 
 #ifdef M3508_SET_ZERO
@@ -1055,10 +1079,6 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
         set = 0;
     }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
-        set = 0;
-    }
-
     return set;
 }
 /*当输入为正是,转动方向为 顺时针 时针
@@ -1067,38 +1087,27 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
 static int16_t M3508_control_r(lk_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[RIGHT][0],-M3508_TOR_MAX,M3508_TOR_MAX);
-    if(chassis_cmd.ctrl_mode == CHASSIS_INIT)
-    {
+
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state == CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
+        set = (int16_t)((LQROutBuf[RIGHT][0]) * M3508_TOR_TO_CUR);
+    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){
         set = 0;
     }
-    else
-    {
-        if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
-            if(Wheel_Shut_Flag == 0){
-                set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
-            }else{
-                set = 0;
-            }
-
+    if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
+        if(Wheel_Shut_Flag == 0){
+            set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
+        }else{
+            set = (int16_t)((LQROutBuf[RIGHT][0]) * M3508_TOR_TO_CUR);
         }
-        if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){
-            if(Wheel_Shut_Flag == 0){
-                set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
-            }else{
-                set = 0;
-            }
-        }
-
     }
+
     set_r = set;
 
 #ifdef M3508_SET_ZERO
     set = 0;
 #endif
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX){
-        set = 0;
-    }
-    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK){/*倒地自起没好时还是关闭轮子*/
         set = 0;
     }
 
@@ -1246,16 +1255,19 @@ void Process_Clear(){
     LQRXObsBuf[RIGHT][3] = 0;
 
     yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
+
+    phi0_refer_change_flag = 0;
+
 }
 
 
 static void Chassis_Vx_Detect(){
 
-    Vx_Delta = abs_float(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
+    Vx_Delta = fabsf(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
     if(Vx_Delta > VX_DELTA_MAX){
         yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }
-//    if(abs_float(yaw_target - ins.yaw_total_angle) > YAW_DELTA_MX){
+//    if(fabsf(yaw_target - ins.yaw_total_angle) > YAW_DELTA_MX){
 //        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
 //    }
     else{
@@ -1270,7 +1282,7 @@ static void Chassis_Vx_Detect(){
  * */
 static void Security_Checking(){
 
-    if((abs_float(ins.pitch) > 60.0f) || (leg[LEFT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 <= 0 )
+    if((fabsf(ins.pitch) > 60.0f) || (leg[LEFT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[LEFT]->phi0 <= 0 )
        || (leg[RIGHT]->phi0 <= LEG_SAFE_AREA * DEGREE_2_RAD || leg[RIGHT]->phi0 >= PI - LEG_SAFE_AREA * DEGREE_2_RAD || leg[RIGHT]->phi0 <= 0 ))
         chassis_fdb_data.stand_state = CHASSIS_IS_DANGER;
 
@@ -1279,18 +1291,8 @@ static void Security_Checking(){
 /*
  * @brief 倒地自起
  * */
-#define PHI0_REFER 0
 static void Chassis_Recovery() {
 
-    if (chassis_fdb_data.stand_state == CHASSIS_IS_DANGER && chassis_cmd.ctrl_mode == CHASSIS_RECOVERY) {
-        leg_lenthchange_flag = 0;/*重置标志位,当腿将机体顶起后会重新切换到最低腿长*/
-    }
-
-    if (chassis_fdb_data.stand_state == CHASSIS_IS_RECOVERY) {
-        Wheel_Shut_Flag = 1; /*腿部姿态还未矫正正确关闭轮子*/
-    } else {
-        Wheel_Shut_Flag = 0;
-    }
     dm_v_set[LEFT][FRONT] = DM_V_SET;
     dm_v_set[LEFT][BACK] = DM_V_SET;
     dm_v_set[RIGHT][FRONT] = DM_V_SET;
@@ -1302,28 +1304,39 @@ static void Chassis_Recovery() {
     if(((ins.pitch <= 0.0f && ins.pitch >= -90.0f)||(ins.pitch > 0.0f && ins.pitch <= 90.0f))&&(phi0_refer_change_flag == 0)){/*将ins.pitch分成四块区域,每块区域90°*/
         leg_phi0_refer_L = 0;/*逆时针转动*/
         leg_phi0_refer_R = 0;
-        Phi0_direction = 1;/*逆时针*/
         phi0_refer_change_flag = 1;
     }
 
     if((ins.pitch >= -180.0f && ins.pitch <= -90.0f)||(ins.pitch <= 180.0f && ins.pitch > 90.0f)&&(phi0_refer_change_flag == 0)) {/*将ins.pitch分成四块区域,每块区域90°*/
-        leg_phi0_refer_L = PI;
-        leg_phi0_refer_R = PI;
-        Phi0_direction = 0;/*顺时针*/
+        leg_phi0_refer_L = PI - 10.0f * DEGREE_2_RAD;
+        leg_phi0_refer_R = PI - 10.0f * DEGREE_2_RAD;
         phi0_refer_change_flag = 1;
 
     }
     if(phi0_refer_change_flag == 1){
-        if(leg_phi0_refer_L == PI && leg_phi0_refer_R == PI){
-            if((fabsf(ins.pitch) < 5.0f) && ((leg[LEFT]->phi0 <= -2.5f && leg[LEFT]->phi0 > -3.14f) && (leg[RIGHT]->phi0 <= -2.5f && leg[RIGHT]->phi0 > -3.14f))){
+        if(leg_phi0_refer_L == (PI - 10.0f * DEGREE_2_RAD) && leg_phi0_refer_R == (PI - 10.0f * DEGREE_2_RAD)){
+            if((fabsf(ins.pitch) < 10.0f) && (fabsf(fabsf(leg[LEFT]->phi0) - 3.14f) < 0.64f) && (fabsf(fabsf(leg[RIGHT]->phi0) - 3.14f) < 0.64f)){
                 phi0_refer_change_flag = 0;
             }
         }
+        if(leg_phi0_refer_L == 0 && leg_phi0_refer_R == 0){
+            if((fabsf(ins.pitch) < 5.0f) && ((fabsf(leg[LEFT]->phi0) < 0.3f) && (fabsf(leg[RIGHT]->phi0) < 0.3f))){
+                phi0_refer_change_flag = 0;
+                chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY_READY;
+            }
+        }
     }
-//    if((fabsf(fabsf(leg[LEFT]->phi0)-leg_phi0_refer_L)<0.5f)&&(fabsf(fabsf(leg[RIGHT]->phi0)-leg_phi0_refer_R)<0.5f)){
-//        phi0_refer_change_flag =0;
-//    }
+    if(chassis_fdb_data.stand_state == CHASSIS_IS_RECOVERY_READY){
+        if((fabsf(leg[LEFT]->l0 - LEN_LEN_LOW) < 0.04f) && (fabsf(leg[RIGHT]->l0 - LEN_LEN_LOW) < 0.04f)){
+            chassis_fdb_data.stand_state = CHASSIS_LEG_BACK_IS_OK;
+        }
+    }
 
+    if ((fabsf(ins.pitch) < 2.0f) && (fabsf(leg[LEFT]->theta) < 0.15f) &&
+        (fabsf(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
+        chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制*/
+        phi0_refer_change_flag = 0;
+    }
 
     leg[LEFT]->vmc_calc_inv(leg[LEFT],leg_phi0_refer_L,leg_l0_refer_L);
     leg[RIGHT]->vmc_calc_inv(leg[RIGHT],leg_phi0_refer_R,leg_l0_refer_R);
@@ -1336,16 +1349,6 @@ static void Chassis_Recovery() {
     dm_p_set[LEFT][FRONT] = leg[LEFT]->motor_phi1_inv_position_refer;
     dm_p_set[RIGHT][BACK] = leg[RIGHT]->motor_phi4_inv_position_refer;
     dm_p_set[RIGHT][FRONT] = leg[RIGHT]->motor_phi1_inv_position_refer;
-
-
-//    if ((abs_float(ins.pitch) < 2.0f) && (abs_float(leg[LEFT]->theta) < 0.15f) &&
-//        (abs_float(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
-//        chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制*/
-//    } else {
-//        chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY;
-//    }
-
-
 }
 
 /*
@@ -1389,15 +1392,6 @@ void slope_phi0_following_begin_end(const float *target,const float *measure,flo
     }
 }
 
-static float abs_float(float value){
-    if(value >= 0.0f){
-        value = value;
-    } else{
-        value = -value;
-    }
-    return value;
-    
-}
 /*********************************************subcription and publication***************************************************************************/
 
 /**
