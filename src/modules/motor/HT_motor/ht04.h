@@ -16,9 +16,9 @@
 /* HT电机模式,初始化时自动进入CMD_MOTOR_MODE*/
 typedef enum
 {
-    CMD_RESET_MODE = 0xFD,   // 停止
-    CMD_MOTOR_MODE = 0xFC,   // 使能,会响应指令
-    CMD_ZERO_POSITION = 0xFE // 将当前的位置设置为编码器零位
+    HT_CMD_RESET_MODE = 0xFD,   // 停止
+    HT_CMD_MOTOR_MODE = 0xFC,   // 使能,会响应指令
+    HT_CMD_ZERO_POSITION = 0xFE // 将当前的位置设置为编码器零位
 } ht_motor_mode_e;
 
 /**

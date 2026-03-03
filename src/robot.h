@@ -50,6 +50,8 @@ struct gimbal_fdb_msg
     gimbal_back_e back_mode;  // 云台归中情况
 
     float yaw_angle;    //云台初始 yaw 轴角度 （由yaw轴dm4310电机得）
+    float yaw_delta;    //归中成公后,云台和底盘yaw_totoal_angle差值
+    float yaw_follow_gimbal_target;  //底盘跟随云台时底盘的转向yaw_target
     float pitch_angle;    //云台初始 pitch 轴角度 （由imu得）
     float roll_angle;    //云台初始 roll 轴角度 （由imu得）
 };
@@ -67,7 +69,7 @@ typedef enum
 
 struct gimbal_cmd_msg
 { // 云台期望角度控制
-    float yaw;
+    float vw_set;
     float pitch;
     gimbal_mode_e ctrl_mode;  // 当前云台控制模式
     gimbal_mode_e last_mode;  // 上一次云台控制模式
@@ -159,7 +161,6 @@ struct shoot_cmd_msg
     int16_t shoot_freq;      // 发射弹频
     // TODO: 添加发射弹速控制
     int16_t shoot_speed;     // 发射弹速
-    uint8_t cover_open;      // 弹仓盖开关
     uint8_t mirror_enable;     // 倍镜使能开关
     bool friction_status;
 };
@@ -191,9 +192,9 @@ struct shoot_fdb_msg
  */
 struct trans_fdb_msg
 {
-    float yaw;
-    float pitch;
-    float roll;
+    float yaw_target;
+    float pitch_target;
+    float roll_target;
     uint8_t heartbeat;
 };
 

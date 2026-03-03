@@ -28,6 +28,9 @@ static struct gimbal_cmd_msg gim_cmd;
 MCN_DECLARE(gimbal_ins_topic);
 static McnNode_t gimbal_ins_node;
 static struct dm_imu_t gim_ins;
+MCN_DECLARE(transmission_fdb);
+static McnNode_t trans_fdb_node;
+static struct trans_fdb_msg trans_fdb;
 
 // 发布
 MCN_DECLARE(gimbal_fdb);
@@ -39,12 +42,12 @@ static void gimbal_sub_pull(void);
 
 static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure);//dm电机控制
 static int16_t GM6020_Control(dji_motor_measure_t measure);//6020电机控制
+
 /* ------------------------------------------------- 电机控制相关 ------------------------------------------------------ */
 
 
 static float dm_yaw_send_t[GIM_YAW_MOTOR_NUM];
 static float dm_yaw_obs[1];
-static float yaw_torque;//yaw轴lqr输出力矩
 static float yaw_recovery_position;//在倒地自起前gimbal得先转到正前方或正后方,防止腿部摆动时撞到云台
 static float yaw_recovery_velocity;
 #define DM_GIMBAL_OUTPUT_LIMIT 7.0f
@@ -170,16 +173,13 @@ void gimbal_control()
                 gimbal_fdb_data.back_mode = BACK_IS_OK;
                 gimbal_fdb_data.pitch_angle = gim_ins.pitch;
                 gimbal_fdb_data.yaw_angle = gim_motor_yaw[0]->measure.yaw_angle;
-
-            }
-            else
-            {
-                gimbal_fdb_data.back_mode = BACK_IS_OK;
+                gimbal_fdb_data.yaw_delta = gim_ins.yaw_total_angle - ins.yaw_total_angle/*底盘yaw_totoal_angle*/;
+                gim_motor_ref[YAW] = gim_ins.yaw_total_angle ;/*TODO 注意弧度还是角度*/
             }
             break;
         case GIMBAL_GYRO:
 
-            gim_motor_ref[YAW] = gim_cmd.yaw;
+            gim_motor_ref[YAW] += ( - gim_cmd.vw_set / GIMBAL_WX_MAX) * GIMBAL_TURN_RATIO * DEGREE_2_RAD;
             gim_motor_ref[PITCH] = gim_cmd.pitch;
             // 底盘相对于云台归中值的角度，取负
             gimbal_fdb_data.pitch_angle=gim_ins.pitch;
@@ -189,8 +189,8 @@ void gimbal_control()
             // TODO: add auto mode
         case GIMBAL_AUTO:
             /*gim_motor_ref[YAW] = gim_cmd.yaw_auto;*/
-            gim_motor_ref[YAW] =gim_cmd.yaw;
-            gim_motor_ref[PITCH] =gim_cmd.pitch;
+            gim_motor_ref[YAW] = trans_fdb.yaw_target;
+            gim_motor_ref[PITCH] = trans_fdb.pitch_target;
             // 底盘相对于云台归中值的角度，取负
             break;
 
@@ -207,7 +207,6 @@ void gimbal_control()
     }
 
     LQR_CALC();/*lqr运算 PITCH&YAW均采用lqr控制,可根据实际控制效果加入前馈或pid进行补偿*/
-
     /* 用于调试监测线程调度使用 */
     gim_dt = dwt_get_time_ms() - gim_start;
     vTaskDelay(1);
@@ -242,13 +241,19 @@ static void gimbal_motor_init()
 /*
  * @brief lqr运算
  * */
+#define YAW_ROUND_ANGLE PI2  /*云台连接处的转一圈对应4310的角度总变化,大于2pi*/
 static void yaw_lqr_calc(){
     /*目标值*/
     LQRXRefBuf_Yaw[0][0] = gim_motor_ref[YAW];
     LQRXRefBuf_Yaw[1][0] = 0.0f;
     /*观测值*/
-    LQRXObsBuf_Yaw[0][0] = gim_motor_yaw[0]->measure.yaw_angle;/*yaw轴观测角度*/
+    LQRXObsBuf_Yaw[0][0] = gim_ins.yaw_total_angle;/*yaw轴观测角度*/
     LQRXObsBuf_Yaw[1][0] = gim_ins.gyro[Z];/*yaw_dot偏航角速度 TODO 需要检验是否正确*/
+
+    if(gim_cmd.ctrl_mode == GIMBAL_INIT){/*使用mit的位置速度控制*/
+        yaw_recovery_position = gim_motor_ref[YAW];
+        yaw_recovery_velocity = 0.0f;/*匀速转动*/
+    }
 
     LQRXerrorBuf_Yaw[0][0] = LQRXRefBuf_Yaw[0][0] - LQRXObsBuf_Yaw[0][0];
     LQRXerrorBuf_Yaw[1][0] = LQRXRefBuf_Yaw[1][0] - LQRXObsBuf_Yaw[1][0];/*X_refer - X_obs*/
@@ -296,7 +301,7 @@ static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure)
     if(gim_cmd.ctrl_mode == GIMBAL_RELAX || gim_cmd.ctrl_mode == GIMBAL_INIT){
         dm_yaw_send_t[0] = 0;
     }
-    if(chassis_fdb_cmd.ctrl_mode == CHASSIS_RECOVERY){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+    if(chassis_fdb_cmd.ctrl_mode == CHASSIS_RECOVERY && gim_cmd.ctrl_mode == GIMBAL_INIT ){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_yaw_send_t[0] = 0;/*T置零*/
 
         LIMIT_MIN_MAX(yaw_recovery_position, DM_P_MIN, DM_P_MAX);
@@ -346,6 +351,15 @@ static int16_t GM6020_Control(dji_motor_measure_t measure){
     return set;
 }
 
+static void leg_init_get_zero()
+{
+    // 撞到限位后，控制电机在此处设置零点
+    for (uint8_t i = 0; i < GIM_YAW_MOTOR_NUM; i++)
+    {
+        gim_motor_yaw[i]->set_mode(gim_motor_yaw[i], DM_CMD_ZERO_POSITION);
+    }
+
+}
 /******************************************************消息订阅*************************************************************************/
 /**
  * @brief cmd 线程中所有发布者推送更新话题
@@ -391,6 +405,11 @@ static void gimbal_sub_pull(void)
     if (mcn_poll(gimbal_ins_node))
     {
         mcn_copy(MCN_HUB(gimbal_ins_topic), gimbal_ins_node, &gim_ins);
+    }
+
+    if (mcn_poll(trans_fdb_node))
+    {
+        mcn_copy(MCN_HUB(transmission_fdb), trans_fdb_node, &trans_fdb);
     }
 }
 

@@ -101,7 +101,7 @@
 #define CENTER_YAW_ANGLE   0.0f        //云台yaw归中角度设置
 #define CENTER_PITCH_ANGLE 0.0f        //云台pitch归中角度设置
 
-#define GEAR_RATIO 1    //云台yaw轴部分齿轮齿轮比
+#define GEAR_RATIO (37.0f/23.0f)    //云台yaw轴部分齿轮齿轮比
 
 /* 云台控制周期 (ms) */
 #define GIMBAL_PERIOD 1

@@ -79,7 +79,7 @@ struct dm_imu_t
 
     FDCAN_HandleTypeDef *can_handle;
 
-    float pitch;
+    float pitch;/*µ¥Î»*/
     float roll;
     float yaw;
 
@@ -90,7 +90,7 @@ struct dm_imu_t
 
     float cur_temp;
 
-    float yaw_total_angle;
+    float yaw_total_angle;/**/
 
     float yaw_last;
 

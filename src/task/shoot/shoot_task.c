@@ -1,6 +1,9 @@
-//
-// Created by Gleam on 25-8-22.
-//
+/*
+* Change Logs:
+* Date            Author          Notes
+* 25-8-22         Gleam            1.0
+* 25-8-22         SuperChen        2.0
+*/
 
 #include "rm_config.h"
 #include "motor_def.h"
@@ -79,11 +82,9 @@ static int reverse_ref;
 
 /* ----------------------------------------------- 射击线程入口 --------------------------------------------------- */
 
-
 static float sht_dt;
 static int flag;
 static float sht_start;
-static int servo_cvt_num;
 static float sht_gap_time;
 static float sht_gap_start_time;
 
@@ -96,15 +97,10 @@ void shoot_task_init(){
     shoot_motor_ref[TRIGGER_MOTOR]=0;
 }
 
-
 void shoot_control(void)
 {
-
-    sht_start = dwt_get_time_ms();
     /* 更新该线程所有的订阅者 */
     shoot_sub_pull();
-    /* 倍镜舵机控制 */
-
 
     /* 电机控制启动 */
     for (uint8_t i = 0; i < SHT_MOTOR_NUM; i++)
@@ -112,13 +108,10 @@ void shoot_control(void)
         dji_motor_enable(sht_motor[i]);
     }
 
-
-    shoot_fdb_data.trigger_motor_current=sht_motor[TRIGGER_MOTOR]->measure.real_current;
+    shoot_fdb_data.trigger_motor_current = sht_motor[TRIGGER_MOTOR]->measure.real_current;
     /*控制模式判断*/
-    /*subs遥控器*/
-
     /*开关摩擦轮*/
-    if (fire_cmd.friction_status==SHOOT_ONE)
+    if (fire_cmd.friction_status != SHOOT_STOP)
     {
         shoot_motor_ref[RIGHT_FRICTION] = FRICTION_SPEED_ONE;//摩擦轮常转 实测最大转速为8800
         shoot_motor_ref[LEFT_FRICTION] = -FRICTION_SPEED_ONE;
@@ -252,10 +245,7 @@ void shoot_control(void)
     /* 更新发布该线程的msg */
     shoot_pub_push();
 
-
-    osDelay(1);
-
-
+    vTaskDelay(1);
 }
 /**
  * @brief shoot线程入口函数
