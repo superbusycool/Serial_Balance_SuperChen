@@ -50,8 +50,6 @@ static uint16_t float_to_uint(float x, float x_min, float x_max, int bits){
 }
 
 
-static bool angle_direct_falg1 ;
-static bool angle_direct_falg2 ;
 /**
  * @brief 根据返回的can_object对反馈报文进行解析
  *
@@ -81,21 +79,19 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
     measure->temperature_MOS   = (float)(rxbuff[6]);
     measure->temperature_Rotor = (float)(rxbuff[7]);
 
-    measure->angle_delta = measure->angle - measure->last_angle;
-    /*关于套圈的情况*/
-    if((measure->angle_delta <= -DM_ANGLE_DELTA_THRESHOLD)){/*计算圈数,后续可能会用到*/
-        measure->circle_cnt ++;
-        angle_direct_falg1 = TRUE;
-        angle_direct_falg2 = FALSE;
-    }
-    if((measure->angle_delta >= DM_ANGLE_DELTA_THRESHOLD)){
-        measure->circle_cnt --;
-        angle_direct_falg2 = TRUE;
-        angle_direct_falg1 = FALSE;
-    }
     measure->angle_abs = fmodf(DM_P_MAX + measure->angle, DM_P_MAX); //float取余操作
 
-    measure->last_angle = measure->angle;
+    /*关于套圈的情况*/
+    if(((measure->angle_abs - measure->last_angle_abs) > PI)){/*计算圈数,后续可能会用到*/
+        measure->circle_cnt ++;
+    }
+    if(((measure->angle_abs - measure->last_angle_abs) < -PI)){
+        measure->circle_cnt --;
+    }
+    measure->total_angle = measure->circle_cnt * PI2 + measure->angle_abs;/*电机绝对位置累加,适用于云台yaw传动带齿轮比不为1:1的情况*/
+    measure->yaw_angle = fmodf(measure->total_angle,PI2 * GEAR_RATIO);
+
+    measure->last_angle_abs = measure->angle_abs;
 }
 
 /**
@@ -248,7 +244,22 @@ dm_motor_object_t *dm_motor_register(motor_config_t *config, void *control)
     dm_motor_obj[idx].ctrl_mode = DM_CMD_RESET_MODE;
     dm_motor_obj[idx].to_mode = DM_CMD_RESET_MODE;
     motor_set_mode(&dm_motor_obj[idx], DM_CMD_RESET_MODE);   // 初始化为 RESET 模式
-    dm_motor_obj[idx].set_control_mode = MIT;                       //设置控制模式
+
+    switch (dm_motor_obj[idx].tx_id & 0xF00)/*判断电机模式*/
+    {
+        case 0x100:
+            dm_motor_obj[idx].set_control_mode = POSITION_SPEED;
+            break;
+        case 0x200:
+            dm_motor_obj[idx].set_control_mode = SPEED;
+            break;
+        case 0x300:
+            dm_motor_obj[idx].set_control_mode = PVT;/*力位混控用不到,发送数据打包没写*/
+            break;
+        default:
+            dm_motor_obj[idx].set_control_mode = MIT;
+            break;
+    }
 
     return &dm_motor_obj[idx++];
 }
@@ -274,6 +285,12 @@ static void pack_contol_para(dm_motor_object_t dm_motor_obiect,dm_motor_para_t p
             LIMIT_MIN_MAX(para.kp, DM_KP_MIN, DM_KP_MAX);
             LIMIT_MIN_MAX(para.kd, DM_KD_MIN, DM_KD_MAX);
             LIMIT_MIN_MAX(para.t,  DM_T_MIN,  DM_T_MAX);
+
+            if(dm_motor_obiect.stop_flag == MOTOR_STOP){/*参数置零*/
+                para.kp = 0.0f;
+                para.kd = 0.0f;
+                para.t = 0.0f;
+            }
 
             /* 转换float参数 */
             p = float_to_uint(para.p,     DM_P_MIN,  DM_P_MAX,  16);

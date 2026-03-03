@@ -1,10 +1,10 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\DM_motor\DM_Motor.c \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\DM_motor\DM_motor.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules/rm_module.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src/rm_config.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/core_cm7.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\DM_motor\DM_Motor.c \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\DM_motor\DM_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules/rm_module.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src/rm_config.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/core_cm7.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\_default_types.h \
@@ -12,20 +12,20 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\_newlib_version.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_intsup.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_version.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_gcc.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/mpu_armv7.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_version.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_gcc.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/mpu_armv7.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/FreeRTOSConfig.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/FreeRTOSConfig.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
  d:\stm32environment\arm\arm-none-eabi\include\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
@@ -35,75 +35,75 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\lock.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/semphr.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/event_groups.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src/robot.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\DJI_motor/dji_motor.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor/motor_def.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/main.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/stm32h7xx_hal_conf.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_def.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h7xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/Legacy/stm32_hal_legacy.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/semphr.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/event_groups.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src/robot.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\DJI_motor/dji_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor/motor_def.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/main.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/stm32h7xx_hal_conf.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_def.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h7xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/Legacy/stm32_hal_legacy.h \
  d:\stm32environment\arm\arm-none-eabi\include\math.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\cdefs.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_dma.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_dma_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_mdma.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_exti.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_cortex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_fdcan.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_hsem.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_i2c.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_i2c_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pwr.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pwr_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_spi.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_spi_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_dma.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_dma_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_mdma.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_exti.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_cortex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_fdcan.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_hsem.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_i2c.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_i2c_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pwr.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pwr_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_spi.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_spi_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdbool.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\task\chassis/chassis_task.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\LK_motor/lk_motor.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\HT_motor/ht04.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\motor\DM_motor/DM_motor.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\dwt/drv_dwt.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\leg_vmc/drv_leg.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\leg_wbr/leg_wbr.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\pwm/drv_PWM.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/tim.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/main.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\BMI088/BMI088driver.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\ipc/uMCN.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\log/bsp_log.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
- d:\hnu_rm_codestorage\hnu_serial_h723_01_31\hnu_embedded_framework\middlewares\third_party\segger\config\segger_rtt_conf.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\task\chassis/chassis_task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\LK_motor/lk_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\HT_motor/ht04.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\motor\DM_motor/DM_motor.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\dwt/drv_dwt.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\leg_vmc/drv_leg.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\leg_wbr/leg_wbr.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\pwm/drv_PWM.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/tim.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/main.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\BMI088/BMI088driver.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\ipc/uMCN.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\log/bsp_log.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\RTT/SEGGER_RTT.h \
+ d:\hnu_rm_codestorage\hnu_serial_h723_02_26\hnu_embedded_framework\middlewares\third_party\segger\config\segger_rtt_conf.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\alloca.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\Config/SEGGER_RTT_Conf.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdio.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\types.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\endian.h \
@@ -117,19 +117,18 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\sched.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\types.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\stdio.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\rc\dbus/rc_dbus.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\can/hal_can.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Core\Inc/fdcan.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\referee/referee_system.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\modules\rc\keyboard/keyboard.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\rc\dbus/rc_dbus.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\can/hal_can.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Core\Inc/fdcan.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\referee/referee_system.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\modules\dm_imu/dm_imu.h \
  d:\stm32environment\arm\arm-none-eabi\include\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
  d:\stm32environment\arm\arm-none-eabi\include\strings.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\string.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\src\algorithm\User_lib/user_lib.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_H723_01_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\src\algorithm\User_lib/user_lib.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Middlewares\ST\ARM\DSP\Inc/arm_math.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_H723_02_26\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\float.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\limits.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include-fixed\syslimits.h \

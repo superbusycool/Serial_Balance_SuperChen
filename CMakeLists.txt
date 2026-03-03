@@ -128,7 +128,6 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         src/modules/ws2812b
         src/modules/referee
         src/modules/rc/dbus
-        src/modules/rc/keyboard
 
         src/task
         src/task/ins
@@ -159,7 +158,6 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "Drivers/*.*" "USB_DEVICE
         "src/modules/pwm/*.*"
         "src/modules/ws2812b/*.*"
         "src/modules/rc/dbus/*.*"
-        "src/modules/rc/keyboard/*.*"
         "src/modules/referee/*.*"
         "src/modules/rm_module.h"
         "src/task/*.*"

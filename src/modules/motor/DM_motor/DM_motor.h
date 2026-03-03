@@ -14,7 +14,7 @@
 #define DM_V_MIN -45			//速度最小值
 #define DM_V_MAX 45			//速度最大值
 #define DM_KP_MIN 0		//Kp最小值
-#define DM_KP_MAX 10.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
+#define DM_KP_MAX 3.0	//Kp最大值,目前根据上位机控制设置中读取的值设定,实际mit模式下位置和速度基本不起作用,主要为力矩T
 #define DM_KD_MIN 0		//Kd最小值
 #define DM_KD_MAX 5.0		//Kd最大值
 #define DM_T_MIN -35			//转矩最小值
@@ -33,6 +33,7 @@ typedef enum
     MIT ,
     POSITION_SPEED,
     SPEED ,
+    PVT,
 }dm_set_mode_e;
 
 /* dm电机模式,初始化时自动进入CMD_MOTOR_MODE*/
@@ -66,9 +67,10 @@ typedef struct
 
     float total_angle;        // 角度为多圈角度
     float circle_cnt;          //圈数
+    float yaw_angle;          //有yaw轴电机算出的实际云台角度
     float angle;              //角度范围在-2π到2π
     float angle_abs;          //绝对角度,每个位置固定
-    float last_angle;
+    float last_angle_abs;
     float angle_delta;
     float speed_rads;         // 在 0 和 4095 之间，缩放 V MIN 和 V MAX
     float torque;             //扭矩

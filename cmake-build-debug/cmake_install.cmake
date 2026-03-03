@@ -1,4 +1,4 @@
-# Install script for directory: D:/HNU_RM_CodeStorage/HNU_Serial_H723_01_31/HNU_Embedded_Framework
+# Install script for directory: D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/HNU_RM_CodeStorage/HNU_Serial_H723_01_31/HNU_Embedded_Framework/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

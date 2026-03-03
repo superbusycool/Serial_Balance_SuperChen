@@ -29,9 +29,7 @@ static void shoot_sub_pull(void);
 
 /* ------------------------------------------------- 电机控制相关 ----------------------------------------------------- */
 /*发射模块电机使用数量*/
-//#define SHT_MOTOR_NUM 3
-#define SHT_MOTOR_NUM 4
-
+#define SHT_MOTOR_NUM 3
 /*发射模块电机编号：分别为左摩擦轮电机 右摩擦轮电机 拨弹电机*/
 #define RIGHT_FRICTION 0
 #define LEFT_FRICTION 1
@@ -72,9 +70,7 @@ static float shoot_motor_ref[SHT_MOTOR_NUM]; // 电机控制期望值
 static int total_angle_flag=SHOOT_ANGLE_CONTINUE;
 /*函数声明*/
 static void shoot_motor_init();
-//static void servo_init();
 static int16_t motor_control_right(dji_motor_measure_t measure);
-static int16_t motor_control_middle(dji_motor_measure_t measure);
 static int16_t motor_control_left(dji_motor_measure_t measure);
 static int16_t motor_control_trigger(dji_motor_measure_t measure);
 
