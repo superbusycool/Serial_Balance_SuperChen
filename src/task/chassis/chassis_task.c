@@ -63,9 +63,9 @@ static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
 #define Theta_Compensation  -0.08f
 
-#define VX_MAX        673.0f
-#define WX_MAX        270.0f
-#define V_SET         2.0f
+#define CHASSIS_VX_MAX        673.0f
+#define CHASSIS_WX_MAX        270.0f
+#define CHASSIS_V_SET         2.0f
 #define YAW_TURN_RATIO  0.1f  //单位应该为°,有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
 static float Vx_Delta;
 #define VX_DELTA_MAX 5.0f
@@ -444,8 +444,8 @@ static void update_LQR_obs() {
     LQRXRefBuf[RIGHT][2] = 0;
     LQRXRefBuf[LEFT][2] = 0;
 
-    LQRXRefBuf[LEFT][3]  = (chassis_cmd.vx_set / VX_MAX) * V_SET  ;  // 单位为米,对速度积分得到
-    LQRXRefBuf[RIGHT][3] = (chassis_cmd.vx_set / VX_MAX) * V_SET  ;  // 单位为米
+    LQRXRefBuf[LEFT][3]  = (chassis_cmd.vx_set / CHASSIS_VX_MAX) * CHASSIS_V_SET  ;  // 单位为米,对速度积分得到
+    LQRXRefBuf[RIGHT][3] = (chassis_cmd.vx_set / CHASSIS_VX_MAX) * CHASSIS_V_SET  ;  // 单位为米
 
 
     leg[LEFT]->l0_average = 0.5f * (leg[LEFT]->l0 + leg[RIGHT]->l0); /*TODO 在左右腿长不一致的情况下的k是否合理有待讨论*/
@@ -607,6 +607,8 @@ void chassis_control_task(void)
     chassis_fdb_data.M3508_r = m3508_motor[RIGHT]->measure;
     /* 更新发布该线程的msg */
     chassis_pub_push();
+
+    vTaskDelay(1);
 }
 
 /**
@@ -751,7 +753,7 @@ static void leg_init_get_zero()
     // 撞到限位后，控制电机在此处设置零点
     for (uint8_t i = 0; i < 4; i++)
     {
-        dm_motor[i]->set_mode(dm_motor[i], CMD_ZERO_POSITION);
+        dm_motor[i]->set_mode(dm_motor[i], DM_CMD_ZERO_POSITION);
     }
     // 电机零点设置完成，正常零点为减去各偏移量
     chassis_fdb_data.leg_state = LEG_BACK_IS_OK;
@@ -1262,7 +1264,7 @@ static void Chassis_Vx_Detect(){
 
     else{
         //更新航向角期望
-        yaw_target += ( - chassis_cmd.vw_set / WX_MAX) * YAW_TURN_RATIO * DEGREE_2_RAD;
+        yaw_target += ( - chassis_cmd.vw_set / CHASSIS_WX_MAX) * YAW_TURN_RATIO * DEGREE_2_RAD;
 
     }
 }

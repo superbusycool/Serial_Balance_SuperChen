@@ -98,13 +98,13 @@ void trans_control_task(){
     trans_pub_push();
 }
 
-void Send_to_pc(RpyTypeDef data_r)
+void Send_to_pc(RpyTypeDef data)
 {
     /*填充数据*/
-    pack_Rpy(&data_r, gimbal_fdb.yaw_angle, gimbal_fdb.pitch_angle, gimbal_fdb.roll_angle,team_color);
-    Check_Rpy(&data_r);
+    pack_Rpy(&data, gimbal_fdb.yaw_angle, gimbal_fdb.pitch_angle, gimbal_fdb.roll_angle,team_color);
+    Check_Rpy(&data);
 
-    CDC_Transmit_HS((uint8_t*)data_r.DATA,  sizeof(data_r.DATA));
+    CDC_Transmit_HS((uint8_t*)data.DATA,  sizeof(data.DATA));
 
 }
 
@@ -201,9 +201,9 @@ static void usb_input(uint8_t* Buf, uint32_t *Len)
 
                     switch (rpy_rx_data.ID) {
                         case GIMBAL: {
-                            trans_fdb_data.yaw = (*(int32_t *)&rpy_rx_data.DATA[1] / 1000.0);
-                            trans_fdb_data.pitch = (*(int32_t *)&rpy_rx_data.DATA[5] / 1000.0);
-                            trans_fdb_data.roll = (*(int32_t *)&rpy_rx_data.DATA[9] / 1000.0);
+                            trans_fdb_data.yaw_target = (*(int32_t *)&rpy_rx_data.DATA[1] / 1000.0);
+                            trans_fdb_data.pitch_target = (*(int32_t *)&rpy_rx_data.DATA[5] / 1000.0);
+                            trans_fdb_data.roll_target = (*(int32_t *)&rpy_rx_data.DATA[9] / 1000.0);
 
                         } break;
 

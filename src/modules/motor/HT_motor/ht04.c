@@ -138,7 +138,7 @@ void ht_motor_disable_all()
 {
     for (size_t i = 0; i < idx; i++)
     {
-        motor_set_mode(&ht_motor_obj[i], CMD_RESET_MODE);
+        motor_set_mode(&ht_motor_obj[i], HT_CMD_RESET_MODE);
     }
 }
 
@@ -146,7 +146,7 @@ void ht_motor_enable_all()
 {
     for (size_t i = 0; i < idx; i++)
     {
-        motor_set_mode(&ht_motor_obj[i], CMD_MOTOR_MODE);
+        motor_set_mode(&ht_motor_obj[i], HT_CMD_MOTOR_MODE);
     }
 }
 
@@ -185,7 +185,7 @@ static void ht_motor_control(void const *parameter)
         }
         else /* 不需要切换模式情况，发送控制值 */
         {
-            if (motor->ctrl_mode == CMD_MOTOR_MODE) {
+            if (motor->ctrl_mode == HT_CMD_MOTOR_MODE) {
                 set = control_get;
                 if (motor->stop_flag == MOTOR_STOP) {
                     memset(&set, 0, sizeof(ht_motor_para_t));
@@ -255,9 +255,9 @@ ht_motor_object_t *ht_motor_register(motor_config_t *config, void *control)
     ht_motor_obj[idx].turn_complete = osSemaphoreCreate(osSemaphore(turn_Sem), 1);  // 初始化信号量
     // 电机离线检测定时器相关
 
-    ht_motor_obj[idx].ctrl_mode = CMD_RESET_MODE;
-    ht_motor_obj[idx].to_mode = CMD_RESET_MODE;
-    motor_set_mode(&ht_motor_obj[idx], CMD_RESET_MODE);   // 初始化为 RESET 模式
+    ht_motor_obj[idx].ctrl_mode = HT_CMD_RESET_MODE;
+    ht_motor_obj[idx].to_mode = HT_CMD_RESET_MODE;
+    motor_set_mode(&ht_motor_obj[idx], HT_CMD_RESET_MODE);   // 初始化为 RESET 模式
 
     return &ht_motor_obj[idx++];
 }
@@ -303,7 +303,7 @@ static void enable(void){
     static ht_motor_para_t set; // 电机控制器计算得到的控制参数m
     for (size_t i = 0; i < idx; i++)
     {
-        motor_set_mode(&ht_motor_obj[i], CMD_MOTOR_MODE);
+        motor_set_mode(&ht_motor_obj[i], HT_CMD_MOTOR_MODE);
     }
 }
 //MSH_CMD_EXPORT(enable, enter motor_mode);
@@ -311,7 +311,7 @@ static void enable(void){
 static void relax(void){
     for (size_t i = 0; i < idx; i++)
     {
-        motor_set_mode(&ht_motor_obj[i], CMD_RESET_MODE);
+        motor_set_mode(&ht_motor_obj[i], HT_CMD_RESET_MODE);
     }
 }
 //MSH_CMD_EXPORT(relax, out motor_mode);
@@ -319,7 +319,7 @@ static void relax(void){
 static void zero(void){
     for (size_t i = 0; i < idx; i++)
     {
-        motor_set_mode(&ht_motor_obj[i], CMD_ZERO_POSITION);
+        motor_set_mode(&ht_motor_obj[i], HT_CMD_ZERO_POSITION);
     }
 }
 //MSH_CMD_EXPORT(zero, set motor zero);
