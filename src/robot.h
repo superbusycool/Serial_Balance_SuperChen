@@ -49,10 +49,9 @@ struct gimbal_fdb_msg
 {
     gimbal_back_e back_mode;  // 云台归中情况
 
-    float yaw_offset_angle_total;    //云台初始 yaw 轴角度 （由imu得）
-    float yaw_offset_angle;    //云台初始 yaw 轴角度 （由imu得）
-    float pit_offset_angle;    //云台初始 pit 轴角度 （由imu得）
-    float yaw_relative_angle;  //云台相对于初始位置的yaw轴角度
+    float yaw_angle;    //云台初始 yaw 轴角度 （由yaw轴dm4310电机得）
+    float pitch_angle;    //云台初始 pitch 轴角度 （由imu得）
+    float roll_angle;    //云台初始 roll 轴角度 （由imu得）
 };
 
 /**

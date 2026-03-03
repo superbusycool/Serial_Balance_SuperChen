@@ -14,28 +14,77 @@
  */
 #define RC_CH_VALUE_OFFSET		1024U
 
-/**
- * @brief judgement keyboard set short time
- */
-#define KEY_SET_SHORT_TIME		50U
-/**
- * @brief judgement keyboard set long time
- */
-#define KEY_SET_LONG_TIME		1000U
+/************************************按键控制相关定义*******************************************/
+
+/* mouse button long press time */
+#define LONG_PRESS_TIME  800   //ms
+/* key acceleration time */
+#define KEY_ACC_TIME     2000  //ms
 
 /**
- * @brief status of keyboard up
- */
-#define KEY_UP                    0x00U
-/**
- * @brief status of keyboard down
- */
-#define KEY_DOWN                  0x01U
+  * @brief     底盘运动速度快慢模式
+  */
+typedef enum/*默认正常*/
+{
+    NORMAL_MODE = 0,    //正常模式
+    FAST_MODE,          //快速模式
+    SLOW_MODE,          //慢速模式
+} kb_move_e;
 
 /**
- * @brief MAX speed of mouse speed
- */
-#define MOUSE_SPEED_MAX		300U
+  * @brief     鼠标按键状态类型枚举
+  */
+typedef enum
+{
+    KEY_RELEASE = 0,    //没有按键按下
+    KEY_WAIT_EFFECTIVE, //等待按键按下有效，防抖
+    KEY_PRESS_ONCE,     //按键按下一次的状态
+    KEY_PRESS_DOWN,     //按键已经被按下
+    KEY_PRESS_LONG,     //按键长按状态
+} kb_state_e;
+
+/**
+  * @brief     键盘鼠标数据结构体
+  */
+typedef struct
+{
+    /* 键盘模式使能标志 */
+    uint8_t kb_enable;
+
+    /* 鼠标键盘控制模式下的底盘移动速度目标值 */
+    float vx;          //底盘前进后退目标速度
+    float vy;          //底盘左右平移目标速度
+    float vw;          //底盘旋转速度
+    float max_spd;     //运动最大速度
+
+    /* 左右按键状态 */
+    kb_state_e lk_sta; //左侧按键状态
+    kb_state_e rk_sta; //右侧按键状态
+    uint16_t lk_cnt;
+    uint16_t rk_cnt;
+
+    /* 键盘按键状态 */
+    kb_state_e W_sta;
+    kb_state_e S_sta;
+    kb_state_e A_sta;
+    kb_state_e D_sta;
+    kb_state_e SHIFT_sta;
+    kb_state_e CTRL_sta;
+    kb_state_e Q_sta;
+    kb_state_e E_sta;
+    kb_state_e R_sta;
+    kb_state_e F_sta;
+    kb_state_e G_sta;
+    kb_state_e Z_sta;
+    kb_state_e X_sta;
+    kb_state_e C_sta;
+    kb_state_e V_sta;
+    kb_state_e B_sta;
+
+    /* 运动模式，键盘控制底盘运动快慢 */
+    kb_move_e move_mode;
+
+} kb_control_t;
 
 /* Exported types ------------------------------------------------------------*/
 
@@ -69,7 +118,7 @@ typedef  struct
     /**
      * @brief structure that contains the information for the keyboard.
      */
-    union
+    union/*union使用很巧妙的方法,v和后续结构体中的键位共享内存,v可以反应是否有键鼠的信息*/
     {
         uint16_t v;
         struct
@@ -102,6 +151,10 @@ typedef  struct
  * @brief remote control structure variable
  */
 extern Remote_Info_Typedef remote_ctrl;
+/*
+ * @brief remote keyboard control structure variable
+ * */
+extern kb_control_t key_board_ctrl;
 /**
  * @brief remote control usart RxDMA MultiBuffer
  */
@@ -115,10 +168,12 @@ extern void SBUS_TO_RC(volatile const uint8_t *sbus_buf, Remote_Info_Typedef *re
   * @brief  clear the remote control data while the device offline
   */
 extern void Remote_Message_Moniter(Remote_Info_Typedef *remote_ctrl);
-
+/**
+  * @brief     PC 处理键盘鼠标数据函数
+  */
+void PC_Handle_kb(void);
 
 void BSP_USART_Init();
-
 
 
 

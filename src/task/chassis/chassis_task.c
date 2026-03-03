@@ -5,7 +5,7 @@
 * 2025-07-25      SuperChen       second version
 * 2025-11-01      SuperChen       third version (结合上交建模lqr)
 * 2026-01-15      SuperChen       fourth version (尝试港大的仿真)
- * 2026-01-20      SuperChen       fifth version (重回哈工程开源)
+* 2026-01-20      SuperChen       fifth version (重回哈工程开源)
 */
 #include "chassis_task.h"
 #include "rm_config.h"
@@ -174,8 +174,7 @@ static void leg_init_get_zero();
  * @param step_length 步长
  * @param safe_region 合理范围
  * */
-static uint8_t theta_change_flag_R;
-static uint8_t theta_change_flag_L;
+
 void slope_phi0_following_begin_end(const float *target,const float *measure,float *set,float step_length,const float safe_region,uint8_t *phi0_change_flag);
 
 
@@ -328,7 +327,6 @@ static void chassis_kf_init(void)
 }
 static float  speed_rads_ground_l;
 static float  wheel_to_ground_l,speed_rads_ground_r,wheel_to_ground_r;
-static float Wecd_L,Wecd_R; //轮子对地的角速度
 static void chassis_kf_update(void)
 {
     static float _kf_dt, _kf_start;
@@ -339,23 +337,21 @@ static void chassis_kf_update(void)
     _kf_start = dwt_get_time_ms();
 
 
-    //    speed_rads_ground_l = lk_motor[LEFT]->measure.speed_rads + ins.gyro[1] + leg[LEFT]->d_theta_lpf ;
-    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) + ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
+//    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) + ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
+    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_phi0 ;/*山海机甲打滑部分*/
     wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->d_theta_lpf*leg[LEFT]->l0* arm_cos_f32(leg[LEFT]->theta)+ leg[LEFT]->d_l0*arm_sin_f32(leg[LEFT]->theta) ;//TODO机体速度推出轮子速度
 
-//    speed_rads_ground_r = lk_motor[LEFT]->measure.speed_rads + ins.gyro[1] + leg[LEFT]->d_theta_lpf ;
-    speed_rads_ground_r = (m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
+//    speed_rads_ground_r = (m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
+    speed_rads_ground_r = (m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_phi0 ;
     wheel_to_ground_r = speed_rads_ground_r * WHEEL_RADIUS + leg[RIGHT]->d_theta_lpf*leg[RIGHT]->l0* arm_cos_f32(leg[RIGHT]->theta)+ leg[RIGHT]->d_l0*arm_sin_f32(leg[RIGHT]->theta);
 
     chassis_kf_l.MeasuredVector[0] = wheel_to_ground_l ;
     chassis_kf_l.MeasuredVector[1] = ins.motion_accel_b[1];//机体加速度作为整体的加速度
-//    chassis_kf_l.MeasuredVector[1] = 0.0f;
 
     Kalman_Filter_Update(&chassis_kf_l);
 
     chassis_kf_r.MeasuredVector[0] = wheel_to_ground_r ;
     chassis_kf_r.MeasuredVector[1] = ins.motion_accel_b[1];//机体加速度作为整体的加速度
-//    chassis_kf_r.MeasuredVector[1] = 0.0f;
 
     Kalman_Filter_Update(&chassis_kf_r);
 }
@@ -1053,7 +1049,7 @@ static int16_t set_l,set_r;/*观测用*/
 /*当输入为正是,转动方向为 顺时针 时针
  * 计算输入应该为负
  * */
-static int16_t M3508_control_l(lk_motor_measure_t measure){
+static int16_t M3508_control_l(dji_motor_measure_t  measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[LEFT][0],-M3508_TOR_MAX,M3508_TOR_MAX);
 
@@ -1084,7 +1080,7 @@ static int16_t M3508_control_l(lk_motor_measure_t measure){
 /*当输入为正是,转动方向为 顺时针 时针
  * 计算输入应该为正
  * */
-static int16_t M3508_control_r(lk_motor_measure_t measure){
+static int16_t M3508_control_r(dji_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf[RIGHT][0],-M3508_TOR_MAX,M3508_TOR_MAX);
 
@@ -1244,10 +1240,6 @@ void Process_Clear(){
     pid_clear(theta_pid);
     pid_clear(yaw_pid);
 
-    theta_change_flag_R = 0;
-    theta_change_flag_L = 0;
-
-
     LQRXRefBuf[LEFT][3] = 0;
     LQRXRefBuf[RIGHT][3] = 0;
 
@@ -1267,9 +1259,7 @@ static void Chassis_Vx_Detect(){
     if(Vx_Delta > VX_DELTA_MAX){
         yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }
-//    if(fabsf(yaw_target - ins.yaw_total_angle) > YAW_DELTA_MX){
-//        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
-//    }
+
     else{
         //更新航向角期望
         yaw_target += ( - chassis_cmd.vw_set / WX_MAX) * YAW_TURN_RATIO * DEGREE_2_RAD;
@@ -1291,6 +1281,9 @@ static void Security_Checking(){
 /*
  * @brief 倒地自起
  * */
+#define PHI0_DIRECTION1 0.0F
+#define PHI0_DIRECTION2 (PI - 10.0f * DEGREE_2_RAD)
+
 static void Chassis_Recovery() {
 
     dm_v_set[LEFT][FRONT] = DM_V_SET;
@@ -1300,26 +1293,26 @@ static void Chassis_Recovery() {
     leg_l0_refer_L = 0.33f;
     leg_l0_refer_R = 0.33f;
 
-
+    //可以通过机体的ins.pitch将机体分成四个区域每个区域90°,通过pitch角度调整腿部摆动方向,即调整phi0_refer
     if(((ins.pitch <= 0.0f && ins.pitch >= -90.0f)||(ins.pitch > 0.0f && ins.pitch <= 90.0f))&&(phi0_refer_change_flag == 0)){/*将ins.pitch分成四块区域,每块区域90°*/
-        leg_phi0_refer_L = 0;/*逆时针转动*/
-        leg_phi0_refer_R = 0;
-        phi0_refer_change_flag = 1;
+        leg_phi0_refer_L = PHI0_DIRECTION1;
+        leg_phi0_refer_R = PHI0_DIRECTION1;
+        phi0_refer_change_flag = 1;/*确保在腿部转动过程中不会被其他区域的状态打断*/
     }
 
     if((ins.pitch >= -180.0f && ins.pitch <= -90.0f)||(ins.pitch <= 180.0f && ins.pitch > 90.0f)&&(phi0_refer_change_flag == 0)) {/*将ins.pitch分成四块区域,每块区域90°*/
-        leg_phi0_refer_L = PI - 10.0f * DEGREE_2_RAD;
-        leg_phi0_refer_R = PI - 10.0f * DEGREE_2_RAD;
+        leg_phi0_refer_L = PHI0_DIRECTION2;
+        leg_phi0_refer_R = PHI0_DIRECTION2;
         phi0_refer_change_flag = 1;
 
     }
     if(phi0_refer_change_flag == 1){
-        if(leg_phi0_refer_L == (PI - 10.0f * DEGREE_2_RAD) && leg_phi0_refer_R == (PI - 10.0f * DEGREE_2_RAD)){
+        if(leg_phi0_refer_L == PHI0_DIRECTION2 && leg_phi0_refer_R == PHI0_DIRECTION2){/*判断腿部是否到达目标位置1*/
             if((fabsf(ins.pitch) < 10.0f) && (fabsf(fabsf(leg[LEFT]->phi0) - 3.14f) < 0.64f) && (fabsf(fabsf(leg[RIGHT]->phi0) - 3.14f) < 0.64f)){
                 phi0_refer_change_flag = 0;
             }
         }
-        if(leg_phi0_refer_L == 0 && leg_phi0_refer_R == 0){
+        if(leg_phi0_refer_L == PHI0_DIRECTION1 && leg_phi0_refer_R == PHI0_DIRECTION1){/*判断腿部是否到达目标位置2*/
             if((fabsf(ins.pitch) < 5.0f) && ((fabsf(leg[LEFT]->phi0) < 0.3f) && (fabsf(leg[RIGHT]->phi0) < 0.3f))){
                 phi0_refer_change_flag = 0;
                 chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY_READY;
@@ -1334,7 +1327,7 @@ static void Chassis_Recovery() {
 
     if ((fabsf(ins.pitch) < 2.0f) && (fabsf(leg[LEFT]->theta) < 0.15f) &&
         (fabsf(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
-        chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制*/
+        chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制,若是起立动作幅度过大可以考虑提高站立条件*/
         phi0_refer_change_flag = 0;
     }
 

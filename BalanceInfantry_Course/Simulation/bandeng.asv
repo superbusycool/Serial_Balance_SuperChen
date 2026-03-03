@@ -32,7 +32,7 @@ syms phi phi_dot delta_T phi_refer T pitch pitch_dot
 X=[pitch 
 pitch_dot];
 u = [T];  %云台pitch轴,pitch角的控制,还需在最后计算总力矩时加入重力前馈1/2
-m_pitch = 2;%云台pitch部分的质量Kg
+m_pitch = 2;%云台的质量Kg
 A = [0 1;0 0];
 l = 0.02;%与pitch轴电机连接的连杆的长度
 J = (1/3)*m_pitch*l^2;
@@ -41,21 +41,22 @@ B = [0
 Q = diag([5 1]);
 R = [1];
 K = lqr(A,B,Q,R);
-fprintf('static float  K_pitch[2] = {%f, %f}\n', K);
+fprintf('K_pitch = [%f, %f]\n', K);
+
 
 X=[phi 
 phi_dot];
 u = [T];  %云台yaw轴,yaw角的控制,还需在最后计算总力矩
 A = [0 1;0 0];
-R = 0.03;%yaw电机半径(将云台近似为圆柱)单位m
-m_yaw = 4;%云台整个部分的质量Kg
-J = (1/2)*m_yaw*R^2;
+l = 0.02;%与pitch轴电机连接的连杆的长度
+R = 0.03;%yaw电机半径
+J = (1/2)*m*R^2;
 B = [0
     1/J];
 Q = diag([50 1]);
 R = [10];
 K = lqr(A,B,Q,R);
-fprintf('static float K_yaw[2] = {%f, %f}\n', K);
+fprintf('K_yaw = [%f, %f]\n', K);
 
 
 %LQR计算K11这个值与哪些变量相关

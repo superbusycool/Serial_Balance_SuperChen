@@ -173,8 +173,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj.d"
-  "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj"
-  "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Keyboard/keyboard.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj"

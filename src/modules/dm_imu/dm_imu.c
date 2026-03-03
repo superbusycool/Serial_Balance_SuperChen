@@ -214,11 +214,11 @@ void IMU_UpdateEuler(uint8_t* pData)
     imu_object.yaw=uint_to_float(euler[1],YAW_CAN_MIN,YAW_CAN_MAX,16);
     imu_object.roll=uint_to_float(euler[2],ROLL_CAN_MIN,ROLL_CAN_MAX,16);
     // get Yaw total, yaw数据可能会超过360,处理一下方便其他功能使用(如小陀螺)
-    if (imu_object.yaw - imu_object.yaw_last > 180.0f)
+    if ((imu_object.yaw - imu_object.yaw_last) > 180.0f)
     {
         imu_object.YawRoundCount--;
     }
-    else if (imu_object.yaw - imu_object.yaw_last < -180.0f)
+    else if ((imu_object.yaw - imu_object.yaw_last) < -180.0f)
     {
         imu_object.YawRoundCount++;
     }

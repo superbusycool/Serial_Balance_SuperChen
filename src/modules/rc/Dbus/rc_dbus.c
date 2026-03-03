@@ -2,6 +2,7 @@
 #include "rc_dbus.h"
 #include <string.h>
 #include "stdlib.h"
+#include "rm_algorithm.h"
 
 uint8_t SBUS_MultiRx_Buf[2][SBUS_RX_BUF_NUM];
 
@@ -13,6 +14,14 @@ Remote_Info_Typedef remote_ctrl={
         .rc_lost = true,
 };
 
+/*****************************键鼠相关**************************************/
+int16_t delta_spd = MAX_CHASSIS_VX_SPEED*1.0f/KEY_ACC_TIME*GIMBAL_PERIOD;
+
+extern ramp_obj_t *km_vx_ramp;//x轴控制斜坡
+extern ramp_obj_t *km_vy_ramp;//y周控制斜坡
+
+kb_control_t key_board_ctrl;
+/*******************************************************************/
 
 /**
   * @brief  convert the remote control received message
@@ -87,4 +96,145 @@ void Remote_Message_Moniter(Remote_Info_Typedef  *remote_ctrl)
         /* online count decrements which reseted in received interrupt  */
         remote_ctrl->online_cnt--;
     }
+}
+
+/*****************************键鼠信息处理***************************************/
+/**
+  * @brief     鼠标按键状态机
+  * @param[in] sta: 按键状态指针
+  * @param[in] key: 按键键值
+  */
+static void key_fsm(kb_state_e *sta, uint8_t key)
+{
+    switch (*sta)
+    {
+        case KEY_RELEASE:
+        {
+            if (key)
+                *sta = KEY_WAIT_EFFECTIVE;
+            else
+                *sta = KEY_RELEASE;
+        }break;
+
+        case KEY_WAIT_EFFECTIVE:
+        {
+            if (key)
+                *sta = KEY_PRESS_ONCE;
+            else
+                *sta = KEY_RELEASE;
+        }break;
+
+
+        case KEY_PRESS_ONCE:
+        {
+            if (key)
+            {
+                *sta = KEY_PRESS_DOWN;
+                if (sta == &key_board_ctrl.lk_sta)
+                    key_board_ctrl.lk_cnt = 0;
+                else
+                    key_board_ctrl.rk_cnt = 0;
+            }
+            else
+                *sta = KEY_RELEASE;
+        }break;
+
+        case KEY_PRESS_DOWN:
+        {
+            if (key)
+            {
+                if (sta == &key_board_ctrl.lk_sta)
+                {
+                    if (key_board_ctrl.lk_cnt++ > LONG_PRESS_TIME/GIMBAL_PERIOD)
+                        *sta = KEY_PRESS_LONG;
+                }
+                else
+                {
+                    if (key_board_ctrl.rk_cnt++ > LONG_PRESS_TIME/GIMBAL_PERIOD)
+                        *sta = KEY_PRESS_LONG;
+                }
+            }
+            else
+                *sta = KEY_RELEASE;
+        }break;
+
+        case KEY_PRESS_LONG:
+        {
+            if (!key)
+            {
+                *sta = KEY_RELEASE;
+            }
+        }break;
+
+        default:
+            break;
+
+    }
+}
+
+/**
+  * @brief     PC 处理键盘鼠标数据函数
+  */
+void PC_Handle_kb(void)
+{
+    if (remote_ctrl.key.set.SHIFT)
+    {
+        key_board_ctrl.move_mode = FAST_MODE;
+        key_board_ctrl.max_spd = 3500;
+    }
+    else if (remote_ctrl.key.set.CTRL)
+    {
+        key_board_ctrl.move_mode = SLOW_MODE;
+        key_board_ctrl.max_spd = 1000;
+    }
+    else
+    {
+        key_board_ctrl.move_mode = NORMAL_MODE;
+        key_board_ctrl.max_spd = 2000;
+    }
+
+    //add ramp
+    if (remote_ctrl.key.set.W)
+        key_board_ctrl.vy += (float)delta_spd;
+    else if (remote_ctrl.key.set.S)
+        key_board_ctrl.vy -= (float)delta_spd;
+    else
+    {
+        key_board_ctrl.vy =(float)key_board_ctrl.vy* ( 1 - km_vy_ramp->calc(km_vy_ramp));
+    }
+
+    if (remote_ctrl.key.set.A)
+        key_board_ctrl.vx -= (float)delta_spd;
+    else if (remote_ctrl.key.set.D)
+        key_board_ctrl.vx += (float)delta_spd;
+    else
+    {
+        key_board_ctrl.vx = (float) key_board_ctrl.vx* ( 1 - km_vx_ramp->calc(km_vx_ramp));
+    }
+
+    VAL_LIMIT(key_board_ctrl.vx, -key_board_ctrl.max_spd, key_board_ctrl.max_spd);
+    VAL_LIMIT(key_board_ctrl.vy, -key_board_ctrl.max_spd, key_board_ctrl.max_spd);
+
+
+    VAL_LIMIT(key_board_ctrl.vx, -MAX_CHASSIS_VX_SPEED, MAX_CHASSIS_VX_SPEED);
+    VAL_LIMIT(key_board_ctrl.vy, -MAX_CHASSIS_VY_SPEED, MAX_CHASSIS_VY_SPEED);
+
+    key_fsm(&key_board_ctrl.lk_sta, remote_ctrl.mouse.press_l);/*remote_ctrl.key.XX是实际解析出的键鼠信息,通过此函数判断按下状态(按下,未按下,长按,短按)*/
+    key_fsm(&key_board_ctrl.rk_sta, remote_ctrl.mouse.press_r);
+    key_fsm(&key_board_ctrl.W_sta, remote_ctrl.key.set.W);
+    key_fsm(&key_board_ctrl.S_sta, remote_ctrl.key.set.S);
+    key_fsm(&key_board_ctrl.A_sta, remote_ctrl.key.set.A);
+    key_fsm(&key_board_ctrl.D_sta, remote_ctrl.key.set.D);
+    key_fsm(&key_board_ctrl.SHIFT_sta, remote_ctrl.key.set.SHIFT);
+    key_fsm(&key_board_ctrl.CTRL_sta, remote_ctrl.key.set.CTRL);
+    key_fsm(&key_board_ctrl.Q_sta, remote_ctrl.key.set.Q);
+    key_fsm(&key_board_ctrl.E_sta, remote_ctrl.key.set.E);
+    key_fsm(&key_board_ctrl.R_sta, remote_ctrl.key.set.R);
+    key_fsm(&key_board_ctrl.F_sta, remote_ctrl.key.set.F);
+    key_fsm(&key_board_ctrl.G_sta, remote_ctrl.key.set.G);
+    key_fsm(&key_board_ctrl.Z_sta, remote_ctrl.key.set.Z);
+    key_fsm(&key_board_ctrl.C_sta, remote_ctrl.key.set.C);
+    key_fsm(&key_board_ctrl.V_sta, remote_ctrl.key.set.V);
+    key_fsm(&key_board_ctrl.B_sta, remote_ctrl.key.set.B);
+
 }

@@ -45,9 +45,6 @@ static struct ins_msg ins;
 MCN_DECLARE(chassis_cmd);
 static McnNode_t chassis_cmd_node;
 static struct chassis_cmd_msg chass_cmd;
-MCN_DECLARE(gimbal_cmd);
-static McnNode_t gimbal_cmd_node;
-static struct gimbal_cmd_msg gimbal_cmd;
 MCN_DECLARE(gimbal_fdb);
 static McnNode_t gimbal_fdb_node;
 static struct gimbal_fdb_msg gimbal_fdb;
@@ -57,7 +54,6 @@ static void trans_sub_init(void);
 static void trans_sub_pull(void);
 
 /*------------------------------自瞄相对角传参反馈--------------------------------------*/
-extern auto_relative_angle_status_e auto_relative_angle_status;
 
 uint8_t *r_buffer_point; //用于清除环形缓冲区buffer的指针
 
@@ -78,19 +74,7 @@ void trans_control(){
 /*--------------------------------------------------具体需要发送的数据--------------------------------- */
     if((dwt_get_time_ms()-heart_dt)>=HEART_BEAT)
     {
-        // if(flag == 1)
-        // {
-        //     flag = 0;
-        //     trans_fdb_data.pitch = pitch_auto_0;
-        //     trans_fdb_data.yaw = yaw_auto_0;
-        // }
-        // else
-        // {
-        //     flag = 1;
-        //     trans_fdb_data.pitch = pitch_auto_1;
-        //     trans_fdb_data.yaw = yaw_auto_1;
-        // }
-        //
+
         heart_dt=dwt_get_time_ms();
     }
 //        judge_color();
@@ -117,15 +101,11 @@ void trans_control_task(){
 void Send_to_pc(RpyTypeDef data_r)
 {
     /*填充数据*/
-    pack_Rpy(&data_r, (gimbal_fdb.yaw_offset_angle - ins.yaw), ins.pitch-gimbal_fdb.pit_offset_angle, openfire,team_color);
+    pack_Rpy(&data_r, gimbal_fdb.yaw_angle, gimbal_fdb.pitch_angle, gimbal_fdb.roll_angle,team_color);
     Check_Rpy(&data_r);
 
     CDC_Transmit_HS((uint8_t*)data_r.DATA,  sizeof(data_r.DATA));
 
-    if (gimbal_cmd.ctrl_mode==GIMBAL_AUTO&&auto_relative_angle_status==RELATIVE_ANGLE_TRANS)
-    {
-        auto_relative_angle_status=RELATIVE_ANGLE_OK;
-    }
 }
 
 //void judge_color()
@@ -221,15 +201,10 @@ static void usb_input(uint8_t* Buf, uint32_t *Len)
 
                     switch (rpy_rx_data.ID) {
                         case GIMBAL: {
-                            if (rpy_rx_data.DATA[0]) { // 相对角度控制
-                                trans_fdb_data.yaw = -(*(int32_t *)&rpy_rx_data.DATA[1] / 1000.0);
-                                trans_fdb_data.pitch = (*(int32_t *)&rpy_rx_data.DATA[5] / 1000.0);
-                                trans_fdb_data.roll = (*(int32_t *)&rpy_rx_data.DATA[9] / 1000.0);
-                            } else { // 绝对角度控制
-                                trans_fdb_data.yaw = -(*(int32_t *)&rpy_rx_data.DATA[1] / 1000.0);
-                                trans_fdb_data.pitch = (*(int32_t *)&rpy_rx_data.DATA[5] / 1000.0);
-                                trans_fdb_data.roll = (*(int32_t *)&rpy_rx_data.DATA[9] / 1000.0);
-                            }
+                            trans_fdb_data.yaw = (*(int32_t *)&rpy_rx_data.DATA[1] / 1000.0);
+                            trans_fdb_data.pitch = (*(int32_t *)&rpy_rx_data.DATA[5] / 1000.0);
+                            trans_fdb_data.roll = (*(int32_t *)&rpy_rx_data.DATA[9] / 1000.0);
+
                         } break;
 
                         case HEARTBEAT: {
@@ -267,7 +242,6 @@ void trans_pub_push(){
 void trans_sub_init(){
     ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
     chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
-    gimbal_cmd_node = mcn_subscribe(MCN_HUB(gimbal_cmd), NULL, NULL);
     gimbal_fdb_node = mcn_subscribe(MCN_HUB(gimbal_fdb), NULL, NULL);
 }
 
@@ -280,10 +254,6 @@ void trans_sub_pull(){
     if (mcn_poll(chassis_cmd_node))
     {
         mcn_copy(MCN_HUB(chassis_cmd), chassis_cmd_node, &chass_cmd);
-    }
-    if (mcn_poll(gimbal_cmd_node))
-    {
-        mcn_copy(MCN_HUB(gimbal_cmd), gimbal_cmd_node, &gimbal_cmd);
     }
     if (mcn_poll(gimbal_fdb_node))
     {

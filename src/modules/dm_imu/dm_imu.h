@@ -96,7 +96,6 @@ struct dm_imu_t
 
     float YawRoundCount;
 
-
 };
 
 struct dm_imu_t * dm_imu_init(uint8_t can_id,uint8_t mst_id,FDCAN_HandleTypeDef *hfdcan);

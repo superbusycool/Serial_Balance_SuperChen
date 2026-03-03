@@ -29,6 +29,7 @@ static void cmd_sub_pull(void);
 #ifdef BSP_USING_RC_DBUS
 static Remote_Info_Typedef *remote_ctrl_now;
 static Remote_Info_Typedef remote_ctrl_last;
+static kb_control_t *keyboard_ctrl_now;
 #else
 extern sbus_data_t sbus_data_fdb;
 #endif
@@ -49,6 +50,7 @@ void cmd_task_init(void)
     km_vy_ramp = ramp_register(0, 200);  // 0 -2的累加次数
     km_vw_ramp = ramp_register(0, 200);
     remote_ctrl_now = &remote_ctrl;
+    keyboard_ctrl_now = &key_board_ctrl;
     BSP_USART_Init();
     cmd_sub_init();
 

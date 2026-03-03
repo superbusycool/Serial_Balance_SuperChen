@@ -28,7 +28,7 @@
 #define CAN_ID_WHEEL_MOTOR 2
 #define CAN_ID_GIMBAL_MOTOR 2
 #define CAN_ID_CHASSIS_MOTOR 1
-#define CAN_ID_FIRE_MOTOR 3
+#define CAN_ID_FIRE_MOTOR 2
 
 
 /* ---------------------------------- 遥控器相关 --------------------------------- */
@@ -89,6 +89,8 @@
 
 /* ---------------------------------- 云台相关 ---------------------------------- */
 
+#define GM6020_TOR_TO_CUR  2220 /*扭矩电流系数 TODO 待查表计算*/
+#define GM6020_TOR_MAX   3.0F
  /* [0]为yaw，[1]为pitch */
 #define YAW 0
 #define PITCH 1
@@ -96,8 +98,10 @@
 #define YAW_MOTOR_ID     6
 #define PITCH_MOTOR_ID   0x206
 
-#define CENTER_ECD_YAW   0        //云台yaw轴编码器归中值
-#define CENTER_ECD_PITCH 0        //云台pitch轴编码器归中值
+#define CENTER_YAW_ANGLE   0.0f        //云台yaw归中角度设置
+#define CENTER_PITCH_ANGLE 0.0f        //云台pitch归中角度设置
+
+#define GEAR_RATIO 1    //云台yaw轴部分齿轮齿轮比
 
 /* 云台控制周期 (ms) */
 #define GIMBAL_PERIOD 1
@@ -155,57 +159,6 @@
 
 
 /* -------------------------------- 云台电机PID参数 ------------------------------- */
-/* 云台yaw轴电机PID参数 */
-/* imu速度环 */
-#define YAW_KP_V_IMU             5000
-#define YAW_KI_V_IMU             200
-#define YAW_KD_V_IMU             10
-#define YAW_INTEGRAL_V_IMU       1000
-#define YAW_MAX_V_IMU            30000
-/* imu角度环 */
-#define YAW_KP_A_IMU             0.35f
-#define YAW_KI_A_IMU             0
-#define YAW_KD_A_IMU             0.001f
-#define YAW_INTEGRAL_A_IMU       5
-#define YAW_MAX_A_IMU            25
-/* auto速度环 */
-#define YAW_KP_V_AUTO            0
-#define YAW_KI_V_AUTO            0
-#define YAW_KD_V_AUTO            0
-#define YAW_INTEGRAL_V_AUTO      0
-#define YAW_MAX_V_AUTO           0
-/* auto角度环 */
-#define YAW_KP_A_AUTO            0
-#define YAW_KI_A_AUTO            0
-#define YAW_KD_A_AUTO            0
-#define YAW_INTEGRAL_A_AUTO      0
-#define YAW_MAX_A_AUTO           0
-
-/* 云台PITCH轴电机PID参数 */
-/* imu速度环 */
-#define PITCH_KP_V_IMU           4250
-#define PITCH_KI_V_IMU           1000
-#define PITCH_KD_V_IMU           3
-#define PITCH_INTEGRAL_V_IMU     1500
-#define PITCH_MAX_V_IMU          20000
-/* imu角度环 */
-#define PITCH_KP_A_IMU           0.5f
-#define PITCH_KI_A_IMU           0.0f
-#define PITCH_KD_A_IMU           0.005f
-#define PITCH_INTEGRAL_A_IMU     0.2f
-#define PITCH_MAX_A_IMU          20
-/* auto速度环 */
-#define PITCH_KP_V_AUTO          0
-#define PITCH_KI_V_AUTO          0
-#define PITCH_KD_V_AUTO          0
-#define PITCH_INTEGRAL_V_AUTO    0
-#define PITCH_MAX_V_AUTO         0
-/* auto角度环 */
-#define PITCH_KP_A_AUTO          0
-#define PITCH_KI_A_AUTO          0
-#define PITCH_KD_A_AUTO          0
-#define PITCH_INTEGRAL_A_AUTO    0
-#define PITCH_MAX_A_AUTO         0
 
 
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
@@ -249,6 +202,7 @@
 #define roll_MaxVal 25
 
 /*****************************function_open******************************************/
+/****************************底盘部分**************************************/
 /*要使用时打开宏定义!!!*/
 /*
  * @brief设置髋关节damiao电机的零点
@@ -280,6 +234,16 @@
 //#define M3508_SET_ZERO
 /*8009输入置零*/
 //#define DM8009P_SET_ZERO
+/***********************************************************************************/
+
+/*******************************云台部分***********************************************/
+/*云台失能*/
+#define GIMBAL_RELEX
+/*4310输入置零*/
+#define DM4310_SET_ZERO
+
+/************************************************************************************/
+
 
 /* -------------------------------------------------------------------------- */
 /*                            remote_controler                                  */
