@@ -64,22 +64,24 @@ typedef struct
     uint16_t rk_cnt;
 
     /* 键盘按键状态 */
+    /*前后左右运动*/
     kb_state_e W_sta;
     kb_state_e S_sta;
     kb_state_e A_sta;
     kb_state_e D_sta;
-    kb_state_e SHIFT_sta;
-    kb_state_e CTRL_sta;
-    kb_state_e Q_sta;
-    kb_state_e E_sta;
+
+    kb_state_e SHIFT_sta;/*起跳*/
+    kb_state_e CTRL_sta;/*启用超电*/
+    kb_state_e Q_sta;/*关小陀螺*/
+    kb_state_e E_sta;/*开小陀螺*/
     kb_state_e R_sta;
-    kb_state_e F_sta;
-    kb_state_e G_sta;
-    kb_state_e Z_sta;
-    kb_state_e X_sta;
-    kb_state_e C_sta;
+    kb_state_e F_sta;/*开摩擦轮*/
+    kb_state_e G_sta;/*关摩擦轮*/
+    kb_state_e Z_sta;/*低腿长*/
+    kb_state_e X_sta;/*中间腿长*/
+    kb_state_e C_sta;/*高腿长*/
     kb_state_e V_sta;
-    kb_state_e B_sta;
+    kb_state_e B_sta;/*ui显示初始化*/
 
     /* 运动模式，键盘控制底盘运动快慢 */
     kb_move_e move_mode;

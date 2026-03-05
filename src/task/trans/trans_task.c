@@ -55,7 +55,6 @@ static void trans_sub_pull(void);
 
 /*------------------------------自瞄相对角传参反馈--------------------------------------*/
 
-uint8_t *r_buffer_point; //用于清除环形缓冲区buffer的指针
 
 /* --------------------------------- 通讯线程入口 --------------------------------- */
 static float trans_dt;
@@ -82,10 +81,11 @@ void trans_control(){
     vTaskDelay(100);
 
 /*--------------------------------------------------具体需要发送的数据---------------------------------*/
-    /* 用于调试监测线程调度使用 */
+    /* ------------------------------ 调试监测线程调度 ------------------------------ */
     trans_dt = dwt_get_time_ms() - trans_start;
-    if (trans_dt > 1)
-        LOGINFO("Transmission Task is being DELAY! dt = [%f]\r\n", &trans_dt);
+    trans_start = dwt_get_time_ms();
+    if(trans_dt > 3)LOGERROR("ERROR:[freeRTOS] Trans Task Delay\r\n");
+
     vTaskDelay(1);
 
 }
@@ -235,7 +235,7 @@ struct trans_fdb_msg* get_trans_fdb(void)
 
 /******************************************************消息订阅*************************************************************************/
 void trans_pub_push(){
-    // data_content my_data = ;
+
     mcn_publish(MCN_HUB(transmission_fdb), &trans_fdb_data);
 }
 

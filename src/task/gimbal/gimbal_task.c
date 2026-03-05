@@ -107,7 +107,6 @@ static float gim_motor_ref[GIM_MOTOR_NUM]; // 电机控制期望值
 static void gimbal_motor_init();
 
 /* ------------------------------------------------ 云台线程入口 ----------------------------------------------------- */
-static float gim_dt;
 
 void gimbal_task_init(void){
     gimbal_sub_init();
@@ -117,13 +116,17 @@ void gimbal_task_init(void){
 
 }
 
-static float gim_start;
+static float gimbal_start;
+static float gimbal_dt;
 static uint32_t init_start_time; // 云台初始化归中开始时间，避免长时间因为静态误差，卡在归中模式
 static uint32_t init_dt; // 云台初始化归中进行时长
 /* USER CODE END Header_ChassisTask_Entry */
 void gimbal_control()
 {
-    gim_start = dwt_get_time_ms();
+    /* ------------------------------ 调试监测线程调度 ------------------------------ */
+    gimbal_dt = dwt_get_time_ms() - gimbal_start;
+    gimbal_start = dwt_get_time_ms();
+    if(gimbal_dt > 1)LOGERROR("ERROR:[freeRTOS] Gimbal Task Delay\r\n");
 
     for (uint8_t i = 0; i < GIM_PITCH_MOTOR_NUM; i++)
     {
@@ -180,7 +183,7 @@ void gimbal_control()
         case GIMBAL_GYRO:
 
             gim_motor_ref[YAW] += ( - gim_cmd.vw_set / GIMBAL_WX_MAX) * GIMBAL_TURN_RATIO * DEGREE_2_RAD;
-            gim_motor_ref[PITCH] = gim_cmd.pitch;
+            gim_motor_ref[PITCH] = gim_cmd.pitch_set;
             // 底盘相对于云台归中值的角度，取负
             gimbal_fdb_data.pitch_angle=gim_ins.pitch;
 
@@ -207,8 +210,7 @@ void gimbal_control()
     }
 
     LQR_CALC();/*lqr运算 PITCH&YAW均采用lqr控制,可根据实际控制效果加入前馈或pid进行补偿*/
-    /* 用于调试监测线程调度使用 */
-    gim_dt = dwt_get_time_ms() - gim_start;
+
     vTaskDelay(1);
 }
 

@@ -18,12 +18,10 @@ typedef enum
     CHASSIS_INIT,           //底盘归中初始化
     CHASSIS_OPEN_LOOP,     //底盘开环
     CHASSIS_RECOVERY,      //底盘倒地自起
-    CHASSIS_OFF_GROUND,    //底盘离地
     CHASSIS_JUMP,          //底盘跳跃模式
-    CHASSIS_JUMPOK,        //完成跳跃,需要重新切换才能再次起跳
     CHASSIS_FOLLOW_GIMBAL, //底盘跟随云台
     CHASSIS_SPIN,          //底盘陀螺模式
-    CHASSIS_AUTO           //底盘自动模式
+    CHASSIS_AUTO,           //底盘自动模式
 } chassis_mode_e;
 
 /**
@@ -54,6 +52,7 @@ typedef enum/*默认会赋值第一个*/
     CHASSIS_IS_RECOVERY_READY,            //机器人底盘到达规定位置满足起立条件
     CHASSIS_IS_STAND,           //机器人站立
     CHASSIS_IS_DANGER,           //机器人底盘姿态危险,失能
+    CHASSIS_IS_JUMPING,        //处于跳跃状态
     CHASSIS_IS_JUMPOK,          //机器人完成跳跃
     CHASSIS_LEG_BACK_IS_OK,     //倒地自起时,腿部完成收回并顶起机身
 
