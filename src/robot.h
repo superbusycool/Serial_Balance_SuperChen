@@ -70,7 +70,7 @@ typedef enum
 struct gimbal_cmd_msg
 { // 云台期望角度控制
     float vw_set;
-    float pitch;
+    float pitch_set;
     gimbal_mode_e ctrl_mode;  // 当前云台控制模式
     gimbal_mode_e last_mode;  // 上一次云台控制模式
 };
@@ -158,7 +158,7 @@ struct shoot_cmd_msg
     shoot_mode_e ctrl_mode;  // 当前发射器控制模式
     shoot_mode_e last_mode;  // 上一次发射器控制模式
     trigger_mode_e trigger_status;
-    int16_t shoot_freq;      // 发射弹频
+    int16_t shoot_trigger_freq;      // 发射弹频
     // TODO: 添加发射弹速控制
     int16_t shoot_speed;     // 发射弹速
     uint8_t mirror_enable;     // 倍镜使能开关

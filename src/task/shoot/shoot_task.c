@@ -66,7 +66,7 @@ motor_config_t shoot_motor_config[SHT_MOTOR_NUM] ={
         }
 };
 
-static dji_motor_object_t *sht_motor[SHT_MOTOR_NUM];  // 发射器电机实例
+static dji_motor_object_t *shoot_motor[SHT_MOTOR_NUM];  // 发射器电机实例
 static float shoot_motor_ref[SHT_MOTOR_NUM]; // 电机控制期望值
 /* ------------------------------------------------- 射击控制相关 ----------------------------------------------------- */
 //转子角度标志位，防止切换设计模式时拨弹电机反转
@@ -82,11 +82,10 @@ static int reverse_ref;
 
 /* ----------------------------------------------- 射击线程入口 --------------------------------------------------- */
 
-static float sht_dt;
+static float shoot_dt;
 static int flag;
-static float sht_start;
-static float sht_gap_time;
-static float sht_gap_start_time;
+static float shoot_start;
+
 
 void shoot_task_init(){
     shoot_sub_init();
@@ -99,27 +98,28 @@ void shoot_task_init(){
 
 void shoot_control(void)
 {
+    /* ------------------------------ 调试监测线程调度 ------------------------------ */
+    shoot_dt = dwt_get_time_ms() - shoot_start;
+    shoot_start = dwt_get_time_ms();
+    if(shoot_dt > 1)LOGERROR("ERROR:[freeRTOS] Shoot Task Delay\r\n");
+
     /* 更新该线程所有的订阅者 */
     shoot_sub_pull();
 
     /* 电机控制启动 */
     for (uint8_t i = 0; i < SHT_MOTOR_NUM; i++)
     {
-        dji_motor_enable(sht_motor[i]);
+        dji_motor_enable(shoot_motor[i]);
     }
-
-    shoot_fdb_data.trigger_motor_current = sht_motor[TRIGGER_MOTOR]->measure.real_current;
+    shoot_fdb_data.trigger_motor_current=shoot_motor[TRIGGER_MOTOR]->measure.real_current;
     /*控制模式判断*/
+    /*DBUS遥控器*/
+
     /*开关摩擦轮*/
-    if (fire_cmd.friction_status != SHOOT_STOP)
+    if (fire_cmd.friction_status==1)
     {
-        shoot_motor_ref[RIGHT_FRICTION] = FRICTION_SPEED_ONE;//摩擦轮常转 实测最大转速为8800
-        shoot_motor_ref[LEFT_FRICTION] = -FRICTION_SPEED_ONE;
-        if(fire_cmd.ctrl_mode == SHOOT_COUNTINUE)
-        {
-            shoot_motor_ref[RIGHT_FRICTION] = FRICTION_SPEED_CONTINUE;//摩擦轮常转 实测最大转速为8800
-            shoot_motor_ref[LEFT_FRICTION] = -FRICTION_SPEED_CONTINUE;
-        }
+        shoot_motor_ref[RIGHT_FRICTION] = -FRICTION_SPEED_CONTINUE;//摩擦轮常转
+        shoot_motor_ref[LEFT_FRICTION] = FRICTION_SPEED_CONTINUE;
         /*从自动连发模式切换三连发及单发模式时，要继承总转子角度*/
     }
     else
@@ -129,119 +129,64 @@ void shoot_control(void)
         shoot_motor_ref[LEFT_FRICTION] = 0;
         total_angle_flag=SHOOT_ANGLE_CONTINUE;
     }
+
     switch (fire_cmd.ctrl_mode)
     {
-
         case SHOOT_STOP:
             shoot_motor_ref[TRIGGER_MOTOR] = 0;
-            total_angle_flag=0;
-            shoot_fdb_data.trigger_status=SHOOT_WAITING;
+            shoot_motor_ref[RIGHT_FRICTION] =0;
+            shoot_motor_ref[LEFT_FRICTION] = 0;
+            total_angle_flag=SHOOT_ANGLE_CONTINUE;
             break;
 
         case SHOOT_ONE:
-
-            if(fire_cmd.trigger_status == TRIGGER_OFF)
-            {
-                shoot_fdb_data.trigger_status=SHOOT_WAITING;
-            }
             if(total_angle_flag == SHOOT_ANGLE_CONTINUE)
             {
-                shoot_motor_ref[TRIGGER_MOTOR]= sht_motor[TRIGGER_MOTOR]->measure.total_angle;
+                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor[TRIGGER_MOTOR]->measure.total_angle;
                 total_angle_flag=SHOOT_ANGLE_SINGLE;
             }
-
+            shoot_fdb_data.trigger_status=SHOOT_WAITING;
             if (fire_cmd.trigger_status == TRIGGER_ON)
             {
-                sht_gap_time = dwt_get_time_ms() - sht_gap_start_time;
-                sht_gap_start_time = dwt_get_time_ms();
-                flag = 1;
-                if(sht_gap_time>=300)
-                {
-                    flag = 2;
-                    //M3508的减速比为 19:1，因此转轴旋转51.43度，要在转子的基础上乘19倍
-                    if(shoot_motor_ref[TRIGGER_MOTOR] - sht_controller[TRIGGER_MOTOR].pid_angle->Measure > TRIGGER_MOTOR_51_TO_ANGLE * 19 * 0.3)
-                    {
-                        flag = 3;
-                        shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR]; //此时堵转了
-                    }
-                    else if(reverse_ref !=0 && fire_cmd.last_mode == SHOOT_REVERSE)
-                    {
-                        flag = 4;
-                        if(sht_controller[TRIGGER_MOTOR].pid_angle->Measure - reverse_ref > TRIGGER_MOTOR_51_TO_ANGLE * 19 * 0.4)
-                        {
-                            flag = 5;
-                            shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR]; //此时反转尚未完成
-                        }
-                    }
-                    else
-                    {
-                        flag = 6;
-                        shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] + TRIGGER_MOTOR_51_TO_ANGLE * 19;
-
-                        // shooter_barrel_heat_remain = msg->robot_status.shooter_barrel_heat_limit - msg->power_heat_data.shooter_42mm_barrel_heat;
-                        // if(shooter_barrel_heat_remain >= 120
-                        //     || (shooter_barrel_heat_remain >= 100 && msg->robot_status.robot_level == 1))
-                        // {
-                        //     flag = 7;
-                        //     shoot_fdb_data.shoot_cnt++;
-                        //     shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] + TRIGGER_MOTOR_51_TO_ANGLE * 19;
-                        // }
-
-                    }
-
-                }
-                fire_cmd.trigger_status=TRIGGER_OFF;//扳机归零
+                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] + TRIGGER_MOTOR_45_TO_ANGLE ;
                 shoot_fdb_data.trigger_status=SHOOT_OK;
             }
-
             break;
 
         case SHOOT_THREE:
             /*从自动连发模式切换三连发及单发模式时，要继承总转子角度*/
             if(total_angle_flag == SHOOT_ANGLE_CONTINUE)
             {
-                shoot_motor_ref[TRIGGER_MOTOR]= sht_motor[TRIGGER_MOTOR]->measure.total_angle;
+                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor[TRIGGER_MOTOR]->measure.total_angle;
                 total_angle_flag = SHOOT_ANGLE_SINGLE;
             }
+            shoot_fdb_data.trigger_status=SHOOT_WAITING;
             if (fire_cmd.trigger_status == TRIGGER_ON)
             {
-
-                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] + TRIGGER_MOTOR_51_TO_ANGLE * 19;//M3508的减速比为 19:1，因此转轴旋转51.43度，要在转子的基础上乘19倍
-                fire_cmd.trigger_status=TRIGGER_OFF;//扳机归零
+                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] + 3 * TRIGGER_MOTOR_45_TO_ANGLE;
                 shoot_fdb_data.trigger_status=SHOOT_OK;
             }
-
             break;
 
         case SHOOT_COUNTINUE:
-            shoot_motor_ref[TRIGGER_MOTOR] = fire_cmd.shoot_freq;//自动模式的时候，只用速度环控制拨弹电机
+            shoot_motor_ref[TRIGGER_MOTOR] = fire_cmd.shoot_trigger_freq;//自动模式的时候，只用速度环控制拨弹电机
             total_angle_flag = SHOOT_ANGLE_CONTINUE;
-            shoot_fdb_data.trigger_status= SHOOT_OK;
             break;
 
         case SHOOT_REVERSE:
-            if(shoot_motor_ref[TRIGGER_MOTOR] - reverse_ref < TRIGGER_MOTOR_51_TO_ANGLE * 19 * 1.8)
-            {
-                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR]; //没有余量进行反转
-            }
-            else
-            {
-                shoot_motor_ref[TRIGGER_MOTOR]= shoot_motor_ref[TRIGGER_MOTOR] - TRIGGER_MOTOR_51_TO_ANGLE * 19 * 2;
-                reverse_ref = shoot_motor_ref[TRIGGER_MOTOR];
-            }
-
-            total_angle_flag = SHOOT_ANGLE_SINGLE;
-
+            shoot_motor_ref[TRIGGER_MOTOR]= -SHOOT_TRIGGER_REVERSE_SPEED;
+            total_angle_flag = SHOOT_ANGLE_CONTINUE;
             break;
 
         default:
             for (uint8_t i = 0; i < SHT_MOTOR_NUM; i++)
             {
-                dji_motor_relax(sht_motor[i]); // 错误情况电机全部松电
+                dji_motor_relax(shoot_motor[i]); // 错误情况电机全部松电
             }
             shoot_fdb_data.trigger_status=SHOOT_ERR;
             break;
     }
+
     /* 更新发布该线程的msg */
     shoot_pub_push();
 
@@ -279,9 +224,9 @@ static void shoot_motor_init(){
     sht_controller[TRIGGER_MOTOR].pid_angle = pid_register(&toggle_angle_config);
 
 /* ---------------------------------- shoot电机初注册---------------------------------------------------------------------------------------- */
-    sht_motor[TRIGGER_MOTOR] = dji_motor_register(&shoot_motor_config[TRIGGER_MOTOR], motor_control_trigger);
-    sht_motor[LEFT_FRICTION] = dji_motor_register(&shoot_motor_config[LEFT_FRICTION], motor_control_left);
-    sht_motor[RIGHT_FRICTION] = dji_motor_register(&shoot_motor_config[RIGHT_FRICTION], motor_control_right);
+    shoot_motor[TRIGGER_MOTOR] = dji_motor_register(&shoot_motor_config[TRIGGER_MOTOR], motor_control_trigger);
+    shoot_motor[LEFT_FRICTION] = dji_motor_register(&shoot_motor_config[LEFT_FRICTION], motor_control_left);
+    shoot_motor[RIGHT_FRICTION] = dji_motor_register(&shoot_motor_config[RIGHT_FRICTION], motor_control_right);
 }
 
 

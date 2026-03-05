@@ -33,6 +33,23 @@
 
 /* ---------------------------------- 遥控器相关 --------------------------------- */
 #define RC_MAX_VALUE      784.0f  /* 遥控器通道最大值 */
+#define RC_DBUS_MAX_VALUE      660.0f  /* DBUS遥控器通道最大值 */
+#define RC_RATIO          0.0009f
+#define KB_RATIO          0.010f
+
+ /* 鼠标键盘模式下的底盘最大速度限制 */
+/* 底盘平移速度 */
+#define CHASSIS_PC_MOVE_RATIO_X 1.0f
+/* 底盘前进速度 */
+#define CHASSIS_PC_MOVE_RATIO_Y 1.0f
+/* 底盘旋转速度，只在底盘开环模式下使用 */
+#define CHASSIS_PC_MOVE_RATIO_R 3.5f//5.0f
+
+/* 鼠标键盘模式下的云台速度限制 */
+/* 云台pitch轴速度 */
+#define GIMBAL_PC_MOVE_RATIO_PIT 0.1f
+/* 云台yaw轴速度 */
+#define GIMBAL_PC_MOVE_RATIO_YAW 0.25f
 
 /* 遥控器模式下的底盘最大速度限制 */
 /* 底盘平移速度 */
@@ -123,7 +140,14 @@
 #define FRICTION_SPEED_ONE           6000
 #define FRICTION_SPEED_CONTINUE      6000
 
+#define SHOOT_TRIGGER_REVERSE_SPEED 3000/*堵弹反转*/
+/** COUNTINUE模式参数 **/
+#define DBUS_TRIGGER_SPEED_L 3500
+#define DBUS_TRIGGER_SPEED_H 5000
+
 #define TRIGGER_MOTOR_51_TO_ANGLE 51.47f
+/*M2006的减速比为36:1，因此转轴旋转45度，要在转子的基础上乘36倍*/
+#define TRIGGER_MOTOR_45_TO_ANGLE 45 * 36
 /* -------------------------------- 发射电机PID参数 ------------------------------- */
 // TODO: 速度期望应改为变量应对速度切换。初次参数调整已完成
 /* 右摩擦轮M3508电机PID参数 */
@@ -242,6 +266,10 @@
 /*4310输入置零*/
 #define DM4310_SET_ZERO
 
+/*********************************状态机部分*********************************************/
+#define BSP_USING_RC_DBUS_KEYBOARD /*使用键盘控制*/
+//#define BSP_USING_SUPERCAP/*超电控制*/
+/**************************************************************************************/
 /************************************************************************************/
 
 

@@ -79,6 +79,7 @@ void ins_control()
 /* ------------------------------ 调试监测线程调度 ------------------------------ */
     ins_dt = dwt_get_time_ms() - ins_start;
     ins_start = dwt_get_time_ms();
+    if(ins_dt > 1)LOGERROR("ERROR:[freeRTOS] Ins Task Delay\r\n");
 /* ------------------------------ 调试监测线程调度 ------------------------------ */
 
     dt = dwt_get_delta(&ins_dwt);

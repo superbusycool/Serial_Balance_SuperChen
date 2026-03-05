@@ -19,7 +19,11 @@ void motor_control_task(void)
     static float motor_start;
     LOGINFO("Motor Task Start\r\n");
 
+    /* ------------------------------ 调试监测线程调度 ------------------------------ */
+    motor_dt = dwt_get_time_ms() - motor_start;
     motor_start = dwt_get_time_ms();
+    if(motor_dt > 3)LOGERROR("ERROR:[freeRTOS] Motor Task Delay\r\n");
+
 
 #ifdef BSP_USING_DJI_MOTOR
     dji_motor_control();
@@ -31,12 +35,7 @@ void motor_control_task(void)
     ht_controll_all_poll();
 #endif /* BSP_USING_HT_MOTOR */
 
-    /* 用于调试监测线程调度使用 */
-    motor_dt = dwt_get_time_ms() - motor_start;
-    if (motor_dt > 3){
-        LOGERROR("Motor Task is being DELAY! dt = [%f]\n", &motor_dt);
-    }
-    osDelay(1);
+    vTaskDelay(1);
 }
 
 static float can_tim_dt, can_tim_start;
