@@ -28,7 +28,7 @@
 #define CAN_ID_WHEEL_MOTOR 2
 #define CAN_ID_GIMBAL_MOTOR 2
 #define CAN_ID_CHASSIS_MOTOR 1
-#define CAN_ID_FIRE_MOTOR 2
+#define CAN_ID_FIRE_MOTOR 3
 
 
 /* ---------------------------------- 遥控器相关 --------------------------------- */
@@ -144,6 +144,7 @@
 /** COUNTINUE模式参数 **/
 #define DBUS_TRIGGER_SPEED_L 3500
 #define DBUS_TRIGGER_SPEED_H 5000
+#define  DBUS_TRIGGER_SPEED_TESTING 5000 /*拨弹测试时使用*/
 
 #define TRIGGER_MOTOR_51_TO_ANGLE 51.47f
 /*M2006的减速比为36:1，因此转轴旋转45度，要在转子的基础上乘36倍*/
@@ -269,6 +270,7 @@
 /*********************************状态机部分*********************************************/
 #define BSP_USING_RC_DBUS_KEYBOARD /*使用键盘控制*/
 //#define BSP_USING_SUPERCAP/*超电控制*/
+#define TRIGEER_MOTOR_TESTING /*拨弹电机测试*/
 /**************************************************************************************/
 /************************************************************************************/
 
@@ -277,7 +279,7 @@
 /*                            remote_controler                                  */
 /* -------------------------------------------------------------------------- */
 #define BSP_USING_RC_DBUS
-//#define BSP_USING_RC_DBUS_KEYBOARD
+#define BSP_USING_RC_KEYBOARD
 
 
 #endif /* _RM_CONFIG_H */

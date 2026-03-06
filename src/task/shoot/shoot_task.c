@@ -186,7 +186,10 @@ void shoot_control(void)
             shoot_fdb_data.trigger_status=SHOOT_ERR;
             break;
     }
-
+    /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
+#ifdef TRIGEER_MOTOR_TESTING
+    shoot_motor_ref[TRIGGER_MOTOR] = fire_cmd.shoot_trigger_freq;
+#endif
     /* 更新发布该线程的msg */
     shoot_pub_push();
 
@@ -282,6 +285,9 @@ static int16_t motor_control_trigger(dji_motor_measure_t measure)
     {
         send_data = (int16_t) pid_calculate(pid_speed, get_speed, shoot_motor_ref[TRIGGER_MOTOR] );
     }
+#ifdef TRIGEER_MOTOR_TESTING
+    send_data = (int16_t) pid_calculate(pid_speed, get_speed, shoot_motor_ref[TRIGGER_MOTOR] );
+#endif
     return send_data;
 }
 

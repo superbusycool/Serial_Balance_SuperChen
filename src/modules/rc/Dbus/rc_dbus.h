@@ -80,7 +80,7 @@ typedef struct
     kb_state_e Z_sta;/*低腿长*/
     kb_state_e X_sta;/*中间腿长*/
     kb_state_e C_sta;/*高腿长*/
-    kb_state_e V_sta;
+    kb_state_e V_sta;/*切换连发和其他射击模式*/
     kb_state_e B_sta;/*ui显示初始化*/
 
     /* 运动模式，键盘控制底盘运动快慢 */

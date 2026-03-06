@@ -381,6 +381,7 @@ static void gimbal_sub_init(void)
     chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
     gimbal_cmd_node = mcn_subscribe(MCN_HUB(gimbal_cmd), NULL, NULL);
     gimbal_ins_node = mcn_subscribe(MCN_HUB(gimbal_ins_topic), NULL, NULL);
+    trans_fdb_node = mcn_subscribe(MCN_HUB(transmission_fdb), NULL, NULL) ;
 }
 
 
