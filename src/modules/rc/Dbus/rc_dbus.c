@@ -180,17 +180,17 @@ void PC_Handle_kb(void)
     if (remote_ctrl.key.set.SHIFT)
     {
         key_board_ctrl.move_mode = FAST_MODE;
-        key_board_ctrl.max_spd = 3500;
+        key_board_ctrl.max_spd = 3.5f;
     }
     else if (remote_ctrl.key.set.CTRL)
     {
         key_board_ctrl.move_mode = SLOW_MODE;
-        key_board_ctrl.max_spd = 1000;
+        key_board_ctrl.max_spd = 1.0f;
     }
     else
     {
         key_board_ctrl.move_mode = NORMAL_MODE;
-        key_board_ctrl.max_spd = 2000;
+        key_board_ctrl.max_spd = 2.0f;
     }
 
     //add ramp

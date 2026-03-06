@@ -240,24 +240,16 @@ static void remote_to_cmd(void)
 #ifdef BSP_USING_RC_DBUS_KEYBOARD
 static void remote_to_cmd_pc_DT7(void)
 {
-
-
-    /* 保存上一次数据 */
-    gimbal_cmd_data.last_mode = gimbal_cmd_data.ctrl_mode;
-    chassis_cmd_data.last_mode = chassis_cmd_data.ctrl_mode;
-    shoot_cmd_data.last_mode=shoot_cmd_data.ctrl_mode;
-
-    remote_ctrl_last = *remote_ctrl_now;
     float fx=First_Order_Filter_Calculate(&mouse_x_lpf,remote_ctrl_now->mouse.x);
     float fy=First_Order_Filter_Calculate(&mouse_y_lpf,remote_ctrl_now->mouse.y);
 
-
 // TODO: 目前状态机转换较为简单，有很多优化和改进空间
-//遥控器的控制信息转化为标准单位，平移为(mm/s)旋转为(degree/s)
     /*底盘命令*/
-    chassis_cmd_data.vx =  (float)remote_ctrl_now->rc.ch[1] * CHASSIS_RC_MOVE_RATIO_X / RC_DBUS_MAX_VALUE * MAX_CHASSIS_VX_SPEED + keyboard_ctrl_now->vx * CHASSIS_PC_MOVE_RATIO_X;
+    chassis_cmd_data.vx =  (float)remote_ctrl_now->rc.ch[1] * CHASSIS_RC_MOVE_RATIO_X / RC_MAX_VALUE * MAX_CHASSIS_VX_SPEED + keyboard_ctrl_now->vx * CHASSIS_PC_MOVE_RATIO_X;
+    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,50.0f);
     chassis_cmd_data.vy =  (float)remote_ctrl_now->rc.ch[0]* CHASSIS_RC_MOVE_RATIO_Y / RC_DBUS_MAX_VALUE * MAX_CHASSIS_VY_SPEED + keyboard_ctrl_now->vy * CHASSIS_PC_MOVE_RATIO_Y;
-    chassis_cmd_data.vw =  (float)remote_ctrl_now->rc.ch[1] * CHASSIS_RC_MOVE_RATIO_R / RC_DBUS_MAX_VALUE * MAX_CHASSIS_VR_SPEED + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
+    chassis_cmd_data.vw =  (float)remote_ctrl_now->rc.ch[0] * CHASSIS_RC_MOVE_RATIO_R / RC_MAX_VALUE * MAX_CHASSIS_VR_SPEED + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
+    slope_following(&chassis_cmd_data.vw,&chassis_cmd_data.vw_set,1.0f);
 
     chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
 
@@ -269,20 +261,6 @@ static void remote_to_cmd_pc_DT7(void)
         gimbal_cmd_data.pitch_set=0;
         gimbal_cmd_data.vw_set=0;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     if((gimbal_cmd_data.ctrl_mode == GIMBAL_RELAX && chassis_cmd_data.ctrl_mode == CHASSIS_RELAX) && remote_ctrl_now->rc.s[0] == RC_MI){/*刚开始时进入INIT状态*/
         gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
@@ -411,7 +389,18 @@ static void remote_to_cmd_pc_DT7(void)
     {
         shoot_cmd_data.friction_status = 0;
     }
-
+    /***********************************************射击模式*******************************************/
+    if(shoot_cmd_data.ctrl_mode != SHOOT_STOP){
+        if(keyboard_ctrl_now->V_sta == KEY_PRESS_ONCE){/*旨在通过按键v操作实现单发和连发切换*/
+            shoot_cmd_data.ctrl_mode = SHOOT_ONE;
+        }
+        else if(shoot_cmd_data.ctrl_mode == SHOOT_ONE && keyboard_ctrl_now->V_sta == KEY_PRESS_ONCE){
+            shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
+        }
+        else{
+            shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
+        }
+    }
 
     /***********************************************腿长的切换*******************************************/
     if(chassis_cmd_data.ctrl_mode==CHASSIS_OPEN_LOOP || chassis_cmd_data.ctrl_mode==CHASSIS_FOLLOW_GIMBAL || chassis_cmd_data.ctrl_mode==CHASSIS_SPIN || chassis_cmd_data.ctrl_mode==CHASSIS_AUTO){
@@ -458,11 +447,10 @@ static void remote_to_cmd_pc_DT7(void)
         gimbal_cmd_data.pitch_set = trans_fdb.pitch_target+gyro_pitch_inherit + mouse_accumulate_y/* +100 * remote_ctrl_now->ch4 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT */;//上位机自瞄
     }
 
-
     switch (shoot_cmd_data.ctrl_mode)
     {
         case SHOOT_ONE:
-            if (keyboard_ctrl_now->lk_sta ==1 && shoot_cmd_data.friction_status == 1)
+            if (keyboard_ctrl_now->lk_sta == KEY_PRESS_ONCE && shoot_cmd_data.friction_status == 1)
             {
                 if (sht_fdb.trigger_status==SHOOT_WAITING&&trigger_flag==0)
                 {
@@ -479,7 +467,7 @@ static void remote_to_cmd_pc_DT7(void)
             {
                 shoot_cmd_data.trigger_status=TRIGGER_OFF;
             }
-            if (remote_ctrl_now->mouse.press_l==0)
+            if (remote_ctrl_now->mouse.press_l==KEY_RELEASE)
             {
                 trigger_flag=0;
             }
@@ -490,10 +478,10 @@ static void remote_to_cmd_pc_DT7(void)
 
             if(
                 (
-                ((keyboard_ctrl_now->lk_sta==1||remote_ctrl_now->rc.ch[4]>=200)
+                ((keyboard_ctrl_now->lk_sta==KEY_PRESS_ONCE||remote_ctrl_now->rc.ch[4]>=200)
                     // && trans_fdb.roll==1
                     && gimbal_cmd_data.ctrl_mode == GIMBAL_AUTO)
-                ||((keyboard_ctrl_now->lk_sta==1||remote_ctrl_now->rc.ch[4]>=200)&&gimbal_cmd_data.ctrl_mode == GIMBAL_GYRO)
+                ||((keyboard_ctrl_now->lk_sta==KEY_PRESS_ONCE||remote_ctrl_now->rc.ch[4]>=200)&&gimbal_cmd_data.ctrl_mode == GIMBAL_GYRO)
                )
                &&shoot_cmd_data.friction_status==1
             )
@@ -512,12 +500,23 @@ static void remote_to_cmd_pc_DT7(void)
     if (sht_fdb.trigger_motor_current>=9500||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
     {
         shoot_cmd_data.ctrl_mode=SHOOT_REVERSE;
-        if (reverse_cnt<120)
+        if (reverse_cnt<120){
             reverse_cnt++;
-        else
+        }
+        else{
             reverse_cnt=0;
+            shoot_cmd_data.ctrl_mode=SHOOT_REVERSE;
+        }
     }
-
+    /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
+#ifdef TRIGEER_MOTOR_TESTING
+     if(remote_ctrl_now->rc.ch[4]>=200 && chassis_cmd_data.ctrl_mode != CHASSIS_RELAX){/*只需满足一个条件*/
+         shoot_cmd_data.shoot_trigger_freq = DBUS_TRIGGER_SPEED_TESTING;
+         shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
+     }else{
+         shoot_cmd_data.shoot_trigger_freq = 0;
+     }
+#endif
     /*----------------------------------------------------------------使能判断---------------------------------------------------------------*/
     //TODO:使能判断放最后，防止抽风
     if (remote_ctrl_now->rc.s[0] == RC_UP)/*放在最后确保使能*/
@@ -536,7 +535,7 @@ static void remote_to_cmd_pc_DT7(void)
     gimbal_cmd_data.last_mode = gimbal_cmd_data.ctrl_mode;
     chassis_cmd_data.last_mode = chassis_cmd_data.ctrl_mode;
     shoot_cmd_data.last_mode=shoot_cmd_data.ctrl_mode;
-
+    remote_ctrl_last = *remote_ctrl_now;
 }
 #endif
 
@@ -558,6 +557,9 @@ static void cmd_pub_push(void)
 static void cmd_sub_init(void)
 {
     chassis_fdb_node = mcn_subscribe(MCN_HUB(chassis_fdb), NULL, NULL);
+    gimbal_fdb_node = mcn_subscribe(MCN_HUB(gimbal_fdb), NULL, NULL);
+    shoot_fdb_node = mcn_subscribe(MCN_HUB(shoot_fdb), NULL, NULL);
+    trans_fdb_node = mcn_subscribe(MCN_HUB(transmission_fdb), NULL, NULL);
 }
 
 
