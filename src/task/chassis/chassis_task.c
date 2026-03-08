@@ -40,10 +40,10 @@ static void chassis_sub_pull(void);
 
 
 #define LEN_LEN_LOW     0.13f // 单位：m
-#define LEN_LEN_MID     0.25f // 单位：m
-#define LEN_LEN_HIG     0.30f // 单位：m
+#define LEN_LEN_MID     0.21f // 单位：m
+#define LEN_LEN_HIG     0.28f // 单位：m
 #define FORCE_Length_LIMIT 200.0f //
-#define FORCE_LIMIT 250.0f // 支持力限幅
+#define FORCE_LIMIT 200.0f // 支持力限幅,保护电机,防止起跳时电压过低电机保护
 
 
 static float leg_lenthchange_flag = 0;//倒地自起中腿长切换标志位
@@ -339,7 +339,7 @@ static void chassis_kf_update(void)
 
 
 //    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) + ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;
-    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_phi0 ;/*山海机甲打滑部分*/
+    speed_rads_ground_l = -(m3508_motor[LEFT]->measure.speed_aps / M3508_READUCTION_RATIO_L * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_phi0 ;/*山海机甲打滑部分*/
     wheel_to_ground_l = speed_rads_ground_l * WHEEL_RADIUS + leg[LEFT]->d_theta_lpf*leg[LEFT]->l0* arm_cos_f32(leg[LEFT]->theta)+ leg[LEFT]->d_l0*arm_sin_f32(leg[LEFT]->theta) ;//TODO机体速度推出轮子速度
 
 //    speed_rads_ground_r = (m3508_motor[RIGHT]->measure.speed_aps / M3508_READUCTION_RATIO_R * DEGREE_2_RAD) - ins.gyro[0] * DEGREE_2_RAD - leg[LEFT]->d_theta_lpf ;

@@ -104,7 +104,7 @@ void Send_to_pc(RpyTypeDef data)
     pack_Rpy(&data, gimbal_fdb.yaw_angle, gimbal_fdb.pitch_angle, gimbal_fdb.roll_angle,team_color);
     Check_Rpy(&data);
 
-    CDC_Transmit_HS((uint8_t*)data.DATA,  sizeof(data.DATA));
+    CDC_Transmit_HS((uint8_t*)&data,sizeof(data));
 
 }
 
