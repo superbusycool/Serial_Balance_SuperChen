@@ -15,10 +15,9 @@ Remote_Info_Typedef remote_ctrl={
 };
 
 /*****************************键鼠相关**************************************/
-int16_t delta_spd = MAX_CHASSIS_VX_SPEED*1.0f/KEY_ACC_TIME*GIMBAL_PERIOD;
+int16_t delta_spd_vx =  KEY_ACCEL_VX_RATIO;
+int16_t delta_spd_vy =  KEY_ACCEL_VY_RATIO;
 
-extern ramp_obj_t *km_vx_ramp;//x轴控制斜坡
-extern ramp_obj_t *km_vy_ramp;//y周控制斜坡
 
 kb_control_t key_board_ctrl;
 /*******************************************************************/
@@ -195,21 +194,21 @@ void PC_Handle_kb(void)
 
     //add ramp
     if (remote_ctrl.key.set.W)
-        key_board_ctrl.vy += (float)delta_spd;
+        key_board_ctrl.vy += (float)delta_spd_vy;
     else if (remote_ctrl.key.set.S)
-        key_board_ctrl.vy -= (float)delta_spd;
+        key_board_ctrl.vy -= (float)delta_spd_vy;
     else
     {
-        key_board_ctrl.vy =(float)key_board_ctrl.vy* ( 1 - km_vy_ramp->calc(km_vy_ramp));
+        key_board_ctrl.vy =(float)key_board_ctrl.vy;
     }
 
     if (remote_ctrl.key.set.A)
-        key_board_ctrl.vx -= (float)delta_spd;
+        key_board_ctrl.vx -= (float)delta_spd_vx;
     else if (remote_ctrl.key.set.D)
-        key_board_ctrl.vx += (float)delta_spd;
+        key_board_ctrl.vx += (float)delta_spd_vx;
     else
     {
-        key_board_ctrl.vx = (float) key_board_ctrl.vx* ( 1 - km_vx_ramp->calc(km_vx_ramp));
+        key_board_ctrl.vx = (float) key_board_ctrl.vx;
     }
 
     VAL_LIMIT(key_board_ctrl.vx, -key_board_ctrl.max_spd, key_board_ctrl.max_spd);

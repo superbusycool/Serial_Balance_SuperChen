@@ -65,7 +65,7 @@ void ins_task_init(){
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
     BMI088_Read(&BMI088);
     ins_init();
-    gimbal_imu = dm_imu_init(0x10,0x11,&hfdcan3);/*位于云台的dm_imu*/
+    gimbal_imu = dm_imu_init(DM_IMU_TX_ID,DM_IMU_RX_ID,&hfdcan3);/*位于云台的dm_imu*/
     dt = dwt_get_delta(&ins_dwt);
     ins_start = dwt_get_time_ms();
 
