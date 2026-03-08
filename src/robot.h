@@ -69,8 +69,12 @@ typedef enum
 
 struct gimbal_cmd_msg
 { // 云台期望角度控制
-    float vw_set;
-    float pitch_set;
+    float vw_relative;
+    float vw_relative_set;
+//    float vw_set;
+    float pitch_relative;
+    float pitch_relative_set;/*cmd线程中处理的gimbal的yaw和pitch均作为相对角度*/
+//    float pitch_set;
     gimbal_mode_e ctrl_mode;  // 当前云台控制模式
     gimbal_mode_e last_mode;  // 上一次云台控制模式
 };
@@ -95,8 +99,9 @@ struct chassis_cmd_msg
     float vx_set;              //前进速度斜坡过程值
 
     float vy;                  // 横移方向速度
-    float vw;                  // 旋转速度
-    float vw_set;              //转向速度斜坡过程值
+    float vy_set;               //横移方向速度斜坡过程值
+    float vw_relative;                  // 旋转速度
+    float vw_relative_set;              //转向速度斜坡过程值
     // TODO: 轮腿前期调试使用
     float leg_length;          // 腿长
     float leg_angle;           // 腿角度

@@ -2,6 +2,7 @@
  * Change Logs:
  * Date            Author          Notes
  * 2023-08-23      ChuShicheng     first version
+ * 2026-03-08      SuperChen       second version
  */
 #ifndef _RM_CONFIG_H
 #define _RM_CONFIG_H
@@ -32,7 +33,6 @@
 
 
 /* ---------------------------------- 遥控器相关 --------------------------------- */
-#define RC_MAX_VALUE      784.0f  /* 遥控器通道最大值 */
 #define RC_DBUS_MAX_VALUE      660.0f  /* DBUS遥控器通道最大值 */
 #define RC_RATIO          0.0009f
 #define KB_RATIO          0.010f
@@ -51,19 +51,6 @@
 /* 云台yaw轴速度 */
 #define GIMBAL_PC_MOVE_RATIO_YAW 0.25f
 
-/* 遥控器模式下的底盘最大速度限制 */
-/* 底盘平移速度 */
-#define CHASSIS_RC_MOVE_RATIO_X 0.4f
-/* 底盘前进速度 */
-#define CHASSIS_RC_MOVE_RATIO_Y 0.8f
-/* 底盘旋转速度，只在底盘开环模式下使用 */
-#define CHASSIS_RC_MOVE_RATIO_R 1.0f
-
-/* 遥控器模式下的云台速度限制 */
-/* 云台pitch轴速度 */
-#define GIMBAL_RC_MOVE_RATIO_PIT 0.5f
-/* 云台yaw轴速度 */
-#define GIMBAL_RC_MOVE_RATIO_YAW 0.5f
 
 /* ---------------------------------- 底盘相关 ---------------------------------- */
 /*chassis_can_allocation*/
@@ -98,13 +85,14 @@
 #define Rl 0.214f    //轮间距
 
 /******** 底盘最大速度设置 *******/
-/* 底盘移动最大速度，单位是毫米每秒 */
-#define MAX_CHASSIS_VX_SPEED 2000
-#define MAX_CHASSIS_VY_SPEED 20 // 对应平步底盘，该值为roll轴倾斜
-/* 底盘旋转最大速度，单位是度每秒 */
-#define MAX_CHASSIS_VR_SPEED 360
-
+/* 底盘移动最大速度，单位是米每秒 */
+#define MAX_CHASSIS_VX_SPEED 4.0
+#define MAX_CHASSIS_VY_SPEED 2.0 // 对应平步底盘，该值为roll轴倾斜
+#define KEY_ACCEL_VX_RATIO 0.01F /*按键控制的加速度*/
+#define KEY_ACCEL_VY_RATIO 0.01F /*按键控制的加速度*/
 /* ---------------------------------- 云台相关 ---------------------------------- */
+#define DM_IMU_TX_ID 0x10
+#define DM_IMU_RX_ID 0x11  /*即master_id*/
 
 #define GM6020_TOR_TO_CUR  2220 /*扭矩电流系数 TODO 待查表计算*/
 #define GM6020_TOR_MAX   3.0F
@@ -127,9 +115,9 @@
 #define INIT_TIMEOUT 1000  // 单位: ms 初始化归中超时时间
 
 /* pitch轴最大仰角 */
-#define PIT_ANGLE_MAX        31.5f
+#define PITCH_ANGLE_MAX        31.5f
 /* pitch轴最大俯角 */
-#define PIT_ANGLE_MIN        -32.9f
+#define PITCH_ANGLE_MIN        -32.9f
 
 /* ------------------------------------------------------- 发射相关 --------------------------------------------------- */
 // TODO: 实际值待整定
@@ -256,9 +244,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-//#define M3508_SET_ZERO
+#define M3508_SET_ZERO
 /*8009输入置零*/
-//#define DM8009P_SET_ZERO
+#define DM8009P_SET_ZERO
 /***********************************************************************************/
 
 /*******************************云台部分***********************************************/

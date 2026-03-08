@@ -18,8 +18,6 @@
 
 /* mouse button long press time */
 #define LONG_PRESS_TIME  800   //ms
-/* key acceleration time */
-#define KEY_ACC_TIME     2000  //ms
 
 /**
   * @brief     底盘运动速度快慢模式

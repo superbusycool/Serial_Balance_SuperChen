@@ -65,8 +65,9 @@ static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
 #define CHASSIS_VX_MAX        673.0f
 #define CHASSIS_WX_MAX        270.0f
-#define CHASSIS_V_SET         2.0f
-#define YAW_TURN_RATIO  0.1f  //单位应该为°,有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
+
+#define CHASSIS_V_SET         4.0f
+#define YAW_TURN_RATIO  0.05f  //单位应该为°,有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
 static float Vx_Delta;
 #define VX_DELTA_MAX 5.0f
 
@@ -444,8 +445,8 @@ static void update_LQR_obs() {
     LQRXRefBuf[RIGHT][2] = 0;
     LQRXRefBuf[LEFT][2] = 0;
 
-    LQRXRefBuf[LEFT][3]  = (chassis_cmd.vx_set / CHASSIS_VX_MAX) * CHASSIS_V_SET  ;  // 单位为米,对速度积分得到
-    LQRXRefBuf[RIGHT][3] = (chassis_cmd.vx_set / CHASSIS_VX_MAX) * CHASSIS_V_SET  ;  // 单位为米
+    LQRXRefBuf[LEFT][3]  = (chassis_cmd.vx_set / RC_DBUS_MAX_VALUE) * CHASSIS_V_SET  ;  // 单位为米,对速度积分得到
+    LQRXRefBuf[RIGHT][3] = (chassis_cmd.vx_set / RC_DBUS_MAX_VALUE) * CHASSIS_V_SET  ;  // 单位为米
 
 
     leg[LEFT]->l0_average = 0.5f * (leg[LEFT]->l0 + leg[RIGHT]->l0); /*TODO 在左右腿长不一致的情况下的k是否合理有待讨论*/
@@ -803,6 +804,8 @@ static dm_motor_para_t dm_control_1(dm_motor_measure_t measure)
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[0] = 0;
+        set.kp = 0;
+        set.kd = 0;
     }
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[0] = 0;/*T置零*/
@@ -857,6 +860,8 @@ static dm_motor_para_t dm_control_2(dm_motor_measure_t measure)
 
     if((chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT)){
         dm_send_t[1] = 0;
+        set.kp = 0;
+        set.kd = 0;
     }
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
@@ -911,6 +916,8 @@ static dm_motor_para_t dm_control_3(dm_motor_measure_t measure)
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[2] = 0;
+        set.kp = 0;
+        set.kd = 0;
     }
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[2] = 0;/*T置零*/
@@ -963,6 +970,8 @@ static dm_motor_para_t dm_control_4(dm_motor_measure_t measure)
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RELAX || chassis_cmd.ctrl_mode == CHASSIS_INIT){
         dm_send_t[3] = 0;
+        set.kp = 0;
+        set.kd = 0;
     }
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY && (chassis_fdb_data.stand_state != CHASSIS_IS_RECOVERY_READY && chassis_fdb_data.stand_state != CHASSIS_LEG_BACK_IS_OK)){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_send_t[3] = 0;/*T置零*/
@@ -1261,10 +1270,9 @@ static void Chassis_Vx_Detect(){
     if(Vx_Delta > VX_DELTA_MAX){
         yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
     }
-
     else{
         //更新航向角期望
-        yaw_target += ( - chassis_cmd.vw_set / CHASSIS_WX_MAX) * YAW_TURN_RATIO * DEGREE_2_RAD;
+        yaw_target += ( - chassis_cmd.vw_relative_set / RC_DBUS_MAX_VALUE) * YAW_TURN_RATIO * DEGREE_2_RAD;
 
     }
 }

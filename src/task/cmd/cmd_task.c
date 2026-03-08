@@ -53,13 +53,7 @@ static float mouse_accumulate_y=0;
 /*储存鼠标坐标数据*/
 First_Order_Filter_t mouse_y_lpf,mouse_x_lpf;
 /*自瞄继承角度*/
-static float gyro_yaw_inherit;
-static float gyro_pitch_inherit;
 kb_control_t *keyboard_ctrl_now;
-/*键盘加速度的斜坡*/
-ramp_obj_t *km_vx_ramp = NULL;;//x轴控制斜坡
-ramp_obj_t *km_vy_ramp = NULL;//y周控制斜坡
-ramp_obj_t *km_vw_ramp = NULL;//y周控制斜坡
 
 /* ------------------------------- 遥控数据转换为控制指令 ------------------------------ */
 static void remote_to_cmd(void);
@@ -69,9 +63,6 @@ static void remote_to_cmd_pc_DT7(void);/*键鼠控制||遥控器控制,都可以
 /* -------------------------------- cmd 线程主体 -------------------------------- */
 void cmd_task_init(void)
 {
-    km_vx_ramp = ramp_register(0, 200); //2500000
-    km_vy_ramp = ramp_register(0, 200);  // 0 -2的累加次数
-    km_vw_ramp = ramp_register(0, 200);
     remote_ctrl_now = &remote_ctrl;
     keyboard_ctrl_now = &key_board_ctrl;
     BSP_USART_Init();
@@ -106,16 +97,16 @@ static void remote_to_cmd(void)
     PC_Handle_kb();
     // TODO: 目前状态机转换较为简单，有很多优化和改进空间
     //遥控器的控制信息转化为标准单位，平移为(mm/s)旋转为(degree/s)
-    chassis_cmd_data.vx = remote_ctrl_now->rc.ch[1] * CHASSIS_RC_MOVE_RATIO_X / RC_MAX_VALUE * MAX_CHASSIS_VX_SPEED;
-    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,50.0f);
-    chassis_cmd_data.vw = remote_ctrl_now->rc.ch[0] * CHASSIS_RC_MOVE_RATIO_R / RC_MAX_VALUE * MAX_CHASSIS_VR_SPEED;  // TODO: 暂时换绑为vw
-    slope_following(&chassis_cmd_data.vw,&chassis_cmd_data.vw_set,1.0f);
+    chassis_cmd_data.vx = remote_ctrl_now->rc.ch[1];
+    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,1.0f);
+    chassis_cmd_data.vw_relative = remote_ctrl_now->rc.ch[0];  // TODO: 暂时换绑为vw
+    slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,1.0f);
     /*云台控制*/
     chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
-    gimbal_cmd_data.vw_set += remote_ctrl_now->rc.ch[2] * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW;
-    gimbal_cmd_data.pitch_set += remote_ctrl_now->rc.ch[3] * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT;
-    /* 限制云台角度 */
-    VAL_LIMIT(gimbal_cmd_data.pitch_set, PIT_ANGLE_MIN, PIT_ANGLE_MAX);
+    gimbal_cmd_data.vw_relative = remote_ctrl_now->rc.ch[2];
+    slope_following(&gimbal_cmd_data.vw_relative,&gimbal_cmd_data.vw_relative_set,1.0f);
+    gimbal_cmd_data.pitch_relative = remote_ctrl_now->rc.ch[3];
+    slope_following(&gimbal_cmd_data.pitch_relative,&gimbal_cmd_data.pitch_relative_set,1.0f);
 
    // 右拨杆s[0]]为上时，底盘和云台均REALX；为中时，云台为GYRO，地盘为OPEN；为下时，云台为AUTO。
    // 左拨杆s[1]为上时，腿长为LOW；为中时，腿长为MID；为下时，腿长为HIG。（当前暂不考虑遥控器对发射机构的控制）
@@ -245,27 +236,15 @@ static void remote_to_cmd_pc_DT7(void)
 
 // TODO: 目前状态机转换较为简单，有很多优化和改进空间
     /*底盘命令*/
-    chassis_cmd_data.vx =  (float)remote_ctrl_now->rc.ch[1] * CHASSIS_RC_MOVE_RATIO_X / RC_MAX_VALUE * MAX_CHASSIS_VX_SPEED + keyboard_ctrl_now->vx * CHASSIS_PC_MOVE_RATIO_X;
-    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,50.0f);
-    chassis_cmd_data.vy =  (float)remote_ctrl_now->rc.ch[0]* CHASSIS_RC_MOVE_RATIO_Y / RC_DBUS_MAX_VALUE * MAX_CHASSIS_VY_SPEED + keyboard_ctrl_now->vy * CHASSIS_PC_MOVE_RATIO_Y;
-    chassis_cmd_data.vw =  (float)remote_ctrl_now->rc.ch[0] * CHASSIS_RC_MOVE_RATIO_R / RC_MAX_VALUE * MAX_CHASSIS_VR_SPEED + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
-    slope_following(&chassis_cmd_data.vw,&chassis_cmd_data.vw_set,1.0f);
+    chassis_cmd_data.vx =  (float)remote_ctrl_now->rc.ch[1] + keyboard_ctrl_now->vx * CHASSIS_PC_MOVE_RATIO_X;
+    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,1.0f);
+    chassis_cmd_data.vy =  (float)remote_ctrl_now->rc.ch[0] + keyboard_ctrl_now->vy * CHASSIS_PC_MOVE_RATIO_Y;
+    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vy_set,0.8f);
+    chassis_cmd_data.vw_relative =  (float)remote_ctrl_now->rc.ch[0] + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
+    slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,0.8f);
 
     chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
 
-      /*!限制云台pitch轴角度 */
-    VAL_LIMIT(gimbal_cmd_data.pitch_set, PIT_ANGLE_MIN, PIT_ANGLE_MAX);
-    /*开环状态和遥控器归中*/
-    if (gimbal_cmd_data.ctrl_mode==GIMBAL_INIT||gimbal_cmd_data.ctrl_mode==GIMBAL_RELAX)
-    {
-        gimbal_cmd_data.pitch_set=0;
-        gimbal_cmd_data.vw_set=0;
-    }
-
-    if((gimbal_cmd_data.ctrl_mode == GIMBAL_RELAX && chassis_cmd_data.ctrl_mode == CHASSIS_RELAX) && remote_ctrl_now->rc.s[0] == RC_MI){/*刚开始时进入INIT状态*/
-        gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
-        chassis_cmd_data.ctrl_mode = CHASSIS_INIT;
-    }
 
     // 右拨杆s[0]]为上时，底盘和云台均REALX；为中时，云台为GYRO，地盘为OPEN；为下时，云台为AUTO。
     // 左拨杆s[1]为上时
@@ -274,6 +253,7 @@ static void remote_to_cmd_pc_DT7(void)
         case RC_UP:
             chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
             gimbal_cmd_data.ctrl_mode = GIMBAL_RELAX;
+            shoot_cmd_data.ctrl_mode=SHOOT_STOP;
             break;
 
         case RC_MI:
@@ -367,7 +347,7 @@ static void remote_to_cmd_pc_DT7(void)
     }
     if (chassis_cmd_data.ctrl_mode==CHASSIS_SPIN)
     {
-        chassis_cmd_data.vw=0.0f;/*TODO 小陀螺平移*/
+        chassis_cmd_data.vw_relative=0.0f;/*TODO 小陀螺平移*/
     }
 
     //关小陀螺
@@ -433,18 +413,19 @@ static void remote_to_cmd_pc_DT7(void)
     /*云台命令*/
     if (gimbal_cmd_data.ctrl_mode == GIMBAL_GYRO)
     {
-        gimbal_cmd_data.vw_set +=   (float)remote_ctrl_now->rc.ch[1] * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW + fx * KB_RATIO * GIMBAL_PC_MOVE_RATIO_YAW;
-        gimbal_cmd_data.pitch_set += (float)remote_ctrl_now->rc.ch[1] * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT- fy * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
-        gyro_yaw_inherit =gimbal_cmd_data.vw_set;
-        gyro_pitch_inherit =gimbal_cmd_data.pitch_set;
+        /*需要注意数据量级!!!*/
+        gimbal_cmd_data.vw_relative =   (float)remote_ctrl_now->rc.ch[1] * RC_RATIO  + fx * KB_RATIO * GIMBAL_PC_MOVE_RATIO_YAW;
+        gimbal_cmd_data.pitch_relative = (float)remote_ctrl_now->rc.ch[1] * RC_RATIO - fy * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
         mouse_accumulate_x=0;
         mouse_accumulate_y=0;
     }
     if (gimbal_cmd_data.ctrl_mode==GIMBAL_AUTO)
     {
+        /*需要注意数据量级!!!*/
+        mouse_accumulate_x-=fx * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
         mouse_accumulate_y-=fy * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
-        gimbal_cmd_data.vw_set = trans_fdb.yaw_target+gyro_yaw_inherit + mouse_accumulate_x/* + 150 * remote_ctrl_now->ch3 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW*/;//上位机自瞄
-        gimbal_cmd_data.pitch_set = trans_fdb.pitch_target+gyro_pitch_inherit + mouse_accumulate_y/* +100 * remote_ctrl_now->ch4 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT */;//上位机自瞄
+        gimbal_cmd_data.vw_relative_set = trans_fdb.yaw_target /* + mouse_accumulate_x*/;/* + 150 * remote_ctrl_now->ch3 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW*/;//上位机自瞄
+        gimbal_cmd_data.pitch_relative_set = trans_fdb.pitch_target + mouse_accumulate_y/* +100 * remote_ctrl_now->ch4 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT */;//上位机自瞄
     }
 
     switch (shoot_cmd_data.ctrl_mode)
@@ -518,6 +499,11 @@ static void remote_to_cmd_pc_DT7(void)
      }
 #endif
     /*----------------------------------------------------------------使能判断---------------------------------------------------------------*/
+    if((gimbal_cmd_data.ctrl_mode == GIMBAL_RELAX && chassis_cmd_data.ctrl_mode == CHASSIS_RELAX) && remote_ctrl_now->rc.s[0] == RC_MI){/*刚开始时进入INIT状态*/
+        gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
+        chassis_cmd_data.ctrl_mode = CHASSIS_INIT;
+    }
+
     //TODO:使能判断放最后，防止抽风
     if (remote_ctrl_now->rc.s[0] == RC_UP)/*放在最后确保使能*/
     {
@@ -525,10 +511,8 @@ static void remote_to_cmd_pc_DT7(void)
         chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
         shoot_cmd_data.ctrl_mode=SHOOT_STOP;
         /*放开状态下，gim不接收值*/
-        gimbal_cmd_data.pitch_set=0;
-        gimbal_cmd_data.vw_set=0;
-        gyro_yaw_inherit=0;
-        gyro_pitch_inherit=0;
+        gimbal_cmd_data.pitch_relative_set=0;
+        gimbal_cmd_data.vw_relative_set=0;
 
     }
     /* 保存上一次数据 */
@@ -556,7 +540,7 @@ static void cmd_pub_push(void)
  */
 static void cmd_sub_init(void)
 {
-    chassis_fdb_node = mcn_subscribe(MCN_HUB(chassis_fdb), NULL, NULL);
+    chassis_fdb_node = mcn_subscribe(MCN_HUB(chassis_fdb), NULL, NULL);/*注意先订阅节点,再去mcn_poll否则会因为找不到订阅节点导致程序卡死*/
     gimbal_fdb_node = mcn_subscribe(MCN_HUB(gimbal_fdb), NULL, NULL);
     shoot_fdb_node = mcn_subscribe(MCN_HUB(shoot_fdb), NULL, NULL);
     trans_fdb_node = mcn_subscribe(MCN_HUB(transmission_fdb), NULL, NULL);
