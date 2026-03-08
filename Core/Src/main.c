@@ -209,6 +209,8 @@ void SystemClock_Config(void)
 
 /* USER CODE END 4 */
 
+
+
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None

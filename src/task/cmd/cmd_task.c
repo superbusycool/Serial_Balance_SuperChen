@@ -46,6 +46,8 @@ extern sbus_data_t sbus_data_fdb;
 static int trigger_flag=0;
 /*堵转电流反转记次*/
 static int reverse_cnt;
+/*堵弹反转计数*/
+static int reverse_remove_cnt;
 /* 外部变量声明 */
 /*自瞄鼠标累计操作值*/
 static float mouse_accumulate_x=0;
@@ -477,27 +479,25 @@ static void remote_to_cmd_pc_DT7(void)
             break;
 
     }
+
+    /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
+    if (remote_ctrl_now->rc.s[0] == RC_MI && remote_ctrl_now->rc.ch[4]>=200 && shoot_cmd_data.ctrl_mode!=SHOOT_REVERSE)
+    {
+        shoot_cmd_data.ctrl_mode=SHOOT_COUNTINUE;
+    }
+
     /*-------------------------------------------------------------堵弹反转检测------------------------------------------------------------*/
-    if (sht_fdb.trigger_motor_current>=9500||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
+    if (sht_fdb.trigger_motor_current>=9800||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
     {
         shoot_cmd_data.ctrl_mode=SHOOT_REVERSE;
-        if (reverse_cnt<120){
+        if (reverse_cnt<450)
             reverse_cnt++;
-        }
         else{
             reverse_cnt=0;
-            shoot_cmd_data.ctrl_mode=SHOOT_REVERSE;
+            shoot_cmd_data.ctrl_mode=SHOOT_COUNTINUE;
         }
     }
-    /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
-#ifdef TRIGEER_MOTOR_TESTING
-     if(remote_ctrl_now->rc.ch[4]>=200 && chassis_cmd_data.ctrl_mode != CHASSIS_RELAX){/*只需满足一个条件*/
-         shoot_cmd_data.shoot_trigger_freq = DBUS_TRIGGER_SPEED_TESTING;
-         shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
-     }else{
-         shoot_cmd_data.shoot_trigger_freq = 0;
-     }
-#endif
+
     /*----------------------------------------------------------------使能判断---------------------------------------------------------------*/
     if((gimbal_cmd_data.ctrl_mode == GIMBAL_RELAX && chassis_cmd_data.ctrl_mode == CHASSIS_RELAX) && remote_ctrl_now->rc.s[0] == RC_MI){/*刚开始时进入INIT状态*/
         gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;

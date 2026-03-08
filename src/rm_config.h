@@ -94,8 +94,8 @@
 #define DM_IMU_TX_ID 0x10
 #define DM_IMU_RX_ID 0x11  /*即master_id*/
 
-#define GM6020_TOR_TO_CUR  2220 /*扭矩电流系数 TODO 待查表计算*/
-#define GM6020_TOR_MAX   3.0F
+#define GM6020_TOR_TO_CUR  7372.5f /*扭矩电流系数 TODO 待查表计算*/
+#define GM6020_TOR_MAX   1.2f
  /* [0]为yaw，[1]为pitch */
 #define YAW 0
 #define PITCH 1
@@ -128,11 +128,10 @@
 #define FRICTION_SPEED_ONE           6000
 #define FRICTION_SPEED_CONTINUE      6000
 
-#define SHOOT_TRIGGER_REVERSE_SPEED 3000/*堵弹反转*/
+#define SHOOT_TRIGGER_REVERSE_SPEED 4000/*堵弹反转*/
 /** COUNTINUE模式参数 **/
 #define DBUS_TRIGGER_SPEED_L 3500
 #define DBUS_TRIGGER_SPEED_H 5000
-#define  DBUS_TRIGGER_SPEED_TESTING 5000 /*拨弹测试时使用*/
 
 #define TRIGGER_MOTOR_51_TO_ANGLE 51.47f
 /*M2006的减速比为36:1，因此转轴旋转45度，要在转子的基础上乘36倍*/
@@ -258,7 +257,6 @@
 /*********************************状态机部分*********************************************/
 #define BSP_USING_RC_DBUS_KEYBOARD /*使用键盘控制*/
 //#define BSP_USING_SUPERCAP/*超电控制*/
-#define TRIGEER_MOTOR_TESTING /*拨弹电机测试*/
 /**************************************************************************************/
 /************************************************************************************/
 

@@ -76,6 +76,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/ws2812b"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/referee"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/dbus"/>
+					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/keyboard"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/ins"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/motor"/>
@@ -157,6 +158,7 @@
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/ws2812b"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/referee"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/dbus"/>
+					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/keyboard"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/ins"/>
 					<Add directory="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/motor"/>
@@ -200,6 +202,48 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/applypatch-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/commit-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/fsmonitor-watchman.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/post-update.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-applypatch.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-commit.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-merge-commit.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-push.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-rebase.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/pre-receive.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/prepare-commit-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/push-to-checkout.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/sendemail-validate.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/.git/hooks/update.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/Core/Inc/FreeRTOSConfig.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>

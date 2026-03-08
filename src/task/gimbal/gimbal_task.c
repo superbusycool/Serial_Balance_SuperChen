@@ -42,22 +42,27 @@ static void gimbal_sub_pull(void);
 
 static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure);//dm电机控制
 static int16_t GM6020_Control(dji_motor_measure_t measure);//6020电机控制
-
+/*
+ * @brief 设置达妙电机零点
+ * */
+static void leg_init_get_zero();
 /* ------------------------------------------------- 电机控制相关 ------------------------------------------------------ */
 
 
 static float dm_yaw_send_t[GIM_YAW_MOTOR_NUM];
 static float dm_yaw_obs[1];
-static float yaw_recovery_position;//在倒地自起前gimbal得先转到正前方或正后方,防止腿部摆动时撞到云台
+static float yaw_recovery_position;//mit的速度位置模式使用,在倒地自起前gimbal得先转到正前方或正后方,防止腿部摆动时撞到云台
 static float yaw_recovery_velocity;
 #define DM_GIMBAL_OUTPUT_LIMIT 7.0f
 #define DM_YAW_RATIO 1.0f
 #define DM_YAW_MIT_KP 0.06f
 #define DM_YAW_MIT_KD 3.5f
 
-static float  K_pitch[2] = {2.236068, 1.000596};
-static float K_yaw[2] = {2.236068, 0.328709};
-
+/*手动状态下和自动状态下的K矩阵*/
+static float  K_pitch_gyro[2] = {2.236068, 1.043398} ;
+static float  K_pitch_auto[2] = {2.236068, 1.043398} ;
+static float K_yaw_gyro[2] = {2.236068, 0.466890} ;
+static float K_yaw_auto[2] = {2.236068, 0.466890} ;
 
 static void LQR_CALC();
 
@@ -163,7 +168,7 @@ void gimbal_control()
             if(abs(gim_ins.pitch * DEGREE_2_RAD) <= (0.02f)
                && (abs(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.05f)
                // 若长时间陷于归中模式，可以适当放宽归中条件
-               || ((abs(gim_ins.pitch * DEGREE_2_RAD) <= (0.1f))
+               || ((abs(gim_ins.pitch * DEGREE_2_RAD) <= (0.07f))
                    && (abs(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.01f)
                    && (init_dt > INIT_TIMEOUT)))
             {
@@ -256,7 +261,12 @@ static void yaw_lqr_calc(){
     LQRXerrorBuf_Yaw[0][0] = LQRXRefBuf_Yaw[0][0] - LQRXObsBuf_Yaw[0][0];
     LQRXerrorBuf_Yaw[1][0] = LQRXRefBuf_Yaw[1][0] - LQRXObsBuf_Yaw[1][0];/*X_refer - X_obs*/
 
-    LQROutBuf_Yaw[0] = K_yaw[0] * LQRXerrorBuf_Yaw[0][0] + K_yaw[1] * LQRXerrorBuf_Yaw[1][0];
+    if(gim_cmd.ctrl_mode == GIMBAL_AUTO){
+        LQROutBuf_Yaw[0] = K_yaw_auto[0] * LQRXerrorBuf_Yaw[0][0] + K_yaw_auto[1] * LQRXerrorBuf_Yaw[1][0];
+    }else{
+        LQROutBuf_Yaw[0] = K_yaw_gyro[0] * LQRXerrorBuf_Yaw[0][0] + K_yaw_gyro[1] * LQRXerrorBuf_Yaw[1][0];
+    }
+
 }
 
 /*
@@ -273,7 +283,12 @@ static void pitch_lqr_calc(){
     LQRXerrorBuf_Pitch[0][0] = LQRXRefBuf_Pitch[0][0] - LQRXObsBuf_Pitch[0][0];
     LQRXerrorBuf_Pitch[1][0] = LQRXRefBuf_Pitch[1][0] - LQRXObsBuf_Pitch[1][0];/*X_refer - X_obs*/
 
-    LQROutBuf_Pitch[0] = K_pitch[0] * LQRXerrorBuf_Pitch[0][0] + K_pitch[1] * LQRXerrorBuf_Pitch[1][0];
+    if(gim_cmd.ctrl_mode == GIMBAL_AUTO){
+        LQROutBuf_Pitch[0] = K_pitch_auto[0] * LQRXerrorBuf_Pitch[0][0] + K_pitch_auto[1] * LQRXerrorBuf_Pitch[1][0];
+    }else{
+        LQROutBuf_Pitch[0] = K_pitch_gyro[0] * LQRXerrorBuf_Pitch[0][0] + K_pitch_gyro[1] * LQRXerrorBuf_Pitch[1][0];
+    }
+
 }
 
 /*
@@ -290,7 +305,7 @@ static void LQR_CALC(){
 static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure)
 {
     static dm_motor_para_t set;
-    dm_yaw_send_t[0] = LQROutBuf_Yaw[0] * DM_YAW_RATIO;
+    dm_yaw_send_t[0] = LQROutBuf_Yaw[0] * DM_YAW_RATIO;/*TODO 根据实测调整正负号*/
 
     LIMIT_MIN_MAX(dm_yaw_send_t[0], -DM_GIMBAL_OUTPUT_LIMIT, DM_GIMBAL_OUTPUT_LIMIT);
     dm_yaw_obs[0] = dm_yaw_send_t[0] ;
@@ -298,6 +313,8 @@ static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure)
 
     if(gim_cmd.ctrl_mode == GIMBAL_RELAX || gim_cmd.ctrl_mode == GIMBAL_INIT){
         dm_yaw_send_t[0] = 0;
+        set.kp = 0;
+        set.kd = 0;
     }
     if(chassis_fdb_cmd.ctrl_mode == CHASSIS_RECOVERY && gim_cmd.ctrl_mode == GIMBAL_INIT ){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
         dm_yaw_send_t[0] = 0;/*T置零*/
@@ -338,7 +355,7 @@ static int16_t GM6020_Control(dji_motor_measure_t measure){
     static int16_t set;
     LIMIT_MIN_MAX(LQROutBuf_Pitch[0],-GM6020_TOR_MAX,GM6020_TOR_MAX);
 
-    set = (int16_t)((LQROutBuf_Pitch[0])* GM6020_TOR_TO_CUR);
+    set = (int16_t)((LQROutBuf_Pitch[0])* GM6020_TOR_TO_CUR);/*TODO 根据实测调整正负号*/
 
 #ifdef GIMBAL_RELEX
     set = 0;
@@ -349,13 +366,12 @@ static int16_t GM6020_Control(dji_motor_measure_t measure){
     return set;
 }
 
+/*
+ * @brief 设置达妙电机零点
+ * */
 static void leg_init_get_zero()
 {
-    // 撞到限位后，控制电机在此处设置零点
-    for (uint8_t i = 0; i < GIM_YAW_MOTOR_NUM; i++)
-    {
-        gim_motor_yaw[i]->set_mode(gim_motor_yaw[i], DM_CMD_ZERO_POSITION);
-    }
+    gim_motor_yaw[GIM_YAW_MOTOR_NUM]->set_mode(gim_motor_yaw[GIM_YAW_MOTOR_NUM], DM_CMD_ZERO_POSITION);
 
 }
 /******************************************************消息订阅*************************************************************************/

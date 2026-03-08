@@ -71,6 +71,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/ws2812b"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/referee"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/dbus"
+  "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/modules/rc/keyboard"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/ins"
   "D:/HNU_RM_CodeStorage/HNU_Serial_H723_02_26/HNU_Embedded_Framework/src/task/motor"
