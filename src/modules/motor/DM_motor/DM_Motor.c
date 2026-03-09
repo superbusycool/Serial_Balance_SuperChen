@@ -83,13 +83,14 @@ static void motor_decode(dm_motor_object_t *motor, uint8_t *data)
 
     /*关于套圈的情况*/
     if(((measure->angle_abs - measure->last_angle_abs) > PI)){/*计算圈数,后续可能会用到*/
-        measure->circle_cnt ++;
-    }
-    if(((measure->angle_abs - measure->last_angle_abs) < -PI)){
         measure->circle_cnt --;
     }
+    if(((measure->angle_abs - measure->last_angle_abs) < -PI)){
+        measure->circle_cnt ++;
+    }
     measure->total_angle = measure->circle_cnt * PI2 + measure->angle_abs;/*电机绝对位置累加,适用于云台yaw传动带齿轮比不为1:1的情况*/
-    measure->yaw_angle = fmodf(measure->total_angle,PI2 * GEAR_RATIO);
+    measure->yaw_angle_round = PI2 * GEAR_RATIO;
+    measure->yaw_angle = fmodf(measure->total_angle,measure->yaw_angle_round);
 
     measure->last_angle_abs = measure->angle_abs;
 }
