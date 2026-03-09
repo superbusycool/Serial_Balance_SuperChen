@@ -359,7 +359,7 @@ static void remote_to_cmd_pc_DT7(void)
     }
     /*TODO:--------------------------------------------------发射模块状态机--------------------------------------------------------------*/
     /*!-----------------------------------------开关摩擦轮--------------------------------------------*/
-    if(keyboard_ctrl_now->F_sta==KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1]==RC_MI)
+    if((keyboard_ctrl_now->F_sta==KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1]==RC_MI) && (remote_ctrl_now->rc.s[0]!=RC_UP))
     {
         shoot_cmd_data.friction_status=1;
     }

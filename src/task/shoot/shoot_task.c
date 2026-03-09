@@ -115,20 +115,6 @@ void shoot_control(void)
     /*控制模式判断*/
     /*DBUS遥控器*/
 
-    /*开关摩擦轮*/
-    if (fire_cmd.friction_status==1)
-    {
-        shoot_motor_ref[RIGHT_FRICTION] = -FRICTION_SPEED_CONTINUE;//摩擦轮常转
-        shoot_motor_ref[LEFT_FRICTION] = FRICTION_SPEED_CONTINUE;
-        /*从自动连发模式切换三连发及单发模式时，要继承总转子角度*/
-    }
-    else
-    {
-        shoot_motor_ref[TRIGGER_MOTOR] = 0;
-        shoot_motor_ref[RIGHT_FRICTION] =0;
-        shoot_motor_ref[LEFT_FRICTION] = 0;
-        total_angle_flag=SHOOT_ANGLE_CONTINUE;
-    }
 
     switch (fire_cmd.ctrl_mode)
     {
@@ -186,7 +172,20 @@ void shoot_control(void)
             shoot_fdb_data.trigger_status=SHOOT_ERR;
             break;
     }
-    /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
+    /*开关摩擦轮*/
+    if (fire_cmd.friction_status==1)
+    {
+        shoot_motor_ref[RIGHT_FRICTION] = -FRICTION_SPEED_CONTINUE;//摩擦轮常转
+        shoot_motor_ref[LEFT_FRICTION] = FRICTION_SPEED_CONTINUE;
+        /*从自动连发模式切换三连发及单发模式时，要继承总转子角度*/
+    }
+    else
+    {
+        shoot_motor_ref[TRIGGER_MOTOR] = 0;
+        shoot_motor_ref[RIGHT_FRICTION] =0;
+        shoot_motor_ref[LEFT_FRICTION] = 0;
+        total_angle_flag=SHOOT_ANGLE_CONTINUE;
+    }
 
     /* 更新发布该线程的msg */
     shoot_pub_push();

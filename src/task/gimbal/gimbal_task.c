@@ -61,9 +61,8 @@ static float yaw_recovery_velocity;
 /*手动状态下和自动状态下的K矩阵*/
 static float  K_pitch_gyro[2] = {2.236068, 1.043398} ;
 static float  K_pitch_auto[2] = {2.236068, 1.043398} ;
-static float K_yaw_gyro[2] = {2.236068, 0.466890} ;
-static float K_yaw_auto[2] = {2.236068, 0.466890} ;
-
+static float K_yaw_gyro[2] = {2.886751, 0.485441} ;
+static float K_yaw_auto[2] = {2.000000, 1.451044} ;
 static void LQR_CALC();
 
 static float LQROutBuf_Yaw[1]={0};
@@ -156,6 +155,10 @@ void gimbal_control()
             // TODO：加入斜坡算法，可以控制归中时间
             // TODO: 将编码器值转化为角度值
             // TODO: 优化归中逻辑，yaw轴选取最近的方向
+
+#ifdef YAW_MOTOR_SET_ZERO_POSITION
+            leg_init_get_zero();
+#else
             if(gim_cmd.last_mode != GIMBAL_INIT)
                 init_start_time = dwt_get_time_ms();
             else
@@ -180,6 +183,8 @@ void gimbal_control()
                 gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
 
             }
+#endif
+
             break;
         case GIMBAL_GYRO:
 
@@ -250,13 +255,22 @@ static void yaw_lqr_calc(){
     LQRXRefBuf_Yaw[0][0] = gim_motor_ref[YAW];
     LQRXRefBuf_Yaw[1][0] = 0.0f;
     /*观测值*/
-    LQRXObsBuf_Yaw[0][0] = gim_ins.yaw_total_angle * DEGREE_2_RAD;/*yaw轴观测角度*/
-    LQRXObsBuf_Yaw[1][0] = gim_ins.gyro[Z];/*yaw_dot偏航角速度 TODO 需要检验是否正确*/
-
-    if(gim_cmd.ctrl_mode == GIMBAL_INIT){/*使用mit的位置速度控制*/
-        yaw_recovery_position = gim_motor_ref[YAW];
-        yaw_recovery_velocity = 0.0f;/*匀速转动*/
+    /*!!!前提条件为正方向设为yaw轴电机的零点位置*/
+    if(gim_motor_yaw[0]->measure.yaw_angle >= gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
+        LQRXObsBuf_Yaw[0][0] = - (gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
     }
+    if(gim_motor_yaw[0]->measure.yaw_angle <= - gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
+        LQRXObsBuf_Yaw[0][0] = (gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
+    }
+    else{
+        LQRXObsBuf_Yaw[0][0] = gim_motor_yaw[0]->measure.yaw_angle;/*yaw轴观测角度*/
+    }
+    LQRXObsBuf_Yaw[1][0] = gim_motor_yaw[0]->measure.speed_rads;/*yaw_dot偏航角速度 TODO 需要检验是否正确*/
+
+//    if(gim_cmd.ctrl_mode == GIMBAL_INIT){/*使用mit的位置速度控制*/
+//        yaw_recovery_position = gim_motor_ref[YAW];
+//        yaw_recovery_velocity = 0.0f;/*匀速转动*/
+//    }
 
     LQRXerrorBuf_Yaw[0][0] = LQRXRefBuf_Yaw[0][0] - LQRXObsBuf_Yaw[0][0];
     LQRXerrorBuf_Yaw[1][0] = LQRXRefBuf_Yaw[1][0] - LQRXObsBuf_Yaw[1][0];/*X_refer - X_obs*/
@@ -277,7 +291,7 @@ static void pitch_lqr_calc(){
     LQRXRefBuf_Pitch[0][0] = gim_motor_ref[PITCH];
     LQRXRefBuf_Pitch[1][0] = 0.0f;
     /*观测值*/
-    LQRXObsBuf_Pitch[0][0] = gim_ins.pitch * DEGREE_2_RAD;/*pitch轴观测角度*/
+    LQRXObsBuf_Pitch[0][0] = gim_ins.pitch;/*pitch轴观测角度*/
     LQRXObsBuf_Pitch[1][0] = gim_ins.gyro[Y];/*pitch_dot角速度 TODO 需要检验是否正确*/
 
     LQRXerrorBuf_Pitch[0][0] = LQRXRefBuf_Pitch[0][0] - LQRXObsBuf_Pitch[0][0];
@@ -312,32 +326,36 @@ static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure)
 
 
     if(gim_cmd.ctrl_mode == GIMBAL_RELAX || gim_cmd.ctrl_mode == GIMBAL_INIT){
-        dm_yaw_send_t[0] = 0;
+//        dm_yaw_send_t[0] = 0;
         set.kp = 0;
         set.kd = 0;
     }
-    if(chassis_fdb_cmd.ctrl_mode == CHASSIS_RECOVERY && gim_cmd.ctrl_mode == GIMBAL_INIT ){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
-        dm_yaw_send_t[0] = 0;/*T置零*/
-
-        LIMIT_MIN_MAX(yaw_recovery_position, DM_P_MIN, DM_P_MAX);
-        set.p = yaw_recovery_position;
-
-        set.kp = DM_YAW_MIT_KP;/*TODO 尝试参数待定*/
-        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
-
-        LIMIT_MIN_MAX(yaw_recovery_velocity, DM_V_MIN, DM_V_MAX);
-        set.v = yaw_recovery_velocity;
-
-        set.kd = DM_YAW_MIT_KD;
-        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
-
-    }
-    else{/*其余情况则使用mit力矩控制*/
-        set.p = 0;
-        set.kp = 0;
-        set.v = 0;
-        set.kd = 0;
-    }
+//    if(chassis_fdb_cmd.ctrl_mode == CHASSIS_RECOVERY && gim_cmd.ctrl_mode == GIMBAL_INIT ){/*倒地自起中,腿部未在规定起立位置就采用位置控制*/
+//        dm_yaw_send_t[0] = 0;/*T置零*/
+//
+//        LIMIT_MIN_MAX(yaw_recovery_position, DM_P_MIN, DM_P_MAX);
+//        set.p = yaw_recovery_position;
+//
+//        set.kp = DM_YAW_MIT_KP;/*TODO 尝试参数待定*/
+//        LIMIT_MIN_MAX(set.kp, DM_KP_MIN, DM_KP_MAX);
+//
+//        LIMIT_MIN_MAX(yaw_recovery_velocity, DM_V_MIN, DM_V_MAX);
+//        set.v = yaw_recovery_velocity;
+//
+//        set.kd = DM_YAW_MIT_KD;
+//        LIMIT_MIN_MAX(set.kd, DM_KD_MIN, DM_KD_MAX);
+//
+//    }
+//    else{/*其余情况则使用mit力矩控制*/
+//        set.p = 0;
+//        set.kp = 0;
+//        set.v = 0;
+//        set.kd = 0;
+//    }
+    set.p = 0;
+    set.kp = 0;
+    set.v = 0;
+    set.kd = 0;
 #if defined(GIMBAL_RELEX) || defined(DM4310_SET_ZERO)
         dm_yaw_send_t[0] = 0;
         set.kp = 0;
@@ -357,7 +375,7 @@ static int16_t GM6020_Control(dji_motor_measure_t measure){
 
     set = (int16_t)((LQROutBuf_Pitch[0])* GM6020_TOR_TO_CUR);/*TODO 根据实测调整正负号*/
 
-#ifdef GIMBAL_RELEX
+#if defined(GIMBAL_RELEX) || defined(GM6020_SET_ZERO)
     set = 0;
 #endif
     if(gim_cmd.ctrl_mode == GIMBAL_RELAX){
@@ -371,7 +389,7 @@ static int16_t GM6020_Control(dji_motor_measure_t measure){
  * */
 static void leg_init_get_zero()
 {
-    gim_motor_yaw[GIM_YAW_MOTOR_NUM]->set_mode(gim_motor_yaw[GIM_YAW_MOTOR_NUM], DM_CMD_ZERO_POSITION);
+    gim_motor_yaw[0]->set_mode(gim_motor_yaw[0], DM_CMD_ZERO_POSITION);
 
 }
 /******************************************************消息订阅*************************************************************************/

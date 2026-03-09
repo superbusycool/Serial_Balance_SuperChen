@@ -31,12 +31,12 @@ m_yaw = 3.376962;%云台整个部分的质量Kg
 J = (1/2)*m_yaw*R^2;
 B = [0
     1/J];
-Q_gyro = diag([50 1]);
-R_gyro = [10];
+Q_gyro = diag([100 1]);
+R_gyro = [12.0];
 K_gyro = lqr(A,B,Q_gyro,R_gyro);
 
-Q_auto = diag([50 1]);
-R_auto = [10];
+Q_auto = diag([20 10]);
+R_auto = [5.0];
 K_auto = lqr(A,B,Q_auto,R_auto);
 fprintf('static float K_yaw_gyro[2] = {%f, %f} ;\n', K_gyro);
 fprintf('static float K_yaw_auto[2] = {%f, %f} ;\n', K_auto);

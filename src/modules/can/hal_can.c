@@ -85,6 +85,7 @@ void CAN_service_init(void)
     HAL_FDCAN_Start(&hfdcan3);//使能CAN3
 }
 
+/*TODO 需要根据电机布局进行回调位置调整*/
  void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
     FDCAN_RxHeaderTypeDef rx_header;
@@ -110,8 +111,8 @@ void CAN_service_init(void)
         }
         if (hfdcan == &hfdcan3)
         {
-#ifdef BSP_USING_DM_IMU
-            if(dm_imu_rx_callback(rx_header.Identifier, rx_data) == 0)
+#ifdef BSP_USING_DJI_MOTOR
+            if(dji_motot_rx_callback(rx_header.Identifier, rx_data) == 0)
                 return;
 #endif
 
@@ -141,6 +142,10 @@ void CAN_service_init(void)
 #ifdef BSP_USING_HT_MOTOR
              if(ht_motor_rx_callback(rx_header.StdId, rx_data) == 0)
                 return;
+#endif
+#ifdef BSP_USING_DM_IMU
+             if(dm_imu_rx_callback(rx_header.Identifier, rx_data) == 0)
+                 return;
 #endif
 
          }

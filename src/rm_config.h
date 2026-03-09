@@ -125,7 +125,6 @@
 #define LEFT_FRICTION_MOTOR_ID      0x204
 #define TRIGGER_MOTOR_ID            0x205
 
-#define FRICTION_SPEED_ONE           6000
 #define FRICTION_SPEED_CONTINUE      6000
 
 #define SHOOT_TRIGGER_REVERSE_SPEED 4000/*堵弹反转*/
@@ -222,7 +221,8 @@
  * @warning 不小心开启并烧录的话需要重新校准零点,不然一定疯车
  * */
 //#define DM_8009_SET_ZERO_POSITION
-
+/*云台电机yaw轴设置零点*/
+//#define YAW_MOTOR_SET_ZERO_POSITION
 /*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
 //#define BSP_BMI088_CALI
 /*使用位于云台的达妙imu*/
@@ -251,6 +251,7 @@
 /*******************************云台部分***********************************************/
 /*云台失能*/
 #define GIMBAL_RELEX
+#define GM6020_SET_ZERO
 /*4310输入置零*/
 #define DM4310_SET_ZERO
 

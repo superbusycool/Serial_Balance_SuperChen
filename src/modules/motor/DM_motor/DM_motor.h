@@ -68,11 +68,12 @@ typedef struct
     float total_angle;        // 角度为多圈角度
     float circle_cnt;          //圈数
     float yaw_angle;          //有yaw轴电机算出的实际云台角度
+    float yaw_angle_round;    //云台连接处总弧度
     float angle;              //角度范围在-2π到2π
     float angle_abs;          //绝对角度,每个位置固定
     float last_angle_abs;
     float angle_delta;
-    float speed_rads;         // 在 0 和 4095 之间，缩放 V MIN 和 V MAX
+    float speed_rads;
     float torque;             //扭矩
     float temperature_MOS;   /*!< Motor Temperature_MOS   */
     float temperature_Rotor; /*!< Motor Temperature_Rotor */
