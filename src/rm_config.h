@@ -29,7 +29,7 @@
 #define CAN_ID_WHEEL_MOTOR 2
 #define CAN_ID_GIMBAL_MOTOR 2
 #define CAN_ID_CHASSIS_MOTOR 1
-#define CAN_ID_FIRE_MOTOR 3
+#define CAN_ID_FIRE_MOTOR 2
 
 
 /* ---------------------------------- 遥控器相关 --------------------------------- */
@@ -115,9 +115,9 @@
 #define INIT_TIMEOUT 1000  // 单位: ms 初始化归中超时时间
 
 /* pitch轴最大仰角 */
-#define PITCH_ANGLE_MAX        31.5f
+#define PITCH_ANGLE_MAX        30.0f
 /* pitch轴最大俯角 */
-#define PITCH_ANGLE_MIN        -32.9f
+#define PITCH_ANGLE_MIN        -15.0f
 
 /* ------------------------------------------------------- 发射相关 --------------------------------------------------- */
 // TODO: 实际值待整定
@@ -250,10 +250,10 @@
 
 /*******************************云台部分***********************************************/
 /*云台失能*/
-#define GIMBAL_RELEX
-#define GM6020_SET_ZERO
+//#define GIMBAL_RELEX
+//#define GM6020_SET_ZERO
 /*4310输入置零*/
-#define DM4310_SET_ZERO
+//#define DM4310_SET_ZERO
 
 /*********************************状态机部分*********************************************/
 #define BSP_USING_RC_DBUS_KEYBOARD /*使用键盘控制*/

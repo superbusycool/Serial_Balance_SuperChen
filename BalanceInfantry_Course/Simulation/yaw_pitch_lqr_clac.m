@@ -12,12 +12,12 @@ l = 0.1854;%与pitch轴电机连接的连杆的长度
 J = (1/3)*m_pitch*l^2;%均质单摆
 B = [0
     1/J];
-Q_gyro = diag([5 1]);
-R_gyro = [1];
+Q_gyro = diag([250 1]);
+R_gyro = [4];
 K_gyro = lqr(A,B,Q_gyro,R_gyro);
 
-Q_auto = diag([5 1]);
-R_auto = [1];
+Q_auto = diag([250 1]);
+R_auto = [4];
 K_auto = lqr(A,B,Q_auto,R_auto);
 fprintf('static float  K_pitch_gyro[2] = {%f, %f} ;\n', K_gyro);
 fprintf('static float  K_pitch_auto[2] = {%f, %f} ;\n', K_auto);

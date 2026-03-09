@@ -260,7 +260,11 @@ static void remote_to_cmd_pc_DT7(void)
 
         case RC_MI:
 
-
+            if(gimbal_cmd_data.last_mode == GIMBAL_RELAX)
+            {/* 判断上次状态是否为RELAX，是则先归中 */
+                gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
+            }
+            
             if((chassis_fdb.stand_state != CHASSIS_IS_DANGER))
             {
                 if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)
@@ -330,8 +334,6 @@ static void remote_to_cmd_pc_DT7(void)
     if ((remote_ctrl_now->mouse.press_r==1||remote_ctrl_last.rc.s[1]==RC_DN) && (gim_fdb.back_mode == BACK_IS_OK && chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP)) /*!如果鼠标按下右键或者遥控器选择自瞄模式*/
     {
         gimbal_cmd_data.ctrl_mode = GIMBAL_AUTO;
-    }else{
-        gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
     }
     /***********************************************小陀螺*******************************************************************/
     /*TODO:小陀螺*/
