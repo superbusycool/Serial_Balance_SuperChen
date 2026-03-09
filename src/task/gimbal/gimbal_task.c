@@ -59,8 +59,8 @@ static float yaw_recovery_velocity;
 #define DM_YAW_MIT_KD 3.5f
 
 /*手动状态下和自动状态下的K矩阵*/
-static float  K_pitch_gyro[2] = {2.236068, 1.043398} ;
-static float  K_pitch_auto[2] = {2.236068, 1.043398} ;
+static float  K_pitch_gyro[2] = {7.905694, 0.750685} ;
+static float  K_pitch_auto[2] = {7.905694, 0.750685} ;
 static float K_yaw_gyro[2] = {2.886751, 0.485441} ;
 static float K_yaw_auto[2] = {2.000000, 1.451044} ;
 static void LQR_CALC();
@@ -179,8 +179,8 @@ void gimbal_control()
                 gimbal_fdb_data.pitch_angle = gim_ins.pitch * DEGREE_2_RAD;
                 gimbal_fdb_data.yaw_angle = gim_motor_yaw[0]->measure.yaw_angle;
                 gimbal_fdb_data.yaw_delta = gim_ins.yaw_total_angle * DEGREE_2_RAD - ins.yaw_total_angle * DEGREE_2_RAD/*底盘yaw_totoal_angle*/;
-                gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
-                gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
+//                gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
+//                gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
 
             }
 #endif
@@ -267,10 +267,6 @@ static void yaw_lqr_calc(){
     }
     LQRXObsBuf_Yaw[1][0] = gim_motor_yaw[0]->measure.speed_rads;/*yaw_dot偏航角速度 TODO 需要检验是否正确*/
 
-//    if(gim_cmd.ctrl_mode == GIMBAL_INIT){/*使用mit的位置速度控制*/
-//        yaw_recovery_position = gim_motor_ref[YAW];
-//        yaw_recovery_velocity = 0.0f;/*匀速转动*/
-//    }
 
     LQRXerrorBuf_Yaw[0][0] = LQRXRefBuf_Yaw[0][0] - LQRXObsBuf_Yaw[0][0];
     LQRXerrorBuf_Yaw[1][0] = LQRXRefBuf_Yaw[1][0] - LQRXObsBuf_Yaw[1][0];/*X_refer - X_obs*/
@@ -289,9 +285,10 @@ static void yaw_lqr_calc(){
 static void pitch_lqr_calc(){
     /*目标值*/
     LQRXRefBuf_Pitch[0][0] = gim_motor_ref[PITCH];
+    LIMIT_MIN_MAX(LQRXRefBuf_Pitch[0][0],PITCH_ANGLE_MIN,PITCH_ANGLE_MAX);
     LQRXRefBuf_Pitch[1][0] = 0.0f;
     /*观测值*/
-    LQRXObsBuf_Pitch[0][0] = gim_ins.pitch;/*pitch轴观测角度*/
+    LQRXObsBuf_Pitch[0][0] = gim_ins.pitch * DEGREE_2_RAD;/*pitch轴观测角度*/
     LQRXObsBuf_Pitch[1][0] = gim_ins.gyro[Y];/*pitch_dot角速度 TODO 需要检验是否正确*/
 
     LQRXerrorBuf_Pitch[0][0] = LQRXRefBuf_Pitch[0][0] - LQRXObsBuf_Pitch[0][0];
