@@ -158,19 +158,19 @@ void gimbal_control()
             gim_motor_ref[PITCH] = CENTER_PITCH_ANGLE;/*根据云台的imu信息*/
 
             //pitch轴改用丝杆结构，只能根据imu数据控制归中
-            if(abs(gim_ins.pitch * DEGREE_2_RAD) <= (0.02f)
-               && (abs(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.05f)
+            if(fabsf(gim_ins.pitch * DEGREE_2_RAD) <= (0.02f)
+               && (fabsf(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.015f)
                // 若长时间陷于归中模式，可以适当放宽归中条件
-               || ((abs(gim_ins.pitch * DEGREE_2_RAD) <= (0.07f))
-                   && (abs(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.01f)
+               || ((fabsf(gim_ins.pitch * DEGREE_2_RAD) <= (0.045f))
+                   && (fabsf(gim_motor_yaw[0]->measure.yaw_angle - CENTER_YAW_ANGLE) <= 0.035f)
                    && (init_dt > INIT_TIMEOUT)))
             {
                 gimbal_fdb_data.back_mode = BACK_IS_OK;
                 gimbal_fdb_data.pitch_angle = gim_ins.pitch * DEGREE_2_RAD;
                 gimbal_fdb_data.yaw_angle = gim_motor_yaw[0]->measure.yaw_angle;
                 gimbal_fdb_data.yaw_delta = gim_ins.yaw_total_angle * DEGREE_2_RAD - ins.yaw_total_angle * DEGREE_2_RAD/*底盘yaw_totoal_angle*/;
-//                gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
-//                gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
+                gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
+                gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
 
             }
 #endif
@@ -179,8 +179,9 @@ void gimbal_control()
         case GIMBAL_GYRO:
 
             gim_motor_ref[YAW] += ( - gim_cmd.vw_relative_set / RC_DBUS_MAX_VALUE) * GIMBAL_YAW_TURN_RATIO * DEGREE_2_RAD;
-            gim_motor_ref[PITCH] += ( - gim_cmd.pitch_relative_set / RC_DBUS_MAX_VALUE) * GIMBAL_PITCH_TURN_RATIO * DEGREE_2_RAD;
-            LIMIT_MIN_MAX(gim_motor_ref[PITCH],PITCH_ANGLE_MIN,PITCH_ANGLE_MAX);
+            gim_motor_ref[PITCH] += ( gim_cmd.pitch_relative_set / RC_DBUS_MAX_VALUE) * GIMBAL_PITCH_TURN_RATIO * DEGREE_2_RAD;
+            LIMIT_MIN_MAX(gim_motor_ref[PITCH],PITCH_ANGLE_MIN * DEGREE_2_RAD,PITCH_ANGLE_MAX * DEGREE_2_RAD);
+            gimbal_fdb_data.gimbal_yaw_refer = gim_motor_ref[YAW];
             gimbal_fdb_data.pitch_angle=gim_ins.pitch * DEGREE_2_RAD;
 
             break;
@@ -278,7 +279,7 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
     static float get_speed, get_angle;  // 闭环反馈量
     static float pid_out_angle;         // 角度环输出
     static int16_t pitch_pid_output;        // 最终发送给电调的数据
-    static int16_t send_data;
+
 
     switch (gim_cmd.ctrl_mode)
     {
@@ -312,7 +313,7 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
         /*串级pid的使用，角度环套在速度环上面*/
         /* 注意负号 */
         pid_out_angle = pid_calculate(pid_angle, get_angle, gim_motor_ref[PITCH]);  // 编码器增长方向与imu相反
-        pitch_pid_output = pid_calculate(pid_speed, get_speed, pid_out_angle);     // 电机转动正方向与imu相反
+        pitch_pid_output = (int16_t)pid_calculate(pid_speed, get_speed, pid_out_angle);     // 电机转动正方向与imu相反
     }
     else /* imu闭环 */
     {
@@ -320,7 +321,7 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
         VAL_LIMIT(gim_motor_ref[PITCH], PITCH_ANGLE_MIN, PITCH_ANGLE_MAX);
         /* 注意负号 */
         pid_out_angle = pid_calculate(pid_angle, get_angle, gim_motor_ref[PITCH]);
-        pitch_pid_output = pid_calculate(pid_speed, get_speed, pid_out_angle);      // 电机转动正方向与imu相反
+        pitch_pid_output = (int16_t)pid_calculate(pid_speed, get_speed, pid_out_angle);      // 电机转动正方向与imu相反
     }
     if(gim_cmd.ctrl_mode == GIMBAL_RELAX)  // 编码器闭环
     {
@@ -330,9 +331,9 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
     }
 
 #if defined(GIMBAL_RELEX) || defined(GM6020_SET_ZERO)
-    send_data = 0;
+    pitch_pid_output = 0;
 #endif
-//    send_data = (int16_t)(pitch_pid_output* GM6020_TOR_TO_CUR);
+
     return pitch_pid_output;
 
 }
@@ -356,29 +357,32 @@ static dm_motor_para_t dm_yaw_control(dm_motor_measure_t measure)
         case GIMBAL_INIT:
             pid_speed = gim_controller[YAW].pid_speed_imu;
             pid_angle = gim_controller[YAW].pid_angle_imu;
+            /*观测值*/
+            /*!!!前提条件为正方向设为yaw轴电机的零点位置*/
+            if(gim_motor_yaw[0]->measure.yaw_angle >= gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
+                get_angle = (gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
+            }
+            if(gim_motor_yaw[0]->measure.yaw_angle <= - gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
+                get_angle = -(gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
+            }
+            else{
+                get_angle = gim_motor_yaw[0]->measure.yaw_angle;/*yaw轴观测角度*/
+            }
             break;
         case GIMBAL_GYRO:
             pid_speed = gim_controller[YAW].pid_speed_imu;
             pid_angle = gim_controller[YAW].pid_angle_imu;
+            get_angle = gim_ins.yaw_total_angle * DEGREE_2_RAD;
             break;
         case GIMBAL_AUTO:
             pid_speed = gim_controller[YAW].pid_speed_auto;
             pid_angle = gim_controller[YAW].pid_angle_auto;
+            get_angle = gim_ins.yaw_total_angle * DEGREE_2_RAD;
             break;
         default:
             break;
     }
-    /*观测值*/
-    /*!!!前提条件为正方向设为yaw轴电机的零点位置*/
-    if(gim_motor_yaw[0]->measure.yaw_angle >= gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
-        get_angle = - (gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
-    }
-    if(gim_motor_yaw[0]->measure.yaw_angle <= - gim_motor_yaw[0]->measure.yaw_angle_round / 2.0f){
-        get_angle = (gim_motor_yaw[0]->measure.yaw_angle_round - gim_motor_yaw[0]->measure.yaw_angle);/*取劣弧*/
-    }
-    else{
-        get_angle = gim_motor_yaw[0]->measure.yaw_angle;/*yaw轴观测角度*/
-    }
+
     get_speed = gim_motor_yaw[0]->measure.speed_rads*DEGREE_2_RAD;
 
     /* 切换模式需要清空控制器历史状态 */
