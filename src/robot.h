@@ -51,6 +51,7 @@ struct gimbal_fdb_msg
 
     float yaw_angle;    //云台初始 yaw 轴角度 （由yaw轴dm4310电机得）
     float yaw_delta;    //归中成公后,云台和底盘yaw_totoal_angle差值
+    float gimbal_yaw_refer; //gimbal_gyro状态下的yaw控制角度即gim_motor_ref[YAW]
     float yaw_follow_gimbal_target;  //底盘跟随云台时底盘的转向yaw_target
     float pitch_angle;    //云台初始 pitch 轴角度 （由imu得）
     float roll_angle;    //云台初始 roll 轴角度 （由imu得）
@@ -69,12 +70,10 @@ typedef enum
 
 struct gimbal_cmd_msg
 { // 云台期望角度控制
-    float vw_relative;
     float vw_relative_set;
-//    float vw_set;
-    float pitch_relative;
+
     float pitch_relative_set;/*cmd线程中处理的gimbal的yaw和pitch均作为相对角度*/
-//    float pitch_set;
+
     gimbal_mode_e ctrl_mode;  // 当前云台控制模式
     gimbal_mode_e last_mode;  // 上一次云台控制模式
 };
@@ -102,10 +101,10 @@ struct chassis_cmd_msg
     float vy_set;               //横移方向速度斜坡过程值
     float vw_relative;                  // 旋转速度
     float vw_relative_set;              //转向速度斜坡过程值
+    float vw_fllow_gimbal_temp;       //计算底盘跟随yaw角度的中间值
+    float vw_fllow_gimbal_set;          //底盘跟随状态下的yaw命令
     // TODO: 轮腿前期调试使用
     float leg_length;          // 腿长
-    float leg_angle;           // 腿角度
-    float offset_angle;        // 底盘和归中位置的夹角
     chassis_mode_e ctrl_mode;  // 当前底盘控制模式
     chassis_mode_e last_mode;  // 上一次底盘控制模式
     leg_level_e leg_level;     // 腿长等级

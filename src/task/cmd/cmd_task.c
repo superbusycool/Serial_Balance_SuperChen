@@ -19,6 +19,9 @@ static struct shoot_fdb_msg sht_fdb;
 MCN_DECLARE(transmission_fdb);
 static McnNode_t trans_fdb_node;
 static struct trans_fdb_msg trans_fdb;
+MCN_DECLARE(ins_topic);
+static McnNode_t ins_topic_node;
+static struct ins_msg ins;
 // 发布
 MCN_DECLARE(chassis_cmd);
 static struct chassis_cmd_msg chassis_cmd_data;
@@ -104,11 +107,11 @@ static void remote_to_cmd(void)
     chassis_cmd_data.vw_relative = remote_ctrl_now->rc.ch[0];  // TODO: 暂时换绑为vw
     slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,1.0f);
     /*云台控制*/
-    chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
-    gimbal_cmd_data.vw_relative = remote_ctrl_now->rc.ch[2];
-    slope_following(&gimbal_cmd_data.vw_relative,&gimbal_cmd_data.vw_relative_set,1.0f);
-    gimbal_cmd_data.pitch_relative = remote_ctrl_now->rc.ch[3];
-    slope_following(&gimbal_cmd_data.pitch_relative,&gimbal_cmd_data.pitch_relative_set,1.0f);
+//    chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
+////    gimbal_cmd_data.vw_relative = remote_ctrl_now->rc.ch[2];
+//    slope_following(&gimbal_cmd_data.vw_relative,&gimbal_cmd_data.vw_relative_set,1.0f);
+//    gimbal_cmd_data.pitch_relative = remote_ctrl_now->rc.ch[3];
+//    slope_following(&gimbal_cmd_data.pitch_relative,&gimbal_cmd_data.pitch_relative_set,1.0f);
 
    // 右拨杆s[0]]为上时，底盘和云台均REALX；为中时，云台为GYRO，地盘为OPEN；为下时，云台为AUTO。
    // 左拨杆s[1]为上时，腿长为LOW；为中时，腿长为MID；为下时，腿长为HIG。（当前暂不考虑遥控器对发射机构的控制）
@@ -245,7 +248,6 @@ static void remote_to_cmd_pc_DT7(void)
     chassis_cmd_data.vw_relative =  (float)remote_ctrl_now->rc.ch[0] + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
     slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,0.8f);
 
-    chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
 
 
     // 右拨杆s[0]]为上时，底盘和云台均REALX；为中时，云台为GYRO，地盘为OPEN；为下时，云台为AUTO。
@@ -302,7 +304,7 @@ static void remote_to_cmd_pc_DT7(void)
 
             if(gim_fdb.back_mode == BACK_IS_OK)
             {
-                gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;
+                gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
                 if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
                     chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
                 }
@@ -412,14 +414,21 @@ static void remote_to_cmd_pc_DT7(void)
 //        ui_cmd.ui_init = 0;
 //
 //    }
-
+    /*--------------------------------------------底盘跟随-------------------------------------------*/
+    if(chassis_cmd_data.ctrl_mode==CHASSIS_FOLLOW_GIMBAL){
+        chassis_cmd_data.vw_fllow_gimbal_temp = gim_fdb.gimbal_yaw_refer - gim_fdb.yaw_delta;
+        chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * ins.yaw_total_angle + chassis_cmd_data.vw_fllow_gimbal_temp ;
+    }
 
     /*云台命令*/
     if (gimbal_cmd_data.ctrl_mode == GIMBAL_GYRO)
     {
         /*需要注意数据量级!!!*/
-        gimbal_cmd_data.vw_relative =   (float)remote_ctrl_now->rc.ch[1] * RC_RATIO  + fx * KB_RATIO * GIMBAL_PC_MOVE_RATIO_YAW;
-        gimbal_cmd_data.pitch_relative = (float)remote_ctrl_now->rc.ch[1] * RC_RATIO - fy * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
+        /*云台控制*/
+        gimbal_cmd_data.vw_relative_set = (float)remote_ctrl_now->rc.ch[2];
+        gimbal_cmd_data.pitch_relative_set = (float)remote_ctrl_now->rc.ch[3] ;
+
+
         mouse_accumulate_x=0;
         mouse_accumulate_y=0;
     }
@@ -548,6 +557,7 @@ static void cmd_sub_init(void)
     gimbal_fdb_node = mcn_subscribe(MCN_HUB(gimbal_fdb), NULL, NULL);
     shoot_fdb_node = mcn_subscribe(MCN_HUB(shoot_fdb), NULL, NULL);
     trans_fdb_node = mcn_subscribe(MCN_HUB(transmission_fdb), NULL, NULL);
+    ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
 }
 
 
@@ -571,6 +581,10 @@ static void cmd_sub_pull(void)
     if (mcn_poll(trans_fdb_node))
     {
         mcn_copy(MCN_HUB(transmission_fdb), trans_fdb_node, &trans_fdb);
+    }
+    if (mcn_poll(ins_topic_node))
+    {
+        mcn_copy(MCN_HUB(ins_topic), ins_topic_node, &ins);
     }
 }
 
