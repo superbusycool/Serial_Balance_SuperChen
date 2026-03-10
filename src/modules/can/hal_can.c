@@ -115,10 +115,7 @@ void CAN_service_init(void)
             if(dji_motot_rx_callback(rx_header.Identifier, rx_data) == 0)
                 return;
 #endif
-#ifdef BSP_USING_DM_IMU
-            if(dm_imu_rx_callback(rx_header.Identifier, rx_data) == 0)
-                return;
-#endif
+
         }
 
     }
@@ -148,6 +145,11 @@ void CAN_service_init(void)
 #endif
 #ifdef BSP_USING_DM_IMU
              if(dm_imu_rx_callback(rx_header.Identifier, rx_data) == 0)
+                 return;
+#endif
+
+#ifdef BSP_USING_DM_MOTOR
+             if(dm_motor_rx_callback(rx_header.Identifier, rx_data) == 0)
                  return;
 #endif
 
