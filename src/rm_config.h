@@ -170,8 +170,87 @@
 
 
 /* -------------------------------- 云台电机PID参数 ------------------------------- */
+/* 云台yaw轴电机PID参数 */
+/* imu速度环 */
+#define YAW_KP_V_IMU             30
+#define YAW_KI_V_IMU             5
+#define YAW_KD_V_IMU             0.0001
+#define YAW_INTEGRAL_V_IMU       3.0
+#define YAW_MAX_V_IMU            12.5
+/* imu角度环 */
+#define YAW_KP_A_IMU             0.1
+#define YAW_KI_A_IMU             0.05
+#define YAW_KD_A_IMU             0.0001
+#define YAW_INTEGRAL_A_IMU       1.0
+#define YAW_MAX_A_IMU            5
+/* auto速度环 */
+#define YAW_KP_V_AUTO            20
+#define YAW_KI_V_AUTO            5
+#define YAW_KD_V_AUTO            0.0001
+#define YAW_INTEGRAL_V_AUTO      3.0
+#define YAW_MAX_V_AUTO           12.5
+/* auto角度环 */
+#define YAW_KP_A_AUTO            0.15f
+#define YAW_KI_A_AUTO            0.1
+#define YAW_KD_A_AUTO            0.0001f
+#define YAW_INTEGRAL_A_AUTO      1.0
+#define YAW_MAX_A_AUTO           5
 
+///* 云台PITCH轴电机PID参数 */
+///* imu速度环 */
+//#define PITCH_KP_V_IMU           50
+//#define PITCH_KI_V_IMU           10
+//#define PITCH_KD_V_IMU           0.00001
+//#define PITCH_INTEGRAL_V_IMU     0.4
+//#define PITCH_MAX_V_IMU          1.2
+//
+///* imu角度环 */
+//#define PITCH_KP_A_IMU           0.3f
+//#define PITCH_KI_A_IMU           0.05f
+//#define PITCH_KD_A_IMU           0.0001f
+//#define PITCH_INTEGRAL_A_IMU     1.0f
+//#define PITCH_MAX_A_IMU          10
+//
+///* auto速度环 */
+//#define PITCH_KP_V_AUTO          5
+//#define PITCH_KI_V_AUTO          0
+//#define PITCH_KD_V_AUTO          0.00001
+//#define PITCH_INTEGRAL_V_AUTO    0
+//#define PITCH_MAX_V_AUTO         1.2
+///* auto角度环 */
+//#define PITCH_KP_A_AUTO          0.1f
+//#define PITCH_KI_A_AUTO          0.0f
+//#define PITCH_KD_A_AUTO          0.000001f
+//#define PITCH_INTEGRAL_A_AUTO    0.0f
+//#define PITCH_MAX_A_AUTO         10
 
+/* 云台PITCH轴电机PID参数 */
+/* imu速度环 */
+#define PITCH_KP_V_IMU           8000
+#define PITCH_KI_V_IMU           4000
+#define PITCH_KD_V_IMU           0.001
+#define PITCH_INTEGRAL_V_IMU     1500
+#define PITCH_MAX_V_IMU          30000
+
+/* imu角度环 */
+#define PITCH_KP_A_IMU           0.65f
+#define PITCH_KI_A_IMU           0.0f
+#define PITCH_KD_A_IMU           0.00015f
+#define PITCH_INTEGRAL_A_IMU     0.0f
+#define PITCH_MAX_A_IMU          20
+
+/* auto速度环 */
+#define PITCH_KP_V_AUTO          8000
+#define PITCH_KI_V_AUTO          4000
+#define PITCH_KD_V_AUTO          0.001
+#define PITCH_INTEGRAL_V_AUTO    1500
+#define PITCH_MAX_V_AUTO         30000
+/* auto角度环 */
+#define PITCH_KP_A_AUTO          0.6f
+#define PITCH_KI_A_AUTO          0.0f
+#define PITCH_KD_A_AUTO          0.001f
+#define PITCH_INTEGRAL_A_AUTO    0.0f
+#define PITCH_MAX_A_AUTO         20
 /***********chassis部分关于length/theta/yaw/roll的pid参数**********************/
 
 ///*位置*/

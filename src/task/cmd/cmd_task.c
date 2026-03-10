@@ -264,7 +264,7 @@ static void remote_to_cmd_pc_DT7(void)
             {/* 判断上次状态是否为RELAX，是则先归中 */
                 gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
             }
-            
+
             if((chassis_fdb.stand_state != CHASSIS_IS_DANGER))
             {
                 if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)
@@ -486,6 +486,8 @@ static void remote_to_cmd_pc_DT7(void)
     if (remote_ctrl_now->rc.s[0] == RC_MI && remote_ctrl_now->rc.ch[4]>=200 && shoot_cmd_data.ctrl_mode!=SHOOT_REVERSE)
     {
         shoot_cmd_data.ctrl_mode=SHOOT_COUNTINUE;
+    }else{
+        shoot_cmd_data.ctrl_mode=SHOOT_STOP;
     }
 
     /*-------------------------------------------------------------堵弹反转检测------------------------------------------------------------*/
