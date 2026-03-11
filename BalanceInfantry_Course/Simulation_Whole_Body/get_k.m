@@ -77,8 +77,6 @@ set(gca,'GridLineStyle',':','GridColor','k','GridAlpha',1);  %将网格线变成
 
 disp(q);
 disp(r);
-
-
 fprintf('a11[0] = %.4ff, a11[1] = %.4ff, a11[2] = %.4ff, a11[3] = %.4ff;\n',a11(1),a11(2),a11(3),a11(4));
 fprintf('a12[0] = %.4ff,  a12[1] = %.4ff,  a12[2] = %.4ff,   a12[3] = %.4ff;\n',a12(1),a12(2),a12(3),a12(4));
 fprintf('a13[0] = %.4ff, a13[1] = %.4ff,   a13[2] = %.4ff,  a13[3] = %.4ff;\n',a13(1),a13(2),a13(3),a13(4));
