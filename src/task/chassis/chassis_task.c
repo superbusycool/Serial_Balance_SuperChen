@@ -55,19 +55,19 @@ static float leg_l0_refer_R;/*用于vmc_inv*/
 static float dm_p_set[2][2];
 static float dm_v_set[2][2];
 
-#define DM_MIT_KP 0.06f
-#define DM_MIT_KD 3.5f
+#define DM_MIT_KP 0.03f
+#define DM_MIT_KD 4.0f
 #define DM_V_SET  0.0f
 
 static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
-#define Theta_Compensation  -0.08f
+#define Theta_Compensation  -0.13f//-0.11f
 
 #define CHASSIS_VX_MAX        673.0f
 #define CHASSIS_WX_MAX        270.0f
 
-#define CHASSIS_V_SET         4.0f
-#define YAW_TURN_RATIO  0.05f  //单位应该为°,有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
+#define CHASSIS_V_SET         2.0f
+#define YAW_TURN_RATIO  0.08f  //单位应该为°,有关调节遥控器转向敏感度的系数,自行在安全范围内调节大小
 static float Vx_Delta;
 #define VX_DELTA_MAX 5.0f
 
@@ -109,6 +109,7 @@ static uint8_t  Touch_Ground_Flag;
 
 static pid_obj_t *theta_pid;  // 双腿角度协调控制
 static pid_obj_t *yaw_pid;    // 航向角控制， 输出为vx的补偿，与vx期望累积
+static pid_obj_t *yaw_follow_pid;
 static pid_obj_t *roll_pid;   // 横滚角控制
 static pid_obj_t *L_length_pid;  //腿长控制
 static pid_obj_t *R_length_pid;  //腿长控制
@@ -370,25 +371,26 @@ static void update_LQR_obs() {
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*起立时的lqr*/
         /*记录下Q和R
-    Q=diag([10 100 1 1 1 1]);
-    R=diag([3.75 2.75]);
-    K矩阵 =
-      [-13.065135,  -5.334417,  -0.497871,  -1.279899,   1.786252,   0.387743;
-         2.952166,   1.583785,  -0.159907,  -0.343241,   5.888001,   1.090465]
+   Q=diag([11 10 1 1 1 1]);
+    R=diag([2.75 1.25]);
+K矩阵 =
+  [-10.155728,  -2.236739,  -0.601681,  -1.268268,   1.822092,   0.413514;
+     3.980534,   0.848420,  -0.059632,  -0.141910,   5.892146,   1.244850]
         */
         // 起立时的LQR参数赋值
-        a11[0] = 27.7513f, a11[1] = -21.5353f, a11[2] = -0.2051f, a11[3] = -12.8570f;
-        a12[0] = 4.5651f,  a12[1] = -4.4156f,  a12[2] = 0.1265f,   a12[3] = -5.3075f;
-        a13[0] = 0.1653f, a13[1] = -0.1009f,   a13[2] = -0.0138f,  a13[3] = -0.4957f;
-        a14[0] = 0.1914f, a14[1] = -0.0941f,   a14[2] = -0.0389f,   a14[3] = -1.2753f;
-        a15[0] = 10.4646f, a15[1] = -8.2251f, a15[2] = 0.0687f,  a15[3] = 1.8512f;
-        a16[0] = 1.7105f,  a16[1] = -1.3423f,  a16[2] = 0.0114f,   a16[3] = 0.3983f;
-        a21[0] = -12.2100f, a21[1] = 9.2224f,  a21[2] = 0.0572f,   a21[3] = 2.8664f;
-        a22[0] = 8.7097f,  a22[1] = -6.7896f,  a22[2] = 0.0228f,   a22[3] = 1.6407f;
-        a23[0] = -0.8515f,  a23[1] = 0.6138f,  a23[2] = 0.0184f,   a23[3] = -0.1670f;
-        a24[0] = -1.6668f,  a24[1] = 1.1766f,  a24[2] = 0.0485f,   a24[3] = -0.3582f;
-        a25[0] = -3.4674f, a25[1] = 2.8060f,   a25[2] = -0.0655f,  a25[3] = 5.8700f;
-        a26[0] = -0.4707f, a26[1] = 0.3734f,   a26[2] = -0.0056f,   a26[3] = 1.0878f;
+
+        a11[0] = 22.4406f, a11[1] = -18.6312f, a11[2] = 0.2108f, a11[3] = -10.0129f;
+        a12[0] = 3.9139f,  a12[1] = -4.2176f,  a12[2] = 0.1982f,   a12[3] = -2.2183f;
+        a13[0] = -0.0051f, a13[1] = 0.0077f,   a13[2] = -0.0020f,  a13[3] = -0.6016f;
+        a14[0] = -0.2033f, a14[1] = 0.0926f,   a14[2] = 0.0099f,   a14[3] = -1.2700f;
+        a15[0] = 11.2426f, a15[1] = -8.7358f, a15[2] = 0.0376f,  a15[3] = 1.8945f;
+        a16[0] = 2.0227f,  a16[1] = -1.5665f,  a16[2] = 0.0077f,   a16[3] = 0.4264f;
+        a21[0] = -0.9485f, a21[1] = -0.0958f,  a21[2] = 0.4414f,   a21[3] = 3.9383f;
+        a22[0] = 5.3212f,  a22[1] = -4.2754f,  a22[2] = 0.0661f,   a22[3] = 0.8792f;
+        a23[0] = 0.1364f,  a23[1] = -0.1838f,  a23[2] = 0.0466f,   a23[3] = -0.0626f;
+        a24[0] = 0.4417f,  a24[1] = -0.4912f,  a24[2] = 0.0914f,   a24[3] = -0.1466f;
+        a25[0] = -4.9790f, a25[1] = 3.7088f,   a25[2] = 0.0307f,  a25[3] = 5.8570f;
+        a26[0] = -0.8826f, a26[1] = 0.6374f,   a26[2] = 0.0140f,   a26[3] = 1.2380f;
 
     }else{
         /*记录下Q和R
@@ -399,18 +401,33 @@ static void update_LQR_obs() {
      6.364314,   2.328431,   0.160778,   0.445030,  29.446837,  11.692943]
         */
         // 正常模式的LQR参数赋值
-        a11[0] = 23.7036f, a11[1] = -18.5204f, a11[2] = -0.1227f, a11[3] = -13.2480f;
-        a12[0] = 4.7774f,  a12[1] = -4.3550f,  a12[2] = 0.0143f,   a12[3] = -4.8284f;
-        a13[0] = 0.1078f, a13[1] = -0.0585f,   a13[2] = -0.0108f,  a13[3] = -0.5077f;
-        a14[0] = -0.4008f, a14[1] = 0.3067f,   a14[2] = -0.0056f,   a14[3] = -1.3585f;
-        a15[0] = 40.3692f, a15[1] = -30.0334f, a15[2] = -0.1539f,  a15[3] = 5.3127f;
-        a16[0] = 14.6321f,  a16[1] = -10.7964f,  a16[2] = -0.0686f,   a16[3] = 1.8698f;
-        a21[0] = 29.6636f, a21[1] = -22.7546f,  a21[2] = 0.4857f,   a21[3] = 6.5136f;
-        a22[0] = 19.9342f,  a22[1] = -14.8277f,  a22[2] = -0.0393f,   a22[3] = 2.4607f;
-        a23[0] = 1.6529f,  a23[1] = -1.2227f,  a23[2] = 0.0012f,   a23[3] = 0.1712f;
-        a24[0] = 4.6329f,  a24[1] = -3.3407f,  a24[2] = -0.0486f,   a24[3] = 0.4787f;
-        a25[0] = -17.7685f, a25[1] = 10.6110f,   a25[2] = 1.4275f,  a25[3] = 29.2157f;
-        a26[0] = -5.8616f, a26[1] = 3.3595f,   a26[2] = 0.5358f,   a26[3] = 11.6116f;
+//        a11[0] = 23.7036f, a11[1] = -18.5204f, a11[2] = -0.1227f, a11[3] = -13.2480f;
+//        a12[0] = 4.7774f,  a12[1] = -4.3550f,  a12[2] = 0.0143f,   a12[3] = -4.8284f;
+//        a13[0] = 0.1078f, a13[1] = -0.0585f,   a13[2] = -0.0108f,  a13[3] = -0.5077f;
+//        a14[0] = -0.4008f, a14[1] = 0.3067f,   a14[2] = -0.0056f,   a14[3] = -1.3585f;
+//        a15[0] = 40.3692f, a15[1] = -30.0334f, a15[2] = -0.1539f,  a15[3] = 5.3127f;
+//        a16[0] = 14.6321f,  a16[1] = -10.7964f,  a16[2] = -0.0686f,   a16[3] = 1.8698f;
+//        a21[0] = 29.6636f, a21[1] = -22.7546f,  a21[2] = 0.4857f,   a21[3] = 6.5136f;
+//        a22[0] = 19.9342f,  a22[1] = -14.8277f,  a22[2] = -0.0393f,   a22[3] = 2.4607f;
+//        a23[0] = 1.6529f,  a23[1] = -1.2227f,  a23[2] = 0.0012f,   a23[3] = 0.1712f;
+//        a24[0] = 4.6329f,  a24[1] = -3.3407f,  a24[2] = -0.0486f,   a24[3] = 0.4787f;
+//        a25[0] = -17.7685f, a25[1] = 10.6110f,   a25[2] = 1.4275f,  a25[3] = 29.2157f;
+//        a26[0] = -5.8616f, a26[1] = 3.3595f,   a26[2] = 0.5358f,   a26[3] = 11.6116f;
+
+        a11[0] = 25.4959f, a11[1] = -20.4685f, a11[2] = 0.0986f, a11[3] = -13.3763f;
+        a12[0] = 5.4697f,  a12[1] = -5.1941f,  a12[2] = 0.1319f,   a12[3] = -4.8176f;
+        a13[0] = 0.1243f, a13[1] = -0.0890f,   a13[2] = -0.0016f,  a13[3] = -0.5896f;
+        a14[0] = -0.3127f, a14[1] = 0.1897f,   a14[2] = 0.0179f,   a14[3] = -1.4882f;
+        a15[0] = 31.2429f, a15[1] = -24.5420f, a15[2] = 0.1996f,  a15[3] = 5.8571f;
+        a16[0] = 2.7212f,  a16[1] = -2.1297f,  a16[2] = 0.0118f,   a16[3] = 0.6258f;
+        a21[0] = 11.8110f, a21[1] = -10.4497f,  a21[2] = 0.6335f,   a21[3] = 6.6032f;
+        a22[0] = 12.0755f,  a22[1] = -9.5004f,  a22[2] = 0.0949f,   a22[3] = 2.4438f;
+        a23[0] = 0.9564f,  a23[1] = -0.7831f,  a23[2] = 0.0230f,   a23[3] = 0.1858f;
+        a24[0] = 2.8456f,  a24[1] = -2.2327f,  a24[2] = 0.0212f,   a24[3] = 0.5133f;
+        a25[0] = -15.1236f, a25[1] = 10.4451f,   a25[2] = 0.5230f,  a25[3] = 23.5280f;
+        a26[0] = -1.6526f, a26[1] = 1.2001f,   a26[2] = 0.0320f,   a26[3] = 1.9235f;
+
+
     }
 
     LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation ;
@@ -463,7 +480,7 @@ static void update_LQR_obs() {
         LQRXRefBuf[LEFT][3]  = 0;
         LQRXRefBuf[RIGHT][3] = 0;
 
-        yaw_target = -ins.yaw_total_angle* DEGREE_2_RAD;
+        yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
 
         MatLQR_K[0][0] = 0;
         MatLQR_K[0][1] = 0;
@@ -558,9 +575,10 @@ void chassis_control_task(void)
 #endif
             break;
         case CHASSIS_RECOVERY:/*不稳定的状态,介于init和relex状态的过渡状态*/
-            yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;/*消除转向pid的影响*/
+            yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;/*消除转向pid的影响*/
             motor_enable();
             Chassis_Recovery();
+
 
             //TODO: 处于该模式下，应该屏蔽遥控器等控制
 
@@ -575,6 +593,7 @@ void chassis_control_task(void)
 
         case CHASSIS_FOLLOW_GIMBAL:
             motor_enable();
+            Chassis_Vx_Detect();
             Security_Checking();
 
             break;
@@ -596,10 +615,6 @@ void chassis_control_task(void)
             motor_relax();
             break;
     }
-#ifdef DM_8009_SET_ZERO_POSITION
-    if(fabsf(ins.pitch) > 60.0f)
-        chassis_fdb_data.stand_state = CAHSSIS_IS_DANGER;
-#endif
 
     chassis_kf_update();
     leg_calc(); // 保证稳定的运算频率，不受模式影响
@@ -655,6 +670,9 @@ static int chassis_motor_init(void)
     pid_config_t yaw_pid_config = INIT_PID_CONFIG(yaw_Kp,yaw_Ki, yaw_Kd, yaw_InteVal, yaw_MaxVal, PID_Integral_Limit | PID_OutputFilter);
     yaw_pid = pid_register(&yaw_pid_config);
 
+    pid_config_t yaw_follow_pid_config = INIT_PID_CONFIG(yaw_follow_Kp,yaw_follow_Ki, yaw_follow_Kd, yaw_follow_InteVal, yaw_follow_MaxVal, PID_Integral_Limit | PID_OutputFilter);
+    yaw_follow_pid = pid_register(&yaw_follow_pid_config);
+
 
     /* 横滚角 PD 控制 控制机体的水平*/
     pid_config_t roll_pid_config = INIT_PID_CONFIG( roll_Kp, roll_Ki, roll_Kd, roll_InteVal,roll_MaxVal, PID_Integral_Limit|PID_OutputFilter);
@@ -692,8 +710,16 @@ static void leg_calc()
 
     /* 双腿角度协调控制 */
     pid_calculate(theta_pid, leg[LEFT]->theta - leg[RIGHT]->theta, 0);
-    /* 航向角控制 */
-    pid_calculate(yaw_pid, -ins.yaw_total_angle* DEGREE_2_RAD , yaw_target);
+    if(chassis_cmd.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){
+        /* 航向角控制 */
+        pid_calculate(yaw_follow_pid, ins.yaw_total_angle * DEGREE_2_RAD , yaw_target);
+        pid_clear(yaw_pid);
+    }else{
+        /* 航向角控制 */
+        pid_calculate(yaw_pid, ins.yaw_total_angle * DEGREE_2_RAD , yaw_target);
+        pid_clear(yaw_follow_pid);
+    }
+
 
     /* 横滚角控制 */
     pid_calculate(roll_pid, ins.roll, 0);
@@ -748,17 +774,12 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){/*交23年平�
 /* ----------------------------------------- 电机控制相关 ---------------------------------------------------------- */
 static void leg_init_get_zero()
 {
-    // 首先各个电机给定一个适当的力矩，并持续，确保撞到限位
-    chassis_fdb_data.leg_state = LEG_BACK_STEP;
-    osDelay(2000);
-    // 撞到限位后，控制电机在此处设置零点
+    /*设置电机零点*/
     for (uint8_t i = 0; i < 4; i++)
     {
         dm_motor[i]->set_mode(dm_motor[i], DM_CMD_ZERO_POSITION);
     }
-    // 电机零点设置完成，正常零点为减去各偏移量
-    chassis_fdb_data.leg_state = LEG_BACK_IS_OK;
-    // 该函数仅在每次重新上电执行
+
 }
 static void motor_enable()
 {
@@ -1072,7 +1093,7 @@ static int16_t M3508_control_l(dji_motor_measure_t  measure){
     }
     if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
         if(Wheel_Shut_Flag == 0){
-            set = (int16_t)(-(LQROutBuf[LEFT][0] - yaw_pid->Output )* M3508_TOR_TO_CUR);
+            set = (int16_t)(-(LQROutBuf[LEFT][0] + yaw_pid->Output )* M3508_TOR_TO_CUR);
         }else{
             set = (int16_t)(-(LQROutBuf[LEFT][0])* M3508_TOR_TO_CUR);
         }
@@ -1103,7 +1124,7 @@ static int16_t M3508_control_r(dji_motor_measure_t measure){
     }
     if(chassis_cmd.ctrl_mode == CHASSIS_OPEN_LOOP){ //平衡时,才启动转向
         if(Wheel_Shut_Flag == 0){
-            set = (int16_t)((LQROutBuf[RIGHT][0] + yaw_pid->Output) * M3508_TOR_TO_CUR);
+            set = (int16_t)((LQROutBuf[RIGHT][0] - yaw_pid->Output) * M3508_TOR_TO_CUR);
         }else{
             set = (int16_t)((LQROutBuf[RIGHT][0]) * M3508_TOR_TO_CUR);
         }
@@ -1250,6 +1271,7 @@ void Process_Clear(){
     pid_clear(roll_pid);
     pid_clear(theta_pid);
     pid_clear(yaw_pid);
+    pid_clear(yaw_follow_pid);
 
     LQRXRefBuf[LEFT][3] = 0;
     LQRXRefBuf[RIGHT][3] = 0;
@@ -1257,7 +1279,7 @@ void Process_Clear(){
     LQRXObsBuf[LEFT][3] = 0;
     LQRXObsBuf[RIGHT][3] = 0;
 
-    yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
+    yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
 
     phi0_refer_change_flag = 0;
 
@@ -1268,12 +1290,15 @@ static void Chassis_Vx_Detect(){
 
     Vx_Delta = fabsf(chassis_kf_l.FilteredValue[0] - chassis_kf_r.FilteredValue[0]);//一边卡住时
     if(Vx_Delta > VX_DELTA_MAX){
-        yaw_target = -ins.yaw_total_angle * DEGREE_2_RAD;
+        yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;
     }
     else{
         //更新航向角期望
-        yaw_target += ( - chassis_cmd.vw_relative_set / RC_DBUS_MAX_VALUE) * YAW_TURN_RATIO * DEGREE_2_RAD;
+        yaw_target += (  chassis_cmd.vw_relative_set / RC_DBUS_MAX_VALUE) * YAW_TURN_RATIO * DEGREE_2_RAD;
 
+    }
+    if(chassis_cmd.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){
+        yaw_target = chassis_cmd.vw_fllow_gimbal_set;
     }
 }
 
@@ -1323,9 +1348,9 @@ static void Chassis_Recovery() {
             }
         }
         if(leg_phi0_refer_L == PHI0_DIRECTION1 && leg_phi0_refer_R == PHI0_DIRECTION1){/*判断腿部是否到达目标位置2*/
-            if((fabsf(ins.pitch) < 5.0f) && ((fabsf(leg[LEFT]->phi0) < 0.3f) && (fabsf(leg[RIGHT]->phi0) < 0.3f))){
+            if((fabsf(ins.pitch) < 5.0f) && ((fabsf(leg[LEFT]->phi0) < 0.36f) && (fabsf(leg[RIGHT]->phi0) < 0.36f))){
                 phi0_refer_change_flag = 0;
-                chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY_READY;
+                chassis_fdb_data.stand_state = CHASSIS_IS_RECOVERY_READY;/*开腿但是关轮子*/
             }
         }
     }
@@ -1333,9 +1358,18 @@ static void Chassis_Recovery() {
         if((fabsf(leg[LEFT]->l0 - LEN_LEN_LOW) < 0.04f) && (fabsf(leg[RIGHT]->l0 - LEN_LEN_LOW) < 0.04f)){
             chassis_fdb_data.stand_state = CHASSIS_LEG_BACK_IS_OK;
         }
+
     }
 
-    if ((fabsf(ins.pitch) < 2.0f) && (fabsf(leg[LEFT]->theta) < 0.15f) &&
+    if(((fabsf(leg[LEFT]->phi0 - 90*DEGREE_2_RAD)< 35.0*DEGREE_2_RAD) && (fabsf(leg[RIGHT]->phi0 - 90*DEGREE_2_RAD)< 35.0*DEGREE_2_RAD)) /*phi0条件1*/&& (fabsf(ins.pitch) < 10.0f)/*ins条件2*/ && ((leg[LEFT]->l0< 0.16f)&&(leg[RIGHT]->l0< 0.16f))/*腿长条件3*/){
+        chassis_fdb_data.stand_state = CHASSIS_LEG_BACK_IS_OK;/*开腿开轮子*/
+    }
+    /*当腿处于设置零点的位置时可以直接开轮子*/
+    if(((leg[LEFT]->phi0 > 0.0f)&&(leg[LEFT]->phi0 < 0.4f)) && ((leg[RIGHT]->phi0 > 0.0f)&&(leg[RIGHT]->phi0 < 0.4f) && (fabsf(ins.pitch) < 5.0f) && ((leg[RIGHT]->l0 < 0.30f)&&(leg[LEFT]->l0 < 0.30f)) )){
+        chassis_fdb_data.stand_state = CHASSIS_LEG_BACK_IS_OK;/*开腿开轮子*/
+    }
+
+    if ((fabsf(ins.pitch) < 4.0f) && (fabsf(leg[LEFT]->theta) < 0.15f) &&
         (fabsf(leg[RIGHT]->theta) < 0.15f)) {/*判断是否站立稳定是通过phi角大小*/
         chassis_fdb_data.stand_state = CHASSIS_IS_STAND;/*完成起立可以正常控制,若是起立动作幅度过大可以考虑提高站立条件*/
         phi0_refer_change_flag = 0;

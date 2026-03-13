@@ -105,7 +105,6 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
     leg->phi1_inv = fmodf(leg->phi1_z1 + PI2,PI2);/*实测发现两个解中只能采用一个*/
     leg->phi4_inv = fmodf(leg->phi4_z4 + PI2,PI2);
 
-
 }
 /*
  * @brief 通过电机角度解算phi1和phi2值
@@ -116,7 +115,7 @@ static void vmc_calc_inv(struct leg_obj *leg,float phi0_refer,float l0_refer)//v
 /*这两个函数在电机位置更换时重新写!!!*/
 static void phi1_phi4_calc_left(struct leg_obj *leg, float phi1_raw, float phi4_raw){
 
-    leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;
+    leg->phi1 = fmodf(PI2 - (phi1_raw - DM_ZERO_OFFSET_LF * DEGREE_2_RAD),PI2) ;/*推导加实测出来的*/
     leg->phi4 = fmodf(PI2 - (phi4_raw + DM_ZERO_OFFSET_LB * DEGREE_2_RAD),PI2) ;
 
 }

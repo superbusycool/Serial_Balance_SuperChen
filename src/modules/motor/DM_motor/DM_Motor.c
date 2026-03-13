@@ -202,12 +202,16 @@ void dm_motor_enable_all()
 
 void dm_motor_disable_all()
 {
-    for (size_t i = 0; i < idx; i++)
+    for (size_t i = 0; i < idx - 1/*云台的4310不能被失能*/; i++)
     {
         motor_set_mode(&dm_motor_obj[i], DM_CMD_RESET_MODE);
     }
 }
 
+void dm_motor_yaw_relax()
+{
+    motor_set_mode(&dm_motor_obj[idx-1], DM_CMD_RESET_MODE);
+}
 /**
  * @brief 电机初始化,返回一个电机实例
  * @param config 电机配置
@@ -287,11 +291,6 @@ static void pack_contol_para(dm_motor_object_t dm_motor_obiect,dm_motor_para_t p
             LIMIT_MIN_MAX(para.kd, DM_KD_MIN, DM_KD_MAX);
             LIMIT_MIN_MAX(para.t,  DM_T_MIN,  DM_T_MAX);
 
-            if(dm_motor_obiect.stop_flag == MOTOR_STOP){/*参数置零*/
-                para.kp = 0.0f;
-                para.kd = 0.0f;
-                para.t = 0.0f;
-            }
 
             /* 转换float参数 */
             p = float_to_uint(para.p,     DM_P_MIN,  DM_P_MAX,  16);

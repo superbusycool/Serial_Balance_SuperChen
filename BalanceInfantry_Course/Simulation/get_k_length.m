@@ -90,11 +90,15 @@ function [K,Q,R] = get_k_length(leg_length)
     B=double(B);
    
     %模板QR值：
-    % Q=diag([40 80 1 1 800 150]);
-    % R=diag([3.75 1.05]);
 
-    Q=diag([10 100 1 1 1 1]);
-    R=diag([3.75 2.75]);
+    Q=diag([15 60 1 1 600 1]);
+    R=diag([2.75 1.25]);
+
+    % Q=diag([15 60 1 1 600 1]);
+    % R=diag([2.75 1.25]);
+
+    % Q=diag([11 10 1 1 1 1]);
+    % R=diag([2.75 1.25]);
 
     K=lqr(A,B,Q,R);
   

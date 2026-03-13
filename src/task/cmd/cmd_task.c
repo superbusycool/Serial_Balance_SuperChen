@@ -242,11 +242,11 @@ static void remote_to_cmd_pc_DT7(void)
 // TODO: 目前状态机转换较为简单，有很多优化和改进空间
     /*底盘命令*/
     chassis_cmd_data.vx =  (float)remote_ctrl_now->rc.ch[1] + keyboard_ctrl_now->vx * CHASSIS_PC_MOVE_RATIO_X;
-    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,1.0f);
+    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,10.0f);
     chassis_cmd_data.vy =  (float)remote_ctrl_now->rc.ch[0] + keyboard_ctrl_now->vy * CHASSIS_PC_MOVE_RATIO_Y;
     slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vy_set,0.8f);
     chassis_cmd_data.vw_relative =  (float)remote_ctrl_now->rc.ch[0] + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
-    slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,0.8f);
+    slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,10.0f);
 
 
 
@@ -305,9 +305,9 @@ static void remote_to_cmd_pc_DT7(void)
             if(gim_fdb.back_mode == BACK_IS_OK)
             {
                 gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
-                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
-                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
-                }
+//                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
+//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
+//                }
             }
 
             break;
@@ -415,9 +415,9 @@ static void remote_to_cmd_pc_DT7(void)
 //
 //    }
     /*--------------------------------------------底盘跟随-------------------------------------------*/
-    if(chassis_cmd_data.ctrl_mode==CHASSIS_FOLLOW_GIMBAL){
+    if(chassis_cmd_data.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){
         chassis_cmd_data.vw_fllow_gimbal_temp = gim_fdb.gimbal_yaw_refer - gim_fdb.yaw_delta;
-        chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * ins.yaw_total_angle + chassis_cmd_data.vw_fllow_gimbal_temp ;
+        chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * ins.yaw_total_angle * DEGREE_2_RAD - chassis_cmd_data.vw_fllow_gimbal_temp ;
     }
 
     /*云台命令*/
@@ -492,12 +492,7 @@ static void remote_to_cmd_pc_DT7(void)
     }
 
     /*************************************拨弹测试(只需要dt7波轮达到要求后启动拨弹电机)***********************************************************/
-    if (remote_ctrl_now->rc.s[0] == RC_MI && remote_ctrl_now->rc.ch[4]>=200 && shoot_cmd_data.ctrl_mode!=SHOOT_REVERSE)
-    {
-        shoot_cmd_data.ctrl_mode=SHOOT_COUNTINUE;
-    }else{
-        shoot_cmd_data.ctrl_mode=SHOOT_STOP;
-    }
+
 
     /*-------------------------------------------------------------堵弹反转检测------------------------------------------------------------*/
     if (sht_fdb.trigger_motor_current>=9800||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
@@ -512,10 +507,11 @@ static void remote_to_cmd_pc_DT7(void)
     }
 
     /*----------------------------------------------------------------使能判断---------------------------------------------------------------*/
-    if((gimbal_cmd_data.ctrl_mode == GIMBAL_RELAX && chassis_cmd_data.ctrl_mode == CHASSIS_RELAX) && remote_ctrl_now->rc.s[0] == RC_MI){/*刚开始时进入INIT状态*/
-        gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
-        chassis_cmd_data.ctrl_mode = CHASSIS_INIT;
-    }
+
+
+#ifdef DM_8009_SET_ZERO_POSITION
+    chassis_cmd_data.ctrl_mode = CHASSIS_INIT;
+#endif
 
     //TODO:使能判断放最后，防止抽风
     if (remote_ctrl_now->rc.s[0] == RC_UP)/*放在最后确保使能*/

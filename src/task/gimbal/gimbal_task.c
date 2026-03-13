@@ -133,10 +133,7 @@ void gimbal_control()
             {
                 dji_motor_relax(gim_motor_pitch[i]);
             }
-            for (uint8_t i = 0; i < GIM_YAW_MOTOR_NUM; i++)
-            {
-                dm_motor_relax(gim_motor_yaw[i]);
-            }
+            dm_motor_yaw_relax();
             gimbal_fdb_data.back_mode = BACK_STEP;
 
 
@@ -307,6 +304,7 @@ static int16_t motor_control_pitch(dji_motor_measure_t measure){
         pid_clear(pid_angle);
         pid_clear(pid_speed);
     }
+
 
     if(gim_cmd.ctrl_mode == GIMBAL_INIT)  // ±àÂëÆ÷±Õ»·
     {
