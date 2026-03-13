@@ -52,7 +52,7 @@ struct gimbal_fdb_msg
     float yaw_angle;    //云台初始 yaw 轴角度 （由yaw轴dm4310电机得）
     float yaw_delta;    //归中成公后,云台和底盘yaw_totoal_angle差值
     float gimbal_yaw_refer; //gimbal_gyro状态下的yaw控制角度即gim_motor_ref[YAW]
-    float yaw_follow_gimbal_target;  //底盘跟随云台时底盘的转向yaw_target
+    float fllow_gimbal_yaw_total_position;//进入底盘跟随时底盘ins_yaw_total的值
     float pitch_angle;    //云台初始 pitch 轴角度 （由imu得）
     float roll_angle;    //云台初始 roll 轴角度 （由imu得）
 };

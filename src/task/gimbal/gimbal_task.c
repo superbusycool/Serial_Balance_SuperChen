@@ -167,6 +167,7 @@ void gimbal_control()
                 gimbal_fdb_data.yaw_angle = gim_motor_yaw[0]->measure.yaw_angle;
                 gimbal_fdb_data.yaw_delta = gim_ins.yaw_total_angle * DEGREE_2_RAD - ins.yaw_total_angle * DEGREE_2_RAD/*底盘yaw_totoal_angle*/;
                 gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
+                gimbal_fdb_data.fllow_gimbal_yaw_total_position =  ins.yaw_total_angle * DEGREE_2_RAD ;
                 gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
 
             }
