@@ -305,9 +305,9 @@ static void remote_to_cmd_pc_DT7(void)
             if(gim_fdb.back_mode == BACK_IS_OK)
             {
                 gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
-//                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
-//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
-//                }
+                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
+                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
+                }
             }
 
             break;
@@ -387,7 +387,11 @@ static void remote_to_cmd_pc_DT7(void)
             shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
         }
     }
-
+    if(remote_ctrl_now->rc.ch[4]>200 && chassis_cmd_data.ctrl_mode != CHASSIS_RELAX){/*TODO 测试弹链用*/
+        shoot_cmd_data.ctrl_mode = SHOOT_COUNTINUE;
+    }else{
+        shoot_cmd_data.ctrl_mode = SHOOT_STOP;
+    }
     /***********************************************腿长的切换*******************************************/
     if(chassis_cmd_data.ctrl_mode==CHASSIS_OPEN_LOOP || chassis_cmd_data.ctrl_mode==CHASSIS_FOLLOW_GIMBAL || chassis_cmd_data.ctrl_mode==CHASSIS_SPIN || chassis_cmd_data.ctrl_mode==CHASSIS_AUTO){
         if(keyboard_ctrl_now->Z_sta == KEY_PRESS_ONCE){
@@ -417,7 +421,7 @@ static void remote_to_cmd_pc_DT7(void)
     /*--------------------------------------------底盘跟随-------------------------------------------*/
     if(chassis_cmd_data.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){
         chassis_cmd_data.vw_fllow_gimbal_temp = gim_fdb.gimbal_yaw_refer - gim_fdb.yaw_delta;
-        chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * ins.yaw_total_angle * DEGREE_2_RAD - chassis_cmd_data.vw_fllow_gimbal_temp ;
+        chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * gim_fdb.fllow_gimbal_yaw_total_position  - chassis_cmd_data.vw_fllow_gimbal_temp ;
     }
 
     /*云台命令*/

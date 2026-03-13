@@ -137,7 +137,7 @@
 #define SHOOT_TRIGGER_REVERSE_SPEED 4000/*堵弹反转*/
 /** COUNTINUE模式参数 **/
 #define DBUS_TRIGGER_SPEED_L 3500
-#define DBUS_TRIGGER_SPEED_H 5000
+#define DBUS_TRIGGER_SPEED_H 4000
 
 #define TRIGGER_MOTOR_51_TO_ANGLE 51.47f
 /*M2006的减速比为36:1，因此转轴旋转45度，要在转子的基础上乘36倍*/
@@ -179,14 +179,14 @@
 /* -------------------------------- 云台电机PID参数 ------------------------------- */
 /* 云台yaw轴电机PID参数 */
 /* imu速度环 */
-#define YAW_KP_V_IMU             15
+#define YAW_KP_V_IMU             20
 #define YAW_KI_V_IMU             5
 #define YAW_KD_V_IMU             0.0001
 #define YAW_INTEGRAL_V_IMU       3.0
 #define YAW_MAX_V_IMU            12.5
 /* imu角度环 */
-#define YAW_KP_A_IMU             0.2f
-#define YAW_KI_A_IMU             0.06f
+#define YAW_KP_A_IMU             0.3f
+#define YAW_KI_A_IMU             0.1f
 #define YAW_KD_A_IMU             0.0001
 #define YAW_INTEGRAL_A_IMU       1.0
 #define YAW_MAX_A_IMU            5
@@ -206,14 +206,14 @@
 
 /* 云台PITCH轴电机PID参数 */
 /* imu速度环 */
-#define PITCH_KP_V_IMU           8000
-#define PITCH_KI_V_IMU           4000
+#define PITCH_KP_V_IMU           6000
+#define PITCH_KI_V_IMU           3000
 #define PITCH_KD_V_IMU           0.00001
 #define PITCH_INTEGRAL_V_IMU     3000
 #define PITCH_MAX_V_IMU          30000
 
 /* imu角度环 */
-#define PITCH_KP_A_IMU           4.0f
+#define PITCH_KP_A_IMU           3.5f
 #define PITCH_KI_A_IMU           2.0f
 #define PITCH_KD_A_IMU           0.00015f
 #define PITCH_INTEGRAL_A_IMU     4.0f
@@ -277,27 +277,19 @@
 #define yaw_InteVal 0
 #define yaw_MaxVal 10.0
 //
-///*yaw相关,转向采用pd控制*/
-//#define yaw_follow_Kp 5.0
-//#define yaw_follow_Ki 0
-//#define yaw_follow_Kd 0.00001
-//#define yaw_follow_InteVal 0
-//#define yaw_follow_MaxVal 10.0
-
-
-///*yaw相关,转向采用pd控制*/
-//#define yaw_Kp 0
-//#define yaw_Ki 0
-//#define yaw_Kd 0
-//#define yaw_InteVal 0
-//#define yaw_MaxVal 0.0
-
 /*yaw相关,转向采用pd控制*/
-#define yaw_follow_Kp 0
-#define yaw_follow_Ki 0
-#define yaw_follow_Kd 0
-#define yaw_follow_InteVal 0
-#define yaw_follow_MaxVal 0.0
+#define yaw_follow_Kp 2.5
+#define yaw_follow_Ki 0.6
+#define yaw_follow_Kd 0.00001
+#define yaw_follow_InteVal 1.0
+#define yaw_follow_MaxVal 5.0
+
+///*yaw相关,转向采用pd控制*/
+//#define yaw_follow_Kp 0
+//#define yaw_follow_Ki 0
+//#define yaw_follow_Kd 0
+//#define yaw_follow_InteVal 0
+//#define yaw_follow_MaxVal 0.0
 /*roll相关*/
 #define roll_Kp 80.0
 #define roll_Ki 0.4
@@ -336,9 +328,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-//#define M3508_SET_ZERO
+#define M3508_SET_ZERO
 /*8009输入置零*/
-//#define DM8009P_SET_ZERO
+#define DM8009P_SET_ZERO
 /***********************************************************************************/
 
 /*******************************云台部分***********************************************/
