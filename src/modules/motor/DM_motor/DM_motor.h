@@ -119,7 +119,8 @@ dm_motor_object_t *dm_motor_register(motor_config_t *config, void *control);
  * @brief 所有电机退出 motor 模式
  */
 void dm_motor_disable_all();
-
+/*失能云台yaw的4310*/
+void dm_motor_yaw_relax();
 /**
  * @brief 所有电机进入 motor 模式
  *        初始化时不需要此函数,因为stop_flag的默认值为0
