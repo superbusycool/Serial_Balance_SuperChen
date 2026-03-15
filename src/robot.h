@@ -51,7 +51,10 @@ struct gimbal_fdb_msg
 
     float yaw_angle;    //云台初始 yaw 轴角度 （由yaw轴dm4310电机得）
     float yaw_delta;    //归中成公后,云台和底盘yaw_totoal_angle差值
+    float yaw_offset_angle;    //云台初始 yaw 轴角度 （由imu得）
+    float pit_offset_angle;    //云台初始 pit 轴角度 （由imu得）
     float gimbal_yaw_refer; //gimbal_gyro状态下的yaw控制角度即gim_motor_ref[YAW]
+    float gimbal_pitch_refer; //gimbal_gyro状态下的yaw控制角度即gim_motor_ref[PITCH]
     float fllow_gimbal_yaw_total_position;//进入底盘跟随时底盘ins_yaw_total的值
     float pitch_angle;    //云台初始 pitch 轴角度 （由imu得）
     float roll_angle;    //云台初始 roll 轴角度 （由imu得）
@@ -73,6 +76,9 @@ struct gimbal_cmd_msg
     float vw_relative_set;
 
     float pitch_relative_set;/*cmd线程中处理的gimbal的yaw和pitch均作为相对角度*/
+
+    float yaw_auto_set;
+    float pitch_auto_set; /*自瞄状态下的yaw和pitch,二者均为角度*/
 
     gimbal_mode_e ctrl_mode;  // 当前云台控制模式
     gimbal_mode_e last_mode;  // 上一次云台控制模式

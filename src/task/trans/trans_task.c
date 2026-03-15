@@ -48,6 +48,9 @@ static struct chassis_cmd_msg chass_cmd;
 MCN_DECLARE(gimbal_fdb);
 static McnNode_t gimbal_fdb_node;
 static struct gimbal_fdb_msg gimbal_fdb;
+MCN_DECLARE(gimbal_ins_topic);
+static McnNode_t gimbal_ins_node;
+static struct dm_imu_t gim_ins;
 
 static void trans_pub_push(void);
 static void trans_sub_init(void);
@@ -101,7 +104,7 @@ void trans_control_task(){
 void Send_to_pc(RpyTypeDef data)
 {
     /*填充数据*/
-    pack_Rpy(&data, gimbal_fdb.yaw_angle, gimbal_fdb.pitch_angle, gimbal_fdb.roll_angle,team_color);
+    pack_Rpy(&data, (gimbal_fdb.yaw_offset_angle - gim_ins.yaw), gim_ins.pitch-gimbal_fdb.pit_offset_angle, openfire,team_color);
     Check_Rpy(&data);
 
     CDC_Transmit_HS((uint8_t*)&data,sizeof(data));
@@ -243,6 +246,7 @@ void trans_sub_init(){
     ins_topic_node = mcn_subscribe(MCN_HUB(ins_topic), NULL, NULL);
     chassis_cmd_node = mcn_subscribe(MCN_HUB(chassis_cmd), NULL, NULL);
     gimbal_fdb_node = mcn_subscribe(MCN_HUB(gimbal_fdb), NULL, NULL);
+    gimbal_ins_node = mcn_subscribe(MCN_HUB(gimbal_ins_topic), NULL, NULL);
 }
 
 void trans_sub_pull(){
@@ -258,6 +262,10 @@ void trans_sub_pull(){
     if (mcn_poll(gimbal_fdb_node))
     {
         mcn_copy(MCN_HUB(gimbal_fdb), gimbal_fdb_node, &gimbal_fdb);
+    }
+    if (mcn_poll(gimbal_ins_node))
+    {
+        mcn_copy(MCN_HUB(gimbal_ins_topic), gimbal_ins_node, &gim_ins);
     }
 
 }

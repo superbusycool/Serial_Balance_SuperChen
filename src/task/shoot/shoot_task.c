@@ -160,7 +160,7 @@ void shoot_control(void)
             break;
 
         case SHOOT_REVERSE:
-            shoot_motor_ref[TRIGGER_MOTOR]= - SHOOT_TRIGGER_REVERSE_SPEED;/*@warning : 串腿的拨弹盘无法反转,反转可能会损伤拨弹盘*/
+            shoot_motor_ref[TRIGGER_MOTOR]= SHOOT_TRIGGER_REVERSE_SPEED;/*@warning : 串腿的拨弹盘无法反转,反转可能会损伤拨弹盘*/
             total_angle_flag = SHOOT_ANGLE_CONTINUE;
             break;
 
@@ -271,12 +271,12 @@ static int16_t motor_control_trigger(dji_motor_measure_t measure)
         pid_clear(pid_speed);
     }
 
-    /*pid计算输出*/
-    if (fire_cmd.ctrl_mode==SHOOT_ONE||fire_cmd.ctrl_mode==SHOOT_THREE) //非连发模式的时候，用双环pid控制拨弹电机
-    {
-        pid_out_angle = (int16_t) pid_calculate(pid_angle, get_angle, shoot_motor_ref[TRIGGER_MOTOR]);  // 编码器增长方向与imu相反
-        send_data = (int16_t) pid_calculate(pid_speed, get_speed, pid_out_angle);     // 电机转动正方向与imu相反
-    }
+//    /*pid计算输出*/
+//    if (fire_cmd.ctrl_mode==SHOOT_ONE||fire_cmd.ctrl_mode==SHOOT_THREE) //非连发模式的时候，用双环pid控制拨弹电机
+//    {
+//        pid_out_angle = (int16_t) pid_calculate(pid_angle, get_angle, shoot_motor_ref[TRIGGER_MOTOR]);  // 编码器增长方向与imu相反
+//        send_data = (int16_t) pid_calculate(pid_speed, get_speed, pid_out_angle);     // 电机转动正方向与imu相反
+//    }
         /*pid计算输出*/
     else if(fire_cmd.ctrl_mode==SHOOT_COUNTINUE||fire_cmd.ctrl_mode==SHOOT_REVERSE)//自动模式的时候，只用速度环控制拨弹电机
     {
