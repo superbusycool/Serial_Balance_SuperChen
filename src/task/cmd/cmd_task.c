@@ -60,8 +60,10 @@ First_Order_Filter_t mouse_y_lpf,mouse_x_lpf;
 /*自瞄继承角度*/
 kb_control_t *keyboard_ctrl_now;
 
+/*继承角度*/
+static float gyro_yaw_inherit;
+static float gyro_pitch_inherit;
 /* ------------------------------- 遥控数据转换为控制指令 ------------------------------ */
-static void remote_to_cmd(void);
 static void remote_to_cmd_pc_DT7(void);/*键鼠控制||遥控器控制,都可以*/
 //TODO: 添加图传链路的自定义控制器控制方式和键鼠控制方式
 
@@ -92,145 +94,6 @@ static float jump_flag=0;
 static float flag=0;
 
 static float jump_count=0;
-/**
- * @brief 将遥控器数据转换为控制指令
- */
-static void remote_to_cmd(void)
-{
-    /*检测数据接收是否正常*/
-    Remote_Message_Moniter(remote_ctrl_now);
-    PC_Handle_kb();
-    // TODO: 目前状态机转换较为简单，有很多优化和改进空间
-    //遥控器的控制信息转化为标准单位，平移为(mm/s)旋转为(degree/s)
-    chassis_cmd_data.vx = remote_ctrl_now->rc.ch[1];
-    slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,1.0f);
-    chassis_cmd_data.vw_relative = remote_ctrl_now->rc.ch[0];  // TODO: 暂时换绑为vw
-    slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,1.0f);
-    /*云台控制*/
-//    chassis_cmd_data.offset_angle = gim_fdb.yaw_delta;
-////    gimbal_cmd_data.vw_relative = remote_ctrl_now->rc.ch[2];
-//    slope_following(&gimbal_cmd_data.vw_relative,&gimbal_cmd_data.vw_relative_set,1.0f);
-//    gimbal_cmd_data.pitch_relative = remote_ctrl_now->rc.ch[3];
-//    slope_following(&gimbal_cmd_data.pitch_relative,&gimbal_cmd_data.pitch_relative_set,1.0f);
-
-   // 右拨杆s[0]]为上时，底盘和云台均REALX；为中时，云台为GYRO，地盘为OPEN；为下时，云台为AUTO。
-   // 左拨杆s[1]为上时，腿长为LOW；为中时，腿长为MID；为下时，腿长为HIG。（当前暂不考虑遥控器对发射机构的控制）
-   switch (remote_ctrl_now->rc.s[0])
-   {
-       case RC_UP:
-           chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
-           break;
-
-       case RC_MI:
-
-           if((chassis_fdb.stand_state != CHASSIS_IS_DANGER))
-           {
-                if(chassis_cmd_data.last_mode == CHASSIS_INIT || chassis_cmd_data.last_mode == CHASSIS_RELAX)
-                {
-                    chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;//完成倒地自起
-                }
-                else if(chassis_cmd_data.last_mode == CHASSIS_RECOVERY || chassis_cmd_data.last_mode == CHASSIS_AUTO)
-                {
-                    if(chassis_fdb.stand_state == CHASSIS_IS_STAND)
-                    {
-                        chassis_cmd_data.ctrl_mode = CHASSIS_OPEN_LOOP;
-
-                    }
-                    else if(chassis_fdb.stand_state == CHASSIS_IS_DANGER)
-                    {
-                        chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
-                    }
-                    else{
-                        chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;
-                    }
-                }
-
-           }
-           else{
-               chassis_cmd_data.ctrl_mode = CHASSIS_RECOVERY;
-           }
-
-           break;
-
-       case RC_DN:
-
-           if(chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP){
-               chassis_cmd_data.ctrl_mode = CHASSIS_AUTO;
-           }
-
-            break;
-    }
-
-    switch (remote_ctrl_now->rc.s[1])
-    {
-        case RC_UP:
-            chassis_cmd_data.leg_level = LEG_LOW;
-            break;
-        case RC_MI:
-            chassis_cmd_data.leg_level = LEG_MID;
-
-            break;
-        case RC_DN:
-            chassis_cmd_data.leg_level = LEG_HIG;
-            break;
-        default:
-            chassis_cmd_data.leg_level = LEG_LOW;
-            break;
-    }
-
-//    if(chassis_cmd_data.last_mode==CHASSIS_JUMP){
-//        flag=1;
-//    }
-
-   /* 因为左拨杆值会影响到底盘RELAX状态，所以后判断 */
-   /*switch(remote_ctrl_now->sw3)
-   {
-   case RC_UP:
-       gimbal_cmd_data.ctrl_mode = GIMBAL_RELAX;
-       chassis_cmd_data.ctrl_mode = CHASSIS_RELAX;
-       break;
-   case RC_MI:
-       if(gimbal_cmd_data.last_mode == GIMBAL_RELAX)
-       {*//* 判断上次状态是否为RELAX，是则先归中 *//*
-           gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
-       }
-       else
-       {
-           if(gim_fdb.back_mode == BACK_IS_OK)
-           {
-               gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;
-           }
-       }
-       break;
-   case RC_DN:
-       if(gimbal_cmd_data.last_mode == GIMBAL_RELAX)
-       {*//* 判断上次状态是否为RELAX，是则先归中 *//*
-           gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
-       }
-       else
-       {
-           if(gim_fdb.back_mode == BACK_IS_OK)
-           {*//* 判断归中是否完成 *//*
-               gimbal_cmd_data.ctrl_mode = GIMBAL_AUTO;
-           }
-       }
-       break;
-   }*/
-    /* 保存上一次数据 */
-    gimbal_cmd_data.last_mode = gimbal_cmd_data.ctrl_mode;
-    chassis_cmd_data.last_mode = chassis_cmd_data.ctrl_mode;
-    shoot_cmd_data.last_mode=shoot_cmd_data.ctrl_mode;
-
-    /* 保存上一次数据 */
-     gimbal_cmd_data.last_mode = gimbal_cmd_data.ctrl_mode;
-    if(remote_ctrl_now->rc.s[0] != remote_ctrl_last.rc.s[0]){
-        chassis_cmd_data.leg_leng_change = LENGTH_CHANGE;
-    }
-
-    chassis_cmd_data.last_mode = chassis_cmd_data.ctrl_mode;
-    remote_ctrl_last = *remote_ctrl_now;
-
-}
 
 /* -------------------------------------------- 将遥控器数据转换为控制指令 ----------------------------------------------- */
 #ifdef BSP_USING_RC_DBUS_KEYBOARD
@@ -245,7 +108,7 @@ static void remote_to_cmd_pc_DT7(void)
     slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vx_set,10.0f);
     chassis_cmd_data.vy =  (float)remote_ctrl_now->rc.ch[0] + keyboard_ctrl_now->vy * CHASSIS_PC_MOVE_RATIO_Y;
     slope_following(&chassis_cmd_data.vx,&chassis_cmd_data.vy_set,0.8f);
-    chassis_cmd_data.vw_relative =  (float)remote_ctrl_now->rc.ch[0] + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
+    chassis_cmd_data.vw_relative =  (float)remote_ctrl_now->rc.ch[2] + remote_ctrl_now->mouse.x * CHASSIS_PC_MOVE_RATIO_R;
     slope_following(&chassis_cmd_data.vw_relative,&chassis_cmd_data.vw_relative_set,10.0f);
 
 
@@ -305,9 +168,9 @@ static void remote_to_cmd_pc_DT7(void)
             if(gim_fdb.back_mode == BACK_IS_OK)
             {
                 gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
-                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
-                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
-                }
+//                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
+//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
+//                }
             }
 
             break;
@@ -327,6 +190,8 @@ static void remote_to_cmd_pc_DT7(void)
                 if(gim_fdb.back_mode == BACK_IS_OK)
                 {/* 判断归中是否完成 */
                     gimbal_cmd_data.ctrl_mode = GIMBAL_AUTO;
+                }else{
+                    gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
                 }
             }
 
@@ -366,6 +231,7 @@ static void remote_to_cmd_pc_DT7(void)
     if((keyboard_ctrl_now->F_sta==KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1]==RC_MI) && (remote_ctrl_now->rc.s[0]!=RC_UP))
     {
         shoot_cmd_data.friction_status=1;
+//        shoot_cmd_data.friction_status=0;/*TODO 测试腿长时用*/
     }
     else{
         shoot_cmd_data.friction_status = 0;
@@ -393,14 +259,14 @@ static void remote_to_cmd_pc_DT7(void)
         shoot_cmd_data.ctrl_mode = SHOOT_STOP;
     }
     /***********************************************腿长的切换*******************************************/
-    if(chassis_cmd_data.ctrl_mode==CHASSIS_OPEN_LOOP || chassis_cmd_data.ctrl_mode==CHASSIS_FOLLOW_GIMBAL || chassis_cmd_data.ctrl_mode==CHASSIS_SPIN || chassis_cmd_data.ctrl_mode==CHASSIS_AUTO){
-        if(keyboard_ctrl_now->Z_sta == KEY_PRESS_ONCE){
+    if(chassis_cmd_data.ctrl_mode != CHASSIS_RELAX && chassis_cmd_data.ctrl_mode != CHASSIS_INIT && chassis_cmd_data.ctrl_mode != CHASSIS_RECOVERY){/*稳定状态下切换腿长*/
+        if(keyboard_ctrl_now->Z_sta == KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1] == RC_UP){
             chassis_cmd_data.leg_level = LEG_LOW;
         }
-        if(keyboard_ctrl_now->X_sta == KEY_PRESS_ONCE){
+        if(keyboard_ctrl_now->X_sta == KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1] == RC_MI){
             chassis_cmd_data.leg_level = LEG_MID;
         }
-        if(keyboard_ctrl_now->C_sta == KEY_PRESS_ONCE){
+        if(keyboard_ctrl_now->C_sta == KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1] == RC_DN){
             chassis_cmd_data.leg_level = LEG_HIG;
         }
     }
@@ -432,7 +298,8 @@ static void remote_to_cmd_pc_DT7(void)
         gimbal_cmd_data.vw_relative_set = (float)remote_ctrl_now->rc.ch[2];
         gimbal_cmd_data.pitch_relative_set = (float)remote_ctrl_now->rc.ch[3] ;
 
-
+        gyro_yaw_inherit =gim_fdb.gimbal_yaw_refer;
+        gyro_pitch_inherit =gim_fdb.gimbal_pitch_refer;
         mouse_accumulate_x=0;
         mouse_accumulate_y=0;
     }
@@ -441,8 +308,8 @@ static void remote_to_cmd_pc_DT7(void)
         /*需要注意数据量级!!!*/
         mouse_accumulate_x-=fx * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
         mouse_accumulate_y-=fy * KB_RATIO * GIMBAL_PC_MOVE_RATIO_PIT;
-        gimbal_cmd_data.vw_relative_set = trans_fdb.yaw_target /* + mouse_accumulate_x*/;/* + 150 * remote_ctrl_now->ch3 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW*/;//上位机自瞄
-        gimbal_cmd_data.pitch_relative_set = trans_fdb.pitch_target + mouse_accumulate_y/* +100 * remote_ctrl_now->ch4 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT */;//上位机自瞄
+        gimbal_cmd_data.yaw_auto_set = trans_fdb.yaw_target+gyro_yaw_inherit + remote_ctrl_now->mouse.x /* + mouse_accumulate_x*/;/* + 150 * remote_ctrl_now->ch3 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_YAW*/;//上位机自瞄
+        gimbal_cmd_data.pitch_auto_set = trans_fdb.pitch_target + gyro_pitch_inherit + remote_ctrl_now->mouse.y/* +100 * remote_ctrl_now->ch4 * RC_RATIO * GIMBAL_RC_MOVE_RATIO_PIT */;//上位机自瞄
     }
 
     switch (shoot_cmd_data.ctrl_mode)

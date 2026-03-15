@@ -40,7 +40,7 @@ static void chassis_sub_pull(void);
 
 
 #define LEN_LEN_LOW     0.13f // 单位：m
-#define LEN_LEN_MID     0.21f // 单位：m
+#define LEN_LEN_MID     0.24f // 单位：m
 #define LEN_LEN_HIG     0.28f // 单位：m
 #define FORCE_Length_LIMIT 200.0f //
 #define FORCE_LIMIT 200.0f // 支持力限幅,保护电机,防止起跳时电压过低电机保护
@@ -61,7 +61,10 @@ static float dm_v_set[2][2];
 
 static float phi0_refer_change_flag;/*倒地自起时的phi0切换标志位*/
 
-#define Theta_Compensation  -0.09f//-0.11f
+#define Theta_Compensation_recovery  -0.08f
+#define Theta_Compensation_leg_low   -0.08f
+#define Theta_Compensation_leg_mid   -0.05f
+#define Theta_Compensation_leg_high  -0.05f
 
 #define CHASSIS_VX_MAX        673.0f
 #define CHASSIS_WX_MAX        270.0f
@@ -371,11 +374,11 @@ static void update_LQR_obs() {
 
     if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*起立时的lqr*/
         /*记录下Q和R
-   Q=diag([11 10 1 1 1 1]);
+   Q=diag([15 60 1 1 1 1]);
     R=diag([2.75 1.25]);
 K矩阵 =
-  [-10.155728,  -2.236739,  -0.601681,  -1.268268,   1.822092,   0.413514;
-     3.980534,   0.848420,  -0.059632,  -0.141910,   5.892146,   1.244850]
+  [-13.048913,  -4.806185,  -0.585212,  -1.410591,   1.979999,   0.448584;
+     3.112786,   2.240955,  -0.215489,  -0.441632,   5.985971,   1.264407]
         */
         // 起立时的LQR参数赋值
 
@@ -401,54 +404,53 @@ K矩阵 =
   [-13.545654,  -4.850934,  -0.590491,  -1.484837,   5.662847,   0.608445;
      6.573835,   2.370359,   0.181213,   0.495912,  23.669597,   1.937076]
  */
-            a11[0] = 25.4959f, a11[1] = -20.4685f, a11[2] = 0.0986f, a11[3] = -13.3763f;
-            a12[0] = 5.4697f,  a12[1] = -5.1941f,  a12[2] = 0.1319f,   a12[3] = -4.8176f;
-            a13[0] = 0.1243f, a13[1] = -0.0890f,   a13[2] = -0.0016f,  a13[3] = -0.5896f;
-            a14[0] = -0.3127f, a14[1] = 0.1897f,   a14[2] = 0.0179f,   a14[3] = -1.4882f;
-            a15[0] = 31.2429f, a15[1] = -24.5420f, a15[2] = 0.1996f,  a15[3] = 5.8571f;
-            a16[0] = 2.7212f,  a16[1] = -2.1297f,  a16[2] = 0.0118f,   a16[3] = 0.6258f;
-            a21[0] = 11.8110f, a21[1] = -10.4497f,  a21[2] = 0.6335f,   a21[3] = 6.6032f;
-            a22[0] = 12.0755f,  a22[1] = -9.5004f,  a22[2] = 0.0949f,   a22[3] = 2.4438f;
-            a23[0] = 0.9564f,  a23[1] = -0.7831f,  a23[2] = 0.0230f,   a23[3] = 0.1858f;
-            a24[0] = 2.8456f,  a24[1] = -2.2327f,  a24[2] = 0.0212f,   a24[3] = 0.5133f;
-            a25[0] = -15.1236f, a25[1] = 10.4451f,   a25[2] = 0.5230f,  a25[3] = 23.5280f;
-            a26[0] = -1.6526f, a26[1] = 1.2001f,   a26[2] = 0.0320f,   a26[3] = 1.9235f;
+            a11[0] = 25.4064f, a11[1] = -20.4095f, a11[2] = 0.1017f, a11[3] = -13.3804f;
+            a12[0] = 5.4704f,  a12[1] = -5.1957f,  a12[2] = 0.1321f,   a12[3] = -4.8160f;
+            a13[0] = 0.1117f, a13[1] = -0.0809f,   a13[2] = -0.0009f,  a13[3] = -0.5908f;
+            a14[0] = -0.3367f, a14[1] = 0.2049f,   a14[2] = 0.0193f,   a14[3] = -1.4905f;
+            a15[0] = 28.9557f, a15[1] = -22.7408f, a15[2] = 0.1808f,  a15[3] = 5.4592f;
+            a16[0] = 2.6484f,  a16[1] = -2.0718f,  a16[2] = 0.0111f,   a16[3] = 0.6117f;
+            a21[0] = 11.1482f, a21[1] = -9.9274f,  a21[2] = 0.6291f,   a21[3] = 6.5444f;
+            a22[0] = 12.0279f,  a22[1] = -9.4598f,  a22[2] = 0.0930f,   a22[3] = 2.4486f;
+            a23[0] = 0.8948f,  a23[1] = -0.7378f,  a23[2] = 0.0241f,   a23[3] = 0.1770f;
+            a24[0] = 2.7058f,  a24[1] = -2.1321f,  a24[2] = 0.0251f,   a24[3] = 0.4939f;
+            a25[0] = -14.1451f, a25[1] = 9.8005f,   a25[2] = 0.4762f,  a25[3] = 21.7409f;
+            a26[0] = -1.6006f, a26[1] = 1.1631f,   a26[2] = 0.0305f,   a26[3] = 1.8630f;
         }
         if(chassis_cmd.leg_level == LEG_MID){
-            a11[0] = 25.1322f, a11[1] = -20.2319f, a11[2] = 0.1111f, a11[3] = -12.8727f;
-            a12[0] = 5.2158f,  a12[1] = -5.0155f,  a12[2] = 0.1390f,   a12[3] = -4.4354f;
-            a13[0] = 0.1319f, a13[1] = -0.0933f,   a13[2] = -0.0023f,  a13[3] = -0.5891f;
-            a14[0] = -0.2628f, a14[1] = 0.1530f,   a14[2] = 0.0164f,   a14[3] = -1.4566f;
-            a15[0] = 31.4763f, a15[1] = -24.7133f, a15[2] = 0.2040f,  a15[3] = 5.7995f;
-            a16[0] = 2.7313f,  a16[1] = -2.1381f,  a16[2] = 0.0126f,   a16[3] = 0.6201f;
-            a21[0] = 11.3179f, a21[1] = -10.0181f,  a21[2] = 0.6153f,   a21[3] = 6.3794f;
-            a22[0] = 11.1210f,  a22[1] = -8.7505f,  a22[2] = 0.0903f,   a22[3] = 2.2174f;
-            a23[0] = 1.0098f,  a23[1] = -0.8219f,  a23[2] = 0.0222f,   a23[3] = 0.1886f;
-            a24[0] = 2.8881f,  a24[1] = -2.2594f,  a24[2] = 0.0190f,   a24[3] = 0.5062f;
-            a25[0] = -15.0528f, a25[1] = 10.3647f,   a25[2] = 0.5318f,  a25[3] = 23.5565f;
-            a26[0] = -1.6517f, a26[1] = 1.1971f,   a26[2] = 0.0328f,   a26[3] = 1.9256f;
+            a11[0] = 32.2444f, a11[1] = -24.8360f, a11[2] = -0.2613f, a11[3] = -13.4682f;
+            a12[0] = 6.0658f,  a12[1] = -5.6312f,  a12[2] = 0.1235f,   a12[3] = -5.4418f;
+            a13[0] = 0.2620f, a13[1] = -0.1665f,   a13[2] = -0.0158f,  a13[3] = -0.5749f;
+            a14[0] = 0.5693f, a14[1] = -0.3384f,   a14[2] = -0.0576f,   a14[3] = -1.4222f;
+            a15[0] = 10.7570f, a15[1] = -8.5222f, a15[2] = 0.1000f,  a15[3] = 2.0657f;
+            a16[0] = 1.8584f,  a16[1] = -1.4720f,  a16[2] = 0.0178f,   a16[3] = 0.4642f;
+            a21[0] = -13.7433f, a21[1] = 10.8662f,  a21[2] = -0.2665f,   a21[3] = 2.7409f;
+            a22[0] = 13.7348f,  a22[1] = -10.7925f,  a22[2] = 0.0738f,   a22[3] = 2.6938f;
+            a23[0] = -1.5564f,  a23[1] = 1.1731f,  a23[2] = 0.0022f,   a23[3] = -0.2656f;
+            a24[0] = -3.1406f,  a24[1] = 2.3344f,  a24[2] = 0.0182f,   a24[3] = -0.5561f;
+            a25[0] = -2.6653f, a25[1] = 2.2951f,   a25[2] = -0.1067f,  a25[3] = 6.0150f;
+            a26[0] = -0.4593f, a26[1] = 0.3567f,   a26[2] = -0.0004f,   a26[3] = 1.2696f;
         }
 
         if(chassis_cmd.leg_level == LEG_HIG){
-            a11[0] = 25.1322f, a11[1] = -20.2319f, a11[2] = 0.1111f, a11[3] = -12.8727f;
-            a12[0] = 5.2158f,  a12[1] = -5.0155f,  a12[2] = 0.1390f,   a12[3] = -4.4354f;
-            a13[0] = 0.1319f, a13[1] = -0.0933f,   a13[2] = -0.0023f,  a13[3] = -0.5891f;
-            a14[0] = -0.2628f, a14[1] = 0.1530f,   a14[2] = 0.0164f,   a14[3] = -1.4566f;
-            a15[0] = 31.4763f, a15[1] = -24.7133f, a15[2] = 0.2040f,  a15[3] = 5.7995f;
-            a16[0] = 2.7313f,  a16[1] = -2.1381f,  a16[2] = 0.0126f,   a16[3] = 0.6201f;
-            a21[0] = 11.3179f, a21[1] = -10.0181f,  a21[2] = 0.6153f,   a21[3] = 6.3794f;
-            a22[0] = 11.1210f,  a22[1] = -8.7505f,  a22[2] = 0.0903f,   a22[3] = 2.2174f;
-            a23[0] = 1.0098f,  a23[1] = -0.8219f,  a23[2] = 0.0222f,   a23[3] = 0.1886f;
-            a24[0] = 2.8881f,  a24[1] = -2.2594f,  a24[2] = 0.0190f,   a24[3] = 0.5062f;
-            a25[0] = -15.0528f, a25[1] = 10.3647f,   a25[2] = 0.5318f,  a25[3] = 23.5565f;
-            a26[0] = -1.6517f, a26[1] = 1.1971f,   a26[2] = 0.0328f,   a26[3] = 1.9256f;
+            a11[0] = 27.8812f, a11[1] = -21.8746f, a11[2] = -0.1415f, a11[3] = -12.4363f;
+            a12[0] = 5.2931f,  a12[1] = -5.0727f,  a12[2] = 0.1388f,   a12[3] = -4.3949f;
+            a13[0] = 0.1334f, a13[1] = -0.0786f,   a13[2] = -0.0125f,  a13[3] = -0.5871f;
+            a14[0] = 0.1556f, a14[1] = -0.0775f,   a14[2] = -0.0366f,   a14[3] = -1.3916f;
+            a15[0] = 10.9287f, a15[1] = -8.5992f, a15[2] = 0.0742f,  a15[3] = 2.0327f;
+            a16[0] = 1.9119f,  a16[1] = -1.5042f,  a16[2] = 0.0142f,   a16[3] = 0.4571f;
+            a21[0] = -10.5528f, a21[1] = 7.6665f,  a21[2] = 0.1351f,   a21[3] = 3.1900f;
+            a22[0] = 10.9697f,  a22[1] = -8.6599f,  a22[2] = 0.0730f,   a22[3] = 2.1042f;
+            a23[0] = -1.1265f,  a23[1] = 0.7991f,  a23[2] = 0.0275f,   a23[3] = -0.2010f;
+            a24[0] = -2.0865f,  a24[1] = 1.4403f,  a24[2] = 0.0703f,   a24[3] = -0.4068f;
+            a25[0] = -3.4979f, a25[1] = 2.8635f,   a25[2] = -0.0885f,  a25[3] = 5.9477f;
+            a26[0] = -0.6040f, a26[1] = 0.4630f,   a26[2] = -0.0006f,   a26[3] = 1.2558f;
         }
 
 
 
     }
 
-    LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation ;
 
     LQRXObsBuf[LEFT][1] = leg[LEFT]->d_theta_lpf ;
 
@@ -464,8 +466,6 @@ K矩阵 =
     LQRXObsBuf[LEFT][5] = -ins.gyro[1] * DEGREE_2_RAD;
 
 
-    LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation ;
-
     LQRXObsBuf[RIGHT][1] = leg[RIGHT]->d_theta_lpf ;
 
     LQRXObsBuf[RIGHT][2] = 0;
@@ -475,6 +475,31 @@ K矩阵 =
     LQRXObsBuf[RIGHT][4] = -ins.pitch * DEGREE_2_RAD ;
     LQRXObsBuf[RIGHT][5] = -ins.gyro[1] * DEGREE_2_RAD;
 
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*调整不同腿长下的theta角补偿*/
+        LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation_recovery ;
+        LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation_recovery ;
+    }else{
+        switch (chassis_cmd.leg_level) {
+            case LEG_LOW:
+                LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation_leg_low ;
+                LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation_leg_low ;
+                break;
+            case LEG_MID:
+                LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation_leg_mid ;
+                LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation_leg_mid ;
+                break;
+            case LEG_HIG:
+                LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation_leg_high ;
+                LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation_leg_high ;
+                break;
+            default:
+                LQRXObsBuf[LEFT][0] = leg[LEFT]->theta + Theta_Compensation_recovery ;
+                LQRXObsBuf[RIGHT][0] = leg[RIGHT]->theta + Theta_Compensation_recovery ;
+                break;
+
+        }
+
+    }
 
 
     LQRXRefBuf[RIGHT][2] = 0;
@@ -539,7 +564,6 @@ void chassis_task_init(void)
     chassis_motor_init();
     chassis_kf_init();
 
-
 }
 
 
@@ -596,6 +620,7 @@ void chassis_control_task(void)
             yaw_target = ins.yaw_total_angle * DEGREE_2_RAD;/*消除转向pid的影响*/
             motor_enable();
             Chassis_Recovery();
+            pid_clear(roll_pid);
 
 
             //TODO: 处于该模式下，应该屏蔽遥控器等控制
@@ -765,8 +790,14 @@ static void Leg_FN_Calculation(float ROLL_TARGET,float L_TARGET){/*交23年平�
 
     F_l_R = pid_calculate(R_length_pid, leg[RIGHT]->l0, L_TARGET);
 
-    F_bl_gravity = 0.5 * m_b * g;
-    F_bl_intertial = 0.5 * m_b * (leg[LEFT]->l0_average / (2.0f*Rl)) * (-ins.gyro[2] * DEGREE_2_RAD) * chassis_vx_filter;
+    if(chassis_cmd.ctrl_mode == CHASSIS_RECOVERY){/*状态不稳定,腿部支持力不加前馈*/
+        F_bl_gravity = 0.0f;
+        F_bl_intertial = 0.0f;
+    }else{
+        F_bl_gravity = 0.5 * m_b * g;
+        F_bl_intertial = 0.5 * m_b * (leg[LEFT]->l0_average / (2.0f*Rl)) * (-ins.gyro[2] * DEGREE_2_RAD) * chassis_vx_filter;
+    }
+
 
     leg[LEFT]->F_Spring_to_F_Vertical(leg[LEFT]);
     leg[RIGHT]->F_Spring_to_F_Vertical(leg[RIGHT]);

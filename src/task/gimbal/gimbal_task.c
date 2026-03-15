@@ -163,12 +163,12 @@ void gimbal_control()
                    && (init_dt > INIT_TIMEOUT)))
             {
                 gimbal_fdb_data.back_mode = BACK_IS_OK;
-                gimbal_fdb_data.pitch_angle = gim_ins.pitch * DEGREE_2_RAD;
-                gimbal_fdb_data.yaw_angle = gim_motor_yaw[0]->measure.yaw_angle;
                 gimbal_fdb_data.yaw_delta = gim_ins.yaw_total_angle * DEGREE_2_RAD - ins.yaw_total_angle * DEGREE_2_RAD/*底盘yaw_totoal_angle*/;
                 gim_motor_ref[YAW] = gim_ins.yaw_total_angle * DEGREE_2_RAD ;/*TODO 注意弧度还是角度*/
                 gimbal_fdb_data.fllow_gimbal_yaw_total_position =  ins.yaw_total_angle * DEGREE_2_RAD ;
                 gim_motor_ref[PITCH] = gim_ins.pitch * DEGREE_2_RAD ;
+                gimbal_fdb_data.yaw_offset_angle=gim_ins.yaw;
+                gimbal_fdb_data.pit_offset_angle = gim_ins.pitch;
 
             }
 #endif
@@ -180,15 +180,17 @@ void gimbal_control()
             gim_motor_ref[PITCH] += ( gim_cmd.pitch_relative_set / RC_DBUS_MAX_VALUE) * GIMBAL_PITCH_TURN_RATIO * DEGREE_2_RAD;
             LIMIT_MIN_MAX(gim_motor_ref[PITCH],PITCH_ANGLE_MIN * DEGREE_2_RAD,PITCH_ANGLE_MAX * DEGREE_2_RAD);
             gimbal_fdb_data.gimbal_yaw_refer = gim_motor_ref[YAW];
-            gimbal_fdb_data.pitch_angle=gim_ins.pitch * DEGREE_2_RAD;
+            gimbal_fdb_data.gimbal_pitch_refer = gim_motor_ref[PITCH];
 
             break;
 
             // TODO: add auto mode
         case GIMBAL_AUTO:
             /*gim_motor_ref[YAW] = gim_cmd.yaw_auto;*/
-            gim_motor_ref[YAW] = trans_fdb.yaw_target;
-            gim_motor_ref[PITCH] = trans_fdb.pitch_target;
+            gim_motor_ref[YAW] = gim_cmd.yaw_auto_set * DEGREE_2_RAD;/*弧度*/
+            gim_motor_ref[PITCH] = gim_cmd.pitch_auto_set * DEGREE_2_RAD;
+
+
             // 底盘相对于云台归中值的角度，取负
             break;
 
@@ -203,7 +205,6 @@ void gimbal_control()
             }
             break;
     }
-
 
     vTaskDelay(1);
 }
