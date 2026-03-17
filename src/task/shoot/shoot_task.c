@@ -160,7 +160,7 @@ void shoot_control(void)
             break;
 
         case SHOOT_REVERSE:
-            shoot_motor_ref[TRIGGER_MOTOR]= SHOOT_TRIGGER_REVERSE_SPEED;/*@warning : 串腿的拨弹盘无法反转,反转可能会损伤拨弹盘*/
+            shoot_motor_ref[TRIGGER_MOTOR]= -SHOOT_TRIGGER_REVERSE_SPEED;/*@warning : 串腿的拨弹盘无法反转,反转可能会损伤拨弹盘*/
             total_angle_flag = SHOOT_ANGLE_CONTINUE;
             break;
 

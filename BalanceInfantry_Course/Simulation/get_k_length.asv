@@ -94,12 +94,10 @@ function [K,Q,R] = get_k_length(leg_length)
 
     %中腿长
 
-    Q=diag([12 50 3 1 600 10]);
-    R=diag([2.75 1.25]);
     %低腿长
 
-    % Q=diag([15 30 3 1 350 5]);
-    % R=diag([2.75 1.25]);
+    Q=diag([15 40 1 1 500 1]);
+    R=diag([2.75 1.25]);
 
     %起立
    % Q=diag([10 10 1 1 500 1]);
@@ -108,7 +106,7 @@ function [K,Q,R] = get_k_length(leg_length)
     % Q=diag([11 10 1 1 1 1]);
     % R=diag([2.75 1.25]);
 
-    % Q=diag([12 60 1 1 1 1]);
+    % Q=diag([15 40 1 1 1 1]);
     % R=diag([2.75 1.25]);
 
     K=lqr(A,B,Q,R);
