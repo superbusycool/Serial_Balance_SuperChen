@@ -169,7 +169,7 @@ static void remote_to_cmd_pc_DT7(void)
             {
                 gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
 //                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
-//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动*/
+//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动,不开云台时不需要*/
 //                }
             }
 
@@ -178,7 +178,7 @@ static void remote_to_cmd_pc_DT7(void)
         case RC_DN:
 
             if((chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP) && (gim_fdb.back_mode == BACK_IS_OK)){
-                chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL;
+//                chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL;/*不开云台时不需要*/
             }
 
             if(gimbal_cmd_data.last_mode == GIMBAL_RELAX)
@@ -267,7 +267,7 @@ static void remote_to_cmd_pc_DT7(void)
             chassis_cmd_data.leg_level = LEG_MID;
         }
         if(keyboard_ctrl_now->C_sta == KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1] == RC_DN){
-            chassis_cmd_data.leg_level = LEG_HIG;
+            chassis_cmd_data.leg_level = LEG_MID;
         }
     }
     else{
@@ -285,7 +285,7 @@ static void remote_to_cmd_pc_DT7(void)
 //
 //    }
     /*--------------------------------------------底盘跟随-------------------------------------------*/
-    if(chassis_cmd_data.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){
+    if(chassis_cmd_data.ctrl_mode == CHASSIS_FOLLOW_GIMBAL){/*推导在.md文档里有*/
         chassis_cmd_data.vw_fllow_gimbal_temp = gim_fdb.gimbal_yaw_refer - gim_fdb.yaw_delta;
         chassis_cmd_data.vw_fllow_gimbal_set = 2.0f * gim_fdb.fllow_gimbal_yaw_total_position  - chassis_cmd_data.vw_fllow_gimbal_temp ;
     }
@@ -366,10 +366,10 @@ static void remote_to_cmd_pc_DT7(void)
 
 
     /*-------------------------------------------------------------堵弹反转检测------------------------------------------------------------*/
-    if (sht_fdb.trigger_motor_current>=9800||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
+    if (sht_fdb.trigger_motor_current>=9000||reverse_cnt!=0)/*M2006电机的堵转电流是10000*/
     {
         shoot_cmd_data.ctrl_mode=SHOOT_REVERSE;
-        if (reverse_cnt<450)
+        if (reverse_cnt<300)
             reverse_cnt++;
         else{
             reverse_cnt=0;
