@@ -123,7 +123,7 @@
 #define INIT_TIMEOUT 1000  // 单位: ms 初始化归中超时时间
 
 /* pitch轴最大仰角 */
-#define PITCH_ANGLE_MAX        30.0f
+#define PITCH_ANGLE_MAX        20.0f
 /* pitch轴最大俯角 */
 #define PITCH_ANGLE_MIN        -15.0f
 
@@ -308,9 +308,9 @@
  * */
 //#define DM_8009_SET_ZERO_POSITION
 /*云台电机yaw轴设置零点*/
-//#define YAW_MOTOR_SET_ZERO_POSITION
-/*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校准)*/
+//#define YAW_MOTOR_SET_ZERO_POSITION准)*/
 //#define BSP_BMI088_CALI
+/*使用imu校准(不用每次都校准,一段时间校准即可,温度在40摄氏度左右再进行校
 /*使用位于云台的达妙imu*/
 #define  BSP_USING_DM_IMU
 /*使用damiao板imu加热*/
@@ -329,9 +329,9 @@
 //#define BSP_USING_HT_MOTOR
 
 /*3508输入置零*/
-#define M3508_SET_ZERO
+//#define M3508_SET_ZERO
 /*8009输入置零*/
-#define DM8009P_SET_ZERO
+//#define DM8009P_SET_ZERO
 /***********************************************************************************/
 
 /*******************************云台部分***********************************************/
@@ -344,6 +344,9 @@
 /*********************************状态机部分*********************************************/
 #define BSP_USING_RC_DBUS_KEYBOARD /*使用键盘控制*/
 //#define BSP_USING_SUPERCAP/*超电控制*/
+#define CHASSIS_FOLLOW_GIMBAL_CLOSE
+#define FRICTION_CLOSE
+#define GIMBAL_AUTO_CLOSE
 /**************************************************************************************/
 /************************************************************************************/
 

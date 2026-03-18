@@ -168,9 +168,13 @@ static void remote_to_cmd_pc_DT7(void)
             if(gim_fdb.back_mode == BACK_IS_OK)
             {
                 gimbal_cmd_data.ctrl_mode = GIMBAL_GYRO;/*gimbal进入手动控制状态*/
-//                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
-//                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动,不开云台时不需要*/
-//                }
+#if (defined(CHASSIS_FOLLOW_GIMBAL_CLOSE) || defined(GIMBAL_RELEX) )
+
+#else
+                if(chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP){
+                    chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL ;/*正常进行跟随云台运动,不开云台时不需要*/
+                }
+#endif
             }
 
             break;
@@ -178,7 +182,11 @@ static void remote_to_cmd_pc_DT7(void)
         case RC_DN:
 
             if((chassis_cmd_data.last_mode == CHASSIS_OPEN_LOOP) && (gim_fdb.back_mode == BACK_IS_OK)){
-//                chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL;/*不开云台时不需要*/
+#if (defined(CHASSIS_FOLLOW_GIMBAL_CLOSE) || defined(GIMBAL_RELEX) )
+
+#else
+                chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL;/*不开云台时不需要*/
+#endif
             }
 
             if(gimbal_cmd_data.last_mode == GIMBAL_RELAX)
@@ -189,7 +197,11 @@ static void remote_to_cmd_pc_DT7(void)
             {
                 if(gim_fdb.back_mode == BACK_IS_OK)
                 {/* 判断归中是否完成 */
+#ifdef GIMBAL_AUTO_CLOSE
+
+#else
                     gimbal_cmd_data.ctrl_mode = GIMBAL_AUTO;
+#endif
                 }else{
                     gimbal_cmd_data.ctrl_mode = GIMBAL_INIT;
                 }
@@ -200,7 +212,12 @@ static void remote_to_cmd_pc_DT7(void)
     /************************************************自瞄部分*****************************************************************/
     if ((remote_ctrl_now->mouse.press_r==1||remote_ctrl_last.rc.s[1]==RC_DN) && (gim_fdb.back_mode == BACK_IS_OK && chassis_cmd_data.ctrl_mode == CHASSIS_OPEN_LOOP)) /*!如果鼠标按下右键或者遥控器选择自瞄模式*/
     {
+/*TODO 测试手动瞄准时需要关闭,避免疯车*/
+#ifdef GIMBAL_AUTO_CLOSE
+
+#else
         gimbal_cmd_data.ctrl_mode = GIMBAL_AUTO;
+#endif
     }
     /***********************************************小陀螺*******************************************************************/
     /*TODO:小陀螺*/
@@ -224,14 +241,22 @@ static void remote_to_cmd_pc_DT7(void)
     //关小陀螺
     if(chassis_cmd_data.ctrl_mode==CHASSIS_SPIN && keyboard_ctrl_now->Q_sta==KEY_PRESS_ONCE )
     {
+#if (defined(CHASSIS_FOLLOW_GIMBAL_CLOSE) || defined(GIMBAL_RELEX) )
+
+#else
         chassis_cmd_data.ctrl_mode = CHASSIS_FOLLOW_GIMBAL;
+#endif
     }
     /*TODO:--------------------------------------------------发射模块状态机--------------------------------------------------------------*/
     /*!-----------------------------------------开关摩擦轮--------------------------------------------*/
     if((keyboard_ctrl_now->F_sta==KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1]==RC_MI) && (remote_ctrl_now->rc.s[0]!=RC_UP))
     {
+#ifdef FRICTION_CLOSE
+        shoot_cmd_data.friction_status=0;/*TODO 测试腿长时用*/
+#else
         shoot_cmd_data.friction_status=1;
-//        shoot_cmd_data.friction_status=0;/*TODO 测试腿长时用*/
+#endif
+
     }
     else{
         shoot_cmd_data.friction_status = 0;
@@ -267,7 +292,7 @@ static void remote_to_cmd_pc_DT7(void)
             chassis_cmd_data.leg_level = LEG_MID;
         }
         if(keyboard_ctrl_now->C_sta == KEY_PRESS_ONCE || remote_ctrl_now->rc.s[1] == RC_DN){
-            chassis_cmd_data.leg_level = LEG_MID;
+            chassis_cmd_data.leg_level = LEG_HIG;
         }
     }
     else{
