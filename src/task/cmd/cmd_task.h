@@ -10,7 +10,7 @@
 #define CMD_TASK_H
 
 #include "stdio.h"
-
+#include <stdint.h>
 /**
  * @brief 控制指令任务初始化
  */
