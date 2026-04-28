@@ -78,6 +78,7 @@ class leg_VMC:
         
         # 标志位
         self.first_flag = 0
+
     
     def vmc_calc_pos(self, dt=0.004, phi1=None, phi4=None, pitch=None, gyro=None):
 

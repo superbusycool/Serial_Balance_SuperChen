@@ -1,0 +1,105 @@
+function [K,Q,R] = get_k_length(leg_length)
+    persistent A_func B_func
+   
+    %theta : 摆杆与竖直方向夹角             R   ：驱动轮半径
+    %x     : 驱动轮位移                    L   : 摆杆重心到驱动轮轴距离
+    %phi   : 机体与水平夹角                LM  : 摆杆重心到其转轴距离
+    %T     ：驱动轮输出力矩                 l   : 机体重心到其转轴距离
+    %Tp    : 髋关节输出力矩              
+    %N     ：驱动轮对摆杆力的水平分量        mw  : 驱动轮转子质量
+    %P     ：驱动轮对摆杆力的竖直分量        mp  : 摆杆质量
+    %Nm    ：摆杆对机体力水平方向分量        M   : 机体质量
+    %Pm    ：摆杆对机体力竖直方向分量        Iw  : 驱动轮转子转动惯量
+    %Nf    : 地面对驱动轮摩擦力             Ip  : 摆杆绕质心转动惯量
+    %                              Im  : 机体绕质心转动惯量
+    if isempty(A_func) || isempty(B_func)
+    
+        syms x(t) T R Iw mw M L LM theta(t) l d phi(t) mp g Tp Ip IM
+        syms f1 f2 f3 d_theta d_x d_phi theta0 x0 phi0 theta_offset
+        
+       
+        NM = M*diff(x + (L + LM )*sin(theta)-l*sin(phi+theta_offset),t,2);%(式1.7)
+        N = NM + mp*diff(x + L*sin(theta),t,2);%(式1.4)
+        PM = M*g + M*diff((L+LM)*cos(theta)+l*cos(phi+theta_offset),t,2);%(式1.8)
+        P = PM +mp*g+mp*diff(L*cos(theta),t,2);%(式1.5)
+    
+        eqn1 = diff(x,t,2) == (T -N*R)/(Iw/R + mw*R);%(式1.3)
+        eqn2 = Ip*diff(theta,t,2) == (P*L + PM*LM)*sin(theta)-(N*L+NM*LM)*cos(theta)-T+Tp;%(式1.6)
+        eqn3 = IM*diff(phi,t,2) == Tp +NM*l*cos(phi+theta_offset)+PM*l*sin(phi);%(式1.9)
+        
+        eqn10 = subs(subs(subs(subs(subs(subs(subs(subs(subs(eqn1,diff(theta,t,2),f1),diff(x,t,2),f2),diff(phi,t,2),f3),diff(theta,t),d_theta),diff(x,t),d_x),diff(phi,t),d_phi),theta,theta0),x,x0),phi,phi0);
+        eqn20 = subs(subs(subs(subs(subs(subs(subs(subs(subs(eqn2,diff(theta,t,2),f1),diff(x,t,2),f2),diff(phi,t,2),f3),diff(theta,t),d_theta),diff(x,t),d_x),diff(phi,t),d_phi),theta,theta0),x,x0),phi,phi0);
+        eqn30 = subs(subs(subs(subs(subs(subs(subs(subs(subs(eqn3,diff(theta,t,2),f1),diff(x,t,2),f2),diff(phi,t,2),f3),diff(theta,t),d_theta),diff(x,t),d_x),diff(phi,t),d_phi),theta,theta0),x,x0),phi,phi0);
+        
+        [f1,f2,f3] = solve(eqn10,eqn20,eqn30,f1,f2,f3);
+       
+        A_sym=subs(jacobian([d_theta,f1,d_x,f2,d_phi,f3],[theta0,d_theta,x0,d_x,phi0,d_phi]),[theta0,d_theta,d_x,phi0,d_phi,T,Tp],[0,0,0,0,0,0,0]);
+        B_sym=subs(jacobian([d_theta,f1,d_x,f2,d_phi,f3],[T,Tp]),[theta0,d_theta,d_x,phi0,d_phi,T,Tp],[0,0,0,0,0,0,0]);
+        
+
+        A_func = matlabFunction(A_sym, 'Vars', [R,L,LM,l,mw,mp,M,Iw,Ip,IM,theta_offset,g]);
+        B_func = matlabFunction(B_sym, 'Vars', [R,L,LM,l,mw,mp,M,Iw,Ip,IM,theta_offset,g]);
+    end
+    
+    R1=0.058;                          % 驱动轮半径
+    l1= 0.0;                     % 真实的机体质心到转轴距离 
+    
+    mw1=0.577;                         % 驱动轮质量
+    mp1=0.804;                         % 杆质量
+    M1=12.801;                         % 机体质量
+    Iw1=mw1*R1^2;                      % 驱动轮转动惯量
+    IM1=0.203945641;                   % 机体绕质心转动惯量
+    theta_offset1=0.0;     %机体质心与同一竖直切面和机体转轴在此竖直平面投影点连线,与z轴的夹角角度(rad)
+    
+    
+    % 腿长参数查找表
+    Leg_data = [
+                  0.12,  0.156,   0.108,  0.01769790, 1.489642; 
+                  0.13,  0.158,  0.110,  0.01798949, 1.419654133;
+                  0.14,  0.160,  0.111,  0.01830103, 1.3550768;
+                  0.15,  0.162,  0.112,  0.01858948, 1.294688267;
+                  0.16,  0.164,  0.114,  0.01893331, 1.238314;
+                  0.17,  0.166,  0.115,  0.01930053, 1.185081333;
+                  0.18,  0.169,  0.117,  0.01969116, 1.134466667;
+                  0.19,  0.172,  0.119,  0.02010521, 1.08647;
+                  0.20,  0.174,  0.121,  0.02054272, 1.040567733;
+                  0.21,  0.177,  0.123,  0.02100371, 0.9964108;
+                  0.22,  0.180,  0.126,  0.02148821, 0.954173733;
+                  0.23,  0.183,  0.127,  0.02199626, 0.913507467;
+                  0.24,  0.186,  0.130,  0.02252789, 0.874237467;
+                  0.25,  0.190,  0.132,  0.02308315, 0.8361892;
+                  0.26,  0.193,  0.134,  0.02366207, 0.799188133;
+                  0.27,  0.196,  0.137,  0.02426472, 0.7634088;
+                  0.28,  0.200,  0.139,  0.02489113, 0.728502133;
+                  0.29,  0.203,  0.142,  0.02554137, 0.6942936;
+                  0.30,  0.207,  0.144,  0.02621551, 0.660957733;
+                  0.31,  0.210,  0.147,  0.02691362, 0.628145467;
+                  0.32,  0.213,  0.149664,0.0278425, 0.595555375;
+                  0.33,  0.217,  0.152390,0.0285996, 0.563804845;
+                  0.34,  0.221,  0.155165,0.0293814, 0.532230379;
+                  0.35,  0.225,  0.157975,0.0301878, 0.500830356;
+                  0.36,  0.228,  0.160820,0.0310192, 0.469430333;
+                  0.37,  0.232,  0.163700,0.0318755, 0.438030312;
+                  0.38,  0.236,  0.166619,0.0327577, 0.406281400;
+    ];
+    idx = round(leg_length*100 - 11); % 四舍五入为整数，消除浮点数精度误差
+    
+    if idx < 1 || idx > size(Leg_data,1)
+        error(['腿长 %f 对应的索引 %d 越界！Leg_data仅包含0.12~0.38（步长0.01）的参数',...
+               '，请检查输入的leg_length是否在该范围内'], leg_length, idx);
+    end
+    
+    L1 = Leg_data(idx, 2);  % 摆杆重心到驱动轮轴距离
+    LM1 = Leg_data(idx, 3); % 摆杆重心到其转轴距离
+    Ip1 = Leg_data(idx, 4); % 摆杆转动惯量
+    
+    % 极速代入求值
+    A = double(A_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
+    B = double(B_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
+   
+    % 低腿长测试权重矩阵
+    Q=diag([12 60 1 1 100 1]);
+    R=diag([2.75 1.25]);
+
+    K=lqr(A,B,Q,R);
+end
