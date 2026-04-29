@@ -15,7 +15,7 @@ class LegWheelRobot:
 
         self.sensor_T = 0.001
         self.sensor_f = 1/self.sensor_T 
-        self.wheel_r = 0.77
+        self.wheel_r = 0.058
 
         self.gyro = []
         self.accel = []
