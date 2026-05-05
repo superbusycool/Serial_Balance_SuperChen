@@ -25,7 +25,7 @@ function [K,Q,R] = get_k_length(leg_length)
     
         eqn1 = diff(x,t,2) == (T -N*R)/(Iw/R + mw*R);%(式1.3)
         eqn2 = Ip*diff(theta,t,2) == (P*L + PM*LM)*sin(theta)-(N*L+NM*LM)*cos(theta)-T+Tp;%(式1.6)
-        eqn3 = IM*diff(phi,t,2) == Tp +NM*l*cos(phi+theta_offset)+PM*l*sin(phi);%(式1.9)
+        eqn3 = IM*diff(phi,t,2) == Tp +NM*l*cos(phi+theta_offset)+PM*l*sin(phi+theta_offset);%(式1.9)
         
         eqn10 = subs(subs(subs(subs(subs(subs(subs(subs(subs(eqn1,diff(theta,t,2),f1),diff(x,t,2),f2),diff(phi,t,2),f3),diff(theta,t),d_theta),diff(x,t),d_x),diff(phi,t),d_phi),theta,theta0),x,x0),phi,phi0);
         eqn20 = subs(subs(subs(subs(subs(subs(subs(subs(subs(eqn2,diff(theta,t,2),f1),diff(x,t,2),f2),diff(phi,t,2),f3),diff(theta,t),d_theta),diff(x,t),d_x),diff(phi,t),d_phi),theta,theta0),x,x0),phi,phi0);
@@ -41,15 +41,16 @@ function [K,Q,R] = get_k_length(leg_length)
         B_func = matlabFunction(B_sym, 'Vars', [R,L,LM,l,mw,mp,M,Iw,Ip,IM,theta_offset,g]);
     end
     
-    R1=0.058;                          % 驱动轮半径
-    l1= 0.0;                     % 真实的机体质心到转轴距离 
+    R1=0.077;                          % 驱动轮半径
+    l1= 0.05423;                     % 真实的机体质心到转轴距离 
+    % l1= 0.0;
     
     mw1=0.322;                         % 驱动轮质量
     mp1=2.751;                         % 杆质量
     M1=8.4;                         % 机体质量
     Iw1=mw1*R1^2;                      % 驱动轮转动惯量
     IM1=0.143;                   % 机体绕质心转动惯量
-    theta_offset1=0.0;     %机体质心与同一竖直切面和机体转轴在此竖直平面投影点连线,与z轴的夹角角度(rad)
+    theta_offset1=-3.14;     %机体质心与同一竖直切面和机体转轴在此竖直平面投影点连线,与z轴的夹角角度(rad)
     
     % 格式: [腿长(m), 质心到轮轴距离(m), 质心到髋关节距离(m), 转动惯量(kg·m²), theta_l0(rad)[腿部质心与竖直方向的夹角]]
     % 注：theta_l0列新增，theta_l0和theta_r0通用，不同腿长对应不同偏移角度
@@ -97,10 +98,15 @@ function [K,Q,R] = get_k_length(leg_length)
     % 极速代入求值
     A = double(A_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
     B = double(B_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
+
+    % recovery
+     % Q=diag([20 60 1 1 1 1]);
+     % R=diag([1.75 1.25]);
+
    
     % 低腿长测试权重矩阵
-    Q=diag([12 60 1 1 100 1]);
-    R=diag([2.75 1.25]);
+    Q=diag([20 30 1 1 350 5]);
+    R=diag([2.75 0.75]);
 
     K=lqr(A,B,Q,R);
 end

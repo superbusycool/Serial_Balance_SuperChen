@@ -11,26 +11,26 @@ from Controller import *
 
 
 #/*位置*/
-l_length_Kp = 100.0
-l_length_Ki = 20.00
+l_length_Kp = 200.0
+l_length_Ki = 0.00
 l_length_Kd = 0.00001
-l_length_InteVal = 50
-l_length_MaxVal = 150
+l_length_InteVal = 0
+l_length_MaxVal = 200
 
 
 #/*位置*/
-r_length_Kp= 100.0
-r_length_Ki= 20.00
+r_length_Kp= 200.0
+r_length_Ki= 0.00
 r_length_Kd= 0.00001
-r_length_InteVal= 50
-r_length_MaxVal= 150
+r_length_InteVal= 0
+r_length_MaxVal= 200
 
 #/*theta相关*/
-theta_Kp= 15
-theta_Ki= 0
+theta_Kp= 25.0
+theta_Ki= 2.0
 theta_Kd= 0.00001
 theta_InteVal= 0
-theta_MaxVal= 50
+theta_MaxVal= 10.0
 
 #/*yaw相关,转向采用pd控制*/
 yaw_Kp= 1.0
@@ -47,11 +47,11 @@ yaw_follow_InteVal= 0.0
 yaw_follow_MaxVal= 5.0
 
 #/*roll相关*/
-roll_Kp= 3.5
-roll_Ki= 0
+roll_Kp= 0.05
+roll_Ki= 0.005
 roll_Kd= 0.00001
-roll_InteVal= 0.0
-roll_MaxVal= 50
+roll_InteVal= 10.0
+roll_MaxVal= 40
 
 m_b_whole = 8.4  #机体质量
 g = 9.80665
@@ -66,7 +66,7 @@ def main():
     t3 = 20
     Off_Ground_Flag = 0
     # create chassis command and simple filter placeholders expected by LQR
-    chassis_cmd = ChassisCmd(ctrl_mode=CHASSIS_RELAX, leg_length=0.15, leg_leng_change=LENGTH_STAY, leg_level=LEG_LOW, off_ground_flag=0, vx_set=0.0)
+    chassis_cmd = ChassisCmd(ctrl_mode=CHASSIS_OPENLOOP, leg_length=0.20, leg_leng_change=LENGTH_STAY, leg_level=LEG_LOW, off_ground_flag=0, vx_set=0.0)
     chassis_kf_l = 0.0
     chassis_kf_r = 0.0
     vmc_r = leg_VMC()
@@ -78,7 +78,7 @@ def main():
     leg_length_L_PID = PID(l_length_Kp, l_length_Ki, l_length_Kd, l_length_InteVal, l_length_MaxVal)
     leg_length_R_PID = PID(r_length_Kp, r_length_Ki, r_length_Kd, r_length_InteVal, r_length_MaxVal)
     Roll_PID = PID(roll_Kp, roll_Ki, roll_Kd, roll_InteVal, roll_MaxVal)
-    Yaw_PID = PID(yaw_Kp, yaw_Ki, yaw_Kd, yaw_InteVal, yaw_MaxVal)
+    # Yaw_PID = PID(yaw_Kp, yaw_Ki, yaw_Kd, yaw_InteVal, yaw_MaxVal)
 
     Theta_PID_Output = 0
     leg_length_L_PID_Output = 0 
@@ -86,7 +86,7 @@ def main():
     Roll_PID_Output = 0
     Yaw_PID_Output = 0
 
-    F_bl_gravity = 0.5 * m_b_whole * g   #机体质量一半
+    F_bl_gravity = 0.5*0.5 * m_b_whole * g   #机体质量一半
 
     while True:
         i = i + 1
@@ -109,18 +109,18 @@ def main():
             Theta_PID_Output = Theta_PID.calc(vmc_r.theta - vmc_l.theta, 0)
             leg_length_L_PID_Output = leg_length_L_PID.calc(vmc_l.L0, chassis_cmd.leg_length)
             leg_length_R_PID_Output = leg_length_R_PID.calc(vmc_r.L0, chassis_cmd.leg_length)
-            Roll_PID_Output = Roll_PID.calc(GBC486.euler[0], 0)
-            Yaw_PID_Output = Yaw_PID.calc(GBC486.euler[2], 0)
+            # Roll_PID_Output = Roll_PID.calc(GBC486.euler[0]*(180.0/math.pi), 0)
+            # Yaw_PID_Output = Yaw_PID.calc(GBC486.euler[2], 0)
 
-            # vmc_r.F0 = Roll_PID_Output + leg_length_R_PID_Output + F_bl_gravity
-            # vmc_l.F0 = -Roll_PID_Output + leg_length_L_PID_Output + F_bl_gravity
-            # vmc_r.Tp = controller.UR[1] + Theta_PID_Output
-            # vmc_l.Tp = controller.UL[1] - Theta_PID_Output
+            vmc_r.F0 = -Roll_PID_Output + leg_length_R_PID_Output + F_bl_gravity
+            vmc_l.F0 = Roll_PID_Output + leg_length_L_PID_Output + F_bl_gravity
+            vmc_r.Tp = controller.UR[1] - Theta_PID_Output
+            vmc_l.Tp = controller.UL[1] + Theta_PID_Output
 
-            vmc_r.F0 = 0
-            vmc_l.F0 = 0
-            vmc_r.Tp = 0
-            vmc_l.Tp = 0          
+            # vmc_r.F0 = 0
+            # vmc_l.F0 = 0
+            # vmc_r.Tp = 0
+            # vmc_l.Tp = 0          
 
             vmc_l.vmc_calc_torque()
             vmc_r.vmc_calc_torque()
@@ -131,12 +131,12 @@ def main():
             w_r = 0
             w_l = 0
 
-            # w_r = controller.UR[0]
-            # w_l = controller.UL[0]
+            w_r = controller.UR[0]
+            w_l = controller.UL[0]
 
 
-            GBC486.wheel_torque = [w_r,w_l]
-            GBC486.joint_torque = [vmc_r.torque_set[0],vmc_r.torque_set[1],vmc_l.torque_set[0],vmc_l.torque_set[1]]
+            GBC486.wheel_torque = [-w_r,-w_l]
+            GBC486.joint_torque = [vmc_r.torque_set[0],vmc_r.torque_set[1],-vmc_l.torque_set[0],-vmc_l.torque_set[1]]
             GBC486.actuator_set_torque()
 
         #键盘控制指令输入,以及打印数据;运行频率低以降低仿真延迟
@@ -145,10 +145,15 @@ def main():
             # print(GBC486.euler[1])
             # print(vmc_r.phi1,vmc_r.phi4,vmc_l.phi1,vmc_l.phi4)
             # print(GBC486.joint_pos[0],GBC486.joint_pos[1],GBC486.joint_pos[2],GBC486.joint_pos[3])
-            # print(vmc_r.L0,vmc_r.phi0,vmc_l.L0,vmc_l.phi0)
+            print(vmc_r.L0,vmc_l.L0,GBC486.euler[0],Roll_PID_Output)
             # print(GBC486.euler[0], GBC486.euler[1], GBC486.euler[2])
             # print(Theta_PID_Output, leg_length_L_PID_Output, leg_length_R_PID_Output, Roll_PID_Output)
             # print(GBC486.d_x)
+            # print(vmc_r.phi0,vmc_r.theta,vmc_l.phi0,vmc_l.theta)
+            # print(vmc_r.torque_set[0],vmc_r.torque_set[1],vmc_l.torque_set[0],vmc_l.torque_set[1])
+            # print(controller.UR[0],controller.UL[0])
+            # print(vmc_r.L0,vmc_l.L0,chassis_cmd.leg_length)
+            # print(vmc_r.theta,vmc_l.theta)
 
 
 

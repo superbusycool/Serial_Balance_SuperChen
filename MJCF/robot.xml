@@ -38,9 +38,9 @@
 
   <worldbody>
     <!-- <body name="base" pos="0 0 0.5" quat="0.9659258262890683 0 0.25881904510252076 0"> -->
-    <body name="base" pos="0 0 0.2" >
+    <body name="base" pos="0 0 0.15" >
     <!-- "扣雷挖及悠打"，注释下面这行代码可以让车身悬浮在空中 -->
-      <!-- <joint name="base_free" type="free"/> -->
+      <joint name="base_free" type="free"/>
       <site name="imu" type="box" size="0.002 0.002 0.002"  rgba="1 1 0 1"/>
       <geom type="mesh" material="base_mat" mesh="base_link" 
         class="touch" mass="8.4"/>
