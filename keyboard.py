@@ -13,26 +13,29 @@ class KeyboardController:
     def _on_press(self, key):
         try:
             if key.char == 'w':
-                self.command[0] = 1.0  
-            elif key.char == 's':
-                self.command[0] = -1.0  
-            elif key.char == 'a':
-                self.command[1] = -1.0  
-            elif key.char == 'd':
-                self.command[1] = 1.0  
+                self.command[2] = 1.0  # w: 跳跃/上升
         except AttributeError:
-            if key == keyboard.Key.space:
-                self.command[2] = 1.0  
-    
+            if key == keyboard.Key.up:
+                self.command[0] = 1.0      # 上: 前进
+            elif key == keyboard.Key.down:
+                self.command[0] = -1.0     # 下: 后退
+            elif key == keyboard.Key.left:
+                self.command[1] = -1.0     # 左: 左转
+            elif key == keyboard.Key.right:
+                self.command[1] = 1.0      # 右: 右转
+            elif key == keyboard.Key.space:
+                self.command[2] = 1.0
+
     def _on_release(self, key):
-        # 释放按键时重置
         try:
-            if key.char in ['w', 's']:
-                self.command[0] = 0.0
-            elif key.char in ['a', 'd']:
-                self.command[1] = 0.0
+            if key.char == 'w':
+                self.command[2] = 0.0
         except AttributeError:
-            if key == keyboard.Key.space:
+            if key in (keyboard.Key.up, keyboard.Key.down):
+                self.command[0] = 0.0
+            elif key in (keyboard.Key.left, keyboard.Key.right):
+                self.command[1] = 0.0
+            elif key == keyboard.Key.space:
                 self.command[2] = 0.0
     
     def _init_keyboard(self):
@@ -56,7 +59,7 @@ if __name__ == '__main__':
             cmd = controller.get_command()
             # print(cmd)
             # 将指令应用到控制器
-            data.ctrl[0] = cmd[0] * 10.0  # 前向力
+            data.ctrl[0] = cmd[0] * 10.0  # 前'; 向力
             data.ctrl[1] = cmd[1] * 5.0   # 转向
             
             mujoco.mj_step(model, data)

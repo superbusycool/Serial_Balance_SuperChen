@@ -44,13 +44,14 @@ class ChassisCmd:
             - off_ground_flag: int (0 or 1)
             - vx_set: numeric (rc dbus value, same scale used in LQR)
         """
-        def __init__(self, ctrl_mode, leg_length, leg_leng_change, leg_level, off_ground_flag, vx_set):
+        def __init__(self, ctrl_mode, leg_length, leg_leng_change, leg_level, off_ground_flag, vx_set, vw_set):
                 self.ctrl_mode = ctrl_mode
                 self.leg_length = leg_length
                 self.leg_leng_change = leg_leng_change
                 self.leg_level = leg_level
                 self.Off_Ground_Flag = off_ground_flag
                 self.vx_set = vx_set
+                self.vw_set = vw_set 
 
 
 class ChassisKF:
@@ -251,11 +252,11 @@ class LQRController:
 
         # build ref vectors
         ref = np.zeros(6)
-        # ref[2] = 0.0
-        # ref[3] = chassis_cmd.vx_set
-
         ref[2] = 0.0
-        ref[3] = 0.0  #静止情况下
+        ref[3] = chassis_cmd.vx_set
+
+        # ref[2] = 0.0
+        # ref[3] = 0.0  #静止情况下
 
         # compute error = ref - obs
         self.err_L = ref - self.obs_L

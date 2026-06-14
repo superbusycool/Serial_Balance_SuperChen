@@ -3,7 +3,7 @@ tic
 j=1;
 leg=0.13:0.01:0.38;
 for i=leg
-    [k,q,r]=get_k_length(i);
+    [k,q,r,A_out, B_out]=get_k_length(i);
     % [k,q,r]=get_k_length_theta_offset(i);
     k11(j) = k(1,1);
     k12(j) = k(1,2);

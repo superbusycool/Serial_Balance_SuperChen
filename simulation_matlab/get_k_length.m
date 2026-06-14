@@ -1,4 +1,4 @@
-function [K,Q,R] = get_k_length(leg_length)
+function [K,Q,R,A_out, B_out] = get_k_length(leg_length)
     persistent A_func B_func
    
     %theta : 摆杆与竖直方向夹角             R   ：驱动轮半径
@@ -99,10 +99,13 @@ function [K,Q,R] = get_k_length(leg_length)
     A = double(A_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
     B = double(B_func(R1, L1, LM1, l1, mw1, mp1, M1, Iw1, Ip1, IM1,theta_offset1, 9.8));
 
+    A_out = A ;
+    B_out = B;
+
+
     % recovery
      % Q=diag([20 60 1 1 1 1]);
      % R=diag([1.75 1.25]);
-
    
     % 低腿长测试权重矩阵
     Q=diag([20 30 1 1 350 5]);
