@@ -108,8 +108,8 @@ function [K,Q,R,A_out, B_out] = get_k_length(leg_length)
      % R=diag([1.75 1.25]);
    
     % 低腿长测试权重矩阵
-    Q=diag([20 30 1 1 350 5]);
-    R=diag([2.75 0.75]);
+    Q=diag([80 30 1 10 500 1]);
+    R=diag([3.75 1.75]);
 
     K=lqr(A,B,Q,R);
 end

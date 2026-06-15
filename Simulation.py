@@ -21,35 +21,29 @@ l_length_MaxVal = 200
 
 #/*位置*/
 r_length_Kp= 250.0
-r_length_Ki= 10.00
+r_length_Ki= 0.00
 r_length_Kd= 0.00001
 r_length_InteVal= 0
 r_length_MaxVal= 200
 
 #/*theta相关*/
-theta_Kp= 35.0
-theta_Ki= 2.0
+theta_Kp= 50.0
+theta_Ki= 10.0
 theta_Kd= 0.00001
 theta_InteVal= 0
 theta_MaxVal= 10.0
 
 #/*yaw相关,转向采用pd控制*/
-yaw_Kp= 5.0
+yaw_Kp= 3.0
 yaw_Ki= 0
 yaw_Kd= 0.00001
 yaw_InteVal= 0
 yaw_MaxVal= 10.0
 
-#/*yaw相关,转向采用pd控制*/
-yaw_follow_Kp= 0.25
-yaw_follow_Ki= 0.0
-yaw_follow_Kd= 0.000001
-yaw_follow_InteVal= 0.0
-yaw_follow_MaxVal= 5.0
 
 #/*roll相关*/
-roll_Kp= 0.5
-roll_Ki= 0.005
+roll_Kp= 5.0
+roll_Ki= 0.1
 roll_Kd= 0.00001
 roll_InteVal= 10.0
 roll_MaxVal= 40
@@ -61,6 +55,7 @@ def main():
 
     chassis_kf_l = 0.0
     chassis_kf_r = 0.0
+    yaw_target = 0.0
 
     TORQUE = 1  #为1时给力矩，为0是无力矩
     GBC486 = LegWheelRobot('MJCF/env.xml')
@@ -119,12 +114,16 @@ def main():
             vmc_r.vmc_calc_pos(phi1=GBC486.joint_pos[0]+math.pi,phi4=GBC486.joint_pos[1],pitch= GBC486.euler[1],gyro=GBC486.gyro[1])
             vmc_l.vmc_calc_pos(phi1=math.pi-GBC486.joint_pos[2],phi4=-GBC486.joint_pos[3],pitch=-GBC486.euler[1],gyro=-GBC486.gyro[1])
            
+            if(abs(GBC486.euler[1])> 0.2):
+               yaw_target = GBC486.euler[2]
+            yaw_target  -= chassis_cmd.vw_set*0.05  #根据转向速度指令调整yaw目标值
+
             #pid calculate
             Theta_PID_Output = Theta_PID.calc(vmc_r.theta - vmc_l.theta, 0)
             leg_length_L_PID_Output = leg_length_L_PID.calc(vmc_l.L0, chassis_cmd.leg_length)
             leg_length_R_PID_Output = leg_length_R_PID.calc(vmc_r.L0, chassis_cmd.leg_length)
             Roll_PID_Output = Roll_PID.calc(GBC486.euler[0]*(180.0/math.pi), 0)
-            Yaw_PID_Output = Yaw_PID.calc(GBC486.euler[2], GBC486.euler[2] - chassis_cmd.vw_set) 
+            Yaw_PID_Output = Yaw_PID.calc(GBC486.euler[2], yaw_target) 
 
             vmc_r.F0 = -Roll_PID_Output + leg_length_R_PID_Output + F_bl_gravity
             vmc_l.F0 = Roll_PID_Output + leg_length_L_PID_Output + F_bl_gravity
@@ -160,7 +159,7 @@ def main():
         if i % t3 == 0:
             #键盘控制信息
             cmd = keyboard.get_command()
-            chassis_cmd.vx_set = cmd[0] * 3.0  # 前向速度指令，范围[-1, 1]，映射到实际速度范围
+            chassis_cmd.vx_set = cmd[0] * 2.0  # 前向速度指令，范围[-1, 1]，映射到实际速度范围
             chassis_cmd.vw_set = cmd[1]* 0.2  # 转向速度指令，范围[-1, 1]，映射到实际转向速度范围
             #
 
@@ -177,7 +176,7 @@ def main():
             # print(vmc_r.L0,vmc_l.L0,chassis_cmd.leg_length)
             # print(vmc_r.theta,vmc_l.theta)
 
-            print(chassis_kf_l,chassis_kf_r)
+            print(GBC486.euler[1])
 
             # 实时绘制pitch角度曲线
             # pitch_data.append(GBC486.euler[1])
