@@ -9,8 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/gpio.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.obj"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.obj.d"
-  "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj"
-  "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj.d"
   "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj"

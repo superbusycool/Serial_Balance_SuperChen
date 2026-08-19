@@ -138,24 +138,10 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.s"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\main.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\main.c.s
 
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/memorymap.c
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\memorymap.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\memorymap.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\memorymap.c
-
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.i"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\memorymap.c > CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\memorymap.c.i
-
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.s"
-	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\memorymap.c -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\memorymap.c.s
-
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/spi.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\spi.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\spi.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\spi.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.i: cmake_force
@@ -169,7 +155,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/stm32h7xx_hal_msp.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_hal_msp.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_hal_msp.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\stm32h7xx_hal_msp.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.i: cmake_force
@@ -183,7 +169,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/stm32h7xx_hal_timebase_tim.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_hal_timebase_tim.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_hal_timebase_tim.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\stm32h7xx_hal_timebase_tim.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.i: cmake_force
@@ -197,7 +183,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/stm32h7xx_it.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_it.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\stm32h7xx_it.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\stm32h7xx_it.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.i: cmake_force
@@ -211,7 +197,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_it.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/syscalls.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\syscalls.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\syscalls.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\syscalls.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.i: cmake_force
@@ -225,7 +211,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/syscalls.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/sysmem.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\sysmem.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\sysmem.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\sysmem.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.i: cmake_force
@@ -239,7 +225,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/sysmem.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/system_stm32h7xx.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\system_stm32h7xx.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\system_stm32h7xx.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\system_stm32h7xx.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.i: cmake_force
@@ -253,7 +239,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/system_stm32h7xx.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/tim.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\tim.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\tim.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\tim.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.i: cmake_force
@@ -267,7 +253,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/tim.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/usart.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\usart.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Src\usart.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Src\usart.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.i: cmake_force
@@ -280,7 +266,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/usart.c.s: cmake_force
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Startup/startup_stm32h723vgtx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building ASM object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building ASM object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Core\Startup\startup_stm32h723vgtx.s.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Startup\startup_stm32h723vgtx.s
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.i: cmake_force
@@ -294,7 +280,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Startup/startup_stm32h723vgtx.s.s: cmake
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.i: cmake_force
@@ -308,7 +294,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_cortex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_cortex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_cortex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.i: cmake_force
@@ -322,7 +308,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.i: cmake_force
@@ -336,7 +322,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c.i: cmake_force
@@ -350,7 +336,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_exti.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_exti.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_exti.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.i: cmake_force
@@ -364,7 +350,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_fdcan.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_fdcan.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_fdcan.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.i: cmake_force
@@ -378,7 +364,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.i: cmake_force
@@ -392,7 +378,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c.i: cmake_force
@@ -406,7 +392,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_gpio.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_gpio.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_gpio.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.i: cmake_force
@@ -420,7 +406,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_hsem.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_hsem.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_hsem.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c.i: cmake_force
@@ -434,7 +420,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c.i: cmake_force
@@ -448,7 +434,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c.i: cmake_force
@@ -462,7 +448,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mdma.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mdma.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mdma.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.i: cmake_force
@@ -476,7 +462,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c.i: cmake_force
@@ -490,7 +476,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c.i: cmake_force
@@ -504,7 +490,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.i: cmake_force
@@ -518,7 +504,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.i: cmake_force
@@ -532,7 +518,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.i: cmake_force
@@ -546,7 +532,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.i: cmake_force
@@ -560,7 +546,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c.i: cmake_force
@@ -574,7 +560,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c.i: cmake_force
@@ -588,7 +574,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.i: cmake_force
@@ -602,7 +588,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.i: cmake_force
@@ -616,7 +602,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.i: cmake_force
@@ -630,7 +616,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.i: cmake_force
@@ -644,7 +630,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ha
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_usb.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_usb.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_usb.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c.i: cmake_force
@@ -658,7 +644,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src\usbd_cdc.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src\usbd_cdc.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src\usbd_cdc.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.i: cmake_force
@@ -672,7 +658,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_core.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_core.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_core.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.i: cmake_force
@@ -686,7 +672,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.i: cmake_force
@@ -700,7 +686,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.i: cmake_force
@@ -714,7 +700,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.i: cmake_force
@@ -728,7 +714,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/croutine.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\croutine.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i: cmake_force
@@ -742,7 +728,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/crout
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i: cmake_force
@@ -756,7 +742,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/list.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\list.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.i: cmake_force
@@ -770,7 +756,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i: cmake_force
@@ -784,7 +770,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/porta
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i: cmake_force
@@ -798,7 +784,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/porta
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/queue.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\queue.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.i: cmake_force
@@ -812,7 +798,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i: cmake_force
@@ -826,7 +812,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/strea
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\tasks.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i: cmake_force
@@ -840,7 +826,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/timers.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\timers.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.i: cmake_force
@@ -854,7 +840,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timer
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.i: cmake_force
@@ -867,7 +853,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEG
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building ASM object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building ASM object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_ASM_ARMv7M.s.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_ASM_ARMv7M.s
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.i: cmake_force
@@ -881,7 +867,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEG
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_printf.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_printf.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_printf.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.i: cmake_force
@@ -895,7 +881,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEG
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.i: cmake_force
@@ -909,7 +895,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEG
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\Config\Cortex-M\SEGGER_SYSVIEW_Config_FreeRTOS.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\Config\Cortex-M\SEGGER_SYSVIEW_Config_FreeRTOS.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\Config\Cortex-M\SEGGER_SYSVIEW_Config_FreeRTOS.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.i: cmake_force
@@ -923,7 +909,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/Fre
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\Sample\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.i: cmake_force
@@ -937,7 +923,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/Fre
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/App/usb_device.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usb_device.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usb_device.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\USB_DEVICE\App\usb_device.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.i: cmake_force
@@ -951,7 +937,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usb_device.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/App/usbd_cdc_if.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usbd_cdc_if.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usbd_cdc_if.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\USB_DEVICE\App\usbd_cdc_if.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.i: cmake_force
@@ -965,7 +951,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/App/usbd_desc.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usbd_desc.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\App\usbd_desc.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\USB_DEVICE\App\usbd_desc.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.i: cmake_force
@@ -979,7 +965,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/App/usbd_desc.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/Target/usbd_conf.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\Target\usbd_conf.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\USB_DEVICE\Target\usbd_conf.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\USB_DEVICE\Target\usbd_conf.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.i: cmake_force
@@ -993,7 +979,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/USB_DEVICE/Target/usbd_conf.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Filter/filter32.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\Filter\filter32.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\Filter\filter32.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\Filter\filter32.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.i: cmake_force
@@ -1007,7 +993,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Filter/filter32.c.s: cmake_forc
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/MahonyAHRS/MahonyAHRS.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\MahonyAHRS\MahonyAHRS.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\MahonyAHRS\MahonyAHRS.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\MahonyAHRS\MahonyAHRS.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.i: cmake_force
@@ -1021,7 +1007,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/MahonyAHRS/MahonyAHRS.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/PID/PID.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\PID\PID.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\PID\PID.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\PID\PID.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.i: cmake_force
@@ -1035,7 +1021,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/PID/PID.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/QuaternionEKF/QuaternionEKF.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\QuaternionEKF\QuaternionEKF.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\QuaternionEKF\QuaternionEKF.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\QuaternionEKF\QuaternionEKF.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.i: cmake_force
@@ -1049,7 +1035,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/QuaternionEKF/QuaternionEKF.c.s
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Ramp/ramp.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\Ramp\ramp.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\Ramp\ramp.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\Ramp\ramp.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.i: cmake_force
@@ -1063,7 +1049,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/Ramp/ramp.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/User_Lib/user_lib.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\User_Lib\user_lib.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\User_Lib\user_lib.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\User_Lib\user_lib.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.i: cmake_force
@@ -1077,7 +1063,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/User_Lib/user_lib.c.s: cmake_fo
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/crc/crc8_crc16.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\crc\crc8_crc16.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\crc\crc8_crc16.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\crc\crc8_crc16.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.i: cmake_force
@@ -1091,7 +1077,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/crc/crc8_crc16.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/kalman_filter/kalman_filter.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\kalman_filter\kalman_filter.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\algorithm\kalman_filter\kalman_filter.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\algorithm\kalman_filter\kalman_filter.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.i: cmake_force
@@ -1105,7 +1091,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/algorithm/kalman_filter/kalman_filter.c.s
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/BMI088/BMI088Middleware.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\BMI088Middleware.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\BMI088Middleware.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\BMI088\BMI088Middleware.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.i: cmake_force
@@ -1119,7 +1105,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088Middleware.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/BMI088/BMI088driver.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\BMI088driver.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\BMI088driver.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\BMI088\BMI088driver.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.i: cmake_force
@@ -1133,7 +1119,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/BMI088driver.c.s: cmake_fo
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/BMI088/transfer_function.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\transfer_function.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\BMI088\transfer_function.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\BMI088\transfer_function.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.i: cmake_force
@@ -1147,7 +1133,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/BMI088/transfer_function.c.s: cma
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/bsp/bsp_uart.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\bsp\bsp_uart.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\bsp\bsp_uart.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\bsp\bsp_uart.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.i: cmake_force
@@ -1161,7 +1147,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/bsp/bsp_uart.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/can/hal_can.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\can\hal_can.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\can\hal_can.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\can\hal_can.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.i: cmake_force
@@ -1175,7 +1161,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/can/hal_can.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dm_imu/dm_imu.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dm_imu\dm_imu.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\dm_imu\dm_imu.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.i: cmake_force
@@ -1189,7 +1175,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dm_imu/dm_imu.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dwt/drv_dwt.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dwt\drv_dwt.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\dwt\drv_dwt.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\dwt\drv_dwt.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.i: cmake_force
@@ -1203,7 +1189,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/dwt/drv_dwt.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ipc/uMCN.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ipc\uMCN.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ipc\uMCN.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\ipc\uMCN.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.i: cmake_force
@@ -1217,7 +1203,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_vmc/drv_leg.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_vmc\drv_leg.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_vmc\drv_leg.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\leg_vmc\drv_leg.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.i: cmake_force
@@ -1231,7 +1217,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_vmc/drv_leg.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_wbr/leg_wbr.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_wbr\leg_wbr.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\leg_wbr\leg_wbr.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\leg_wbr\leg_wbr.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.i: cmake_force
@@ -1245,7 +1231,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/leg_wbr/leg_wbr.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/log/bsp_log.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\log\bsp_log.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\log\bsp_log.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\log\bsp_log.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.i: cmake_force
@@ -1259,7 +1245,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/log/bsp_log.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DJI_motor/dji_motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DJI_motor\dji_motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DJI_motor\dji_motor.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\motor\DJI_motor\dji_motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.i: cmake_force
@@ -1273,7 +1259,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DJI_motor/dji_motor.c.s: cm
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DM_motor/DM_Motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DM_motor\DM_Motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\DM_motor\DM_Motor.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\motor\DM_motor\DM_Motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.i: cmake_force
@@ -1287,7 +1273,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/DM_motor/DM_Motor.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/HT_motor/ht04.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\HT_motor\ht04.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\HT_motor\ht04.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\motor\HT_motor\ht04.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.i: cmake_force
@@ -1301,7 +1287,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/HT_motor/ht04.c.s: cmake_fo
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/LK_motor/lk_motor.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\LK_motor\lk_motor.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\motor\LK_motor\lk_motor.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\motor\LK_motor\lk_motor.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.i: cmake_force
@@ -1315,7 +1301,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/motor/LK_motor/lk_motor.c.s: cmak
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/pwm/drv_PWM.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\pwm\drv_PWM.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\pwm\drv_PWM.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\pwm\drv_PWM.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.i: cmake_force
@@ -1329,7 +1315,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/pwm/drv_PWM.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/rc/Dbus/rc_dbus.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\rc\Dbus\rc_dbus.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\rc\Dbus\rc_dbus.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.i: cmake_force
@@ -1343,7 +1329,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/rc/Dbus/rc_dbus.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/referee/referee_system.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\referee\referee_system.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\referee\referee_system.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\referee\referee_system.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.i: cmake_force
@@ -1357,7 +1343,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/referee/referee_system.c.s: cmake
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ws2812b/ws2812.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ws2812b\ws2812.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\modules\ws2812b\ws2812.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\ws2812b\ws2812.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.i: cmake_force
@@ -1371,7 +1357,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ws2812b/ws2812.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/robot.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\robot.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\robot.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\robot.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.i: cmake_force
@@ -1385,7 +1371,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/robot.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/chassis/chassis_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\chassis\chassis_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\chassis\chassis_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\chassis\chassis_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.i: cmake_force
@@ -1399,7 +1385,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/chassis/chassis_task.c.s: cmake_forc
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/cmd/cmd_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\cmd\cmd_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\cmd\cmd_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\cmd\cmd_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.i: cmake_force
@@ -1413,7 +1399,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/cmd/cmd_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/gimbal/gimbal_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\gimbal\gimbal_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\gimbal\gimbal_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\gimbal\gimbal_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.i: cmake_force
@@ -1427,7 +1413,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/gimbal/gimbal_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/ins/ins_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\ins\ins_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\ins\ins_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\ins\ins_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.i: cmake_force
@@ -1441,7 +1427,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/ins/ins_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/motor/motor_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\motor\motor_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\motor\motor_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\motor\motor_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.i: cmake_force
@@ -1455,7 +1441,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/motor/motor_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/shoot/shoot_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\shoot\shoot_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\shoot\shoot_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\shoot\shoot_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.i: cmake_force
@@ -1469,7 +1455,7 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/shoot/shoot_task.c.s: cmake_force
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/flags.make
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/trans/trans_task.c
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj: CMakeFiles/CtrBoard-H7_ALL.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj"
 	D:\stm32environment\arm\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.obj -MF CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\trans\trans_task.c.obj.d -o CMakeFiles\CtrBoard-H7_ALL.elf.dir\src\task\trans\trans_task.c.obj -c D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\task\trans\trans_task.c
 
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/task/trans/trans_task.c.i: cmake_force
@@ -1487,7 +1473,6 @@ CtrBoard__H7_ALL_elf_OBJECTS = \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/gpio.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.obj" \
-"CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj" \
 "CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj" \
@@ -1592,7 +1577,6 @@ CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/fdcan.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/freertos.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/gpio.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.obj
-CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/spi.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/stm32h7xx_hal_timebase_tim.c.obj
@@ -1692,7 +1676,7 @@ CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/build.make
 CtrBoard-H7_ALL.elf: D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM7lfdp_math.a
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/objects1.rsp
 CtrBoard-H7_ALL.elf: CMakeFiles/CtrBoard-H7_ALL.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Linking C executable CtrBoard-H7_ALL.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Linking C executable CtrBoard-H7_ALL.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\CtrBoard-H7_ALL.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/cmake-build-debug/CtrBoard-H7_ALL.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/cmake-build-debug/CtrBoard-H7_ALL.bin"

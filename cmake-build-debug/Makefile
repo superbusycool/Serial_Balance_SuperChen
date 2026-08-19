@@ -248,30 +248,6 @@ Core/Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/main.c.s
 .PHONY : Core/Src/main.c.s
 
-Core/Src/memorymap.obj: Core/Src/memorymap.c.obj
-.PHONY : Core/Src/memorymap.obj
-
-# target to build an object file
-Core/Src/memorymap.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.obj
-.PHONY : Core/Src/memorymap.c.obj
-
-Core/Src/memorymap.i: Core/Src/memorymap.c.i
-.PHONY : Core/Src/memorymap.i
-
-# target to preprocess a source file
-Core/Src/memorymap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.i
-.PHONY : Core/Src/memorymap.c.i
-
-Core/Src/memorymap.s: Core/Src/memorymap.c.s
-.PHONY : Core/Src/memorymap.s
-
-# target to generate assembly for a file
-Core/Src/memorymap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Core/Src/memorymap.c.s
-.PHONY : Core/Src/memorymap.c.s
-
 Core/Src/spi.obj: Core/Src/spi.c.obj
 .PHONY : Core/Src/spi.obj
 
@@ -2544,9 +2520,6 @@ help:
 	@echo ... Core/Src/main.obj
 	@echo ... Core/Src/main.i
 	@echo ... Core/Src/main.s
-	@echo ... Core/Src/memorymap.obj
-	@echo ... Core/Src/memorymap.i
-	@echo ... Core/Src/memorymap.s
 	@echo ... Core/Src/spi.obj
 	@echo ... Core/Src/spi.i
 	@echo ... Core/Src/spi.s

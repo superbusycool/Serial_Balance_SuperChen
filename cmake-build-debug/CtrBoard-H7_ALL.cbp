@@ -221,9 +221,6 @@
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Inc/main.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Inc/memorymap.h">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Inc/spi.h">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
@@ -252,9 +249,6 @@
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/main.c">
-			<Option target="CtrBoard-H7_ALL.elf"/>
-		</Unit>
-		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/memorymap.c">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Src/spi.c">
@@ -630,6 +624,48 @@
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/LICENSE.txt">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/applypatch-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/commit-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/fsmonitor-watchman.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/post-update.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-applypatch.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-commit.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-merge-commit.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-push.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-rebase.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/pre-receive.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/prepare-commit-msg.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/push-to-checkout.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/sendemail-validate.sample">
+			<Option target="CtrBoard-H7_ALL.elf"/>
+		</Unit>
+		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/.git/hooks/update.sample">
 			<Option target="CtrBoard-H7_ALL.elf"/>
 		</Unit>
 		<Unit filename="D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/ARM/DSP/LICENSE.txt">

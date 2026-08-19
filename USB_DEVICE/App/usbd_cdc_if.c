@@ -20,10 +20,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_cdc_if.h"
-#include "trans_task.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+/* Includes ------------------------------------------------------------------*/
+#include "usbd_cdc_if.h"
+#include "trans_task.h"
 
 /* USER CODE END INCLUDE */
 
