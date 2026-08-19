@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "CtrBoard-H7_ALL.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CtrBoard-H7_ALL.elf-Debug-1b01c0bc5d7046eec1c6.json",
+					"jsonFile" : "target-CtrBoard-H7_ALL.elf-Debug-51dd927633b9d695d8e2.json",
 					"name" : "CtrBoard-H7_ALL.elf",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/cmake-build-debug",
-		"source" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework"
+		"build" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/cmake-build-debug",
+		"source" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework"
 	},
 	"version" : 
 	{

@@ -1,7 +1,7 @@
-CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.obj: \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\RTT\SEGGER_RTT.c \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\SEGGER\RTT\SEGGER_RTT.h \
- d:\hnu_rm_codestorage\hnu_serial_03_31\hnu_embedded_framework\middlewares\third_party\segger\config\segger_rtt_conf.h \
+CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj: \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT_printf.c \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.h \
+ d:\hnu_rm_codestorage\hnu_serial_08_20_segger_try2\hnu_embedded_framework\middlewares\third_party\systemview\config\segger_rtt_conf.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\ieeefp.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
@@ -20,7 +20,4 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT
  d:\stm32environment\arm\arm-none-eabi\include\machine\stdlib.h \
  d:\stm32environment\arm\arm-none-eabi\include\alloca.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- d:\stm32environment\arm\arm-none-eabi\include\string.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\_locale.h \
- d:\stm32environment\arm\arm-none-eabi\include\strings.h \
- d:\stm32environment\arm\arm-none-eabi\include\sys\string.h
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\SystemView\Config/SEGGER_RTT_Conf.h

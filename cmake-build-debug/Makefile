@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe"
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework
+CMAKE_SOURCE_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\cmake-build-debug
+CMAKE_BINARY_DIR = D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1456,61 +1456,133 @@ Middlewares/Third_Party/FreeRTOS/Source/timers.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.s
 .PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.c.s
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.obj: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.obj
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.obj: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.obj
 
 # target to build an object file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.obj
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.obj
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.i: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.i
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.i
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.i: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.i
 
 # target to preprocess a source file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.i
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.i
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.i
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.s: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.s
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.s
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.s: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.s
 
 # target to generate assembly for a file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.s
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c.s
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c.s
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.obj: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.obj
-
-# target to build an object file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s.obj
-
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.obj: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.obj
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.obj: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.obj
 
 # target to build an object file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.obj
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.obj
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s.obj
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.i: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.i
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.i
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.obj: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.obj
+
+# target to build an object file
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.obj
+
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.i: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.i
 
 # target to preprocess a source file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.i
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.i
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.i
 
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.s: Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.s
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.s
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.s: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.s
 
 # target to generate assembly for a file
-Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.s
-.PHONY : Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c.s
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c.s
+
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.obj: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.obj
+
+# target to build an object file
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.obj
+
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.i: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.i
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.i
+
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.s: Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.s
+.PHONY : Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c.s
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.obj: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.obj
+
+# target to build an object file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.obj
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.i: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.i
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.i
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.i
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.s: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.s
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.s
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c.s
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.obj: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.obj
+
+# target to build an object file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.obj
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.i: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.i
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.i
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.i
+
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.s: Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.s
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CtrBoard-H7_ALL.elf.dir\build.make CMakeFiles/CtrBoard-H7_ALL.elf.dir/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.s
+.PHONY : Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c.s
 
 USB_DEVICE/App/usb_device.obj: USB_DEVICE/App/usb_device.c.obj
 .PHONY : USB_DEVICE/App/usb_device.obj
@@ -2623,13 +2695,22 @@ help:
 	@echo ... Middlewares/Third_Party/FreeRTOS/Source/timers.obj
 	@echo ... Middlewares/Third_Party/FreeRTOS/Source/timers.i
 	@echo ... Middlewares/Third_Party/FreeRTOS/Source/timers.s
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.obj
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.i
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.s
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.obj
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.obj
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.i
-	@echo ... Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.s
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.obj
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.i
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.s
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.obj
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.obj
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.i
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.s
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.obj
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.i
+	@echo ... Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.s
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.obj
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.i
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.s
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.obj
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.i
+	@echo ... Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.s
 	@echo ... USB_DEVICE/App/usb_device.obj
 	@echo ... USB_DEVICE/App/usb_device.i
 	@echo ... USB_DEVICE/App/usb_device.s

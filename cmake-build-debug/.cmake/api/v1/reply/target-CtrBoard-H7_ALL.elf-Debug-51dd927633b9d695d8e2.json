@@ -30,25 +30,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 182,
+				"line" : 184,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 38,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 177,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 178,
+				"line" : 55,
 				"parent" : 0
 			},
 			{
@@ -58,15 +46,27 @@
 				"parent" : 0
 			},
 			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 180,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 181,
+				"parent" : 0
+			},
+			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 185,
+				"line" : 187,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 33,
+				"line" : 50,
 				"parent" : 0
 			},
 			{
@@ -96,13 +96,13 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 28,
+				"line" : 45,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 144,
+				"line" : 146,
 				"parent" : 0
 			},
 			{
@@ -127,7 +127,7 @@
 				},
 				{
 					"backtrace" : 7,
-					"fragment" : "-mfpu=fpv5-sp-d16"
+					"fragment" : "-mfpu=fpv5-d16"
 				},
 				{
 					"backtrace" : 7,
@@ -201,219 +201,227 @@
 			[
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/CMSIS/Include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/USB_DEVICE/App"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/App"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/USB_DEVICE/Target"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/Target"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Config"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/RTT"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/arm_math"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/kalman_filter"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/Filter"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/arm_math"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/MahonyAHRS"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/kalman_filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/PID"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/Ramp"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/MahonyAHRS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/QuaternionEKF"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/PID"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/User_lib"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Ramp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/crc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/QuaternionEKF"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/User_lib"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/BMI088"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/crc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/bsp"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/can"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/BMI088"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/dwt"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/bsp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/ipc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/can"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/log"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dwt"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/dm_imu"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ipc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/leg_vmc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/log"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/leg_wbr"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dm_imu"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_vmc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/DJI_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_wbr"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/LK_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/HT_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DJI_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/DM_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/LK_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/pwm"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/HT_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/ws2812b"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DM_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/referee"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/pwm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/rc/dbus"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ws2812b"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/rc/keyboard"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/referee"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/rc/dbus"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/ins"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/rc/keyboard"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/cmd"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/ins"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/gimbal"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/chassis"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/cmd"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/trans"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/gimbal"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/shoot"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/chassis"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/trans"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/shoot"
 				}
 			],
 			"language" : "C",
@@ -482,47 +490,50 @@
 				170,
 				171,
 				172,
-				174,
 				177,
-				178,
-				180,
+				181,
 				182,
-				184,
 				186,
-				188,
-				190,
-				192,
-				194,
-				196,
-				200,
-				202,
+				189,
+				191,
+				193,
+				195,
+				197,
+				199,
+				201,
+				203,
 				205,
 				207,
-				210,
-				212,
-				214,
-				217,
-				219,
-				222,
+				209,
+				213,
+				215,
+				218,
+				220,
+				223,
 				225,
 				227,
-				229,
+				230,
 				232,
 				235,
-				237,
-				243,
-				247,
+				238,
+				240,
+				242,
+				245,
+				248,
 				250,
-				252,
-				255,
-				258,
-				261,
+				256,
+				260,
 				263,
 				265,
-				267,
-				269,
-				272,
-				274
+				268,
+				271,
+				274,
+				276,
+				278,
+				280,
+				282,
+				285,
+				287
 			]
 		},
 		{
@@ -537,7 +548,7 @@
 				},
 				{
 					"backtrace" : 7,
-					"fragment" : "-mfpu=fpv5-sp-d16"
+					"fragment" : "-mfpu=fpv5-d16"
 				},
 				{
 					"backtrace" : 7,
@@ -619,226 +630,234 @@
 			[
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Drivers/CMSIS/Include"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/USB_DEVICE/App"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/App"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/USB_DEVICE/Target"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/USB_DEVICE/Target"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/Config"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Config"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/Third_Party/SEGGER/RTT"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/Third_Party/SystemView/SEGGER"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/Middlewares/ST/ARM/DSP/Inc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/arm_math"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/kalman_filter"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/Filter"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/arm_math"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/MahonyAHRS"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/kalman_filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/PID"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Filter"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/Ramp"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/MahonyAHRS"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/QuaternionEKF"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/PID"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/User_lib"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/Ramp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/algorithm/crc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/QuaternionEKF"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/User_lib"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/BMI088"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/algorithm/crc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/bsp"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/can"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/BMI088"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/dwt"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/bsp"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/ipc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/can"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/log"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dwt"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/dm_imu"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ipc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/leg_vmc"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/log"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/leg_wbr"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/dm_imu"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_vmc"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/DJI_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/leg_wbr"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/LK_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/HT_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DJI_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/motor/DM_motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/LK_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/pwm"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/HT_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/ws2812b"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/motor/DM_motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/referee"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/pwm"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/rc/dbus"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/ws2812b"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/modules/rc/keyboard"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/referee"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/rc/dbus"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/ins"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/modules/rc/keyboard"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/motor"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/cmd"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/ins"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/gimbal"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/motor"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/chassis"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/cmd"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/trans"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/gimbal"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/src/task/shoot"
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/chassis"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/trans"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/src/task/shoot"
 				}
 			],
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
 				26,
-				176
+				179
 			]
 		}
 	],
@@ -862,7 +881,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-mfpu=fpv5-sp-d16",
+				"fragment" : "-mfpu=fpv5-d16",
 				"role" : "flags"
 			},
 			{
@@ -872,7 +891,7 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/cmake-build-debug/CtrBoard-H7_ALL.elf.map",
+				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/cmake-build-debug/CtrBoard-H7_ALL.elf.map",
 				"role" : "flags"
 			},
 			{
@@ -892,12 +911,12 @@
 			},
 			{
 				"backtrace" : 5,
-				"fragment" : "D:/HNU_RM_CodeStorage/HNU_Serial_03_31/HNU_Embedded_Framework/STM32H723VGTX_FLASH.ld",
+				"fragment" : "D:/HNU_RM_CodeStorage/HNU_Serial_08_20_segger_try2/HNU_Embedded_Framework/STM32H723VGTX_FLASH.ld",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 6,
-				"fragment" : "D:\\HNU_RM_CodeStorage\\HNU_Serial_03_31\\HNU_Embedded_Framework\\Middlewares\\ST\\ARM\\DSP\\Lib\\libarm_cortexM7lfsp_math.a",
+				"fragment" : "D:\\HNU_RM_CodeStorage\\HNU_Serial_08_20_segger_try2\\HNU_Embedded_Framework\\Middlewares\\ST\\ARM\\DSP\\Lib\\libarm_cortexM7lfdp_math.a",
 				"role" : "libraries"
 			}
 		],
@@ -1026,53 +1045,61 @@
 				164,
 				167,
 				173,
+				174,
 				175,
-				179,
-				181,
+				176,
+				178,
+				180,
 				183,
+				184,
 				185,
-				187,
-				189,
-				191,
-				193,
-				195,
-				197,
+				190,
+				192,
+				194,
+				196,
 				198,
-				201,
-				203,
+				200,
+				202,
 				204,
 				206,
 				208,
-				209,
+				210,
 				211,
-				213,
-				215,
-				218,
-				220,
-				223,
+				214,
+				216,
+				217,
+				219,
+				221,
+				222,
+				224,
 				226,
 				228,
-				230,
+				231,
 				233,
 				236,
-				238,
-				244,
+				239,
+				241,
+				243,
 				246,
-				248,
+				249,
 				251,
-				253,
-				254,
-				256,
 				257,
 				259,
-				262,
+				261,
 				264,
 				266,
-				268,
+				267,
+				269,
 				270,
-				271,
-				273,
-				275
+				272,
+				275,
+				277,
+				279,
+				281,
+				283,
+				284,
+				286,
+				288
 			]
 		},
 		{
@@ -1134,47 +1161,50 @@
 				170,
 				171,
 				172,
-				174,
 				177,
-				178,
-				180,
+				181,
 				182,
-				184,
 				186,
-				188,
-				190,
-				192,
-				194,
-				196,
-				200,
-				202,
+				189,
+				191,
+				193,
+				195,
+				197,
+				199,
+				201,
+				203,
 				205,
 				207,
-				210,
-				212,
-				214,
-				217,
-				219,
-				222,
+				209,
+				213,
+				215,
+				218,
+				220,
+				223,
 				225,
 				227,
-				229,
+				230,
 				232,
 				235,
-				237,
-				243,
-				247,
+				238,
+				240,
+				242,
+				245,
+				248,
 				250,
-				252,
-				255,
-				258,
-				261,
+				256,
+				260,
 				263,
 				265,
-				267,
-				269,
-				272,
-				274
+				268,
+				271,
+				274,
+				276,
+				278,
+				280,
+				282,
+				285,
+				287
 			]
 		},
 		{
@@ -1190,27 +1220,29 @@
 				131,
 				141,
 				142,
-				176,
-				199,
-				216,
-				221,
-				224,
-				231,
+				179,
+				187,
+				188,
+				212,
+				229,
 				234,
-				239,
-				245,
-				249,
-				260,
-				276
+				237,
+				244,
+				247,
+				252,
+				258,
+				262,
+				273,
+				289
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				240,
-				241,
-				242
+				253,
+				254,
+				255
 			]
 		}
 	],
@@ -2139,31 +2171,99 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h",
+			"path" : "Middlewares/Third_Party/SystemView/Config/Global.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/Config/SEGGER_RTT_Conf.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/Config/SEGGER_SYSVIEW_Conf.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.c",
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.c",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h",
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_ASM_ARMv7M.s",
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ASM_ARMv7M.s",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_ConfDefaults.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_RTT_printf.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/SEGGER/SEGGER_SYSVIEW_Int.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M/SEGGER_SYSVIEW_Config_FreeRTOS.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Patch/FreeRTOSV10_Amazon_Core.patch",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Patch/FreeRTOSV10_Core.patch",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c",
+			"path" : "Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.c",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/SEGGER_SYSVIEW_FreeRTOS.h",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,

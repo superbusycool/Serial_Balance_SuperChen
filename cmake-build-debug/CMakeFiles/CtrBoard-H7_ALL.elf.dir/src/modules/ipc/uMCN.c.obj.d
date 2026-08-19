@@ -1,10 +1,10 @@
 CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\src\modules\ipc\uMCN.c \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\src\modules\ipc\uMCN.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\ipc\uMCN.c \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src\modules\ipc\uMCN.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdbool.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\src/rm_config.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/core_cm7.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\src/rm_config.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/stm32h723xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Include/core_cm7.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\stdint.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\_default_types.h \
@@ -12,20 +12,20 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\_newlib_version.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_intsup.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_stdint.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_version.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_gcc.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Include/mpu_armv7.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_version.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_compiler.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Include/cmsis_gcc.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Include/mpu_armv7.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS/cmsis_os.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
  d:\stm32environment\arm\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Core\Inc/FreeRTOSConfig.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Core\Inc/FreeRTOSConfig.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
  d:\stm32environment\arm\arm-none-eabi\include\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\reent.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
@@ -35,15 +35,15 @@ CMakeFiles/CtrBoard-H7_ALL.elf.dir/src/modules/ipc/uMCN.c.obj: \
  d:\stm32environment\arm\arm-none-eabi\include\sys\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\machine\_types.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\lock.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/semphr.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/event_groups.h \
- D:\HNU_RM_CodeStorage\HNU_Serial_03_31\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/semphr.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/queue.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/event_groups.h \
+ D:\HNU_RM_CodeStorage\HNU_Serial_08_20_segger_try2\HNU_Embedded_Framework\Middlewares\Third_Party\FreeRTOS\Source\include/timers.h \
  d:\stm32environment\arm\arm-none-eabi\include\string.h \
  d:\stm32environment\arm\arm-none-eabi\include\_ansi.h \
  d:\stm32environment\arm\arm-none-eabi\include\sys\cdefs.h \

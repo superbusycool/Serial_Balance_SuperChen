@@ -24,39 +24,39 @@ set(CMAKE_C_STANDARD 11)
 #add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 # -------------------- 关键修改：单精度 FPU 和 DSP 配置 --------------------
-# 硬件浮点配置（单精度）
-add_compile_definitions(
-        ARM_MATH_CM7;                  # 指定 CMSIS-DSP 为 M7 内核
-        ARM_MATH_MATRIX_CHECK;
-        ARM_MATH_ROUNDING
-)
-add_compile_options(
-        -mfloat-abi=hard
-        -mfpu=fpv5-sp-d16             # 单精度 FPU（关键修改：sp 表示单精度）
-        -mcpu=cortex-m7               # 指定 M7 架构
-)
-add_link_options(
-        -mfloat-abi=hard
-        -mfpu=fpv5-sp-d16
-        -mcpu=cortex-m7
-)
-
-## 硬件浮点配置（双精度FPU），需要修改FreeRTOSConfig.h文件，configUSE_TASK_FPU_SUPPORT设置为2
+## 硬件浮点配置（单精度）
 #add_compile_definitions(
-#        ARM_MATH_CM7                  # 指定CMSIS-DSP为M7内核
-#        ARM_MATH_MATRIX_CHECK
+#        ARM_MATH_CM7;                  # 指定 CMSIS-DSP 为 M7 内核
+#        ARM_MATH_MATRIX_CHECK;
 #        ARM_MATH_ROUNDING
 #)
 #add_compile_options(
 #        -mfloat-abi=hard
-#        -mfpu=fpv5-d16                # M7双精度FPU
-#        -mcpu=cortex-m7               # 指定M7架构
+#        -mfpu=fpv5-sp-d16             # 单精度 FPU（关键修改：sp 表示单精度）
+#        -mcpu=cortex-m7               # 指定 M7 架构
 #)
 #add_link_options(
 #        -mfloat-abi=hard
-#        -mfpu=fpv5-d16
+#        -mfpu=fpv5-sp-d16
 #        -mcpu=cortex-m7
 #)
+
+# 硬件浮点配置（双精度FPU），需要修改FreeRTOSConfig.h文件，configUSE_TASK_FPU_SUPPORT设置为2
+add_compile_definitions(
+        ARM_MATH_CM7                  # 指定CMSIS-DSP为M7内核
+        ARM_MATH_MATRIX_CHECK
+        ARM_MATH_ROUNDING
+)
+add_compile_options(
+        -mfloat-abi=hard
+        -mfpu=fpv5-d16                # M7双精度FPU
+        -mcpu=cortex-m7               # 指定M7架构
+)
+add_link_options(
+        -mfloat-abi=hard
+        -mfpu=fpv5-d16
+        -mcpu=cortex-m7
+)
 
 
 # 软件模拟FPU浮点数运算
@@ -93,8 +93,10 @@ include_directories(Core/Inc Drivers/STM32H7xx_HAL_Driver/Inc Drivers/STM32H7xx_
         USB_DEVICE/App USB_DEVICE/Target
         Middlewares/ST/STM32_USB_Device_Library/Core/Inc
         Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-        Middlewares/Third_Party/SEGGER/Config
-        Middlewares/Third_Party/SEGGER/RTT
+        Middlewares/Third_Party/SystemView/Config
+        Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10
+        Middlewares/Third_Party/SystemView/Sample/FreeRTOSV10/Config/Cortex-M
+        Middlewares/Third_Party/SystemView/SEGGER
         Middlewares/ST/ARM/DSP/Inc # 矩阵运算库
 
         src
@@ -182,7 +184,7 @@ add_link_options(-T ${LINKER_SCRIPT})
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
 # 链接DSP矩阵运算库,libarm_cortexM7lfsp_math单精度DSP库，
-target_link_libraries(${PROJECT_NAME}.elf ${CMAKE_SOURCE_DIR}/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM7lfsp_math.a)
+target_link_libraries(${PROJECT_NAME}.elf ${CMAKE_SOURCE_DIR}/Middlewares/ST/ARM/DSP/Lib/libarm_cortexM7lfdp_math.a)
 
 # 生成Hex/Bin文件
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)

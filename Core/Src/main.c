@@ -31,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "SEGGER_RTT.h"
+#include "SEGGER_SYSVIEW.h"
 #include "BMI088driver.h"
 #include "drv_dwt.h"
 #include "hal_can.h"
@@ -118,10 +119,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   MX_USB_DEVICE_Init();
 
-  dwt_init(480);
+  dwt_init(SystemCoreClock);
   CAN_service_init();
   BMI088_init(&hspi2);
   robot_init();
+  SEGGER_SYSVIEW_Conf();
   SEGGER_RTT_Init();//系统日志log初始化
   HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
